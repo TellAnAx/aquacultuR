@@ -17,5 +17,10 @@
 ###############################################################################
 
 
+calculate_ADCdiet <- function(intstandard_diet, intstandard_feces) {
 
-ADC_diet <- (1 - (IS_faeces - IS_diet) / IS_faeces) * 100
+  ADC_diet <- (1 - (intstandard_feces - intstandard_diet) / intstandard_feces) * 100
+
+  return(ADC_diet)
+
+}

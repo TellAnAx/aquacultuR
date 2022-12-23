@@ -1,0 +1,26 @@
+{
+    "id": "46C97DE8",
+    "path": "/Volumes/SSD/Projekte/Projekt14 - R-Package-aquacultuR/R/calculate_ADCdiet.R",
+    "project_path": "R/calculate_ADCdiet.R",
+    "type": "r_source",
+    "hash": "3765650824",
+    "contents": "",
+    "dirty": false,
+    "created": 1671797403798.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "9,30",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1671797494,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1671797494232,
+    "read_only": false,
+    "read_only_alternatives": []
+}

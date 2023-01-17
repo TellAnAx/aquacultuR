@@ -27,7 +27,7 @@
 ###############################################################################
 
 
-TGC <- function(initWeight, finalWeight, duration, temp){
+calculate_TGC <- function(initWeight, finalWeight, duration, temp){
 
   # Calculate the SGR
   result <- ((finalWeight^(1/3) - initWeight^(1/3)) / (duration * temp)) * 1000

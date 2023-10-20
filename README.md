@@ -18,11 +18,13 @@ devtools::install_github("TellAnAx/aquacultuR")
 
 
 # Under development
+- Data entry draft sheets
+- Functions for automated data analysis
+
+
+# # Future plans
 - Absolute growth rate (AGR)
 - Relative growth rate (RGR)
 - Metabolic bodyweight (MBW)
 - Geometric bodyweight (GBW)
-
-
-# Future plans
 - Apparent digestibility coefficient

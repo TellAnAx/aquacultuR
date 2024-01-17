@@ -1,13 +1,19 @@
+<img src="vignettes/logo_aquacultuR.png" width="10%" />
+
 # aquacultuR
-R package providing functions for the calculation of growth and feed metrics.
+aquacultuR is an R package providing functions for the calculation of growth and feed metrics.
 
 
 
 # Installation
+
 ```
 require(devtools)
 devtools::install_github("TellAnAx/aquacultuR")
 ```
+
+
+
 
 
 # Currently included
@@ -17,14 +23,32 @@ devtools::install_github("TellAnAx/aquacultuR")
 - Thermal growth coefficient (TGC)
 
 
+
+
+
 # Under development
+- Relative growth rate (RGR)
+- Metabolic bodyweight (MBW)
+- Geometric bodyweight (GBW)
+- Apparent digestibility coefficient (ADC)
+
+
+
+## Future plans
 - Data entry draft sheets
 - Functions for automated data analysis
 
 
-# # Future plans
-- Absolute growth rate (AGR)
-- Relative growth rate (RGR)
-- Metabolic bodyweight (MBW)
-- Geometric bodyweight (GBW)
-- Apparent digestibility coefficient
+
+
+
+# About Us
+
+Author:
+
+-   [Anıl Axel Tellbüscher](https://anil.tellbuescher.online)
+
+
+Logo design:
+
+-   [Tomáš Pěnka](https://www.linkedin.com/in/tomáš-pěnka-a25866287/)

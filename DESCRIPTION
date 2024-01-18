@@ -7,6 +7,6 @@ Maintainer: Anıl Axel Tellbüscher <admin@tellbuescher.online>
 Description: The purpose of this package is to provide tools for aquaculture 
     by implementing equations that are frequently used as ready-to-use 
     functions in R language.
-License: What license is it under?
+License: GNU General Public License v3.0
 Encoding: UTF-8
 LazyData: true

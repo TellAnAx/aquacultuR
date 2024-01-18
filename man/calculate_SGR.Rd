@@ -10,18 +10,18 @@ Function to calculate the Specific Growth Rate (SGR).
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-calculate_SGR(initWeight, finalWeight, duration))
+calculate_SGR(initWeight, finalWeight, duration)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{initWeight}{
-  a numeric value that is providing the initial weight in grams.
+  numeric value that is providing the initial weight in grams.
   }
   \item{finalWeight}{
-  a numeric value that is providing the final weight in grams.
+  numeric value that is providing the final weight in grams.
   }
   \item{duration}{
-  a numeric value that is providing the duration of the experiment in days.
+  numeric value that is providing the duration of the experiment in days.
   }
 }
 \details{
@@ -49,17 +49,9 @@ Returns the SGR as percentage value.
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-\code{\link{https://blog.tellbuescher.online/formulary}}
+\code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x)
-{
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

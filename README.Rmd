@@ -3,7 +3,9 @@ output: github_document
 always_allow_html: true
 ---
 
-```{r}
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r echo=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -11,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r echo=FALSE, out.width="10%}
+```{r echo=FALSE, out.width="10%"}
 knitr::include_graphics("vignettes/logo_aquacultuR.png")
 ```
 

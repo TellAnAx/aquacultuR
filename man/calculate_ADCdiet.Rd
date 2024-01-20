@@ -2,29 +2,28 @@
 \alias{calculate)ADCdiet}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Apparent Digestibility Coefficient (ADC) of a Diet
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Calculates the Apparent Digestibility Coefficient (ADC) of a diet 
 }
 \usage{
-calculate)ADCdiet(x)
+calculate_ADCdiet(diet_IS, feces_IS)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
+  \item{diet_IS}{
+a numeric value, resembling the inclusion rate of internal standard in the experimental diet given to the livestock.
+}
+  \item{feces_IS}{
+a numeric value, resembling the inclusion rate of internal standard in the feces recovered during the digestibility trial.
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+returns a single numeric value which is the relative ADC for the diet.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -42,14 +41,7 @@ calculate)ADCdiet(x)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (x)
-{
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

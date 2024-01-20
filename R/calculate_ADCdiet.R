@@ -17,10 +17,11 @@
 ###############################################################################
 
 
-calculate_ADCdiet <- function(intstandard_diet, intstandard_feces) {
+calculate_ADCdiet <- function(diet_IS, feces_IS) {
 
-  ADC_diet <- (1 - (intstandard_feces - intstandard_diet) / intstandard_feces) * 100
+  # calculate ADC
+  ADC_diet <- (1 - (feces_IS - diet_IS) / feces_IS) * 100
 
+  # return result
   return(ADC_diet)
-
 }

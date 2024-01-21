@@ -18,10 +18,22 @@
 
 
 
-calculate_ADCingr <- function(ADC_test, ADC_ref, inclusion_ingr, nutrient_ref, nutrient_ingr) {
+calculate_ADCingr <- function(ADC_test, 
+                              ADC_ref, 
+                              nutr_ref, 
+                              nutr_ingr,
+                              incl_ingr
+                              ) {
+  
+  # calculate ADC
+  ADC_ingr <- ( ADC_test + ( ((1-incl_ingr) * nutr_ref) / (incl_ingr * nutr_ingr) ) * (ADC_test - ADC_ref) )
 
-  ADC_ingr <- ( ADC_test + ( ((1-inclusion_ingr) * nutrient_ref) / (inclusion_ingr * nutrient_ingr) ) * (ADC_test - ADC_ref) ) * 100
-
+  
+  if(ADC_ingr > 1) {
+    warning("ADC above 1")
+  }
+    
+  # return result
   return(ADC_ingr)
 
 }

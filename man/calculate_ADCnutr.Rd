@@ -8,23 +8,28 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-calculate_ADCnutr(x)
+calculate_ADCnutr(diet_IS, feces_IS, diet_NUTR, feces_NUTR)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
+  \item{diet_IS}{
+a numeric value, resembling the inclusion rate of internal standard in the experimental diet given to the livestock.
+  }
+  \item{feces_IS}{
+a numeric value, resembling the inclusion rate of internal standard in the feces recovered during the digestibility trial.
+  }
+  \item{diet_NUTR}{
+  
+  }
+  \item{feces_NUTR}{
+  
+  }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+returns a single numeric value which is the relative ADC for a single nutrient in the diet. If the value is not within the interval [0,1], an additional warning is returned.
 }
 \references{
 %% ~put references to the literature/web site here ~

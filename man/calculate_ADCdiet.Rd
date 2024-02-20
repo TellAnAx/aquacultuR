@@ -23,7 +23,7 @@ a numeric value, resembling the inclusion rate of internal standard in the feces
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-returns a single numeric value which is the relative ADC for the diet.
+returns a single numeric value which is the relative ADC for the diet. If the value is not within the interval [0,1], an additional warning is returned.
 }
 \references{
 %% ~put references to the literature/web site here ~

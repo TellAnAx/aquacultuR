@@ -18,9 +18,12 @@
 
 
 
-calculate_ADCnutr <- function(intstandard_diet, intstandard_feces, nutrient_diet, nutrient_feces) {
+calculate_ADCnutr <- function(diet_IS, 
+                              feces_IS, 
+                              diet_NUTR, 
+                              feces_NUTR) {
 
-  ADC_nutr <- (1 - (intstandard_diet / intstandard_feces) * (nutrient_feces / nutrient_diet)) * 100
+  ADC_nutr <- (1 - (diet_IS / feces_IS) * (feces_NUTR / diet_NUTR))
 
   return(ADC_nutr)
 

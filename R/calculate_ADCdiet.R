@@ -20,7 +20,7 @@
 calculate_ADCdiet <- function(diet_IS, feces_IS) {
 
   # calculate ADC
-  ADC_diet <- (1 - (feces_IS - diet_IS) / feces_IS) * 100
+  ADC_diet <- (1 - (feces_IS - diet_IS) / feces_IS)
 
   # return result
   return(ADC_diet)

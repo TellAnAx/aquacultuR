@@ -39,7 +39,8 @@ The Feed Conversion Ratio (FCR) describes the amount of feed on dry matter (DM) 
 %% ...
 }
 \references{
-%% ~put references to the literature/web site here ~
+Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J. (2016). A review on fish growth calculation: multiple functions in fish production and their specific application. Reviews in Aquaculture, 8, 30–42.
+
 }
 \author{
 %%  ~~who you are~~

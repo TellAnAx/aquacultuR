@@ -2,10 +2,10 @@
 \alias{calculate_TGC}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Thermal Growth Coefficient
+TGC
 }
 \description{
-Function to calculate the Thermal Growth Coefficient (TGC).
+Function to calculate the Thermal Growth Coefficient
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{

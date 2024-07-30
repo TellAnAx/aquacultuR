@@ -2,11 +2,11 @@
 \alias{calculate_FCR}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Feed Conversion Ratio
+FCR
 %%  ~~function to do ... ~~
 }
 \description{
-Function to calculate the Feed Conversion Ratio (FCR).
+Function to calculate the Feed Conversion Ratio
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{

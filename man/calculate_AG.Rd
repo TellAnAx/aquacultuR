@@ -2,10 +2,10 @@
 \alias{calculate_AG}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Absolute Growth
+AG
 }
 \description{
-Calculate the Absolute Growth (AG).
+Calculate the Absolute Growth
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{

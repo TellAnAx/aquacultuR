@@ -2,11 +2,11 @@
 \alias{calculate_SGR}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Specific Growth Rate
+SGR
 %%  ~~function to do ... ~~
 }
 \description{
-Function to calculate the Specific Growth Rate (SGR).
+Function to calculate the Specific Growth Rate
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{

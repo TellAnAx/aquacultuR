@@ -24,13 +24,13 @@ devtools::install_github("TellAnAx/aquacultuR")
 - Specific growth rate (SGR)
 - Thermal growth coefficient (TGC)
 - Protein efficiency ratio (PER)
+- Apparent digestibility coefficient (ADC)
 
 # Under development
 
 - Relative growth rate (RGR)
 - Metabolic bodyweight (MBW)
 - Geometric bodyweight (GBW)
-- Apparent digestibility coefficient (ADC)
 
 ## Future plans
 

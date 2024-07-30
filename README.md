@@ -23,6 +23,7 @@ devtools::install_github("TellAnAx/aquacultuR")
 - Feed conversion ratio (FCR)
 - Specific growth rate (SGR)
 - Thermal growth coefficient (TGC)
+- Protein efficiency ratio (PER)
 
 # Under development
 

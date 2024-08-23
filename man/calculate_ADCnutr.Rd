@@ -2,10 +2,10 @@
 \alias{calculate_ADCnutr}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Apparent Digestibility Coefficient of a single nutrient in a feed ingredient (ADCingr)
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Function to calculate the Apparent Digestibility Coefficient (ADC) of a nutrient in a feed ingredient that is part of a compound diet.
 }
 \usage{
 calculate_ADCnutr(diet_IS, feces_IS, diet_NUTR, feces_NUTR)

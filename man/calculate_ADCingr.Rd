@@ -2,10 +2,10 @@
 \alias{calculate_ADCingr}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Apparent Digestibility Coefficient of ingredients (ADCingr)
+Apparent Digestibility Coefficient of a feed ingredient (ADCingr)
 }
 \description{
-Function to calculate the Apparent Digestibility Coefficient (ADC) of a nutrient in an ingredient that is part of a compound diet.
+Function to calculate the Apparent Digestibility Coefficient (ADC) of a feed ingredient that is part of a compound diet.
 }
 \usage{
 calculate_ADCingr(ADC_test, ADC_ref, 

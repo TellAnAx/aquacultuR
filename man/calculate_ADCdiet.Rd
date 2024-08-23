@@ -2,10 +2,10 @@
 \alias{calculate)ADCdiet}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Apparent Digestibility Coefficient (ADC) of a Diet
+Apparent Digestibility Coefficient
 }
 \description{
-Calculates the Apparent Digestibility Coefficient (ADC) of a diet 
+Function to calculate the Apparent Digestibility Coefficient (ADC) of a nutrient in a compound diet 
 }
 \usage{
 calculate_ADCdiet(diet_IS, feces_IS)

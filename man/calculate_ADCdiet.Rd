@@ -1,5 +1,5 @@
-\name{calculate)ADCdiet}
-\alias{calculate)ADCdiet}
+\name{calculate_ADCdiet}
+\alias{calculate_ADCdiet}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Apparent Digestibility Coefficient

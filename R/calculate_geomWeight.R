@@ -10,7 +10,7 @@
 # written by: Anil Axel Tellbuescher
 #
 # date written:   December 18th, 2021
-# last modified:  December 18th, 2021
+# last modified:  August 25th, 2024
 #
 #
 #
@@ -19,11 +19,11 @@
 
 
 
-geomWeight <- function(initWeight, finalWeight){
+calculate_geomWeight <- function(initWeight, finalWeight){
   
   # Calculate the geometric mean bodyweight
-  geomWeight = sqrt(initWeight * finalWeight) 
+  result = sqrt(initWeight * finalWeight) 
   
   # Return the result
-  return(geomWeight)
+  return(result)
 }

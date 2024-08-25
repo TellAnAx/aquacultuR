@@ -1,6 +1,6 @@
 #
 #  TITLE: 
-#         Function - AGR(initWeight, finalWeight, duration)
+#         Function - calculate_AGR(initWeight, finalWeight, duration)
 #
 #  DESCRIPTION:
 #         A function that calculates the Absolute Growth Rate (AGR), also denoted as 
@@ -11,7 +11,7 @@
 # written by: Anil Axel Tellbuescher
 #
 # date written:   December 18th, 2021
-# last modified:  December 18th, 2021
+# last modified:  August 25th, 2024
 #
 #
 #
@@ -20,11 +20,11 @@
 
 
 
-AGR <- function(initWeight, finalWeight, duration){
+calculate_AGR <- function(initWeight, finalWeight, duration){
   
   # Calculate the absolute growth rate
-  absGrowthRate = (finalWeight - initWeight) / duration
+  result = (finalWeight - initWeight) / duration
   
   # Return the result
-  return(absGrowthRate)
+  return(result)
 }

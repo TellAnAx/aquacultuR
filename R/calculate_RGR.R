@@ -1,6 +1,6 @@
 #
 #  TITLE: 
-#         Function - RGR(initWeight, finalWeight, duration)
+#         Function - calculate_RGR(initWeight, finalWeight, duration)
 #
 #  DESCRIPTION:
 #         A function that calculates the Relative Growth Rate (RGR).
@@ -19,11 +19,11 @@
 
 
 
-RGR <- function(initWeight, finalWeight, duration){
+calculate_RGR <- function(initWeight, finalWeight, duration){
   
   # Calculate the relative growth rate
-  relGrowthRate = (finalWeight - initWeight) / (duration * sqrt(finalWeight * initWeight))
+  result = (finalWeight - initWeight) / (duration * sqrt(finalWeight * initWeight))
   
   # Return the result
-  return(relGrowthRate)
+  return(result)
 }

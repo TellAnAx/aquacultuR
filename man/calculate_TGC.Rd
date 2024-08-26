@@ -6,7 +6,6 @@ Thermal Growth Coefficient
 }
 \description{
 Function to calculate the Thermal Growth Coefficient (TGC).
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
 calculate_TGC(initWeight, finalWeight, duration, temp)

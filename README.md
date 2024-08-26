@@ -19,18 +19,16 @@ devtools::install_github("TellAnAx/aquacultuR")
 
 # Currently included
 
+- Geometric bodyweight
+- Metabolic bodyweight
 - Absolute growth (AG)
-- Feed conversion ratio (FCR)
+- Absolute growth rate (AGR)
+- Relative growth rate (RGR)
 - Specific growth rate (SGR)
 - Thermal growth coefficient (TGC)
+- Feed conversion ratio (FCR)
 - Protein efficiency ratio (PER)
 - Apparent digestibility coefficient (ADC)
-
-# Under development
-
-- Relative growth rate (RGR)
-- Metabolic bodyweight (MBW)
-- Geometric bodyweight (GBW)
 
 ## Future plans
 
@@ -39,10 +37,10 @@ devtools::install_github("TellAnAx/aquacultuR")
 
 # About Us
 
-Author:
+**Author:**
 
 - [Anıl Axel Tellbüscher](https://anil.tellbuescher.online)
 
-Logo design:
+**Logo design:**
 
 - [Tomáš Pěnka](https://www.linkedin.com/in/tomáš-pěnka-a25866287/)

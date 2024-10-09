@@ -45,7 +45,7 @@ devtools::install_github("TellAnAx/aquacultuR")
 - Specific growth rate (SGR)
 - Thermal growth coefficient (TGC)
 - Feed conversion ratio (FCR)
-- Protein efficiency ratio (PER)
+- Nutrient efficiency ratio (NER)
 - Apparent digestibility coefficient (ADC)
 
 

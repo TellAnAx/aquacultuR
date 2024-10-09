@@ -5,7 +5,7 @@
 AG
 }
 \description{
-Calculate the Absolute Growth
+Calculates the Absolute Growth
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -14,15 +14,14 @@ calculate_AG(initWeight, finalWeight)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{initWeight}{
-  a numeric value that is providing the initial weight in grams.
+  a numeric value providing the initial weight in grams.
   }
   \item{finalWeight}{
-  a numeric value that is providing the final weight in grams.
+  a numeric value providing the final weight in grams.
   }
 }
 \details{
-The AG, also termed Absolute Weight Gain (AWG), is the weight that was gained within the duration of a growth trial.
-%%  ~~ If necessary, more details than the description above ~~
+The AG, also termed Absolute Weight Gain (AWG), is the weight that was gained within the duration of a growth trial. It does by default not distinguish between weight gain in form of dry matter or water.
 }
 \value{
 %%  ~Describe the value returned
@@ -30,11 +29,10 @@ The AG, also termed Absolute Weight Gain (AWG), is the weight that was gained wi
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
-Returns a single value that is the AG.
+Returns a single numeric value.
 }
 \references{
-Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J. (2016). A review on fish growth calculation: multiple functions in fish production and their specific application. Reviews in Aquaculture, 8, 30–42.
-
+Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J. (2016): A review on fish growth calculation: multiple functions in fish production and their specific application. Reviews in Aquaculture, 8, p.30–42.
 }
 \author{
 %%  ~~who you are~~

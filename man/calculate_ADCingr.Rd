@@ -37,7 +37,7 @@ The calculation of the ADCingr is based on the equation proposed by Bureau and H
 returns a single numeric value which is the relative ADC for the diet. If the value is not within the interval [0,1], an additional warning is returned.
 }
 \references{
-Bureau, D. P., & Hua, K. (2006). Letter to the Editor of Aquaculture. Aquaculture, 252, 103–105.
+Bureau, D. P., & Hua, K. (2006): Letter to the Editor of Aquaculture. Aquaculture, 252, p.103–105.
 }
 \author{
 %%  ~~who you are~~

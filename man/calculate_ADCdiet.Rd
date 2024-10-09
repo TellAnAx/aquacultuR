@@ -26,7 +26,7 @@ a numeric value, resembling the inclusion rate of internal standard in the feces
 returns a single numeric value which is the relative ADC for the diet. If the value is not within the interval [0,1], an additional warning is returned.
 }
 \references{
-%% ~put references to the literature/web site here ~
+Bureau, D. P., & Hua, K. (2006): Letter to the Editor of Aquaculture. Aquaculture, 252, p.103–105.
 }
 \author{
 %%  ~~who you are~~

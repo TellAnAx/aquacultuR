@@ -39,7 +39,7 @@ $$
 %% ...
 }
 \references{
-Lupatsch et al. (2003): Comparison of energy and protein efficiency among three fish species gilthead sea bream (Sparus aurata), European sea bass (Dicentrarchus labrax) and white grouper (Epinephelus aeneus): energy expenditure for protein and lipid deposition. Aquaculture 225, p.175-189.
+Lupatsch, I. et al. (2003): Comparison of energy and protein efficiency among three fish species gilthead sea bream (Sparus aurata), European sea bass (Dicentrarchus labrax) and white grouper (Epinephelus aeneus): energy expenditure for protein and lipid deposition. Aquaculture 225, p.175-189.
 }
 \author{
 %%  ~~who you are~~

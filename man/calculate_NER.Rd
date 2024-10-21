@@ -40,11 +40,11 @@ returns a single numeric value
 \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 }
 \examples{
-# Calculate the PER using the initial and final weight
-calculate_PER(initWeight = 1, finalWeight = 10, proteinFed = 12)
+# Calculate NER using the initial and final weight
+calculate_NER(initWeight = 1, finalWeight = 10, proteinFed = 12)
 
-# Calculate the PER using the weight gain instead
-calculate_PER(weightGain = 9, proteinFed = 12)
+# Calculate NER using the weight gain instead
+calculate_NER(weightGain = 9, proteinFed = 12)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

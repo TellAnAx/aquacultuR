@@ -8,14 +8,15 @@ NER
 Function to calculate the Nutrient Efficiency Ratio (NER)
 }
 \usage{
-calculate_NER(initWeight = NULL, finalWeight = NULL, weightGain = NULL, proteinFed = NULL)
+calculate_NER(initWeight = NULL, finalWeight = NULL, 
+              weightGain = NULL, nutrientFed = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{initWeight}{a numeric value for the initial weight (either average weight of the individuals or the total biomass) of the livestock at the beginning of the feeding trial.}
   \item{finalWeight}{a numeric value for the final weight (either average weight of the individuals or the total biomass) of the livestock at the end of the feeding trial.}
   \item{weightGain}{optional; can be provided instead of the initial and final weight.}
-  \item{proteinFed}{a numeric value for the amount of protein fed during the feeding trial.}
+  \item{nutrientFed}{a numeric value for the amount of nutrient fed during the feeding trial.}
 }
 \details{
 It should be noted that all input values must be provided in the same unit.
@@ -40,11 +41,16 @@ returns a single numeric value
 \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 }
 \examples{
-# Calculate NER using the initial and final weight
-calculate_NER(initWeight = 1, finalWeight = 10, proteinFed = 12)
+# Calculate NER using the weight gain 
+calculate_NER(weightGain = 9, nutrientFed = 12)
 
-# Calculate NER using the weight gain instead
-calculate_NER(weightGain = 9, proteinFed = 12)
+# Calculate NER using the initial and final weight instead
+data(polyculture2)
+calculate_NER(initWeight = data$W_start, 
+              finalWeight = data$W_end, 
+              nutrientFed = 12)
+
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

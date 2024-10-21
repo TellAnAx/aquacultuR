@@ -48,6 +48,11 @@ Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J. (2016): A review 
 \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 }
 \examples{
+# load example data
+data(polyculture2)
+
+# calculate absolute growth
+calculate_AG(initWeight = data$W_start, finalWeight = data$W_end)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

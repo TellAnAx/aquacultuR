@@ -9,6 +9,6 @@ calculate_NER <- function(initWeight = NULL, finalWeight = NULL, weightGain = NU
     weightGain <- finalWeight - initWeight  
   }
   
-  result <- weightGain / proteinFed
+  result <- weightGain / nutrientFed
   return(result)
 }

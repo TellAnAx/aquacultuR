@@ -1,34 +1,49 @@
-#
-#  TITLE:
-#         Function - calculate_FCR(initWeight, finalWeight, feedIntake, dryMatter)
-#
-#  DESCRIPTION:
-#         A function that calculates the Feed Conversion Ratio (FCR) based on
-#         the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
-#         Weight (FBW; finalWeight) in gram (g), the total Feed Intake (FI; feedIntake)
-#         in gram and the dry matter (DM; dryMatter) content of the feed in percent.
-#         (duration) in days (d).
-#
-#         FCR = (FI * DM) / (FBW - IBW)
-#
-#         The FI is multiplied by the DM of the feed to calculate the true FI.
-#         This is then divided by the weight increase during the experimental
-#         period to calculate the amount of feed consumed per unit of weight
-#         increase.
-#
-#
-#
-# written by: Anıl Axel Tellbüscher
-#
 # date written:   December 6th, 2021
 # last modified:  August 6th, 2022
 #
-#
-#
 ###############################################################################
 
-
-
+#' Function to calculate the Feed Conversion Ratio 
+#' 
+#' A function that calculates the Feed Conversion Ratio (FCR) based on
+#' the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
+#' Weight (FBW; finalWeight) in gram (g), the total Feed Intake (FI; feedIntake)
+#' in gram and the dry matter (DM; dryMatter) content of the feed in percent.
+#' (duration) in days (d).
+#' 
+#' @param initWeight a numeric value that is providing the initial weight in
+#' grams.
+#' @param finalWeight a numeric value that is providing the final weight in
+#' grams.
+#' @param feedIntake a numeric value providing the total feed intake in grams
+#' during the experiment.
+#' @param dryMatter a numeric value indicating the dry matter content of the
+#' feed. The value must be within the interval of (0:1).
+#' @return returns a numeric value that is the FCR.
+#' 
+#' @note The Feed Conversion Ratio (FCR) describes the amount of feed on dry matter
+#' (DM) basis that is required to gain 1 kg of body weight on wet weight basis.
+#' 
+#' FCR = (FI * DM) / (FBW - IBW)
+#' 
+#' The FI is multiplied by the DM of the feed to calculate the true FI.
+#' This is then divided by the weight increase during the experimental
+#' period to calculate the amount of feed consumed per unit of weight
+#' increase.
+#' 
+#' @author Anıl Axel Tellbüscher
+#' 
+#' @seealso \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
+#' 
+#' @references Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
+#' (2016): A review on fish growth calculation: multiple functions in fish
+#' production and their specific application. Reviews in Aquaculture, 8,
+#' p.30–42.
+#' 
+#' @examples
+#' 
+#' 
+#' @export calculate_FCR
 calculate_FCR <- function(initWeight, finalWeight, feedIntake, dryMatter){
 
   # Calculate SGR
@@ -36,5 +51,4 @@ calculate_FCR <- function(initWeight, finalWeight, feedIntake, dryMatter){
 
   # Return result
   return(result)
-
 }

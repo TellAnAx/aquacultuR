@@ -1,21 +1,15 @@
-# date written:   December 18th, 2021
-# last modified:  August 25th, 2024
-#
-###############################################################################
-
-#' Absolute Growth Rate
+#' Absolute Growth Rate (AGR)
 #' 
 #' A function that calculates the Absolute Growth Rate (AGR), also denoted as 
 #' Weight Gain (WG) when applied to weight data.
 #' 
-#' %% ~~ If necessary, more details than the description above ~~
 #' 
-#' @param initWeight a numeric value providing the initial weight in grams.
-#' @param finalWeight a numeric value providing the final weight in grams.
+#' @param m_start a numeric value providing the initial weight in grams.
+#' @param m_end a numeric value providing the final weight in grams.
 #' @param duration a numeric value describing the duration of the growth experiment.
+#' 
 #' @return returns a numeric value that is the AGR.
 #' 
-#' @note %% ~~further notes~~
 #' 
 #' @author Anıl Axel Tellbüscher
 #' 
@@ -29,12 +23,14 @@
 #' @examples
 #' 
 #' 
-#' @export calculate_AGR
-calculate_AGR <- function(initWeight, finalWeight, duration){
+#' @export agr
+agr <- function(m_start, 
+                m_end, 
+                duration){
   
   # Calculate the absolute growth rate
-  result = (finalWeight - initWeight) / duration
-  
+  agr <- (m_end - m_start) / duration
+   
   # Return the result
-  return(result)
+  return(agr)
 }

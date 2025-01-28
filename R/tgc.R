@@ -1,21 +1,13 @@
-#
-# date written:   November 18th, 2021
-# last modified:  August 6th, 2022
-#
-#
-#
-###############################################################################
-
-#' Function to calculate the Thermal Growth Coefficient (TGC).
+#'  Thermal Growth Coefficient (TGC).
 #' 
 #'  A function that calculates Thermal Growth Coefficient (TGC) based on
 #'  the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
 #'  Weight (FBW; finalWeight) in gram (g) and the average water temperature
 #'  during the duration of the trial.
 #' 
-#' @param initWeight a numeric value that is providing the initial weight in
+#' @param m_start a numeric value that is providing the initial weight in
 #' grams.
-#' @param finalWeight a numeric value that is providing the final weight in
+#' @param m_end a numeric value that is providing the final weight in
 #' grams.
 #' @param duration a numeric value that is providing the duration of the
 #' experiment in days.
@@ -47,15 +39,17 @@
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
 #' 
-#' @examples
 #' 
 #' 
 #' @export calculate_TGC
-calculate_TGC <- function(initWeight, finalWeight, duration, temp){
+tgc <- function(m_start, 
+                m_end, 
+                duration, 
+                temp){
 
   # Calculate the SGR
-  result <- ((finalWeight^(1/3) - initWeight^(1/3)) / (duration * temp)) * 1000
+  tgc <- ((m_end^(1/3) - m_start^(1/3)) / (duration * temp)) * 1000
 
   # Return the result
-  return(result)
+  return(tgc)
 }

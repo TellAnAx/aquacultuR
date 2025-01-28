@@ -1,9 +1,4 @@
-# date written:   December 6th, 2021
-# last modified:  August 6th, 2022
-#
-###############################################################################
-
-#' Function to calculate the Feed Conversion Ratio 
+#' Feed Conversion Ratio (FCR)
 #' 
 #' A function that calculates the Feed Conversion Ratio (FCR) based on
 #' the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
@@ -11,14 +6,15 @@
 #' in gram and the dry matter (DM; dryMatter) content of the feed in percent.
 #' (duration) in days (d).
 #' 
-#' @param initWeight a numeric value that is providing the initial weight in
+#' @param m_start numeric; value that is providing the initial weight in
 #' grams.
-#' @param finalWeight a numeric value that is providing the final weight in
+#' @param m_end numeric; value that is providing the final weight in
 #' grams.
-#' @param feedIntake a numeric value providing the total feed intake in grams
+#' @param fi numeric; value providing the total feed intake in grams
 #' during the experiment.
-#' @param dryMatter a numeric value indicating the dry matter content of the
+#' @param dm numeric; value indicating the dry matter content of the
 #' feed. The value must be within the interval of (0:1).
+#' 
 #' @return returns a numeric value that is the FCR.
 #' 
 #' @note The Feed Conversion Ratio (FCR) describes the amount of feed on dry matter
@@ -40,15 +36,14 @@
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
 #' 
-#' @examples
 #' 
 #' 
-#' @export calculate_FCR
-calculate_FCR <- function(initWeight, finalWeight, feedIntake, dryMatter){
+#' @export 
+fcr <- function(m_start, m_end, fi, dm){
 
   # Calculate SGR
-  result <- (feedIntake * dryMatter) / (finalWeight - initWeight)
+  fcr <- (fi * dm) / (m_end - m_start)
 
   # Return result
-  return(result)
+  return(fcr)
 }

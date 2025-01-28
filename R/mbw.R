@@ -1,12 +1,4 @@
-#
-# date written:   December 18th, 2021
-# last modified:  August 25th, 2024
-#
-#
-#
-###############################################################################
-
-#' Function to calculate the metabolic bodyweight. 
+#' Metabolic bodyweight (MBW)
 #' 
 #' The metabolic bodyweight is the rate of energy expenditure in dependence of
 #' the bodyweight of an organism. The energy expenditure $y$ is described by
@@ -17,18 +9,18 @@
 #' , where $m_\textgeom$ is the geometric bodyweight in kg and $b$ was found to
 #' be approximately 0.8, while $a$ has to be determined.
 #' 
-#' @param initWeight a numeric value that is providing the initial weight in
+#' @param m_start a numeric value that is providing the initial weight in
 #' grams.
-#' @param finalWeight a numeric value that is providing the final weight in
+#' @param m_end a numeric value that is providing the final weight in
 #' grams.
-#' @param geomWeight a numeric value providing the geometric bodyweight in grams.
+#' @param gbw a numeric value providing the geometric bodyweight in grams.
+#' 
 #' @return returns a numeric value that is the metabolic bodyweight.
 #' 
-#' @note #' The calculation is based on Lupatsch et al. (2003), with an exponent of 0.8.
-
+#' @note The calculation is based on Lupatsch et al. (2003), with an exponent of 0.8.
+#' 
 #' @author Anıl Axel Tellbüscher
 #' 
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
 #' 
 #' @references Lupatsch, I. et al. (2003): Comparison of energy and protein
 #' efficiency among three fish species gilthead sea bream (Sparus aurata),
@@ -38,19 +30,21 @@
 #' 
 #' @examples
 #' 
-#' @export calculate_metabWeight
-calculate_metabWeight <- function(initWeight, finalWeight, geomWeight = NULL){
+#' @export mbw
+mbw <- function(m_start, 
+                m_end, 
+                gbw = NULL){
   
-  if(is.null(geomWeight) == TRUE){
+  if(is.null(gbw) == TRUE){
     
     # Calculate the geometric mean bodyweight using initWeight and finalWeight
-    result <- sqrt(initWeight * finalWeight) ^ 0.8
+    mbw <- sqrt(m_start * m_end) ^ 0.8
     
   } else {
     
-    result <- geomWeight ^ 0.8
+    mbw <- gbw ^ 0.8
   }
   
   # Return the result
-  return(result)
+  return(mbw)
 }

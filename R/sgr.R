@@ -1,11 +1,3 @@
-#
-# date written:   November 18th, 2021
-# last modified:  November 18th, 2021
-#
-#
-#
-###############################################################################
-
 #' Function to calculate the Specific Growth Rate
 #' 
 #' A function that calculates the Specific Growth Rate (SGR) based on
@@ -13,15 +5,15 @@
 #' Weight (FBW; finalWeight) in gram (g) and the duration of the trial
 #' (duration) in days (d).
 #' 
-#' @param initWeight numeric value that is providing the initial weight in
+#' @param m_start numeric; value that is providing the initial weight in
 #' grams.
-#' @param finalWeight numeric value that is providing the final weight in
+#' @param m_end numeric; value that is providing the final weight in
 #' grams.
 #' @param duration numeric value that is providing the duration of the
 #' experiment in days.
-#' @return Returns the SGR as percentage value. %% ~Describe the value returned
-#' %% If it is a LIST, use %% \item{comp1 }{Description of 'comp1'} %%
-#' \item{comp2 }{Description of 'comp2'} %% ...
+#' 
+#' @return Returns the SGR as percentage value. 
+#' 
 #' @note The SGR is a growth metric for fishes, describing the increase in bodyweight
 #' over a period of time.
 #' 
@@ -41,15 +33,14 @@
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
 #' 
-#' @examples
 #' 
 #' 
-#' @export calculate_SGR
-calculate_SGR <- function(initWeight, finalWeight, duration){
+#' @export 
+sgr <- function(m_start, m_end, duration){
 
 # Calculate the SGR
-  result <- (logb(finalWeight / initWeight)) / duration * 100
+  sgr <- (logb(m_end / m_start)) / duration * 100
 
 # Return the result
-  return(result)
+  return(sgr)
 }

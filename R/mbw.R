@@ -28,9 +28,16 @@
 #' aeneus): energy expenditure for protein and lipid deposition. Aquaculture
 #' 225, p.175-189.
 #' 
-#' @examples
 #' 
-#' @export mbw
+#' 
+#' @examples
+#' data(weight2)
+#' 
+#' weight2 %>% mutate(MBW = mbw(W_start, W_end))
+#' 
+#' 
+#' 
+#' @export
 mbw <- function(m_start, 
                 m_end, 
                 gbw = NULL){

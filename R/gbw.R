@@ -17,8 +17,16 @@
 #' 
 #' 
 #' 
-#' @export gbw
-gbw <- function(m_start, m_end){
+#' #' @examples
+#' data(weight2)
+#' 
+#' weight2 %>% mutate(GBW = gbw(W_start, W_end))
+#' 
+#' 
+#' 
+#' @export
+gbw <- function(m_start, 
+                m_end){
   
   # Calculate the geometric mean bodyweight
   gbw = sqrt(m_start * m_end) 

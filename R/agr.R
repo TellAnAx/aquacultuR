@@ -10,7 +10,6 @@
 #' 
 #' @return returns a numeric value that is the AGR.
 #' 
-#' 
 #' @author Anıl Axel Tellbüscher
 #' 
 #' @seealso \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
@@ -20,10 +19,16 @@
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
 #' 
+#' 
+#' 
 #' @examples
+#' data(weight2)
+#' 
+#' weight2 %>% mutate(AGR = agr(W_start, W_end, duration = 84))
 #' 
 #' 
-#' @export agr
+#' 
+#' @export
 agr <- function(m_start, 
                 m_end, 
                 duration){

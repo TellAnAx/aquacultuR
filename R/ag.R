@@ -29,11 +29,18 @@
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
 #' 
+#' 
+#' 
 #' @examples
+#' data(weight2)
+#' 
+#' weight2 %>% mutate(AG = ag(W_start, W_end))
 #' 
 #' 
-#' @export ag
-ag <- function(m_start, m_nend) {
+#' 
+#' @export
+ag <- function(m_start, 
+               m_end) {
 
   # Calculate AG
   ag <- m_end - m_start

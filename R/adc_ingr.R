@@ -33,10 +33,9 @@
 #' @references Bureau, D. P., & Hua, K. (2006): Letter to the Editor of
 #' Aquaculture. Aquaculture, 252, p.103–105.
 #' 
-#' @examples
 #' 
 #' 
-#' @export calculate_ADCingr
+#' @export
 adc_ingr <- function(adc_test, 
                      adc_ref, 
                      nut_ref, 

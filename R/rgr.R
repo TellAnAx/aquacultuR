@@ -20,9 +20,16 @@
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
 #' 
-#' @examples
 #' 
-#' @export rgr
+#' 
+#' @examples
+#' data(weight2)
+#' 
+#' weight2 %>% mutate(RGR = rgr(W_start, W_end, duration = 84))
+#' 
+#' 
+#' 
+#' @export
 rgr <- function(m_start, 
                 m_end, 
                 duration){

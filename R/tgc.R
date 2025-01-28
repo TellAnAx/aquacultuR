@@ -41,7 +41,7 @@
 #' 
 #' 
 #' 
-#' @export calculate_TGC
+#' @export
 tgc <- function(m_start, 
                 m_end, 
                 duration, 

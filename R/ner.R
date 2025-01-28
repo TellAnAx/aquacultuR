@@ -30,6 +30,7 @@
 #' # Calculate the NER using the weight gain instead
 #' ner(m_gain = 9, nut_fed = 12)
 #' 
+#' @export
 ner <- function(m_start = NULL, 
                 m_end = NULL, 
                 m_gain = NULL, 

@@ -35,6 +35,13 @@
 #' 
 #' 
 #' 
+#' @examples
+#' data(weight2)
+#' 
+#' weight2 %>% mutate(SGR = sgr(W_start, W_end, duration = 84))
+#' 
+#' 
+#' 
 #' @export 
 sgr <- function(m_start, m_end, duration){
 

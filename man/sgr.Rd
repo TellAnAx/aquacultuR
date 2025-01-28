@@ -36,6 +36,14 @@ the natural logarithm of the final body weight. The term is then
 divided by the trial duration and multiplied by 100 to convert into a
 percentage.
 }
+\examples{
+data(weight2)
+
+dplyr::mutate(weight2, SGR = sgr(W_start, W_end, duration = 84))
+
+
+
+}
 \references{
 Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 (2016): A review on fish growth calculation: multiple functions in fish

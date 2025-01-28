@@ -15,12 +15,12 @@
 #' 
 #' @seealso \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 #' 
-#' 
+#' @importFrom dplyr mutate
 #' 
 #' #' @examples
 #' data(weight2)
 #' 
-#' weight2 %>% mutate(GBW = gbw(W_start, W_end))
+#' dplyr::mutate(weight2, GBW = gbw(W_start, W_end))
 #' 
 #' 
 #' 

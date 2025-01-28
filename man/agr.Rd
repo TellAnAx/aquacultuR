@@ -20,6 +20,14 @@ returns a numeric value that is the AGR.
 A function that calculates the Absolute Growth Rate (AGR), also denoted as 
 Weight Gain (WG) when applied to weight data.
 }
+\examples{
+data(weight2)
+
+dplyr::mutate(weight2, AGR = agr(W_start, W_end, duration = 84))
+
+
+
+}
 \references{
 Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 (2016): A review on fish growth calculation: multiple functions in fish

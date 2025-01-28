@@ -4,7 +4,7 @@
 \alias{ag}
 \title{Absolute Growth (AG)}
 \usage{
-ag(m_start, m_nend)
+ag(m_start, m_end)
 }
 \arguments{
 \item{m_start}{numeric; value providing the initial weight in grams.}
@@ -31,6 +31,14 @@ distinguish between weight gain in form of dry matter or water.
 AG = FBW - IBW
 
 The IBW is subtracted from the FBW.
+}
+\examples{
+data(weight2)
+
+dplyr::mutate(weight2, AG = ag(W_start, W_end))
+
+
+
 }
 \references{
 Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.

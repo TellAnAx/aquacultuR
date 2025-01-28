@@ -29,12 +29,12 @@
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
 #' 
-#' 
+#' @importFrom dplyr mutate
 #' 
 #' @examples
 #' data(weight2)
 #' 
-#' weight2 %>% mutate(AG = ag(W_start, W_end))
+#' dplyr::mutate(weight2, AG = ag(W_start, W_end))
 #' 
 #' 
 #' 

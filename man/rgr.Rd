@@ -21,6 +21,14 @@ returns a numeric value that is the RGR.
 \description{
 A function that calculates the Relative Growth Rate (RGR).
 }
+\examples{
+data(weight2)
+
+dplyr::mutate(weight2, RGR = rgr(W_start, W_end, duration = 84))
+
+
+
+}
 \references{
 Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 (2016): A review on fish growth calculation: multiple functions in fish

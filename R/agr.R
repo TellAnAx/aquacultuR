@@ -19,12 +19,12 @@
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
 #' 
-#' 
+#' @importFrom dplyr mutate
 #' 
 #' @examples
 #' data(weight2)
 #' 
-#' weight2 %>% mutate(AGR = agr(W_start, W_end, duration = 84))
+#' dplyr::mutate(weight2, AGR = agr(W_start, W_end, duration = 84))
 #' 
 #' 
 #' 

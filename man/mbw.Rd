@@ -32,6 +32,14 @@ be approximately 0.8, while $a$ has to be determined.
 \note{
 The calculation is based on Lupatsch et al. (2003), with an exponent of 0.8.
 }
+\examples{
+data(weight2)
+
+dplyr::mutate(weight2, MBW = mbw(W_start, W_end))
+
+
+
+}
 \references{
 Lupatsch, I. et al. (2003): Comparison of energy and protein
 efficiency among three fish species gilthead sea bream (Sparus aurata),

@@ -5,12 +5,18 @@
 \alias{weight2}
 \title{Fish biomass and bodyweights from the second polyculture experiment}
 \format{
-A data frame with 53940 rows and 10 variables
+A data frame with 396 rows and 3 variables
 }
 \usage{
 data(weight2)
 }
 \description{
-A dataset containing fish weights
+A dataset containing weights of fish species during a polyculture experiment.
+}
+\references{
+Pěnka T., Malinovskyi O., Křišťan J., Imentai A., Policar T. 
+(2021): Effect of density and mixed culture with pikeperch (Sander lucioperca) 
+on effectivity of largemouth bass (Micropterus salmoides) intensive culture. 
+Czech Journal of Animal Science, 66: 428–440.
 }
 \keyword{datasets}

@@ -5,7 +5,7 @@
 \alias{weight}
 \title{Fish biomass and bodyweights from the first polyculture experiment}
 \format{
-A data frame with 53940 rows and 10 variables
+A data frame with 24 rows and 8 variables
 }
 \usage{
 data(weight)

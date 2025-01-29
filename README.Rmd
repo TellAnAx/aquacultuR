@@ -28,11 +28,23 @@ The **advantages** of wrapping those equations up in an R package in comparison 
 
 
 # Installation
-You can install the latest version of aquacultuR from GitHub using:
+You can install aquacultuR from CRAN using:
+
+```{r, eval=FALSE}
+install.packages("aquacultuR")
+```
+
+You can also install the latest version of aquacultuR from GitHub using:
 
 ```{r, eval=FALSE}
 require(devtools)
 devtools::install_github("TellAnAx/aquacultuR")
+```
+
+In both cases, the package can eventually be loaded using:
+
+```{r}
+library(aquacultuR)
 ```
 
 

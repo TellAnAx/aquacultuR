@@ -22,11 +22,23 @@ package in comparison to an Excel file are
 
 # Installation
 
-You can install the latest version of aquacultuR from GitHub using:
+You can install aquacultuR from CRAN using:
+
+``` r
+install.packages("aquacultuR")
+```
+
+You can also install the latest version of aquacultuR from GitHub using:
 
 ``` r
 require(devtools)
 devtools::install_github("TellAnAx/aquacultuR")
+```
+
+In both cases, the package can eventually be loaded using:
+
+``` r
+library(aquacultuR)
 ```
 
 # Functionalities

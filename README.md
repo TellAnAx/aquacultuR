@@ -29,6 +29,12 @@ require(devtools)
 devtools::install_github("TellAnAx/aquacultuR")
 ```
 
+The library can eventually be loaded using:
+
+``` r
+library(aquacultuR)
+```
+
 # Functionalities
 
 ### Current

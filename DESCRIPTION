@@ -1,7 +1,7 @@
 Package: aquacultuR
 Title: Frequently used Equations in Aquaculture Research
 Version: 0.0.9
-Authors@R:  c(
+Authors@R: c(
     person("Anıl Axel", "Tellbüscher", , "atellbuscher@frov.jcu.cz", 
            role = c("aut", "cre", "cph"), 
            comment = c(ORCID = "0000-0002-6065-9494")),
@@ -12,7 +12,7 @@ Maintainer: Anıl Axel Tellbüscher <admin@tellbuescher.online>
 Description: The purpose of this package is to provide tools for aquaculture 
     by implementing equations that are frequently used as ready-to-use 
     functions in R language.
-License: MIT + file LICENSE
+License: GPL (>= 3)
 VignetteBuilder: knitr
 URL: https://github.com/TellAnAx/aquacultuR
 BugReports: https://github.com/TellAnAx/aquacultuR/issues

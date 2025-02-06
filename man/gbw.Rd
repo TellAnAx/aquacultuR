@@ -27,9 +27,6 @@ dplyr::mutate(weight2, GBW = gbw(W_start, W_end))
 
 
 }
-\seealso{
-\code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
-}
 \author{
 Anıl Axel Tellbüscher
 }

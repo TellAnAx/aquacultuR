@@ -50,9 +50,6 @@ Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 production and their specific application. Reviews in Aquaculture, 8,
 p.30–42.
 }
-\seealso{
-\code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
-}
 \author{
 Anıl Axel Tellbüscher
 }

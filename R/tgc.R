@@ -30,9 +30,6 @@
 #' 
 #' @author Anıl Axel Tellbüscher
 #' 
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
-#' \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
-#' 
 #' @references Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 #' (2016): A review on fish growth calculation: multiple functions in fish
 #' production and their specific application. Reviews in Aquaculture, 8,

@@ -18,10 +18,7 @@
 #' @return returns a single numeric value
 #' 
 #' 
-#' @author Anıl Axel Tellbüscher
-#' 
-#' @seealso \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
-#' 
+#' @author Anıl Axel Tellbüscher 
 #' 
 #' @examples
 #' # Calculate the NER using the initial and final weight

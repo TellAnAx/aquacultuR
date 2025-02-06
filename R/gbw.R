@@ -13,7 +13,6 @@
 #' 
 #' @author Anıl Axel Tellbüscher
 #' 
-#' @seealso \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 #' 
 #' @importFrom dplyr mutate
 #' 

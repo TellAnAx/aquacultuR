@@ -2,7 +2,7 @@ Package: aquacultuR
 Type: Package
 Title: Frequently used Equations in Aquaculture Research
 Version: 0.0.9
-Authors@R: Anıl Axel Tellbüscher <atellbuscher@frov.jcu.cz>
+Author: Anıl Axel Tellbüscher <atellbuscher@frov.jcu.cz>
 Maintainer: Anıl Axel Tellbüscher <admin@tellbuescher.online>
 Description: The purpose of this package is to provide tools for aquaculture 
     by implementing equations that are frequently used as ready-to-use 

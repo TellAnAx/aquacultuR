@@ -50,8 +50,7 @@ p.30–42.
 }
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-\code{\link[Aquaculture
-Formulary]{https://blog.tellbuescher.online/formulary}}
+\code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 }
 \author{
 Anıl Axel Tellbüscher

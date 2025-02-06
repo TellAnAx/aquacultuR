@@ -20,14 +20,7 @@ returns a numeric value that is the metabolic bodyweight.
 }
 \description{
 The metabolic bodyweight is the rate of energy expenditure in dependence of
-the bodyweight of an organism. The energy expenditure $y$ is described by
-the equation
-}
-\details{
-$$ y = a \cdot m_\textgeom^b $$
-
-, where $m_\textgeom$ is the geometric bodyweight in kg and $b$ was found to
-be approximately 0.8, while $a$ has to be determined.
+the bodyweight of an organism.
 }
 \note{
 The calculation is based on Lupatsch et al. (2003), with an exponent of 0.8.

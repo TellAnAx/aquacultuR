@@ -19,6 +19,14 @@ returns a numeric value that is the geometric bodyweight.
 \description{
 A function that calculates the geometric mean bodyweight.
 }
+\examples{
+data(weight2)
+
+dplyr::mutate(weight2, GBW = gbw(W_start, W_end))
+
+
+
+}
 \seealso{
 \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 }

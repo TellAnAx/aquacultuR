@@ -29,7 +29,6 @@
 #' 
 #' @author Anıl Axel Tellbüscher
 #' 
-#' @seealso \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 #' 
 #' @references Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 #' (2016): A review on fish growth calculation: multiple functions in fish

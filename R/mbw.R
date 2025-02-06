@@ -1,13 +1,7 @@
 #' Metabolic bodyweight (MBW)
 #' 
 #' The metabolic bodyweight is the rate of energy expenditure in dependence of
-#' the bodyweight of an organism. The energy expenditure $y$ is described by
-#' the equation
-#' 
-#' $$ y = a \cdot m_\textgeom^b $$
-#' 
-#' , where $m_\textgeom$ is the geometric bodyweight in kg and $b$ was found to
-#' be approximately 0.8, while $a$ has to be determined.
+#' the bodyweight of an organism. 
 #' 
 #' @param m_start a numeric value that is providing the initial weight in
 #' grams.

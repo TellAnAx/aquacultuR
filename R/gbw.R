@@ -13,11 +13,10 @@
 #' 
 #' @author Anıl Axel Tellbüscher
 #' 
-#' @seealso \code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
 #' 
 #' @importFrom dplyr mutate
 #' 
-#' #' @examples
+#' @examples
 #' data(weight2)
 #' 
 #' dplyr::mutate(weight2, GBW = gbw(W_start, W_end))

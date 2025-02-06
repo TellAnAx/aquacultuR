@@ -38,9 +38,6 @@ ner(m_start = 1, m_end = 10, nut_fed = 12)
 ner(m_gain = 9, nut_fed = 12)
 
 }
-\seealso{
-\code{\link[Aquaculture Formulary]{https://blog.tellbuescher.online/formulary}}
-}
 \author{
 Anıl Axel Tellbüscher
 }

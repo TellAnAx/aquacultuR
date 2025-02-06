@@ -7,6 +7,10 @@ aquacultuR is an R package providing functions for the calculation of
 growth and feed conversion metrics. The provided example datasets
 originate from studies in the field of aquaculture.
 
+# Notes
+
+**merge into cran, not into main!**
+
 # Why using aquacultuR?
 
 Until now, a comprehensive collection of equations that are commonly

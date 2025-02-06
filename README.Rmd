@@ -17,6 +17,9 @@ knitr::opts_chunk$set(
 
 aquacultuR is an R package providing functions for the calculation of growth and feed conversion metrics. The provided example datasets originate from studies in the field of aquaculture.
 
+# Notes
+**merge into cran, not into main!**
+
 # Why using aquacultuR?
 Until now, a comprehensive collection of equations that are commonly used in animal nutrition does not exist. This can make it difficult for people entering the field to understand how values were obtained. Also, the use of incorrect equations might not be recognized by reviewers in some cases.
 The **advantages** of wrapping those equations up in an R package in comparison to an Excel file are

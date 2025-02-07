@@ -3,6 +3,10 @@
 
 # aquacultuR <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 aquacultuR is an R package providing functions for the calculation of
 growth and feed conversion metrics. The provided example datasets
 originate from studies in the field of aquaculture.

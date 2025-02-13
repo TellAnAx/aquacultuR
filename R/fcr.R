@@ -12,8 +12,8 @@
 #' grams.
 #' @param fi numeric; value providing the total feed intake in grams
 #' during the experiment.
-#' @param dm numeric; value indicating the dry matter content of the
-#' feed. The value must be within the interval of (0:1).
+#' @param dm numeric; value within the interval of (0:1), indicating the dry 
+#' matter content of the feed.
 #' 
 #' @return returns a numeric value that is the FCR.
 #' 
@@ -38,7 +38,11 @@
 #' 
 #' 
 #' @export 
-fcr <- function(m_start, m_end, fi, dm){
+fcr <- function(m_start, 
+                m_end, 
+                fi, 
+                dm = 1
+                ){
 
   # Calculate SGR
   fcr <- (fi * dm) / (m_end - m_start)

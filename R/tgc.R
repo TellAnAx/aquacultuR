@@ -41,7 +41,8 @@
 tgc <- function(m_start, 
                 m_end, 
                 duration, 
-                temp){
+                temp
+                ){
 
   # Calculate the SGR
   tgc <- ((m_end^(1/3) - m_start^(1/3)) / (duration * temp)) * 1000

@@ -41,10 +41,13 @@
 #' 
 #' 
 #' @export 
-sgr <- function(m_start, m_end, duration){
+sgr <- function(m_start, 
+                m_end, 
+                duration
+                ){
 
 # Calculate the SGR
-  sgr <- (logb(m_end / m_start)) / duration * 100
+  sgr <- (log(m_end / m_start)) / duration * 100
 
 # Return the result
   return(sgr)

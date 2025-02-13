@@ -10,7 +10,7 @@
 #' @param m_end a numeric value for the final weight (either average
 #' weight of the individuals or the total biomass) of the livestock at the end
 #' of the feeding trial.
-#' @param m_gain optional; can be provided instead of the initial and final
+#' @param ag optional; can be provided instead of the initial and final
 #' weight.
 #' @param fi numeric; value providing the total feed intake in grams during the 
 #' experiment.
@@ -29,24 +29,24 @@
 #' ner(m_start = 1, m_end = 10, nut_fed = 12)
 #' 
 #' # Calculate the NER using the weight gain instead
-#' ner(m_gain = 9, nut_fed = 12)
+#' ner(ag = 9, nut_fed = 12)
 #' 
 #' @export
 ner <- function(m_start = NULL, 
                 m_end = NULL, 
-                m_gain = NULL, 
+                ag = NULL, 
                 fi = NULL,
                 dm = 1,
                 nut_f = NULL) {
   
-  if (((is.null(m_start) | is.null(m_end)) & is.null(m_gain)) | is.null(nut_f)) {
+  if (((is.null(m_start) | is.null(m_end)) & is.null(ag)) | is.null(nut_f)) {
     stop("The Nutrient Efficiency Ratio cannot be calculated. Necessary data is missing.")
   }
   
-  if(is.null(m_gain)) {
-    m_gain <- m_end - m_start  
+  if(is.null(ag)) {
+    ag <- m_end - m_start  
   }
   
-  ner <- m_gain / (fi * dm * nut_f)
+  ner <- ag / (fi * dm * nut_f)
   return(ner)
 }

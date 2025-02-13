@@ -21,7 +21,7 @@
 adc_dm <- function(es_diet, es_feces) {
 
   # calculate ADC
-  adc_dm <- (1 - (es_feces - es_diet) / es_feces)
+  adc_dm <- 1 - (es_diet / es_feces)
 
   # return result
   return(adc_dm)

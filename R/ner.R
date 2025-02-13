@@ -12,8 +12,12 @@
 #' of the feeding trial.
 #' @param m_gain optional; can be provided instead of the initial and final
 #' weight.
-#' @param nut_fed a numeric value for the amount of nutrient fed during the
-#' feeding trial.
+#' @param fi numeric; value providing the total feed intake in grams during the 
+#' experiment.
+#' @param dm numeric; value within the interval of (0,1), indicating the dry matter
+#' content of the feed.
+#' @param nut_f numeric; value within the interval of (0,1), indicating the 
+#' inclusion rate of the nutrient of interest in the feed fed.
 #' 
 #' @return returns a single numeric value
 #' 
@@ -31,9 +35,11 @@
 ner <- function(m_start = NULL, 
                 m_end = NULL, 
                 m_gain = NULL, 
-                nut_fed = NULL) {
+                fi = NULL,
+                dm = 1,
+                nut_f = NULL) {
   
-  if (((is.null(m_start) | is.null(m_end)) & is.null(m_gain)) | is.null(nut_fed)) {
+  if (((is.null(m_start) | is.null(m_end)) & is.null(m_gain)) | is.null(nut_f)) {
     stop("The Nutrient Efficiency Ratio cannot be calculated. Necessary data is missing.")
   }
   
@@ -41,6 +47,6 @@ ner <- function(m_start = NULL,
     m_gain <- m_end - m_start  
   }
   
-  ner <- m_gain / nut_fed
+  ner <- m_gain / (fi * dm * nut_f)
   return(ner)
 }

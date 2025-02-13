@@ -4,7 +4,7 @@
 \alias{fcr}
 \title{Feed Conversion Ratio (FCR)}
 \usage{
-fcr(m_start, m_end, fi, dm)
+fcr(m_start, m_end, fi, dm = 1)
 }
 \arguments{
 \item{m_start}{numeric; value that is providing the initial weight in
@@ -16,8 +16,8 @@ grams.}
 \item{fi}{numeric; value providing the total feed intake in grams
 during the experiment.}
 
-\item{dm}{numeric; value indicating the dry matter content of the
-feed. The value must be within the interval of (0:1).}
+\item{dm}{numeric; value within the interval of (0:1), indicating the dry 
+matter content of the feed.}
 }
 \value{
 returns a numeric value that is the FCR.

@@ -3,3 +3,8 @@ test_that("Absolute growth rate calcultion works", {
                    m_end = 12,
                    duration = 3), 1.05847549)
 })
+
+test_that("Square root calculation works", {
+  expect_equal(sqrt(4),
+               2)
+})

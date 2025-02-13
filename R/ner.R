@@ -26,10 +26,10 @@
 #' 
 #' @examples
 #' # Calculate the NER using the initial and final weight
-#' ner(m_start = 1, m_end = 10, nut_fed = 12)
+#' ner(m_start = 1, m_end = 10, fi = 24, nut_f = 0.5)
 #' 
 #' # Calculate the NER using the weight gain instead
-#' ner(ag = 9, nut_fed = 12)
+#' ner(ag = 9, fi = 24, nut_f = 0.5)
 #' 
 #' @export
 ner <- function(m_start = NULL, 

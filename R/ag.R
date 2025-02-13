@@ -46,3 +46,7 @@ ag <- function(m_start,
   # Return result
   return(ag)
 }
+
+#' @rdname ag
+#' @export
+weight_gain <- ag

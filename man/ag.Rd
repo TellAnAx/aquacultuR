@@ -2,9 +2,12 @@
 % Please edit documentation in R/ag.R
 \name{ag}
 \alias{ag}
+\alias{weight_gain}
 \title{Absolute Growth (AG)}
 \usage{
 ag(m_start, m_end)
+
+weight_gain(m_start, m_end)
 }
 \arguments{
 \item{m_start}{numeric; value providing the initial weight in grams.}

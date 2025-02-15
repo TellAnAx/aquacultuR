@@ -47,6 +47,9 @@ Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 (2016): A review on fish growth calculation: multiple functions in fish
 production and their specific application. Reviews in Aquaculture, 8,
 p.30–42.
+
+Jobling, M. (2003): The thermal growth coefﬁcient (TGC) model 
+of ﬁsh growth: a cautionary note. Aquaculture Research, 34, p. 581–584.
 }
 \author{
 Anıl Axel Tellbüscher

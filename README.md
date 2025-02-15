@@ -32,7 +32,8 @@ You can install aquacultuR from CRAN using:
 install.packages("aquacultuR")
 ```
 
-You can also install the latest version of aquacultuR from GitHub using:
+You can also install the latest development version of aquacultuR from
+GitHub using:
 
 ``` r
 require(devtools)
@@ -57,6 +58,7 @@ library(aquacultuR)
 - Specific growth rate (SGR)
 - Thermal growth coefficient (TGC)
 - Feed conversion ratio (FCR)
+- Feed conversion efficiency (FCE)
 - Nutrient efficiency ratio (NER)
 - Apparent digestibility coefficient (ADC)
 

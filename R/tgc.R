@@ -1,8 +1,8 @@
 #'  Thermal Growth Coefficient (TGC).
 #' 
 #'  A function that calculates Thermal Growth Coefficient (TGC) based on
-#'  the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
-#'  Weight (FBW; finalWeight) in gram (g) and the average water temperature
+#'  the Initial Body weight (IBW; m_start) in gram (g), the Final Body
+#'  Weight (FBW; m_end) in gram (g) and the average water temperature
 #'  during the duration of the trial.
 #' 
 #' @param m_start a numeric value that is providing the initial weight in

@@ -1,10 +1,9 @@
 #' Feed Conversion Ratio (FCR)
 #' 
 #' A function that calculates the Feed Conversion Ratio (FCR) based on
-#' the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
-#' Weight (FBW; finalWeight) in gram (g), the total Feed Intake (FI; feedIntake)
-#' in gram and the dry matter (DM; dryMatter) content of the feed in percent.
-#' (duration) in days (d).
+#' the Initial Body weight (IBW; m_start) in gram (g), the Final Body
+#' Weight (FBW; m_end) in gram (g), the total Feed Intake (FI; fi)
+#' in gram and the dry matter (DM; dm) content of the feed in percent.
 #' 
 #' @param m_start numeric; value that is providing the initial weight in
 #' grams.

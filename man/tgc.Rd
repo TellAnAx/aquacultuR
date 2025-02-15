@@ -24,8 +24,8 @@ Returns a numeric value that is the TGC.
 }
 \description{
 A function that calculates Thermal Growth Coefficient (TGC) based on
- the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
- Weight (FBW; finalWeight) in gram (g) and the average water temperature
+ the Initial Body weight (IBW; m_start) in gram (g), the Final Body
+ Weight (FBW; m_end) in gram (g) and the average water temperature
  during the duration of the trial.
 }
 \note{

@@ -24,10 +24,9 @@ returns a numeric value that is the FCR.
 }
 \description{
 A function that calculates the Feed Conversion Ratio (FCR) based on
-the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
-Weight (FBW; finalWeight) in gram (g), the total Feed Intake (FI; feedIntake)
-in gram and the dry matter (DM; dryMatter) content of the feed in percent.
-(duration) in days (d).
+the Initial Body weight (IBW; m_start) in gram (g), the Final Body
+Weight (FBW; m_end) in gram (g), the total Feed Intake (FI; fi)
+in gram and the dry matter (DM; dm) content of the feed in percent.
 }
 \note{
 The Feed Conversion Ratio (FCR) describes the amount of feed on dry matter

@@ -5,10 +5,9 @@ Authors@R: c(
     person("Anıl Axel", "Tellbüscher", , "atellbuscher@frov.jcu.cz", 
            role = c("aut", "cre", "cph"), 
            comment = c(ORCID = "0000-0002-6065-9494")),
-    person("Tomas", "Penka", , "penkat00@frov.jcu.cz", 
+    person("Tomáš", "Pěnka", , "penkat00@frov.jcu.cz", 
            role = c("dtc"))
            )
-Maintainer: Anıl Axel Tellbüscher <admin@tellbuescher.online>
 Description: The purpose of this package is to provide tools for aquaculture 
     by implementing equations that are frequently used as ready-to-use 
     functions in R language.

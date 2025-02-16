@@ -26,14 +26,14 @@ package in comparison to an Excel file are
 
 # Installation
 
-You can install aquacultuR from CRAN using:
+You can **install aquacultuR from CRAN** using:
 
 ``` r
 install.packages("aquacultuR")
 ```
 
-You can also install the latest development version of aquacultuR from
-GitHub using:
+You can also **install aquacultuR from GitHub** if you prefer the latest
+development version by using:
 
 ``` r
 require(devtools)
@@ -48,24 +48,24 @@ library(aquacultuR)
 
 # Functionalities
 
-### Current
-
-- Geometric bodyweight
-- Metabolic bodyweight
-- Absolute growth (AG)
-- Absolute growth rate (AGR)
-- Relative growth rate (RGR)
-- Specific growth rate (SGR)
-- Thermal growth coefficient (TGC)
-- Feed conversion ratio (FCR)
-- Feed conversion efficiency (FCE)
-- Nutrient efficiency ratio (NER)
-- Apparent digestibility coefficient (ADC)
-
-## Planned
-
-- Data entry draft sheets
-- Functions for automated data analysis
+| Function | Metric | Synonym |
+|----|----|----|
+| `gbw()` | Geometric bodyweight |  |
+| `mbw()` | Metabolic bodyweight |  |
+| `ag()` | Absolute growth (AG) | Weight gain |
+| `agr()` | Absolute growth rate (AGR) |  |
+| `rgr()` | Relative growth rate (RGR) |  |
+| `sgr()` | Specific growth rate (SGR) |  |
+| `tgc()` | Thermal growth coefficient (TGC) |  |
+| `fr()` | Feeding rate (FR) |  |
+| `rfr()` | Relative feeding rate | Feeding rate |
+| `retention()` | Retention | Nutrient retention |
+| `fcr()` | Feed conversion ratio (FCR) |  |
+| `fce()` | Feed conversion efficiency (FCE) |  |
+| `ner()` | Nutrient efficiency ratio (NER) | Protein/Energy/X efficiency ratio |
+| `adc_dm()` | Apparent digestibility coefficient (ADC) |  |
+| `adc_nut()` | Apparent digestibility coefficient (ADC) |  |
+| `adc_ingr()` | Apparent digestibility coefficient (ADC) |  |
 
 # About
 

@@ -23,17 +23,8 @@ Calculates the Absolute Growth
 \details{
 A function that calculates the Absolute Growth (AG), also denoted as
 Absolute Weight Gain (AWG) based on the Initial Body weight (IBW;
-initWeight) in gram (g) and the Final Body Weight (FBW; finalWeight)
+m_start) in gram (g) and the Final Body Weight (FBW; m_end)
 in gram (g).
-}
-\note{
-The AG, also termed Absolute Weight Gain (AWG), is the weight that was
-gained within the duration of a growth trial. It does by default not
-distinguish between weight gain in form of dry matter or water.
-
-AG = FBW - IBW
-
-The IBW is subtracted from the FBW.
 }
 \examples{
 data(weight2)

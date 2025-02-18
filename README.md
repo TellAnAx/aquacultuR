@@ -48,24 +48,24 @@ library(aquacultuR)
 
 # Functionalities
 
-| Function | Metric | Synonym |
-|----|----|----|
-| `gbw()` | Geometric bodyweight |  |
-| `mbw()` | Metabolic bodyweight |  |
-| `ag()` | Absolute growth (AG) | Weight gain |
-| `agr()` | Absolute growth rate (AGR) |  |
-| `rgr()` | Relative growth rate (RGR) |  |
-| `sgr()` | Specific growth rate (SGR) |  |
-| `tgc()` | Thermal growth coefficient (TGC) |  |
-| `fr()` | Feeding rate (FR) |  |
-| `rfr()` | Relative feeding rate | Feeding rate |
-| `retention()` | Retention | Nutrient retention |
-| `fcr()` | Feed conversion ratio (FCR) |  |
-| `fce()` | Feed conversion efficiency (FCE) |  |
-| `ner()` | Nutrient efficiency ratio (NER) | Protein/Energy/X efficiency ratio |
-| `adc_dm()` | Apparent digestibility coefficient (ADC) |  |
-| `adc_nut()` | Apparent digestibility coefficient (ADC) |  |
-| `adc_ingr()` | Apparent digestibility coefficient (ADC) |  |
+| Function      | Metric                                   | Synonym                           |
+|---------------|------------------------------------------|-----------------------------------|
+| `gbw()`       | Geometric bodyweight                     |                                   |
+| `mbw()`       | Metabolic bodyweight                     |                                   |
+| `ag()`        | Absolute growth (AG)                     | Weight gain                       |
+| `agr()`       | Absolute growth rate (AGR)               |                                   |
+| `rgr()`       | Relative growth rate (RGR)               |                                   |
+| `sgr()`       | Specific growth rate (SGR)               |                                   |
+| `tgc()`       | Thermal growth coefficient (TGC)         |                                   |
+| `fr()`        | Feeding rate (FR)                        |                                   |
+| `rfr()`       | Relative feeding rate                    | Feeding rate                      |
+| `retention()` | Nutrient retention                       |                                   |
+| `fcr()`       | Feed conversion ratio (FCR)              |                                   |
+| `fce()`       | Feed conversion efficiency (FCE)         |                                   |
+| `ner()`       | Nutrient efficiency ratio (NER)          | Protein/Energy/X efficiency ratio |
+| `adc_dm()`    | Apparent digestibility coefficient (ADC) |                                   |
+| `adc_nut()`   | Apparent digestibility coefficient (ADC) |                                   |
+| `adc_ingr()`  | Apparent digestibility coefficient (ADC) |                                   |
 
 # About
 

@@ -64,7 +64,7 @@ library(aquacultuR)
 |`tgc()`        |Thermal growth coefficient (TGC)         ||
 |`fr()`         |Feeding rate (FR)                        ||
 |`rfr()`        |Relative feeding rate                    |Feeding rate|
-|`retention()`  |Retention                                |Nutrient retention|
+|`retention()`  |Nutrient retention                       ||
 |`fcr()`        |Feed conversion ratio (FCR)              ||
 |`fce()`        |Feed conversion efficiency (FCE)         ||
 |`ner()`        |Nutrient efficiency ratio (NER)          |Protein/Energy/X efficiency ratio|

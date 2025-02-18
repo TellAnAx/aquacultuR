@@ -25,7 +25,7 @@ $$
 ## Absolute Growth Rate
 
 $$
-\text{AGR}
+\text{AGR} = \frac{m_{\text{end}} - m_{\text{init}}}{t}
 $$
 
 ## Relative Growth Rate
@@ -43,7 +43,7 @@ $$
 ## Metabolic bodyweight
 
 $$
-\text{MBW}
+\text{MBW} = m^{0.8}
 $$
 
 ## Specific Growth Rate
@@ -75,8 +75,8 @@ $$
 
 $$
 \text{FCR} = 
-\frac{\text{FI} \cdot \text{DM}}{m_{\text{end}} - m_{\text{init}}} = 
-\frac{\text{FI} \cdot \text{DM}}{\text{AG}}
+  \frac{\text{FI} \cdot \text{DM}}{m_{\text{end}} - m_{\text{init}}} = 
+  \frac{\text{FI} \cdot \text{DM}}{\text{AG}}
 $$
 
 

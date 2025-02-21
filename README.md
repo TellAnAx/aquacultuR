@@ -30,6 +30,39 @@ package in comparison to an Excel file are
 
 To install the latest version of `aquacultuR` from GitHub, follow these steps:
 
+### Installing R
+Before installing aquacultuR, ensure you have R installed. You can download and install R from the official CRAN website:
+
+[Download R](https://cran.r-project.org/)
+
+Windows: Run the downloaded .exe file and follow the on-screen instructions.
+
+macOS: Download the .pkg file and install it by following the guided setup.
+
+Linux: Use the package manager (e.g., sudo apt install r-base for Debian/Ubuntu or sudo dnf install R for Fedora).
+
+### Installing RStudio (Optional but Recommended)
+
+RStudio is a  IDE for R that enhances the development experience. Download it from:
+
+[Download RStudio](https://posit.co/downloads/)
+
+After installing RStudio, you can launch it and start coding in R with an improved interface.
+
+### Setting Up the Environment
+
+Once R is installed, to set up your development environment by installing essential dependencies:
+
+```r
+install.packages(c("tidyverse", "remotes"))
+```
+
+To ensure all packages are up to date, run:
+```r
+update.packages(ask = FALSE)
+```
+Your now ready to install aquacultuR
+
 ### Prerequisites
 Ensure you have the `devtools` package installed:
 

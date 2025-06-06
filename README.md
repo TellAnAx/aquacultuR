@@ -26,7 +26,7 @@ You can install the latest version of aquacultuR from GitHub using:
 
 ``` r
 require(devtools)
-devtools::install_github("TellAnAx/aquacultuR")
+devtools::install_github("TellAnAx/aquacultuR", ref = "main")
 ```
 
 The library can eventually be loaded using:

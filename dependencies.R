@@ -1,0 +1,6 @@
+library(devtools)
+library(roxygen2)
+library(testthat)
+library(usethis)
+library(tidyverse)
+library(knitr)

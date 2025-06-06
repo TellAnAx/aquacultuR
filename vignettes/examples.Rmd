@@ -21,3 +21,25 @@ library(dplyr)
 ```
 
 A number of metrics is employed in the field of aquaculture in order to describe aspects such as the growth or feed conversion in a comparable manner. This vignette provides coding examples that are relatable and simple to follow.
+
+
+## Stuff
+
+```{r}
+data("rearing")
+str(rearing)
+
+data("weight")
+str(weight)
+
+rearing %>% 
+  left_join(weight, join_by(tank)) %>% 
+  mutate(
+    ag = ag(bodyweight_g_start, bodyweight_g_end),
+    agr = agr(bodyweight_g_start, bodyweight_g_end, duration),
+    fcr = fcr(bodyweight_g_start, bodyweight_g_end, feed_g),
+    sgr = sgr(bodyweight_g_start, bodyweight_g_end, duration),
+    tgc = tgc(bodyweight_g_start, bodyweight_g_end, duration, sum(temp_C))
+  )
+```
+

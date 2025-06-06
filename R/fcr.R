@@ -42,10 +42,6 @@ fcr <- function(m_start,
                 fi, 
                 dm = 1
                 ){
-
-  # Calculate SGR
   fcr <- (fi * dm) / (m_end - m_start)
-
-  # Return result
   return(fcr)
 }

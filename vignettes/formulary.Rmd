@@ -1,0 +1,133 @@
+---
+title: "Formulary"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Formulary}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+A number of metrics is employed in the field of aquaculture in order to describe aspects such as the growth or feed conversion in a comparable manner. This vignette provides a formulary and expands the background on the metrics that have been implemented in the aquacultuR package.
+
+|A|Abbreviation|Synonyms||SI unit|
+|---|---|---|---|---|
+||time||$t$||
+||temperature||$T$|°C|
+|IBW|initial bodyweight||$m_{\text{init}}$|g|
+|FBW|final bodyweight|||$m_{\text{end}}$|g|
+
+
+
+  
+## Absolute Growth
+
+$$
+\text{AG} 
+  = m_{\text{end}} - m_{\text{init}} 
+  = \Delta m
+$$
+
+## Absolute Growth Rate
+
+$$
+\text{AGR} 
+  = \frac{m_{\text{end}} - m_{\text{init}}}{t} 
+  = \frac{\Delta m}{t}
+$$
+
+## Relative Growth Rate
+
+$$
+\text{RGR}
+$$
+
+## Geometric bodyweight
+
+$$
+\text{GBW}
+$$
+
+## Metabolic bodyweight
+
+$$
+\text{MBW} = m^{0.8}
+$$
+
+## Specific Growth Rate
+
+Also called Instantaneous Growth Rate
+$$
+\text{SGR} 
+  = \frac{\ln {m_{\text{end}} } - \ln {m_{\text{init}}} }{t}
+  = \frac{\ln \frac{m_{\text{end}}}{m_{\text{init}}}} {t}
+$$
+
+## Thermal Growth Coefficient
+
+$$
+\text{TGC} = 
+  \frac{\sqrt[3]{m_{\text{end}}} - \sqrt[3]{m_{\text{init}}}}{\sum_1^t T \cdot t} \cdot 1000
+$$
+
+## Feeding Rate
+
+$$
+\text{FR}
+$$
+
+## Feed Intake
+
+$$
+\text{FI}
+$$
+
+## Feed Conversion Efficiency
+
+The Feed Conversion Efficiency (FCE) is the inverse of the Feed Conversion Ratio (FCR). 
+
+$$
+\text{FCE} 
+  = \frac{1}{\text{FCR}} 
+  = \frac{m_{\text{end}} - m_{\text{init}}}{\text{FI} \cdot \text{DM}}
+  = \frac{\text{AG}}{\text{FI} \cdot \text{DM}}
+$$
+
+## Feed Conversion Ratio
+
+$$
+\text{FCR}
+  = \frac{\text{FI} \cdot \text{DM}}{m_{\text{end}} - m_{\text{init}}}
+  = \frac{\text{FI} \cdot \text{DM}}{\text{AG}}
+$$
+
+
+## Nutrient Efficiency Ratio
+
+$$
+\text{NER}
+$$
+
+## Apparent Digestibility Coefficient - Dry Matter
+
+$$
+\text{ADC}_{\text{DM}}
+$$
+
+## Apparent Digestibility Coefficient - Nutrient
+
+$$
+\text{ADC}_{\text{nut}}
+$$
+
+## Apparent Digestibility Coefficient - Ingredient
+
+$$
+\text{ADC}_{ingr}
+$$

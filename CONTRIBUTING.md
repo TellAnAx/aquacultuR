@@ -1,4 +1,4 @@
-# Contributing to the Mergington High Extra-Curricular Activities Website
+# Contributing to the aquacultuR package
 
 Thank you for your interest in helping improve the aquacul!
 Whether you want to add your club's activities, fix a bug, or suggest
@@ -19,9 +19,9 @@ new features, this guide will help you get started. 🎉
 1. Create a new branch for your changes.
    - Use descriptive names like `art-gallery-feature` or `fix-chess-signup`
 2. Make your changes and test them locally with sample student data.
-   - Use the MongoDB extension to preview the included sample date.
 3. Push your branch and create a pull request.
-4. Wait for review and address any feedback.
+4. Assign a reviewer to your pull request.
+5. Wait for review and address any feedback.
 
 
 

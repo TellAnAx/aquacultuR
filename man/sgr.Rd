@@ -2,39 +2,39 @@
 % Please edit documentation in R/sgr.R
 \name{sgr}
 \alias{sgr}
-\title{Function to calculate the Specific Growth Rate}
+\title{A function to calculate the Specific Growth Rate}
 \usage{
 sgr(m_start, m_end, duration)
 }
 \arguments{
-\item{m_start}{numeric; value that is providing the initial weight in
-grams.}
-
-\item{m_end}{numeric; value that is providing the final weight in
-grams.}
-
 \item{duration}{numeric value that is providing the duration of the
 experiment in days.}
+
+\item{w_start}{numeric; value that is providing the initial body weight in
+grams.}
+
+\item{w_end}{numeric; value that is providing the final body weight in grams.}
 }
 \value{
-Returns the SGR as percentage value.
+Returns the SGR as percentage of Body Weight gain per day.
+origi
 }
 \description{
-A function that calculates the Specific Growth Rate (SGR) based on
-the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
-Weight (FBW; finalWeight) in gram (g) and the duration of the trial
-(duration) in days (d).
+This function calculates the Specific Growth Rate (SGR) based on the
+Instantaneous Growth Rate. The Instantaneous Growth Rate (IGR) is a useful
+metric, although hard to interpret. The SGR, derived from IGR, can then be easily
+interpreted as the percentage of Body Weight gained each day.
+Initial Body weight (IBW; w_start) in grams (g), the Final Body Weight
+(FBW; w_end) in grams (g) and the duration of the trial (duration) in days (d).
 }
 \note{
-The SGR is a growth metric for fishes, describing the increase in bodyweight
-over a period of time.
+The SGR is a growth metric for aquaculture products (e.g., fish,
+crustaceans, bivalves, algae), describing the increase in body weight over
+a period of time. Body weight can be substituted by other weight metrics,
+such as length.vHowever, body weight is the used in the vast majority
+of studies and alternatives are not advised for the sake of consistency.
 
-SGR = (ln(FBW[g]) - ln(IBW[g])) / t[d] *100
-
-The natural logarithm of the initial body weight is subtracted from
-the natural logarithm of the final body weight. The term is then
-divided by the trial duration and multiplied by 100 to convert into a
-percentage.
+SGR = e^(((ln(FBW[g] / IBW[g])) / t[d]) - 1)  * 100
 }
 \examples{
 data(weight2)
@@ -45,11 +45,13 @@ dplyr::mutate(weight2, SGR = sgr(W_start, W_end, duration = 84))
 
 }
 \references{
-Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
-(2016): A review on fish growth calculation: multiple functions in fish
-production and their specific application. Reviews in Aquaculture, 8,
-p.30–42.
+Crane, D.P., Ogle, D.H. and Shoup, D.E. (2020), Use and misuse
+of a common growth metric: guidance for appropriately calculating and
+reporting specific growth rate. Rev Aquacult, 12: 1542-1547.
+https://doi.org/10.1111/raq.12396
 }
 \author{
 Anıl Axel Tellbüscher
+
+Davide A. Machado e Silva
 }

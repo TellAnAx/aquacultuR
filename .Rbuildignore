@@ -3,6 +3,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
-^README.Rmd
+^README\.Rmd$
 ^cran-comments\.md$
 ^revdep$
+^dependencies\.R$

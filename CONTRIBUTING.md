@@ -1,7 +1,9 @@
 # Contributing to the aquacultuR package
 
-Thank you for your interest in helping improve the aquacul!
-Whether you want to add your club's activities, fix a bug, or suggest
+Thank you for your interest in helping improve the aquacultuR package! 
+This package is an Open Source project and open for contributions from 
+the outside world!
+Whether you want to fix a bug, or suggest
 new features, this guide will help you get started. 🎉
 
 
@@ -9,17 +11,16 @@ new features, this guide will help you get started. 🎉
 ## Development Setup
 
 1. Clone the repository to your computer.
-2. Check for installed dependencies by executing the code in `dependencies.R`
-3. Check whether you have the correct package version installed: `renv::status()`
+2. Start coding!
 
 
 
 ## Making Changes
 
-1. Create a new branch for your changes.
-   - Use descriptive names like `art-gallery-feature` or `fix-chess-signup`
+1. **Create a new branch for any changes you want to make!**
+   - Use descriptive names like `growth-metric-feature` or `fix-documentation-typo`
 2. Make your changes and test them locally with sample student data.
-3. Push your branch and create a pull request.
+3. Push your branch and create a pull request
 4. Assign a reviewer to your pull request.
 5. Wait for review and address any feedback.
 
@@ -27,7 +28,7 @@ new features, this guide will help you get started. 🎉
 
 ## Code Style
 
-- Follow the 'Advanced R' Style Guide by Hadley Wickham: http://adv-r.had.co.nz/Style.html
+- We follow the 'Advanced R' Style Guide by Hadley Wickham: http://adv-r.had.co.nz/Style.html
 - Use clear, descriptive variable names (student_name, start_time, etc.)
 - Use the reformatting functions implemented in RStudio to format the code.
 - Where necessary, add comments to describe blocks of logic.

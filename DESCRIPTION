@@ -1,6 +1,6 @@
 Package: aquacultuR
 Title: Frequently used Equations in Aquaculture Research
-Version: 0.0.9
+Version: 0.3.0
 Authors@R: c(
     person("Anıl Axel", "Tellbüscher", , "atellbuscher@frov.jcu.cz", 
            role = c("aut", "cre", "cph"), 

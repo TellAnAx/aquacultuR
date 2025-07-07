@@ -32,10 +32,21 @@
 ag <- function(m_start, 
                m_end) {
 
-  # Calculate AG
+  # Checks----
+  ## Check whether inputs are numeric
+  if(!is.numeric(m_start) | !is.numeric(m_end))
+    stop("Error: All arguments must be numeric!")
+  
+  ## Check whether inputs are > 0
+  if(m_start < 0 | m_end < 0)
+    warning("Input values are negative. The result is not meaningful.")
+  
+  
+  # Calculations----
+  ## Calculate AG
   ag <- m_end - m_start
 
-  # Return result
+  ## Return result
   return(ag)
 }
 

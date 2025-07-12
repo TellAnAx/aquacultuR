@@ -1,7 +1,5 @@
 #' Absolute Growth (AG)
 #' 
-#' Calculates the Absolute Growth
-#' 
 #' A function that calculates the Absolute Growth (AG), also denoted as
 #' Absolute Weight Gain (AWG) based on the Initial Body weight (IBW;
 #' m_start) in gram (g) and the Final Body Weight (FBW; m_end)
@@ -33,13 +31,18 @@ ag <- function(m_start,
                m_end) {
 
   # Checks----
-  ## Check whether inputs are numeric
-  if(!is.numeric(m_start) | !is.numeric(m_end))
-    stop("Error: All arguments must be numeric!")
+  ## Ensure inputs are numeric
+  stopifnot(is.numeric(m_start), is.numeric(m_end))
+  
+  ## Ensure inputs have the same length
+  if (length(m_start) != length(m_end)) {
+    stop("Error: 'm_start' and 'm_end' must be of the same length.")
+  }
   
   ## Check whether inputs are > 0
-  if(m_start < 0 | m_end < 0)
-    warning("Input values are negative. The result is not meaningful.")
+  if (any(m_start < 0 | m_end < 0) && verbose) {
+    warning("Some input values are negative. The result may not be meaningful.")
+  }
   
   
   # Calculations----

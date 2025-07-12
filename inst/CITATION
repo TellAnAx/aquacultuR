@@ -1,0 +1,14 @@
+citHeader("Please cite the 'aquacultuR' package as follows:")
+
+bibentry(
+  "Manual",
+  title = "aquacultuR: Tools for Aquaculture Data Analysis in R",
+  author = c(
+    person("Anıl Axel", "Tellbüscher"),
+    person("Davide", "Silva"),
+    person("Madhav", "Karthikeyan")
+  ),
+  year = "2025",
+  note = "R package version 1.0.0",
+  url = "https://github.com/TellAnAx/aquacultuR"
+)

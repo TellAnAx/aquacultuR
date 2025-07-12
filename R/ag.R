@@ -40,7 +40,7 @@ ag <- function(m_start,
   }
   
   ## Check whether inputs are > 0
-  if (any(m_start < 0 | m_end < 0) && verbose) {
+  if (any(m_start < 0 | m_end < 0)) {
     warning("Some input values are negative. The result may not be meaningful.")
   }
   

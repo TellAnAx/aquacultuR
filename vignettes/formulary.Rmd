@@ -20,23 +20,35 @@ A number of metrics is employed in the field of aquaculture in order to describe
 
 # Overview
 
-|Trivial|Abbreviation|Synonyms|Symbol|SI unit|
-|---|---|---|---|---|
-|Absolute growth|AG||$m_{ag}$|g|
-|Absolute growth rate|AGR|||g/d|
-|Feed conversion ratio|FCR|
-|Feed efficiency ratio|FER|
-|Feed intake|FI|
-|Feeding rate|FR|
-|Final bodyweight|FBW|||$m_{\text{end}}$|g|
-|Geometric bodyweight||$m_{geom}$|g|
-|Initial bodyweight|IBW||$m_{\text{init}}$|g|
-|Relative growth rate|RGR||||
+|Trivial                                          |Abbrev.  |Synonyms   |Symbol               |SI unit|
+|-------------------------------------------------|---------|-----------|---------------------|-------|
+|Absolute growth                                  |AG       |weight gain|$m_{\text{AG}}$      |g
+|Absolute growth rate                             |AGR      |           |$r_{\text{AG}}$      |g/d
+|Apparent Digestibility Coefficient               |ADC      |           |
+|Apparent Digestibility Coefficient - Dry Matter  |ADC-DM   |           |
+|Apparent Digestibility Coefficient - Nutrient    |ADC-Nut  |           |
+|Apparent Digestibility Coefficient - Ingredient  |ADC-Ingr |           |
+|Body weight                                      |BW       |           |$m_{\text{BW}}$      |g
+|Feed conversion ratio                            |FCR      |           |$m_{f}:m_{\text{AG}}$|g/g
+|Feed efficiency ratio                            |FER      |           |$m_{\text{AG}}:m_{f}$|g/g
+|Feed intake                                      |FI       |           |$r_{\text{FI}}$      |g/d
+|Feeding rate                                     |FR       |           |$r_{\text{FR}}$      |g/m d
+|Final body weight                                |FBW      |           |$m_{\text{end}}$     |g
+|Geometric body weight                            |GBW      |           |$m_{geom}$           |g
+|Initial body weight                              |IBW      |           |$m_{\text{init}}$    |g
+|Metabolic body weight                            |MBW      |           |$m_{\text{MBW}}$     |g
+|Relative growth rate                             |RGR      |           |$r_{\text{RGR}}$
+|Specific growth rate                             |SGR      |           |
+|Thermal growth coefficient                       |TGC      |           |
 
-|Parameter|Symbol|SI unit|
-|---|---|---|
-|Time||$t$|d|
-|Temperature|temp||$T$|°C|
+
+
+|Parameter                  |Abbrev.    |Symbol     |SI unit|
+|---------------------------|-----------|-----------|-------|
+|Time                       |           |$t$        |d
+|Temperature                |temp       |$T$        |°C
+
+
 
 
 
@@ -44,11 +56,14 @@ A number of metrics is employed in the field of aquaculture in order to describe
 
 ## Absolute Growth
 
+
+
 $$
-\text{AG} 
+m_{\text{AG}}
   = m_{\text{end}} - m_{\text{init}} 
-  = \Delta m
 $$
+
+
 
 
 ## Absolute Growth Rate
@@ -63,21 +78,23 @@ $$
 ## Apparent Digestibility Coefficient - Dry Matter
 
 $$
-\text{ADC}_{\text{DM}}
+\text{ADC}_{\text{DM}} = 
+  100 - 100 \cdot (\frac{\gamma_{feed}}{\gamma_{feces}})
 $$
 
 
 ## Apparent Digestibility Coefficient - Nutrient
 
 $$
-\text{ADC}_{\text{nut}}
+\text{ADC}_{\text{DM}} = 
+  100 - 100 \cdot (\frac{\gamma(standard)_{feed}} {\gamma(standard)_{feces}} \cdot \frac{\gamma(nutrient)_{feces}}{\gamma(nutrient)_{feed}})
 $$
 
 
 ## Apparent Digestibility Coefficient - Ingredient
 
 $$
-\text{ADC}_{ingr}
+\text{ADC}_{ingr} = ADC_{test} + (ADC_{test} - ADC_{ref}) \cdot (\frac{f_{ref} \cdot \gamma(nutrient)_{ref}}{f_{ingredient} \cdot \gamma(nutrient)_{ingredient}})
 $$
 
 

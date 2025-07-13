@@ -49,8 +49,11 @@ sgr <- function(m_start,
                 duration
                 ){
 
-# Calculate the SGR
-  sgr <- (log(m_end / m_start)) / duration * 100
+# Calculate IGR
+  igr <- (logb(m_end / m_start)) / duration
+  
+# Calculate the SGR based on IGR
+  sgr <- ((exp(igr)) - 1) * 100
 
 # Return the result
   return(sgr)

@@ -1,9 +1,13 @@
-#' Function to calculate the Specific Growth Rate
+#' Specific Growth Rate (SGR)
 #' 
-#' A function that calculates the Specific Growth Rate (SGR) based on
-#' the Initial Body weight (IBW; initWeight) in gram (g), the Final Body
-#' Weight (FBW; finalWeight) in gram (g) and the duration of the trial
-#' (duration) in days (d).
+#' Calculates the Specific Growth Rate 
+#' 
+#' This function calculates the Specific Growth Rate (SGR) based on
+#' the Instantaneous Growth Rate. The Instantaneous Growth Rate (IGR) is a useful
+#' metric, although hard to interpret. The SGR, derived from IGR, can then be easily
+#' interpreted as the percentage of Body Weight gained each day. 
+#' Initial Body weight (IBW; m_start) in grams (g), the Final Body Weight
+#' (FBW; m_end) in grams (g) and the duration of the trial (duration) in days (d).
 #' 
 #' @param m_start numeric; value that is providing the initial weight in
 #' grams.

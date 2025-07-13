@@ -5,7 +5,7 @@ bibentry(
   title = "aquacultuR: Tools for Aquaculture Data Analysis in R",
   author = c(
     person("Anıl Axel", "Tellbüscher"),
-    person("Davide", "Silva"),
+    person("Davide", "Machado e Silva"),
     person("Madhav", "Karthikeyan")
   ),
   year = "2025",

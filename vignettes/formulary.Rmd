@@ -79,22 +79,22 @@ $$
 
 $$
 \text{ADC}_{\text{DM}} = 
-  100 - 100 \cdot (\frac{\gamma_{feed}}{\gamma_{feces}})
+  1 - (\frac{\gamma_{feed}}{\gamma_{feces}})
 $$
 
 
 ## Apparent Digestibility Coefficient - Nutrient
 
 $$
-\text{ADC}_{\text{DM}} = 
-  100 - 100 \cdot (\frac{\gamma(standard)_{feed}} {\gamma(standard)_{feces}} \cdot \frac{\gamma(nutrient)_{feces}}{\gamma(nutrient)_{feed}})
+\text{ADC}_{\text{x}} = 
+  1 - (\frac{\gamma_{std, feed}} {\gamma_{std,feces}} \cdot \frac{\gamma_{x,feces}}{\gamma_{x, feed}})
 $$
 
 
 ## Apparent Digestibility Coefficient - Ingredient
 
 $$
-\text{ADC}_{ingr} = ADC_{test} + (ADC_{test} - ADC_{ref}) \cdot (\frac{f_{ref} \cdot \gamma(nutrient)_{ref}}{f_{ingredient} \cdot \gamma(nutrient)_{ingredient}})
+\text{ADC}_{ingr} = ADC_{test} + (ADC_{test} - ADC_{ref}) \cdot (\frac{f_{ref} \cdot \gamma_{x,ref}}{f_{ingredient} \cdot \gamma_{x, ingredient}})
 $$
 
 
@@ -121,49 +121,51 @@ $$
 
 ## Feeding Rate
 
-$$
-\text{FR}
-$$
-
-
-## Feed Intake
+Usually reported in g/d.
 
 $$
-\text{FI}
+\text{FR} = \frac{m_{feed}}{t}
 $$
+with $m_{feed}}$ being the total mass of feed administered over a period of time $t$.
 
 
 ## Geometric bodyweight
 
 $$
-\text{GBW}
+\text{GBW} = \sqrt{m_{start} \cdot m_{end}}
 $$
 
 
 ## Metabolic bodyweight
 
 $$
-\text{MBW} = m^{0.8}
+\text{MBW} 
+  = \text{GBW}^{0.8} 
+  = \sqrt{m_{start} \cdot m_{end}}^{0.8}
 $$
 
 
 ## Nutrient Efficiency Ratio
 
 $$
-\text{NER}
+\text{NER} 
+  = \frac{\text{AG}}{\text{FI} \cdot \gamma_{x} \cdot \text{DM}_{feed}}
 $$
+with $\gamma_{x}$ denoting the mass fraction of a nutrient $x$ in the feed.
 
 
 ## Relative Growth Rate
 
 $$
 \text{RGR}
+  = \frac{m_{end} - m_{start}}{t \cdot \sqrt{m_{end} \cdot m_{start}}}
 $$
 
 
 ## Specific Growth Rate
 
-Also called Instantaneous Growth Rate
+Also called Instantaneous Growth Rate.
+
 $$
 \text{SGR} 
   = \frac{\ln {m_{\text{end}} } - \ln {m_{\text{init}}} }{t}

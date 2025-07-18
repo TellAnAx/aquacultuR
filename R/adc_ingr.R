@@ -41,16 +41,35 @@ adc_ingr <- function(adc_test,
                      nut_ref, 
                      nut_ingr,
                      incl_ingr) {
+  # Checks----
+  ## Ensure inputs are numeric
+  stopifnot(is.numeric(adc_test), is.numeric(adc_ref),
+            is.numeric(nut_ref), is.numeric(nut_ingr),
+            is.numeric(incl_ingr))
   
-  # calculate ADC
+  
+  ## Ensure all inputs have the same length
+  input_lengths <- c(length(adc_test), length(adc_ref), length(nut_ref), length(nut_ingr), length(incl_ingr))
+  if (length(unique(input_lengths)) != 1) {
+    stop("All input vectors must have the same length.")
+  }
+  
+  
+  ## Warn if inputs are < 0
+  if (any(adc_test < 0 | adc_ref < 0 | nut_ref < 0 | nut_ingr < 0 | incl_ingr < 0)) {
+    warning("Some input values are negative. The result may not be meaningful.")
+  }
+  
+  
+  
+  # Calculations----
   adc_ingr <- ( adc_test + ( ((1-incl_ingr) * nut_ref) / (incl_ingr * nut_ingr) ) * (adc_test - adc_ref) )
 
   
   if(adc_ingr > 1) {
     warning("ADC > 1")
   }
-    
-  # return result
+  
+  
   return(adc_ingr)
-
 }

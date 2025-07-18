@@ -19,10 +19,25 @@
 #' 
 #' @export
 adc_dm <- function(es_diet, es_feces) {
-
-  # calculate ADC
+  
+  # Checks----
+  ## Ensure inputs are numeric
+  stopifnot(is.numeric(es_diet), is.numeric(es_feces))
+  
+  
+  ## Ensure inputs have the same length
+  if (length(es_diet) != length(es_feces)) {
+    stop("Error: inputs must be of the same length.")
+  }
+  
+  
+  ## Check whether inputs are > 0
+  if (any(es_diet < 0 | es_feces < 0)) {
+    warning("Some input values are negative. The result may not be meaningful.")
+  }
+  
+  
+  # Calculations----
   adc_dm <- 1 - (es_diet / es_feces)
-
-  # return result
   return(adc_dm)
 }

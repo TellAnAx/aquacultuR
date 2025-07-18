@@ -29,8 +29,26 @@ adc_nut <- function(es_diet,
                     es_feces, 
                     nut_diet, 
                     nut_feces) {
+  
+  # Checks----
+  ## Ensure inputs are numeric
+  stopifnot(is.numeric(es_diet), is.numeric(es_feces), 
+            is.numeric(nut_diet), is.numeric(nut_feces))
+  
+  
+  ## Ensure inputs have the same length
+  if (length(es_diet) != length(es_feces)) {
+    stop("Error: 'ibw' and 'fbw' must be of the same length.")
+  }
+  
+  
+  ## Check whether inputs are > 0
+  if (any(es_diet < 0 | es_feces < 0)) {
+    warning("Some input values are negative. The result may not be meaningful.")
+  }
 
+  
+  # Calculations----
   adc_nut <- (1 - (es_diet / es_feces) * (nut_feces / nut_diet))
-
   return(adc_nut)
 }

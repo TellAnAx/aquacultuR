@@ -1,5 +1,17 @@
-test_that("Metabolic Bodyweight calculation works", {
-  expect_equal(mbw(m_start = 1,
-                   m_end = 2), 
-               1.319507911)
+test_that("metabolic body weight" ,{
+  expect_equal(mbw(m_start=1, m_end=2),1)
+  expect_equal(mbw(gbw=1))
+  expect_warning(mbw(m_start=1, m_end=0))
+  expect_warning(mbw(m_start=-1, m_end=2))
+  expect_warning(mbw(m_start=1, m-end=-2))
+  expect_warning(mbw(gbw=-1))
+  expect_error(mbw(m_start=na, m_end=2))
+  expect_error(mbw(m_start=1, m_end=na))
+  expect_error(mbw(bgw=na))
+  expect_error(mbw(m_start= 'test', m_end=2))
+  expect_error(mbw(m_start=1, m_end= 'test'))
+  expect_error(mbw(gbw= 'test'))
+  expect_error(mbw(m_start=0, m_end=2))
+  expect_error(mbw(m_start>m_end))
+  
 })

@@ -1,17 +1,28 @@
-test_that("Nutrient Efficiency Ratio calculation using initial and final weight 
-          works", {
-  expect_equal(ner(m_start = 1, 
-                   m_end = 2, 
-                   fi = 1,
-                   dm = 1,
-                   nut_f = 0.5), 
-               2)
+test_that ("Nutrient efficiency ratio", {
+  expect_equal( ner(m_start=1, m_end=2, ag=3, fi=4, dm=5, nut_f=6),1)
+  expect_warning( ner(m_start=-1, m_end=2, ag=3, fi=4, dm=5, nut_f=6))
+  expect_warning( ner(m_start=1, m_end=-2, ag=3, fi=4, dm=5, nut_f=6))
+  expect_warning( ner(m_start=-1, m_end=2, ag=-3, fi=4, dm=5, nut_f=6))
+  expect_warning( ner( m_start=1, m_end=2, ag=3, fi=-4, dm=5, nut_f=6))
+  expect_warning( ner( m_start=1, m_end=2, ag=3, fi=4, dm=-5, nut_f=6))
+  expect_warning( ner(m_start=1, m_end=2, ag=3, fi=4, dm=5, nut_f=-6))
+  expect_warning( ner(m_start=0, m_end=2, ag=3, fi=4, dm=5, nut_f=6))
+  expect_warning( ner(m_start=1, m_end=0, ag=3, fi=4, dm=5, nut_f=6))
+  expect_warning( ner(m_start=1, m_end=2, ag=0, fi=4, dm=5, nut_f=6))
+  expect_warning( ner(m_start=1, m_end=2, ag=3, fi=0, dm=5, nut_f=6))
+  expect_warning( ner(m_start=1, m_end=2, ag=3, fi=4, dm=0, nut_f=6))
+  expect_warning( ner(m_start=1, m_end=2, ag=3, fi=4, dm=5, nut_f=0))
+  expect_error( ner(m_start= 'test', m_end=2, ag=3, fi=4, dm=5, nut_f=6))
+  expect_error( ner(m_start=1, m_end= 'test', ag=3, fi=4, dm=5, nut_f=6))
+  expect_error( ner(m_start=1, m_end=2, ag= 'test', fi=4, dm=5, nut_f=6))
+  expect_error( ner(m_start=1, m_end=2, ag=3, fi= 'test', dm=5, nut_f=6))
+  expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm= 'test', nut_f=6))
+  expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm=5, nut_f= 'test'))
+  expect_error( ner(m_start=na, m_end=2, ag=3, fi=4, dm=5, nut_f=6))
+  expect_error( ner(m_start=1, m_end=na, ag=3, fi=4, dm=5, nut_f=6))
+  expect_error( ner(m_start=1, m_end=2, ag=na, fi=4, dm=5, nut_f=6))
+  expect_error( ner(m_start=1, m_end=2, ag=3, fi=na, dm=5, nut_f=6))
+  expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm=na, nut_f=6))
+  expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm=5, nut_f=na))
+  expect_error( ner(m_start> m_end, ag=3, fi=4, dm=5, nut_f=6))
 })
-
-test_that("Nutrient Efficiency Ratio calculation using absolute growth works", {
-            expect_equal(ner(ag = 1, 
-                             fi = 1,
-                             dm = 1,
-                             nut_f = 0.5), 
-                         2)
-          })

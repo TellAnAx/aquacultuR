@@ -1,5 +1,26 @@
-test_that("Apparent Digestibility calculation of Dry Matter works", {
-  expect_equal(adc_dm(es_diet = 0.01,
-                      es_feces = 0.05), 
-               0.8)
+test_that ( "apparent digestibility coeffiecent", {
+  expect_equal(adc(n)(adc_test=1, adc_ref=1, nut_ref=3, nut_ing= 4, incl_ing=5))
+  expect_equal(adc(n)(adc_test=1, adc_ref=2, nut_ref=1, nut_ing= 1, incl_ing=5))
+  expect_equal(adc(n)(adc_test=1, adc_ref=1, nut_ref=1, nut_ing= 1, incl_ing=1))
+  expect_warning(adc(n)(adc_test=-1, adc_ref=2, nut_ref=3, nut_ing= 4, incl_ing=5))
+  expect_warning(adc(n)(adc_test=1, adc_ref=-2, nut_ref=3, nut_ing= 4, incl_ing=5))
+  expect_warning(adc(n)(adc_test=1, adc_ref=2, nut_ref=-3, nut_ing= 4, incl_ing=5))
+  expect_warning(adc(n)(adc_test=1, adc_ref=2, nut_ref=3, nut_ing= -4, incl_ing=5))
+  expect_warning(adc(n)(adc_test=1, adc_ref=2, nut_ref=3, nut_ing= 4, incl_ing=-5))
+  expect_warning(adc(n)(adc_test=0, adc_ref=2, nut_ref=3, nut_ing= 4, incl_ing=5))
+  expect_warning(adc(n)(adc_test=1, adc_ref=0, nut_ref=3, nut_ing= 4, incl_ing=5))
+  expect_warning(adc(n)(adc_test=1, adc_ref=2, nut_ref=0, nut_ing= 4, incl_ing=5))
+  expect_warning(adc(n)(adc_test=1, adc_ref=2, nut_ref=3, nut_ing= 0, incl_ing=5))
+  expect_warning(adc(n)(adc_test=1, adc_ref=2, nut_ref=3, nut_ing= 4, incl_ing=0))
+  expect_error(adc(n)(adc_test= 'test', adc_ref=2, nut_ref=3, nut_ing= 4, incl_ing=5))
+  expect_error(adc(n)(adc_test=1, adc_ref= 'test', nut_ref=3, nut_ing= 4, incl_ing=5))
+  expect_error(adc(n)(adc_test=1, adc_ref=2, nut_ref= 'test', nut_ing= 4, incl_ing=5))
+  expect_error(adc(n)(adc_test=1, adc_ref=2, nut_ref=3, nut_ing= 'test', incl_ing=5))
+  expect_error(adc(n)(adc_test=1, adc_ref=2, nut_ref=3, nut_ing= 4, incl_ing= 'test'))
+  expect_error(adc(n)(adc_test=na, adc_ref=2, nut_ref=3, nut_ing= 4, incl_ing=5))
+  expect_error(adc(n)(adc_test=1, adc_ref=na, nut_ref=3, nut_ing= 4, incl_ing=5))
+  expect_error(adc(n)(adc_test=1, adc_ref=2, nut_ref=na, nut_ing= 4, incl_ing=5))
+  expect_error(adc(n)(adc_test=1, adc_ref=2, nut_ref=3, nut_ing= na, incl_ing=5))
+  expect_error(adc(n)(adc_test=1, adc_ref=2, nut_ref=3, nut_ing= 4, incl_ing=na))
 })
+

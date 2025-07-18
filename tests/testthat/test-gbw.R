@@ -1,5 +1,11 @@
-test_that("Geometric Bodyweight calculation works", {
-  expect_equal(gbw(m_start = 1,
-                   m_end = 4), 
-               2)
+test_that("geometric body weight",{
+  expect_equal(gbw(m_start=1, m_end=2),1)
+  expect_equal(gbw(m_start=1, m_end=0))
+  expect_warning(gbw(m_start=-1, m_end=2))
+  expect_warning(gbw(m_start=1, m_end=-2))
+  expect_error(gbw(m_start=na,m_end=2))
+  expect_error(gbw(m_start=1, m_end=na))
+  expect_error(gbw(m_start= 'test', m_end=2))
+  expect_error(gbw(m_start=1, m_end= 'test'))
+  expect_error(gbw(m_start>m_end))
 })

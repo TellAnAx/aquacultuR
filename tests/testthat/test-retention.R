@@ -1,7 +1,21 @@
-test_that("Nutrient retention calculation works", {
-  expect_equal(retention(m_start = 1, 
-                         nut_start = 0.1, 
-                         m_end = 2, 
-                         nut_end = 0.2), 
-               0.3)
+test_that("Nutrient retenton", {
+  expect_equal(nr(m_start=1, m_end= 2, nut_start=3,nut_end=4),1)
+  expect_warning(nr(m_start=-1, m_end= 2, nut_start=3,nut_end=4))
+  expect_warning(nr(m_start=1, m_end= -2, nut_start=3,nut_end=4))
+  expect_warning(nr(m_start=1, m_end= 2, nut_start=-3,nut_end=4))
+  expect_warning(nr(m_start=1, m_end= 2, nut_start=3,nut_end=-4))
+  expect_warning(nr(m_start=0, m_end= 2, nut_start=3,nut_end=4))
+  expect_warning(nr(m_start=1, m_end= 0, nut_start=3,nut_end=4))
+  expect_warning(nr(m_start=1, m_end= 2, nut_start=0,nut_end=4))
+  expect_warning(nr(m_start=1, m_end= 2, nut_start=3,nut_end=0))
+  expect_error(nr(m_start= 'test', m_end= 2, nut_start=3,nut_end=4))
+  expect_error(nr(m_start=1, m_end= 'test', nut_start=3,nut_end=4))
+  expect_error(nr(m_start=1, m_end= 2, nut_start= 'test',nut_end=4))
+  expect_error(nr(m_start=1, m_end= 2, nut_start=3,nut_end= 'test'))
+  expect_error(nr(m_start=na, m_end= 2, nut_start=3,nut_end=4))
+  expect_error(nr(m_start=1, m_end= na, nut_start=3,nut_end=4))
+  expect_error(nr(m_start=1, m_end= 2, nut_start=na,nut_end=4))
+  expect_error(nr(m_start=1, m_end= 2, nut_start=3,nut_end=na))
+  expect_error(nr(m_start> m_end, nut_start=3,nut_end=4))
+  expect_error(nr(m_start=1, m_end= 2, nut_start<nut_end))
 })

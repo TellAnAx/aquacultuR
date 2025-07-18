@@ -1,7 +1,24 @@
-test_that("Apparent Digestibility Coefficient calculation for a nutrient works", {
-  expect_equal(adc_nut(es_diet = 0.01, 
-                       es_feces = 0.05, 
-                       nut_diet = 0.8, 
-                       nut_feces = 0.1), 
-               0.975)
+
+test_that("Apparent digestiblity coefficient", {
+  expect_equal(adc(adc_test = -1, adc_ref = 2, nut_ref=3, nut_ingr=4, incl_ingr=5), 1)
+  expect_warning(adc(adc_test = 1, adc_ref = -2, nut_ref=3, nut_ingr=4, incl_ingr=5), 1)
+  expect_warning(adc(adc_test = 1, adc_ref = 2, nut_ref=-3, nut_ingr=4, incl_ingr=5), 1)
+  expect_warning(adc(adc_test = 1, adc_ref = 2, nut_ref=3, nut_ingr=-4, incl_ingr=5), 1)
+  expect_warning(adc(adc_test = 1, adc_ref = 2, nut_ref=3, nut_ingr=4, incl_ingr=-5), 1)
+  expect_error(adc(adc_test = 'test', adc_ref = 2, nut_ref=3, nut_ingr=4, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 'test', nut_ref=3, nut_ingr=4, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 2, nut_ref='test', nut_ingr=4, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 2, nut_ref=3, nut_ingr='test', incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 2, nut_ref=3, nut_ingr=4, incl_ingr='test'), 1)
+  expect_error(adc(adc_test = NA, adc_ref = 2, nut_ref=3, nut_ingr=4, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = NA, nut_ref=3, nut_ingr=4, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 2, nut_ref=NA, nut_ingr=4, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 2, nut_ref=3, nut_ingr=NA, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 2, nut_ref=3, nut_ingr=4, incl_ingr=NA), 1)
+  expect_error(adc(adc_test = 0, adc_ref = 2, nut_ref=3, nut_ingr=4, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 0, nut_ref=3, nut_ingr=4, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 2, nut_ref=0, nut_ingr=4, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 2, nut_ref=3, nut_ingr=0, incl_ingr=5), 1)
+  expect_error(adc(adc_test = 1, adc_ref = 2, nut_ref=3, nut_ingr=4, incl_ingr=0), 1)
+
 })

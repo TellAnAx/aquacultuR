@@ -1,8 +1,13 @@
-test_that("multiplication works", {
-  expect_equal(adc_ingr(adc_test = 0.902,
-                        adc_ref = 0.923,
-                        nut_ref = 0.465,
-                        nut_ingr = 0.945,
-                        incl_ingr = 0.3), 
-               0.8778889) # From Bureau and Hua, 2001
+
+test_that("Apparent digestiblity coefficient", {
+  expect_equal(adc(es_diet = 1, es_feaces = 2), 1)
+  expect_equal(adc(es_diet=1, es_feaces=0))
+  expect_error(adc(es_diet = 1, es_feaces = 'test'))
+  expect_error(adc(es_diet = 'test', es_feaces = 2))
+  expect_error(adc(es_diet = NA, es_feaces = 2))
+  expect_error(adc(es_diet = 1, es_feaces = NA))
+  expect_warning(adc(es_diet = -1, es_feaces = 2))
+  expect_warning(adc(es_diet = 1, es_feaces= -2))
+  expect_error (adc(es_diet>es_feaces))
+  expect_error (adc(es_diet=0, es_feaces=2))
 })

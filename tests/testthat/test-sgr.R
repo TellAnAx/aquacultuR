@@ -1,11 +1,16 @@
-test_that("Specific Growth Rate calculated correctly", {
-  expect_equal(sgr(m_start = 1, 
-                   m_end = 2, 
-                   duration = log(2)),
-               100)
+test_that( "Specific growth rate",{
+  expect_equal(sgr(m_start=1, m_end=2, duration=3,1))
+  expect_warning(sgr(m_start=1, m_end=0, duration=3))
+  expect_warning(sgr(m_start=0,m_end=2,duration=3))
+  expect_warning(sgr(m_start=-1,m_end=2,duration=3))
+  expect_warning(sgr(m_start=1,m_end=-2,duration=3))
+  expect_warning(sgr(m_start=1,m_end=2,duration=-3))
+  expect_error(sgr(m_start=1,m_end=2,duration=0))
+  expect_error(sgr(m_start= 'test',m_end=2,duration=3))
+  expect_error(sgr(m_start=1,m_end= 'test',duration=3))
+  expect_error(sgr(m_start=1,m_end=2,duration= 'test'))
+  expect_error(sgr(m_start=na,m_end=2,duration=3))
+  expect_error(sgr(m_start=1,m_end=na,duration=3))
+  expect_error(sgr(m_start=1,m_end=2,duration=na))
 })
 
-test_that("Logarithmus naturalis calculated correctly", {
-  expect_equal(log(1),
-               0)
-})

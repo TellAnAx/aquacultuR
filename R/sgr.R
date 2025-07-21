@@ -49,8 +49,8 @@ sgr <- function(ibw, fbw, duration){
   }
 
   ## Check whether inputs are > 0
-  if (any(ibw < 0 | fbw < 0)) {
-    warning("Some input values are negative. The result may not be meaningful.")
+  if (any(ibw < 0 | fbw < 0 | duration < 0)) {
+    warning("Some input values are negative. The result is not meaningful.")
   }
 
 

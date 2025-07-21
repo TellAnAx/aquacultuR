@@ -3,6 +3,7 @@
 #' Function to calculate the Apparent Digestibility Coefficient (ADC) of the dry 
 #' matter fraction of a compound diet.
 #' 
+#' @param dm_diet a numeric value, being the dry matter content of the diet
 #' @param std_diet a numeric value, resembling the inclusion rate of
 #' standard in the experimental diet given to the livestock.
 #' @param std_feces a numeric value, resembling the inclusion rate of
@@ -17,27 +18,35 @@
 #' @references Bureau, D. P., & Hua, K. (2006): Letter to the Editor of
 #' Aquaculture. Aquaculture, 252, p.103–105.
 #' 
+#' @examples
+#' # 900 g/kg (90%) dry matter content of feed
+#' # 10 g/kg (1%) digestibility standard in feed
+#' # 45 g/kg (4.5%) digestibility standard in feces
+#' adc_dm(dm_diet = 0.95, std_diet = 0.01, std_feces = 0.045)
+#' 
+#' 
 #' @export
-adc_dm <- function(std_diet, std_feces) {
+adc_dm <- function(dm_diet, std_diet, std_feces) {
   
   # Checks----
   ## Ensure inputs are numeric
-  stopifnot(is.numeric(std_diet), is.numeric(std_feces))
+  stopifnot(is.numeric(std_diet), is.numeric(std_feces), is.numeric(dm_diet))
   
   
-  ## Ensure inputs have the same length
-  if (length(std_diet) != length(std_feces)) {
+  ## Ensure all inputs have the same length
+  input_lengths <- c(length(dm_diet), length(std_diet), ;ength(std_feces))
+  if (length(unique(input_lengths)) != 1) {
     stop("All input vectors must have the same length.")
   }
   
   
   ## Check whether inputs are > 0
-  if (any(std_diet < 0 | std_feces < 0)) {
+  if (any(std_diet < 0 | std_feces < 0 | dm_diet < 0)) {
     warning("Some input values are negative. The result may not be meaningful.")
   }
   
   
   # Calculations----
-  adc_dm <- 1 - (std_diet / std_feces)
+  adc_dm <- 1 - (dm_diet*std_diet / std_feces)
   return(adc_dm)
 }

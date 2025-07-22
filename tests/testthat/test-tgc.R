@@ -1,7 +1,19 @@
-test_that("Thermal Growth Coefficient calculation works", {
-  expect_equal(tgc(m_start = 27,
-                   m_end = 19683,
-                   duration = 6,
-                   temp = 1), 
-               4000)
+test_that ( "thermal growth coefficient", {
+  expect_equal(tgc(m_start=1, m_end=2, duration=3, temp=4),1)
+  expect_warning(tgc(m_start=-1, m_end=2, duration=3, temp=4))
+  expect_warning(tgc(m_start=1, m_end=--2, duration=3, temp=4))
+  expect_error(tgc(m_start=1, m_end=2, duration=-3, temp=4))
+  expect_warning(tgc(m_start=1, m_end=2, duration=3, temp=-4))
+  expect_warning(tgc(m_start=0, m_end=2, duration=3, temp=4))
+  expect_warning(tgc(m_start=1, m_end=0, duration=3, temp=4))
+  expect_error(tgc(m_start=1, m_end=2, duration=0, temp=4))
+  expect_warning(tgc(m_start=1, m_end=2, duration=3, temp=0))
+  expect_error(tgc(m_start=na, m_end=2, duration=3, temp=4))
+  expect_error(tgc(m_start=1, m_end=na, duration=3, temp=4))
+  expect_error(tgc(m_start=1, m_end=2, duration=na, temp=4))
+  expect_error(tgc(m_start=1, m_end=2, duration=3, temp=na))
+  expect_error(tgc(m_start= 'test', m_end=2, duration=3, temp=4))
+  expect_error(tgc(m_start=1, m_end= 'test', duration=3, temp=4))
+  expect_error(tgc(m_start=1, m_end=2, duration= 'test', temp=4))
+  expect_error(tgc(m_start=1, m_end=2, duration=3, temp= 'test'))
 })

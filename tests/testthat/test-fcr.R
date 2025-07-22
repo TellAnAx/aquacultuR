@@ -1,6 +1,18 @@
-test_that("Feed Conversion Ratio calculation works", {
-  expect_equal(fcr(m_start = 1,
-                   m_end = 2,
-                   fi = 2),
-               2)
+test_that("feed conversion ratio",{
+  expect_equal(fcr(m_start=1,m_end=2,fi=3, dm=4),1)
+  expect_warning(fcr(m_start=1, m_end=2, fi=0, dm=4))
+  expect_warning(fcr(m_start=1, m_end=0, fi=3, dm=4))
+  expect_warning(fcr(m_start=1, m_end=2, fi=3, dm=0))
+  expect_warning(fcr(m_start=-1, m_end=2, fi=3, dm=4))
+  expect_warning(fcr(m_start=1, m_end=-2, fi=3, dm=4))
+  expect_warning(fcr(m_start=1, m_end=2, fi=-3, dm=4))
+  expect_error(fcr(m_start=na, m_end=2, fi=3, dm=4))
+  expect_error(fcr(m_start=1, m_end=na, fi=3, dm=4))
+  expect_error(fcr(m_start=1, m_end=2, fi=na, dm=4))
+  expect_error(fcr(m_start=0, m_end=2, fi=3, dm=4))
+  expect_error(fcr(m_start=1, m_end=2, fi=3, dm=na))
+  expect_error(fcr(m_start= 'test', m_end=2, fi=3, dm=4))
+  expect_error(fcr(m_start=1, m_end= 'test', fi=3, dm=4))
+  expect_error(fcr(m_start=1, m_end=2, fi= 'test', dm=4))
+  expect_error(fcr(m_start=1, m_end=2, fi=3, dm= 'test'))
 })

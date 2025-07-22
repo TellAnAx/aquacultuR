@@ -34,7 +34,7 @@ adc_dm <- function(dm_diet, std_diet, std_feces) {
   
   
   ## Ensure all inputs have the same length
-  input_lengths <- c(length(dm_diet), length(std_diet), ;ength(std_feces))
+  input_lengths <- c(length(dm_diet), length(std_diet), length(std_feces))
   if (length(unique(input_lengths)) != 1) {
     stop("All input vectors must have the same length.")
   }

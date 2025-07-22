@@ -16,6 +16,6 @@ test_that("adc_dm() throws warning when input is < 0", {
   expect_warning(adc_dm(dm_diet = 1, std_diet = 0.01, std_feces = -0.05))
 })
 
-test_that("adc_dm() calculates ADC of Dry Matter correctly", {
+test_that("adc_dm() calculates ADC correctly", {
   expect_equal(adc_dm(dm_diet = 1, std_diet = 0.01, std_feces = 0.05), 0.8)
 })

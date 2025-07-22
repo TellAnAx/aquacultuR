@@ -37,13 +37,14 @@ adc_nut <- function(std_diet,
   
   
   ## Ensure inputs have the same length
-  if (length(std_diet) != length(std_feces)) {
+  input_lengths <- c(length(std_diet), length(std_feces), length(nut_diet), length(nut_feces))
+  if (length(unique(input_lengths)) != 1) {
     stop("All input vectors must have the same length.")
   }
   
   
   ## Check whether inputs are > 0
-  if (any(std_diet < 0 | std_feces < 0)) {
+  if (any(std_diet < 0 | std_feces < 0 | nut_diet < 0 | nut_feces < 0)) {
     warning("Some input values are negative. The result may not be meaningful.")
   }
 

@@ -1,8 +1,16 @@
-test_that("Relative Feeding Rate error works", {
-  expect_error(rfr())
+test_that("relative feeding rate",{
+  expect_equal(rfr(m_start=1, m_end=2, duration=3,1))
+  expect_warning(rfr(m_start=1, m_end=0, duration=3))
+  expect_warning(rfr(m_start=0,m_end=2,duration=3))
+  expect_warning(rfr(m_start=-1,m_end=2,duration=3))
+  expect_warning(rfr(m_start=1,m_end=-2,duration=3))
+  expect_warning(rfr(m_start=1,m_end=2,duration=-3))
+  expect_error(rfr(m_start=1,m_end=2,duration=0))
+  expect_error(rfr(m_start= 'test',m_end=2,duration=3))
+  expect_error(rfr(m_start=1,m_end= 'test',duration=3))
+  expect_error(rfr(m_start=1,m_end=2,duration= 'test'))
+  expect_error(rfr(m_start=na,m_end=2,duration=3))
+  expect_error(rfr(m_start=1,m_end=na,duration=3))
+  expect_error(rfr(m_start=1,m_end=2,duration=na))
 })
 
-test_that("Relative Feeding Rate calculation works", {
-  expect_equal(rfr(200, 500, 20),
-               0.02)
-})

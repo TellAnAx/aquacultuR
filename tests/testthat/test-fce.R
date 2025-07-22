@@ -1,6 +1,20 @@
-test_that("Feed Conversion Efficiency calculation works", {
-  expect_equal(1/fcr(m_start = 1,
-                     m_end = 2,
-                     fi = 2),
-               0.5)
+test_that("feed conversion efficiency", {
+  expect_equal(fce(m_start=1, m_end=2, fi=3, dm=4),1)
+  expect_warning(fce(m_start=1,m_end=0,fi=3,dm=4))
+  expect_warning(fce(m_start=0,m_end=2,fi=3,dm=4))
+  expect_warning(fce(m_start=1,m_end=2,fi=0,dm=4))
+  expect_warning(fce(m_start=1,m_end=2,fi=3,dm=0))
+  expect_warning(fce(m_start=-1,m_end=2,fi=3,dm=4))
+  expect_warning(fce(m_start=1,m_end=-2,fi=3,dm=4))
+  expect_warning(fce(m_start=1,m_end=2,fi=-3,dm=4))
+  expect_warning(fce(m_start=1,m_end=2,fi=3,dm=-4))
+  expect_error(fce(m_start=0, m_end=2, fi=3, dm=4))
+  expect_error(fce(m_start=na, m_end=2, fi=3, dm=4))
+  expect_error(fce(m_start=1, m_end=na, fi=3, dm=4))
+  expect_error(fce(m_start=1, m_end=2, fi=na, dm=4))
+  expect_error(fce(m_start=1, m_end=2, fi=3, dm=na))
+  expect_error(fce(m_start= 'test', m_end=2, fi=3, dm=4))
+  expect_error(fce(m_start=1, m_end= 'test', fi=3, dm=4))
+  expect_error(fce(m_start=1, m_end=2, fi= 'test', dm=4))
+  expect_error(fce(m_start=1, m_end=2, fi=3, dm= 'test'))
 })

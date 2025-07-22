@@ -1,10 +1,16 @@
-test_that("Absolute growth rate calcultion works", {
-  expect_equal(rgr(m_start = 1,
-                   m_end = 12,
-                   duration = 3), 1.05847549)
+test_that( "relative growth rate",{
+  expect_equal(rgr(m_start=1, m_end=2, duration=3,1))
+  expect_warning(rgr(m_start=1, m_end=0, duration=3))
+  expect_warning(rgr(m_start=0,m_end=2,duration=3))
+  expect_warning(rgr(m_start=-1,m_end=2,duration=3))
+  expect_warning(rgr(m_start=1,m_end=-2,duration=3))
+  expect_warning(rgr(m_start=1,m_end=2,duration=-3))
+  expect_error(rgr(m_start=1,m_end=2,duration=0))
+  expect_error(rgr(m_start= 'test',m_end=2,duration=3))
+  expect_error(rgr(m_start=1,m_end= 'test',duration=3))
+  expect_error(rgr(m_start=1,m_end=2,duration= 'test'))
+  expect_error(rgr(m_start=na,m_end=2,duration=3))
+  expect_error(rgr(m_start=1,m_end=na,duration=3))
+  expect_error(rgr(m_start=1,m_end=2,duration=na))
 })
 
-test_that("Square root calculation works", {
-  expect_equal(sqrt(4),
-               2)
-})

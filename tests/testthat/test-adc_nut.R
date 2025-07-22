@@ -13,10 +13,10 @@ test_that("adc_nut() throws error when inputs are of different length", {
 })
 
 test_that("adc_nut() throws warning when input is < 0", {
-  expect_warning(adc_nut(std_diet = -0.01, std_feces = 0.05, nut_diet = 0.8, nut_feces = 0.1))
-  expect_warning(adc_nut(std_diet = 0.01, std_feces = -0.05, nut_diet = 0.8, nut_feces = 0.1))
-  expect_warning(adc_nut(std_diet = 0.01, std_feces = 0.05, nut_diet = -0.8, nut_feces = 0.1))
-  expect_warning(adc_nut(std_diet = 0.01, std_feces = 0.05, nut_diet = 0.8, nut_feces = -0.1))
+  expect_warning(expect_warning(adc_nut(std_diet = -0.01, std_feces = 0.05, nut_diet = 0.8, nut_feces = 0.1)))
+  expect_warning(expect_warning(adc_nut(std_diet = 0.01, std_feces = -0.05, nut_diet = 0.8, nut_feces = 0.1)))
+  expect_warning(expect_warning(adc_nut(std_diet = 0.01, std_feces = 0.05, nut_diet = -0.8, nut_feces = 0.1)))
+  expect_warning(expect_warning(adc_nut(std_diet = 0.01, std_feces = 0.05, nut_diet = 0.8, nut_feces = -0.1)))
 })
 
 test_that("adc_nut() calculates ADC correctly", {

@@ -51,5 +51,10 @@ adc_nut <- function(std_diet,
   
   # Calculations----
   adc_nut <- (1 - (std_diet / std_feces) * (nut_feces / nut_diet))
+  
+  if(adc_nut > 1) {
+    warning("ADC > 1")
+  }
+  
   return(adc_nut)
 }

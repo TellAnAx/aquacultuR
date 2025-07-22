@@ -47,7 +47,9 @@ adc_ingr <- function(adc_test,
   
   
   ## Ensure all inputs have the same length
-  input_lengths <- c(length(adc_test), length(adc_ref), length(nut_ref), length(nut_ingr), length(incl_ingr))
+  input_lengths <- c(length(adc_test), length(adc_ref), 
+                     length(nut_ref), length(nut_ingr), 
+                     length(incl_ingr))
   if (length(unique(input_lengths)) != 1) {
     stop("All input vectors must have the same length.")
   }

@@ -48,5 +48,10 @@ adc_dm <- function(dm_diet, std_diet, std_feces) {
   
   # Calculations----
   adc_dm <- 1 - (dm_diet*std_diet / std_feces)
+  
+  if(adc_dm > 1) {
+    warning("ADC > 1")
+  }
+  
   return(adc_dm)
 }

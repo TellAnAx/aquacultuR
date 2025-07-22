@@ -1,6 +1,16 @@
-test_that("Absolute growth rate calcultion works", {
-  expect_equal(agr(m_start = 1, 
-                   m_end = 10, 
-                   duration = 3), 
-               3)
+test_that('Absolute growth rate',{
+  expect_equal(agr(m_start=1, m_end=2, duration=3,1))
+  expect_warning(agr(m_start=1, m_end=0, duration=3))
+  expect_warning(agr(m_start=0,m_end=2,duration=3))
+  expect_warning(agr(m_start=-1,m_end=2,duration=3))
+  expect_warning(agr(m_start=1,m_end=-2,duration=3))
+  expect_warning(agr(m_start=1,m_end=2,duration=-3))
+  expect_error(agr(m_start=1,m_end=2,duration=0))
+  expect_error(agr(m_start=’test’,m_end=2,duration=3))
+  expect_error(agr(m_start=1,m_end= "test" ,duration=3))
+  expect_error(agr(m_start=1,m_end=2,duration=’test’))
+  expect_error(agr(m_start=na,m_end=2,duration=3))
+  expect_error(agr(m_start=1,m_end=na,duration=3))
+  expect_error(agr(m_start=1,m_end=2,duration=na))
 })
+

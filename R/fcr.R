@@ -16,7 +16,7 @@
 #' @param fbw numeric; value that is providing the final weight in
 #' grams.
 #' @param ff numeric; value providing the feed fed in grams during the experiment.
-#' @param dm numeric; value within the interval of (0:1), indicating the relative 
+#' @param dm numeric; value within the interval of ]0:1], indicating the relative 
 #' dry matter content of the feed.
 #' 
 #' @return returns a numeric value that is the FCR.
@@ -56,15 +56,15 @@ fcr <- function(ibw,
   }
   
   
-  ## Check whether inputs are > 0
-  if (any(ibw < 0 | fbw < 0 | ff < 0)) {
-    warning("Some input values are negative. The result may not be meaningful.")
+  ## Check whether inputs are >= 0
+  if (any(ibw <= 0 | fbw <= 0 | ff <= 0)) {
+    warning("Some input values are negative. The result is not meaningful.")
   }
   
   
-  ## Check whether DM is within the interval [0,1]
-  if (any(dm < 0 | dm > 1)) {
-    warning("The DM content is outside of the interval [0,1]. The result is not meaningful.")
+  ## Check whether DM is within the interval ]0,1]
+  if (any(dm <= 0 | dm > 1)) {
+    warning("The DM content is outside of the interval ]0,1]. The result is not meaningful.")
   }
   
   

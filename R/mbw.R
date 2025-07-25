@@ -35,6 +35,26 @@
 mbw <- function(m_start, 
                 m_end, 
                 gbw = NULL){
+  # Check numeric and non-missing
+  if (!is.null(m_start) && (!is.numeric(m_start) || is.na(m_start))) stop("m_start must be numeric and not NA")
+  if (!is.null(m_end) && (!is.numeric(m_end) || is.na(m_end))) stop("m_end must be numeric and not NA")
+  if (!is.null(gbw) && (!is.numeric(gbw) || is.na(gbw))) stop("gbw must be numeric and not NA")
+  
+  # Check non-negative
+  if (!is.null(m_start) && m_start < 0) stop("m_start must be non-negative")
+  if (!is.null(m_start) && m_start==0) stop("m_start cannot be zero")
+  if (!is.null(m_end) && m_end < 0) stop("m_end must be non-negative")
+  if (!is.null(gbw) && gbw < 0) stop("gbw must be non-negative")
+  
+  # Check start ≤ end
+  if (!is.null(m_start) && !is.null(m_end) && m_start > m_end) stop("m_start cannot be greater than m_end")
+  
+  
+  # Calculate gain body weight if not provided
+  if (is.null(gbw)) {
+    gbw <- m_end - m_start
+  }
+  
   
   if(is.null(gbw) == TRUE){
     

@@ -1,10 +1,10 @@
 test_that( "Specific growth rate",{
-  expect_equal(sgr(ibw=1, fbw=2, duration=3,1))
-  expect_warning(sgr(ibw=1, fbw=0, duration=3))
-  expect_warning(sgr(ibw=0,fbw=2,duration=3))
-  expect_warning(sgr(ibw=-1,fbw=2,duration=3))
-  expect_warning(sgr(ibw=1,fbw=-2,duration=3))
-  expect_warning(sgr(ibw=1,fbw=2,duration=-3))
+ 
+  expect_error(sgr(ibw=1, fbw=0, duration=3))
+  expect_error(sgr(ibw=0,fbw=2,duration=3))
+  expect_error(sgr(ibw=-1,fbw=2,duration=3))
+  expect_error(sgr(ibw=1,fbw=-2,duration=3))
+  expect_error(sgr(ibw=1,fbw=2,duration=-3))
   expect_error(sgr(ibw=1,fbw=2,duration=0))
   expect_error(sgr(ibw= 'test',fbw=2,duration=3))
   expect_error(sgr(ibw=1,fbw= 'test',duration=3))

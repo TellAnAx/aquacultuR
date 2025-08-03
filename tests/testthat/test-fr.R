@@ -1,10 +1,10 @@
 test_that( "feeding rate",{
   expect_error(fr( m_feed=1, duration=0))
-  expect_warning(fr(m_feed=0,duration=1))
+  expect_error(fr(m_feed=0,duration=1))
   expect_error(fr(m_feed=na, duration=2))
   expect_error(fr(m_feed=1, duration=na))
   expect_error(fr(m_feed= 'test', duration=2))
   expect_error(fr(m_feed=1, duration= 'test'))
-  expect_warning(fr(m_feed=-1, duration= 2))
+  expect_error(fr(m_feed=-1, duration= 2))
   expect_error(fr(m_feed=1, duration=-2))
 })

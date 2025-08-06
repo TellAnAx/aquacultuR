@@ -6,7 +6,7 @@
 #' interpreted as the percentage of Body Weight gained each day.
 #' The SGR is a growth metric for aquaculture products (e.g., fish,
 #' crustaceans, bivalves, algae), describing the increase in body weight over
-#' a period of time. Body weight can be substituted by other weight metrics,
+#' a period of time. Body weight can be substituted by other metrics,
 #' such as length. However, body weight is the used in the vast majority
 #' of studies and alternatives are not advised for the sake of consistency.
 #'

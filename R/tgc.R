@@ -21,8 +21,8 @@
 #' animals due to its standardisation for temperature. It should, however, be
 #' taken into account, that the temperature during the experiment should remain
 #' within the optimum range. It is also noteworthy that the equation is 
-#' optimized for a constant temperature throughout the experiment
-
+#' optimized for a constant temperature throughout the experiment. 
+#' 
 #' @author Anıl Axel Tellbüscher
 #' @author Davide A. Machado e Silva
 #' @author Madhav Karthikeyan
@@ -39,29 +39,54 @@
 tgc <- function(ibw, 
                 fbw, 
                 duration, 
-                temp
+                temp, scale_coef = 1000
                 ){
-  #Checks
-  # NA checks
+  
+  # Checks
+  
+  # no-NAs
   if (any(is.na(c(ibw, fbw, duration, temp)))) 
-    stop("Inputs cannot be NA.")
+    stop("Inputs cannot be NA")
   
+  #numeric
+  if (!is.numeric(ibw) || !is.numeric(fbw) || !is.numeric(duration) || !is.numeric(temp)) 
+    stop("All inputs must be numeric")
   
-  # Zero or negative duration -> error
-  if (duration == 0) 
-    stop("Duration cannot be zero.")
+  #positive
+  if (ibw < 0) 
+    stop("IBW is negative. The result cannot be calculated.")
+  
+  if (fbw < 0) 
+    stop("FBW is negative. The result cannot be calculated.")
   
   if (duration < 0) 
-    stop("Duration cannot be negative.")
+    stop("Duration is negative. The result cannot be calculated.")
   
+  if (temp < 0) 
+    stop("Temperature is negative. The result is not meaningful.")
   
-  # Warnings for zero or negative values
-  if (ibw <= 0) warning("Initial body weight is zero or negative.")
-  if (fbw <= 0) warning("Final body weight is zero or negative.")
-  if (temp <= 0) warning("Temperature is zero or negative.")
+  # no-zeros
+  if (ibw == 0)
+    warning("IBW is zero. The result is not meaningful.")
+  
+  if (fbw == 0) 
+    warning("FBW is zero. The result is not meaningful.")
+  
+  if (duration == 0) 
+    warning("Duration is zero. The result is not meaningful.")
+  
+  if (temp == 0) 
+    warning("Temperature is zero. The result may not be meaningful.")
+  
+  # Ensure inputs have the same length
+  input_lengths <- c(length(ibw), length(fbw), length(duration))
+  if (length(unique(input_lengths)) != 1) {
+    stop("All input vectors must have the same length.")
+  }
+
 
   # Calculate the SGR
-  tgc <- ((fbw^(1/3) - ibw^(1/3)) / (duration * temp)) * 1000
+  tgc <- ((fbw^(1/3) - ibw^(1/3)) / (duration * temp)) * scale_coef
 
   # Return the result
   return(tgc)

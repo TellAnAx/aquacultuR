@@ -15,8 +15,9 @@
 #' 
 #' @author Anıl Axel Tellbüscher
 #' 
-#' @references Bureau, D. P., & Hua, K. (2006): Letter to the Editor of
-#' Aquaculture. Aquaculture, 252, p.103–105.
+#' @references Bureau, D. P., Harris, A. M. & Cho, C. Y. (1999): Apparent digestibility of rendered 
+#' animal protein ingredients for rainbow troue (Oncorhynchus mykiss). 
+#' Aquaculture, 180, p.345-358.
 #' 
 #' @examples
 #' # 900 g/kg (90%) dry matter content of feed

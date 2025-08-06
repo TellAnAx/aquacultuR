@@ -4,14 +4,18 @@
 #' Weight Gain (WG) when applied to weight data.
 #' 
 #' 
-#' @param m_start a numeric value providing the initial weight in grams.
-#' @param m_end a numeric value providing the final weight in grams.
-#' @param duration a numeric value describing the duration of the growth experiment.
+#' @param ibw numeric; value that is providing the initial body weight in
+#' grams.
+#' @param fbw numeric; value that is providing the final body weight in
+#' grams.
+#' @param duration numeric value that is providing the duration of the
+#' experiment in days.
 #' 
-#' @return returns a numeric value that is the AGR.
+#' @return returns a numeric value which is the total body weight change
+#' over the specified period of time.
 #' 
 #' @author Anıl Axel Tellbüscher
-#' 
+#
 #' 
 #' @references Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 #' (2016): A review on fish growth calculation: multiple functions in fish
@@ -28,40 +32,40 @@
 #' 
 #' 
 #' @export
-agr <- function(m_start, 
-                m_end, 
+agr <- function(ibw, 
+                fbw, 
                 duration){
   # checks
   # Error checks
-  if (any(is.na(c(m_start, m_end, duration)))) 
+  if (any(is.na(c(ibw, fbw, duration)))) 
     stop("Inputs cannot be NA")
   
-  if (!is.numeric(m_start) || !is.numeric(m_end) || !is.numeric(duration)) 
+  if (!is.numeric(ibw) || !is.numeric(fbw) || !is.numeric(duration)) 
     stop("All inputs must be numeric")
   
-  if (m_start < 0) 
-    stop("m_start cannot be negative")
+  if (ibw < 0) 
+    stop("ibw cannot be negative")
   
-  if (m_end < 0) 
-    stop("m_end cannot be negative")
+  if (fbw < 0) 
+    stop("fbw cannot be negative")
   
   if (duration < 0) 
     stop("duration cannot be negative")
   
   
   # Warnings for zeros
-  if (m_start == 0)
-    warning("m_start is zero")
+  if (ibw == 0)
+    warning("ibw is zero")
   
-  if (m_end == 0) 
-    warning("m_end is zero")
+  if (fbw == 0) 
+    warning("fbw is zero")
   
   if (duration == 0) 
     warning("duration is zero")
   
   
   # Calculate the absolute growth rate
-  agr <- (m_end - m_start) / duration
+  agr <- (fbw - ibw) / duration
   
   # Return the result
   return(agr)

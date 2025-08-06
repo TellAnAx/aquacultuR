@@ -40,28 +40,27 @@
 sgr <- function(ibw, fbw, duration){
 
   # Checks----
-  # 1. Check for non-numeric or NA values -> error
-  for (nm in names(all_inputs)) 
-    if (!is.numeric(all_inputs[[nm]]) || is.na(all_inputs[[nm]])) 
-      stop(paste(nm, "must be numeric and not NA"))
-    
+  ## Ensure inputs are numeric
+  stopifnot(is.numeric(ibw), is.numeric(fbw), 
+            is.numeric(duration))
   
   
-  # 2. Check for negative values -> error
-  for (nm in names(all_inputs)) 
-    if (all_inputs[[nm]] < 0) 
-      stop(paste(nm, "must be non-negative"))
+  ## Ensure inputs have the same length
+  input_lengths <- c(length(ibw), length(fbw), length(duration))
+  if (length(unique(input_lengths)) != 1) {
+    stop("All input vectors must have the same length.")
+  }
   
   
+  ## Check whether inputs are >= 0
+  if (any(ibw == 0 | fbw == 0 | duration == 0)) {
+    warning("Some input values are negative. The result is not meaningful.")
+  }
   
-  # 3. Check ibw > fbw -> warning
-  if (ibw > fbw) 
-    warning("Initial body weight is greater than final body weight; growth may be negative")
-  
-  
-  # 4. Check duration = 0 -> error
-  if (duration == 0) 
-    stop("Duration must be greater than 0")
+  ## Check whether inputs are < 0
+  if (any(ibw < 0 | fbw < 0 | duration < 0)) {
+    stop("Some input values are negative. The result cannot be calculated.")
+  }
   
 
 

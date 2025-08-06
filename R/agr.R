@@ -15,12 +15,17 @@
 #' over the specified period of time.
 #' 
 #' @author Anıl Axel Tellbüscher
+#' @author Madhav Karthikeyan
+#' @author Davide A. Machado e Silva
 #
 #' 
 #' @references Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 #' (2016): A review on fish growth calculation: multiple functions in fish
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
+#' 
+#' Hopkins K.D. (1992) Reporting fish growth, a review of the basics. Journal 
+#' of World Aquaculture Society, 23, p.173-179
 #' 
 #' @importFrom dplyr mutate
 #' 

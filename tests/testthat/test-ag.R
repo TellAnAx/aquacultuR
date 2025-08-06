@@ -7,4 +7,5 @@ test_that("Absolute growth calcultion works", {
   expect_error(ag(ibw = 1, fbw = NA))
   expect_warning(ag(ibw = -1, fbw = 2))
   expect_warning(ag(ibw = 1, fbw = -2))
+  
 })

@@ -36,14 +36,14 @@
 #' 
 #' 
 #' @export
-tgc <- function(m_start, 
-                m_end, 
+tgc <- function(ibw, 
+                fbw, 
                 duration, 
                 temp
                 ){
   #Checks
   # NA checks
-  if (any(is.na(c(m_start, m_end, duration, temp)))) 
+  if (any(is.na(c(ibw, fbw, duration, temp)))) 
     stop("Inputs cannot be NA.")
   
   
@@ -56,12 +56,12 @@ tgc <- function(m_start,
   
   
   # Warnings for zero or negative values
-  if (m_start <= 0) warning("Initial body weight is zero or negative.")
-  if (m_end <= 0) warning("Final body weight is zero or negative.")
+  if (ibw <= 0) warning("Initial body weight is zero or negative.")
+  if (fbw <= 0) warning("Final body weight is zero or negative.")
   if (temp <= 0) warning("Temperature is zero or negative.")
 
   # Calculate the SGR
-  tgc <- ((m_end^(1/3) - m_start^(1/3)) / (duration * temp)) * 1000
+  tgc <- ((fbw^(1/3) - ibw^(1/3)) / (duration * temp)) * 1000
 
   # Return the result
   return(tgc)

@@ -39,30 +39,41 @@
 #' @export
 sgr <- function(ibw, fbw, duration){
 
-  # Checks----
-  ## Ensure inputs are numeric
-  stopifnot(is.numeric(ibw), is.numeric(fbw), 
-            is.numeric(duration))
+  # Checks
   
+  # no-NAs
+  if (any(is.na(c(ibw, fbw, duration)))) 
+    stop("Inputs cannot be NA")
+  
+  #numeric
+  if (!is.numeric(ibw) || !is.numeric(fbw) || !is.numeric(duration)) 
+    stop("All inputs must be numeric")
+  
+  #positive
+  if (ibw < 0) 
+    stop("IBW is negative. The result cannot be calculated.")
+  
+  if (fbw < 0) 
+    stop("FBW is negative. The result cannot be calculated.")
+  
+  if (duration < 0) 
+    stop("Duration is negative. The result cannot be calculated.")
+  
+  # no-zeros
+  if (ibw == 0)
+    warning("IBW is zero. The result is not meaningful.")
+  
+  if (fbw == 0) 
+    warning("FBW is zero. The result is not meaningful.")
+  
+  if (duration == 0) 
+    warning("duration is zero. The result is not meaningful.")
   
   ## Ensure inputs have the same length
   input_lengths <- c(length(ibw), length(fbw), length(duration))
   if (length(unique(input_lengths)) != 1) {
     stop("All input vectors must have the same length.")
   }
-  
-  
-  ## Check whether inputs are >= 0
-  if (any(ibw == 0 | fbw == 0 | duration == 0)) {
-    warning("Some input values are negative. The result is not meaningful.")
-  }
-  
-  ## Check whether inputs are < 0
-  if (any(ibw < 0 | fbw < 0 | duration < 0)) {
-    stop("Some input values are negative. The result cannot be calculated.")
-  }
-  
-
 
   # Calculations----
   ## Calculate IGR

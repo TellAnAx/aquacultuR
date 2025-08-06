@@ -37,7 +37,7 @@
 #'
 #'
 #' @export
-sgr <- function(ibw, fbw, duration){
+sgr <- function(ibw, fbw, duration, return_igr = FALSE){
 
   # Checks
   
@@ -83,5 +83,9 @@ sgr <- function(ibw, fbw, duration){
   sgr <- ((exp(igr)) - 1) * 100
 
   ## Return the result
-  return(sgr)
+  if (return_igr) {
+    return(list(sgr = sgr, igr = igr))
+  } else {
+    return(sgr)
+  }
 }

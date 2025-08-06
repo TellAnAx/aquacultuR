@@ -3,9 +3,9 @@
 #' A function that calculates the geometric mean bodyweight.
 #' 
 #' 
-#' @param m_start a numeric value that is providing the initial weight in
+#' @param ibw a numeric value that is providing the initial weight in
 #' grams.
-#' @param m_end a numeric value that is providing the final weight in
+#' @param fbw a numeric value that is providing the final weight in
 #' grams.
 #' 
 #' @return returns a numeric value that is the geometric bodyweight.
@@ -24,12 +24,31 @@
 #' 
 #' 
 #' @export
-gbw <- function(m_start, 
-                m_end){
+gbw <- function(ibw, 
+                fbw){
   
-  # Calculate the geometric mean bodyweight
-  gbw = sqrt(m_start * m_end) 
+  # Checks----
+  ## Ensure inputs are numeric
+  stopifnot(is.numeric(ibw), is.numeric(fbw))
   
-  # Return the result
+  
+  ## Ensure inputs have the same length
+  input_lengths <- c(length(ibw), length(fbw))
+  if (length(unique(input_lengths)) != 1) {
+    stop("All input vectors must have the same length.")
+  }
+  
+  
+  ## Check whether inputs are >= 0
+  if (any(ibw <= 0 | fbw <= 0)) {
+    stop("Some input values are negative. The result cannot be calculated.")
+  }
+  
+  
+  # Calculations----
+  ## Calculate the geometric mean bodyweight
+  gbw = sqrt(ibw * fbw) 
+  
+  ## Return the result
   return(gbw)
 }

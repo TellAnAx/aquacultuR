@@ -1,10 +1,23 @@
-test_that("geometric body weight",{
+test_that("gbw() throws an error if inputs are negative",{
+  expect_error(gbw(ibw  = -1, fbw = 2))
+  expect_error(gbw(ibw = 1, fbw = -2))
+})
 
-  expect_warning(gbw(m_start=-1, m_end=2))
-  expect_warning(gbw(m_start=1, m_end=-2))
-  expect_error(gbw(m_start=na,m_end=2))
-  expect_error(gbw(m_start=1, m_end=na))
-  expect_error(gbw(m_start= 'test', m_end=2))
-  expect_error(gbw(m_start=1, m_end= 'test'))
-  expect_error(gbw(m_start>m_end))
+test_that("gbw() throws an error if inputs are NA", {
+  expect_error(gbw(ibw = NA,fbw = 2))
+  expect_error(gbw(ibw = 1, fbw = NA))
+})
+
+test_that("gbw() throws an error if inputs are non-numeric", {
+  expect_error(gbw(ibw =  "test", fbw = 2))
+  expect_error(gbw(ibw = 1, fbw = "test"))
+})
+
+test_that("gbw() throws an error if inputs are not of the same length", {
+  expect_error(gbw(ibw =  c(1,2), fbw = 2))
+  expect_error(gbw(ibw = 1, fbw = c(1,2)))
+})
+
+test_that("gbw() calculates the Geometric Bodyweight correctly", {
+  expect_equal(gbw(ibw = 1, fbw = 4), 2)
 })

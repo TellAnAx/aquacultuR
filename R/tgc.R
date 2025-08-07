@@ -13,6 +13,8 @@
 #' experiment in days.
 #' @param temp a numeric value that is providing the average temperature during
 #' the experiment in degrees Celsius.
+#' @param scale_coef Scaling coefficient. A numeric value that scales the 
+#' TGC result so it is more intuitive and interpretable. Default is 1000. 
 #' 
 #' @return Returns a numeric value that is the TGC. 
 #' 

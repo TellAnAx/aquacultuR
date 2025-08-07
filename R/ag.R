@@ -31,6 +31,7 @@ ag <- function(ibw,
                fbw) {
 
   # Checks----
+  
   ## Ensure inputs are numeric
   stopifnot(is.numeric(ibw), is.numeric(fbw))
 

@@ -12,7 +12,7 @@
 #' @param fi numeric; value providing the total feed intake in grams
 #' during the experiment.
 #' @param dm numeric; value indicating the dry matter content of the feed.
-#' Value in the interval of (0:1),
+#' Value in the interval of (0:1). Default is 1.
 #' 
 #' @return a numeric value that is the feed conversion efficiency (FCE)
 #' 

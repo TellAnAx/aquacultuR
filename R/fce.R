@@ -21,31 +21,56 @@
 #' @author Madhav Karthikeyan
 #' 
 #' @export
-fce <- function(m_start,
-                m_end,
+fce <- function(ibw,
+                fbw,
                 fi,
                 dm = 1){
-  #Checks
-  if (any(is.na(c(m_start, m_end, fi, dm))))
+  
+  # Checks
+  
+  # no-NAs
+  if (any(is.na(c(ibw, fbw, fi)))) 
     stop("Inputs cannot be NA")
   
-  if (!is.numeric(m_start) || !is.numeric(m_end) ||
-      !is.numeric(fi) || !is.numeric(dm))
+  #numeric
+  if (!is.numeric(ibw) || !is.numeric(fbw) || !is.numeric(fi)) 
     stop("All inputs must be numeric")
   
-  if (m_start == 0)
-    stop("m_start cannot be zero")
+  #positive
+  if (ibw < 0) 
+    stop("IBW is negative. The result cannot be calculated.")
   
-  if (m_start < 0 || m_end < 0 || fi < 0 || dm < 0)
-    warning("Inputs should not be negative")
+  if (fbw < 0) 
+    stop("FBW is negative. The result cannot be calculated.")
   
-  if (fi == 0 || dm == 0 || m_end == 0)
-    warning("Feed intake, dry matter, or final mass is zero, result may be unreliable")
+  if (fi < 0) 
+    stop("Feed intake is negative. The result cannot be calculated.")
   
-  fce <- 1/fcr(m_start = m_start,
-               m_end = m_end,
-               fi = fi,
-               dm = dm)
+  # no-zeros
+  if (ibw == 0)
+    warning("IBW is zero. The result is not meaningful.")
+  
+  if (fbw == 0) 
+    warning("FBW is zero. The result is not meaningful.")
+  
+  if (fi == 0) 
+    warning("Feed intake is zero. The result is not meaningful.")
+  
+  # constrain dm
+  
+  if (dm > 1) 
+    stop("Dry matter content is above 100%. The result is not meaningful.")
+  
+  if (dm < 0) 
+    stop("Dry matter content is below 0%. The result is not meaningful.")
+  
+  ## Ensure inputs have the same length
+  input_lengths <- c(length(ibw), length(fbw), length(fi))
+  if (length(unique(input_lengths)) != 1) {
+    stop("All input vectors must have the same length.")
+  }
+  
+  fce <- (fbw - ibw)/(fi * dm)
   
   return(fce)
 }

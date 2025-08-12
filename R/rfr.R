@@ -16,6 +16,7 @@
 rfr <- function(m_feed = NULL, 
                 ag = NULL,
                 duration = NULL) {
+
   
   # Checks----
   ## Ensure inputs are numeric

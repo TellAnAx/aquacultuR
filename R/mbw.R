@@ -1,7 +1,9 @@
 #' Metabolic bodyweight (MBW)
 #' 
 #' The metabolic bodyweight is the rate of energy expenditure in dependence of
-#' the bodyweight of an organism. 
+#' the bodyweight of an organism. The metabolism of larger animals is generally 
+#' slower per Kg when comparing with smaller animals. An exponent between 0-1 
+#' takes that relationship into account in a fairly simple equation. 
 #' 
 #' @param ibw a numeric value that is providing the initial weight in
 #' grams.
@@ -11,10 +13,12 @@
 #' 
 #' @return returns a numeric value that is the metabolic bodyweight.
 #' 
-#' @note The calculation is based on Lupatsch et al. (2003), with an exponent of 0.8.
+#' @note Default exponent is suited to fish only. It was set to 0.8 based on 
+#' Lupatsch et al. (2003) and should be adjusted to other scenarios.
 #' 
 #' @author Anıl Axel Tellbüscher
-#' 
+#' @author Davide A. Machado e Silva
+#' @author Madhav Karthikeyan
 #' 
 #' @references Lupatsch, I. et al. (2003): Comparison of energy and protein
 #' efficiency among three fish species gilthead sea bream (Sparus aurata),

@@ -28,12 +28,18 @@ rg <- function(ibw,
   
   # Checks----
   
-  ## Ensure inputs are numeric
-  stopifnot(is.numeric(ibw), is.numeric(fbw))
+  ## Check whether inputs are NA
+  stopifnot("Inputs cannot be NA" = !is.na(ibw), !is.na(fbw))
   
-  ## Check whether inputs are > 0
-  if (any(ibw < 0 | fbw < 0)) {
-    warning("Some input values are negative. The result may not be meaningful.")
+  ## Check whether inputs are non-numeric
+  stopifnot("All inputs must be numeric" = is.numeric(ibw), is.numeric(fbw))
+  
+  ## Check whether ibw == 0
+  stopifnot("'ibw' == 0. The result cannot be calculated." = all(ibw != 0))
+  
+  ## Check whether inputs are < 0
+  if (any(ibw < 0) | any(fbw < 0)) {
+    warning("Some inputs values are negative. The result may not be meaningful.")
   }
   
   ## Check whether inputs have the same length

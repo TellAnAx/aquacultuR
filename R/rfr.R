@@ -21,3 +21,9 @@ rfr <- function(m_feed = NULL,
   rfr <- m_feed / (m_bio * duration)
   return(rfr)
 }
+
+
+
+#' @rdname rfr
+#' @export
+fr <- rfr

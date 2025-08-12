@@ -17,13 +17,16 @@ fr <- function(m_feed = NULL,
   
   # Checks----
   ## Ensure inputs are numeric
-  stopifnot("All inputs must be numeric!" = !is.numeric(m_feed) | !is.numeric(duration))
+  stopifnot("All inputs must be numeric!" = is.numeric(m_feed) & is.numeric(duration))
   
   ## Ensure duration != 0
-  stopifnot("'duration' must not be zero!" = duration == 0)
+  stopifnot("'duration' must not be zero!" = duration != 0)
   
   ## Warn if input is negative
-  warnifnot("An input is negative. The result is not meaningful." = m_feed < 0 | duration < 0)
+  if(any(m_feed < 0) | any(duration < 0)) {
+    warning("An input is negative. The result is not meaningful.")
+  }
+    
   
   
   

@@ -39,16 +39,16 @@ rgr <- function(m_start,
   stopifnot("Inputs must be numeric!" = is.numeric(m_start) & is.numeric(m_end) & is.numeric(duration))
   
   ## Ensure m_start and duration are != 0
-  stopifnot("Inputs must be != 0!" = m_start == 0 & duration == 0)
+  stopifnot("Inputs must be != 0!" = m_start != 0 & duration != 0)
   
   ## Warn if inputs are < 0
-  if(m_start < 0 | m_end < 0 | duration < 0) {
+  if(any(m_start < 0) | any(m_end < 0) | any(duration < 0)) {
     warning("Inputs < 0. The result is not meaningful.")
   }
   
   ## Warn if inputs are not of the same length
   if(any(c(length(m_start), length(m_end), length(duration)) > 1)) {
-    warning("Inputs are not of same length!")
+    message("Inputs are not of same length.")
   }
   
   

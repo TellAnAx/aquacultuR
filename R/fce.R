@@ -26,50 +26,46 @@ fce <- function(ibw,
                 fi,
                 dm = 1){
   
-  # Checks
-  
-  # no-NAs
-  if (any(is.na(c(ibw, fbw, fi)))) 
+  # Checks----
+  ## Check whether inputs are NA
+  if (any(is.na(c(ibw, fbw, fi, dm)))) 
     stop("Inputs cannot be NA")
   
-  #numeric
-  if (!is.numeric(ibw) || !is.numeric(fbw) || !is.numeric(fi)) 
+  
+  ## Check whether inputs are non-numeric
+  if (any(!is.numeric(c(ibw, fbw, fi, dm))))
     stop("All inputs must be numeric")
   
-  #positive
-  if (ibw < 0) 
-    stop("IBW is negative. The result cannot be calculated.")
   
-  if (fbw < 0) 
-    stop("FBW is negative. The result cannot be calculated.")
+  ## Check whether inputs == 0
+  if (any(fi == 0)) 
+    stop("Feed intake is zero. The result cannot be calculated.")
   
-  if (fi < 0) 
-    stop("Feed intake is negative. The result cannot be calculated.")
+  if (any(dm == 0)) 
+    stop("Dry matter is zero. The result cannot be calculated.")
   
-  # no-zeros
-  if (ibw == 0)
-    warning("IBW is zero. The result is not meaningful.")
   
-  if (fbw == 0) 
-    warning("FBW is zero. The result is not meaningful.")
+  ## Check whether inputs are < 0
+  if (any(c(ibw, fbw) <= 0) | any(fi < 0)) 
+    warning("The result is not meaningful.")
   
-  if (fi == 0) 
-    warning("Feed intake is zero. The result is not meaningful.")
   
-  # constrain dm
+  ## Check whether dm is outside of interval ]0,1]
+  if (any(dm > 1))
+    warning("Dry matter content is above 100%. The result is not meaningful.")
   
-  if (dm > 1) 
-    stop("Dry matter content is above 100%. The result is not meaningful.")
+  if (any(dm < 0))
+    warning("Dry matter content is below 0%. The result is not meaningful.")
   
-  if (dm < 0) 
-    stop("Dry matter content is below 0%. The result is not meaningful.")
   
-  ## Ensure inputs have the same length
-  input_lengths <- c(length(ibw), length(fbw), length(fi))
-  if (length(unique(input_lengths)) != 1) {
-    stop("All input vectors must have the same length.")
+  ## Check whether inputs have the same length
+  if (any(c(length(ibw), length(fbw), length(fi), length(dm)) != 1)) {
+    message("Inputs are not of the same length.")
   }
   
+  
+  
+  # Calculations----
   fce <- (fbw - ibw)/(fi * dm)
   
   return(fce)

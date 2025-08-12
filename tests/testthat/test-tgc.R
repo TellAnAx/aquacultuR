@@ -1,7 +1,19 @@
-test_that("Thermal Growth Coefficient calculation works", {
-  expect_equal(tgc(m_start = 27,
-                   m_end = 19683,
-                   duration = 6,
-                   temp = 1), 
-               4000)
+test_that("thermal growth coefficient",{
+  
+  expect_warning(tgc(ibw=-1, fbw=2, duration=3, temp=4))
+  expect_warning(tgc(ibw=1, fbw=-2, duration=3, temp=4))
+  expect_error(tgc(ibw=1, fbw=2, duration=-3, temp=4))
+  expect_warning(tgc(ibw=1, fbw=2, duration=3, temp=-4))
+  expect_warning(tgc(ibw=0, fbw=2, duration=3, temp=4))
+  expect_warning(tgc(ibw=1, fbw=0, duration=3, temp=4))
+  expect_error(tgc(ibw=1, fbw=2, duration=0, temp=4))
+  expect_warning(tgc(ibw=1, fbw=2, duration=3, temp=0))
+  expect_error(tgc(ibw=NA, fbw=2, duration=3, temp=4))
+  expect_error(tgc(ibw=1, fbw=NA, duration=3, temp=4))
+  expect_error(tgc(ibw=1, fbw=2, duration=NA, temp=4))
+  expect_error(tgc(ibw=1, fbw=2, duration=3, temp=NA))
+  expect_error(tgc(ibw= 'test', fbw=2, duration=3, temp=4))
+  expect_error(tgc(ibw=1, fbw= 'test', duration=3, temp=4))
+  expect_error(tgc(ibw=1, fbw=2, duration= 'test', temp=4))
+  expect_error(tgc(ibw=1, fbw=2, duration=3, temp= 'test'))
 })

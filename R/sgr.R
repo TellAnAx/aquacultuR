@@ -6,7 +6,7 @@
 #' interpreted as the percentage of Body Weight gained each day.
 #' The SGR is a growth metric for aquaculture products (e.g., fish,
 #' crustaceans, bivalves, algae), describing the increase in body weight over
-#' a period of time. Body weight can be substituted by other weight metrics,
+#' a period of time. Body weight can be substituted by other metrics,
 #' such as length. However, body weight is the used in the vast majority
 #' of studies and alternatives are not advised for the sake of consistency.
 #'
@@ -37,22 +37,43 @@
 #'
 #'
 #' @export
-sgr <- function(ibw, fbw, duration){
+sgr <- function(ibw, fbw, duration, return_igr = FALSE){
 
-  # Checks----
-  ## Ensure inputs are numeric
-  stopifnot(is.numeric(ibw), is.numeric(fbw), is.numeric(duration))
-
+  # Checks
+  
+  # no-NAs
+  if (any(is.na(c(ibw, fbw, duration)))) 
+    stop("Inputs cannot be NA")
+  
+  #numeric
+  if (!is.numeric(ibw) || !is.numeric(fbw) || !is.numeric(duration)) 
+    stop("All inputs must be numeric")
+  
+  #positive
+  if (ibw < 0) 
+    stop("IBW is negative. The result cannot be calculated.")
+  
+  if (fbw < 0) 
+    stop("FBW is negative. The result cannot be calculated.")
+  
+  if (duration < 0) 
+    stop("Duration is negative. The result cannot be calculated.")
+  
+  # no-zeros
+  if (ibw == 0)
+    warning("IBW is zero. The result is not meaningful.")
+  
+  if (fbw == 0) 
+    warning("FBW is zero. The result is not meaningful.")
+  
+  if (duration == 0) 
+    warning("duration is zero. The result is not meaningful.")
+  
   ## Ensure inputs have the same length
-  if (length(ibw) != length(fbw)) {
-    stop("Error: 'ibw' and 'fbw' must be of the same length.")
+  input_lengths <- c(length(ibw), length(fbw), length(duration))
+  if (length(unique(input_lengths)) != 1) {
+    stop("All input vectors must have the same length.")
   }
-
-  ## Check whether inputs are > 0
-  if (any(ibw < 0 | fbw < 0 | duration < 0)) {
-    warning("Some input values are negative. The result is not meaningful.")
-  }
-
 
   # Calculations----
   ## Calculate IGR
@@ -62,5 +83,9 @@ sgr <- function(ibw, fbw, duration){
   sgr <- ((exp(igr)) - 1) * 100
 
   ## Return the result
-  return(sgr)
+  if (return_igr) {
+    return(list(sgr = sgr, igr = igr))
+  } else {
+    return(sgr)
+  }
 }

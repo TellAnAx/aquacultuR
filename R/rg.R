@@ -1,8 +1,8 @@
-#' Relative Growth (AG)
+#' Relative Growth (RG)
 #'
-#' A function that calculates the Relative Growth (AG) based on the 
+#' A function that calculates the Relative Growth (RG) based on the 
 #' Initial Body weight (IBW; ibw) and the Final Body Weight (FBW; fbw)
-#' in gram (g).
+#' in grams (g).
 #'
 #' @param ibw numeric; value providing the initial weight in grams.
 #' @param fbw numeric; value providing the final weight in grams.
@@ -18,7 +18,7 @@
 #' @examples
 #' data(weight2)
 #'
-#' dplyr::mutate(weight2, AG = rg(W_start, W_end))
+#' dplyr::mutate(weight2, RG = rg(W_start, W_end))
 #'
 #'
 #'
@@ -44,7 +44,7 @@ rg <- function(ibw,
   
   
   # Calculations----
-  ## Calculate AG
+  ## Calculate RG
   rg <- (fbw - ibw) / ibw
   
   ## Return result

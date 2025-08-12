@@ -26,10 +26,15 @@ rfr <- function(m_feed = NULL,
     stop("Error: 'm_feed' and 'm_bio' must be of the same length.")
   }
   
-  ## Check whether inputs are > 0
-  if (any(m_feed < 0 | m_bio < 0 | duration < 0)) {
-    warning("Some input values are negative. The result is not meaningful.")
-  }  
+  ## Check whether inputs are != 0
+  if (any(m_bio == 0 | duration == 0)) {
+    stop("Error: 'm_bio' and/or 'duration' is equal to zero. The result cannot be calculated.")
+  }
+  
+  ## Check whether inputs are < 0
+  if (any(m_feed <0 | m_bio < 0 | duration < 0)) {
+    warning("Warning: One or many inputs are smaller than zero. The result is not meaningful.")
+  }
   
   
   

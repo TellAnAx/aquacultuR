@@ -14,8 +14,20 @@
 #' @export
 fr <- function(m_feed = NULL, 
                duration = NULL) {
-  stopifnot(!is.null(m_feed) | !is.null(duration))
   
+  # Checks----
+  ## Ensure inputs are numeric
+  stopifnot("All inputs must be numeric!" = !is.numeric(m_feed) | !is.numeric(duration))
+  
+  ## Ensure duration != 0
+  stopifnot("'duration' must not be zero!" = duration == 0)
+  
+  ## Warn if input is negative
+  warnifnot("An input is negative. The result is not meaningful." = m_feed < 0 | duration < 0)
+  
+  
+  
+  # Calculations----
   fr <- m_feed / duration
   return(fr)
 }

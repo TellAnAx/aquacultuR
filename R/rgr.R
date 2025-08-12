@@ -1,15 +1,15 @@
 #' Relative Growth Rate (RGR)
 #' 
-#' A function that calculates the Relative Growth Rate (RGR).
+#' A function that calculates the Relative Growth Rate (RGR), which is the relative
+#' weight increase per time unit.
 #' 
 #' 
-#' @param m_start a numeric value that is providing the initial weight in
-#' grams.
-#' @param m_end a numeric value that is providing the final weight in
-#' grams.
-#' @param duration a numeric value describing the duration of the growth experiment.
+#' @param m_start numeric; provides the initial weight in gram.
+#' @param m_end numeric; provides the final weight in gram.
+#' @param duration numeric; duration of the growth experiment.
 #' 
-#' @return returns a numeric value that is the RGR.
+#' @return either a single numeric value or vector holding the calculated RGR 
+#' values. Multiply by 100 for conversion into percentage.
 #' 
 #' 
 #' @author Anıl Axel Tellbüscher
@@ -31,12 +31,32 @@
 #' 
 #' @export
 rgr <- function(m_start, 
-                m_end, 
+                m_end,
                 duration){
   
-  # Calculate the relative growth rate
-  rgr = (m_end - m_start) / (duration * sqrt(m_end * m_start))
+  # Checks----
+  ## Ensure inputs are numeric
+  stopifnot("Inputs must be numeric!" = is.numeric(m_start) & is.numeric(m_end) & is.numeric(duration))
   
-  # Return the result
+  ## Ensure m_start and duration are != 0
+  stopifnot("Inputs must be != 0!" = m_start == 0 & duration == 0)
+  
+  ## Warn if inputs are < 0
+  if(m_start < 0 | m_end < 0 | duration < 0) {
+    warning("Inputs < 0. The result is not meaningful.")
+  }
+  
+  ## Warn if inputs are not of the same length
+  if(any(c(length(m_start), length(m_end), length(duration)) > 1)) {
+    warning("Inputs are not of same length!")
+  }
+  
+  
+  
+  # Calculations----
+  ## Calculate the relative growth rate
+  rgr = (m_end - m_start) / (m_start * duration)
+  
+  ## Return the result
   return(rgr)
 }

@@ -1,4 +1,4 @@
-test_that("Nutrient efficiency ratio",{
+test_that("Nutrient efficiency ratio (NER) () throws error if values are negative",{
   
   expect_error( ner(m_start=-1, m_end=2, ag=3, fi=4, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=-2, ag=3, fi=4, dm=5, nut_f=6))
@@ -6,18 +6,24 @@ test_that("Nutrient efficiency ratio",{
   expect_error( ner( m_start=1, m_end=2, ag=3, fi=-4, dm=5, nut_f=6))
   expect_error( ner( m_start=1, m_end=2, ag=3, fi=4, dm=-5, nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm=5, nut_f=-6))
+})
+test_that(" NER() throws error if values are zero",{
   expect_error( ner(m_start=0, m_end=2, ag=3, fi=4, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=0, ag=3, fi=4, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag=0, fi=4, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag=3, fi=0, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm=0, nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm=5, nut_f=0))
+})
+test_that(" NER() thorws error if the values are non numerical",{
   expect_error( ner(m_start= 'test', m_end=2, ag=3, fi=4, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end= 'test', ag=3, fi=4, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag= 'test', fi=4, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag=3, fi= 'test', dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm= 'test', nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm=5, nut_f= 'test'))
+})
+test_that(" NER() throws error when the input is NA"{
   expect_error( ner(m_start=NA, m_end=2, ag=3, fi=4, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=NA, ag=3, fi=4, dm=5, nut_f=6))
   expect_error( ner(m_start=1, m_end=2, ag=NA, fi=4, dm=5, nut_f=6))
@@ -26,3 +32,4 @@ test_that("Nutrient efficiency ratio",{
   expect_error( ner(m_start=1, m_end=2, ag=3, fi=4, dm=5, nut_f=NA))
   expect_error( ner(m_start=3, m_end=2, ag=3, fi=4, dm=5, nut_f=6))
 })
+

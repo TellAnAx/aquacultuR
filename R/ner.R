@@ -13,7 +13,7 @@
 #' @param fi numeric; value providing the total feed intake in grams during the 
 #' experiment.
 #' @param dm numeric; value within the interval of (0,1), indicating the dry matter
-#' content of the feed.
+#' content of the feed. Default is 1 (100%).
 #' @param nut_f numeric; value within the interval of (0,1), indicating the 
 #' inclusion rate of the nutrient of interest in the feed fed.
 #' 
@@ -31,8 +31,8 @@
 ner <- function(ibw, 
                 fbw, 
                 fi,
-                dm = 1,
-                nut_f) {
+                nut_f,
+                dm = 1) {
   
   # Checks----
   ## Check for NA values
@@ -55,13 +55,13 @@ ner <- function(ibw,
     warning("Inputs are negative. Result is not meaningful.")
   
   
-  ## Check for dm > 1
-  if(dm > 1)
-    warning("DM is >100%. The result is not meaningful.")
+  ## Check for dm | nut_f > 1
+  if(any(c(dm, nut_f) > 1))
+    warning("Input is >1 (>100%). The result is not meaningful.")
   
   
   ## Check ibw > fbw
-  if (ibw > fbw)
+  if (any(ibw > fbw))
     warning("ibw is greater than fbw.")
   
   

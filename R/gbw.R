@@ -1,6 +1,7 @@
-#' Geometric Bodyweight (GBW)
+#' Geometric Mean Bodyweight (GMBW)
 #' 
-#' A function that calculates the geometric mean bodyweight.
+#' A function that calculates the geometric mean of the initial and final 
+#' bodyweight.
 #' 
 #' 
 #' @param ibw a numeric value that is providing the initial weight in
@@ -8,7 +9,7 @@
 #' @param fbw a numeric value that is providing the final weight in
 #' grams.
 #' 
-#' @return returns a numeric value that is the geometric bodyweight.
+#' @return returns a numeric value that is the geometric mean bodyweight.
 #' 
 #' 
 #' @author Anıl Axel Tellbüscher
@@ -19,7 +20,7 @@
 #' @examples
 #' data(weight2)
 #' 
-#' dplyr::mutate(weight2, GBW = gbw(W_start, W_end))
+#' dplyr::mutate(weight2, GMBW = gbw(W_start, W_end))
 #' 
 #' 
 #' 

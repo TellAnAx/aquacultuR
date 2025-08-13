@@ -10,6 +10,8 @@
 #' @param fbw a numeric value that is providing the final weight in
 #' grams.
 #' @param gbw a numeric value providing the geometric bodyweight in grams.
+#' @param mb_exp a numeric value between 0-1 providing the exponent. Default 
+#' is 0.8 adapted to most fish species.
 #' 
 #' @return returns a numeric value that is the metabolic bodyweight.
 #' 
@@ -38,7 +40,8 @@
 #' @export
 mbw <- function(ibw, 
                 fbw, 
-                gbw = NULL){
+                gbw = NULL,
+                mb_exp = 0.8){
   # Checks----
   
   ## Check whether inputs are NA
@@ -71,11 +74,11 @@ mbw <- function(ibw,
   if(is.null(gbw) == TRUE){
     
     # Calculate the geometric mean bodyweight using initWeight and finalWeight
-    mbw <- sqrt(ibw * fbw) ^ 0.8
+    mbw <- sqrt(ibw * fbw) ^ mb_exp
     
   } else {
     
-    mbw <- gbw ^ 0.8
+    mbw <- gbw ^ mb_exp
   }
   
   # Return the result

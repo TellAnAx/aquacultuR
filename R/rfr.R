@@ -43,3 +43,9 @@ rfr <- function(m_feed = NULL,
   rfr <- m_feed / (ag * duration)
   return(rfr)
 }
+
+
+
+#' @rdname rfr
+#' @export
+fr <- rfr

@@ -32,12 +32,12 @@
 #' ner(ag = 9, fi = 24, nut_f = 0.5)
 #' 
 #' @export
-ner <- function(ibw = NULL, 
-                fbw = NULL, 
+ner <- function(ibw, 
+                fbw, 
                 ag = NULL, 
-                fi = NULL,
+                fi,
                 dm = 1,
-                nut_f = NULL) {
+                nut_f) {
   
   # Checks----
   ## Check for NA values
@@ -75,6 +75,11 @@ ner <- function(ibw = NULL,
                      length(fi), length(nut_f), length(dm)) / length(dm)
   if(!all(length_ratios == 1))
     message("Inputs have different lengths.")
+  
+  
+  ## Inform that ner is calculated using ag if ag, ibw, and fbw are provided
+  if(!all(is.null(ag) & (is.null(ibw) | is.null(fbw)) ))
+    message("ag has been provided together with ibw and/or fbw. ag will be used to calculate ner.")
 
 
 

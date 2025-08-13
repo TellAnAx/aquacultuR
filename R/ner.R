@@ -2,7 +2,7 @@
 #' 
 #' Function to calculate the Nutrient Efficiency Ratio (NER)
 #' 
-#' It should be noted that all input values must be provided in the same unit.
+#' All input values must be provided in the same unit.
 #' 
 #' @param ibw a numeric value for the initial weight (either average
 #' weight of the individuals or the total biomass) of the livestock at the
@@ -10,8 +10,6 @@
 #' @param fbw a numeric value for the final weight (either average
 #' weight of the individuals or the total biomass) of the livestock at the end
 #' of the feeding trial.
-#' @param ag optional; can be provided instead of the initial and final
-#' weight.
 #' @param fi numeric; value providing the total feed intake in grams during the 
 #' experiment.
 #' @param dm numeric; value within the interval of (0,1), indicating the dry matter
@@ -28,25 +26,22 @@
 #' # Calculate the NER using the initial and final weight
 #' ner(ibw = 1, fbw = 10, fi = 24, nut_f = 0.5)
 #' 
-#' # Calculate the NER using the weight gain instead
-#' ner(ag = 9, fi = 24, nut_f = 0.5)
 #' 
 #' @export
 ner <- function(ibw, 
                 fbw, 
-                ag = NULL, 
                 fi,
                 dm = 1,
                 nut_f) {
   
   # Checks----
   ## Check for NA values
-  if(any(is.na(c(ibw, fbw, ag, fi, dm, nut_f))))
+  if(any(is.na(c(ibw, fbw, fi, dm, nut_f))))
     stop("Inputs must not be NA!")
   
   
   ## Check for non-numeric values
-  if(any(!is.numeric(c(ibw, fbw, ag, fi, dm, nut_f))))
+  if(any(!is.numeric(c(ibw, fbw, fi, dm, nut_f))))
     stop("Inputs must be numeric!")
   
   
@@ -56,7 +51,7 @@ ner <- function(ibw,
   
   
   ## Check for negative values
-  if(any(c(ag, ibw, fbw, fi, nut_f, dm) < 0))
+  if(any(c(ibw, fbw, fi, nut_f, dm) < 0))
     warning("Inputs are negative. Result is not meaningful.")
   
   
@@ -71,21 +66,15 @@ ner <- function(ibw,
   
   
   ## Check for inputs of differing length
-  length_ratios <- c(length(ag), length(ibw), length(fbw), 
+  length_ratios <- c(length(ibw), length(fbw), 
                      length(fi), length(nut_f), length(dm)) / length(dm)
   if(!all(length_ratios == 1))
     message("Inputs have different lengths.")
   
-  
-  ## Inform that ner is calculated using ag if ag, ibw, and fbw are provided
-  if(!all(is.null(ag) & (is.null(ibw) | is.null(fbw)) ))
-    message("ag has been provided together with ibw and/or fbw. ag will be used to calculate ner.")
-
 
 
   # Calculations----
-  if(is.null(ag)) 
-    ag <- fbw - ibw  
+  ag <- fbw - ibw  
   
   ner <- ag / (fi * dm * nut_f)
   

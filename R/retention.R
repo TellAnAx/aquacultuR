@@ -18,6 +18,19 @@ retention <- function(m_start,
                nut_start,
                m_end,
                nut_end) {
+  # Check for numeric and non-missing
+  if (any(is.na(c(m_start, m_end, nut_start, nut_end)))) 
+    stop("Inputs must not be NA")
+  
+  if (!all(sapply(list(m_start, m_end, nut_start, nut_end), is.numeric))) 
+    stop("All inputs must be numeric")
+
+  
+  # Warn if any value is <= 0
+  if (m_start <= 0) warning("m_start is zero or negative; result may not be meaningful")
+  if (m_end <= 0) warning("m_end is zero or negative; result may not be meaningful")
+  if (nut_start <= 0) warning("nut_start is zero or negative; result may not be meaningful")
+  if (nut_end <= 0) warning("nut_end is zero or negative; result may not be meaningful")
   
   retention <- m_end * nut_end - m_start * nut_start
   

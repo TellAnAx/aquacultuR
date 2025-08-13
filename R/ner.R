@@ -2,20 +2,18 @@
 #' 
 #' Function to calculate the Nutrient Efficiency Ratio (NER)
 #' 
-#' It should be noted that all input values must be provided in the same unit.
+#' All input values must be provided in the same unit.
 #' 
-#' @param m_start a numeric value for the initial weight (either average
+#' @param ibw a numeric value for the initial weight (either average
 #' weight of the individuals or the total biomass) of the livestock at the
 #' beginning of the feeding trial.
-#' @param m_end a numeric value for the final weight (either average
+#' @param fbw a numeric value for the final weight (either average
 #' weight of the individuals or the total biomass) of the livestock at the end
 #' of the feeding trial.
-#' @param ag optional; can be provided instead of the initial and final
-#' weight.
 #' @param fi numeric; value providing the total feed intake in grams during the 
 #' experiment.
 #' @param dm numeric; value within the interval of (0,1), indicating the dry matter
-#' content of the feed.
+#' content of the feed. Default is 1 (100%).
 #' @param nut_f numeric; value within the interval of (0,1), indicating the 
 #' inclusion rate of the nutrient of interest in the feed fed.
 #' 
@@ -26,27 +24,59 @@
 #' 
 #' @examples
 #' # Calculate the NER using the initial and final weight
-#' ner(m_start = 1, m_end = 10, fi = 24, nut_f = 0.5)
+#' ner(ibw = 1, fbw = 10, fi = 24, nut_f = 0.5)
 #' 
-#' # Calculate the NER using the weight gain instead
-#' ner(ag = 9, fi = 24, nut_f = 0.5)
 #' 
 #' @export
-ner <- function(m_start = NULL, 
-                m_end = NULL, 
-                ag = NULL, 
-                fi = NULL,
-                dm = 1,
-                nut_f = NULL) {
+ner <- function(ibw, 
+                fbw, 
+                fi,
+                nut_f,
+                dm = 1) {
   
-  if (((is.null(m_start) | is.null(m_end)) & is.null(ag)) | is.null(nut_f)) {
-    stop("The Nutrient Efficiency Ratio cannot be calculated. Necessary data is missing.")
-  }
+  # Checks----
+  ## Check for NA values
+  if(any(is.na(c(ibw, fbw, fi, dm, nut_f))))
+    stop("Inputs must not be NA!")
   
-  if(is.null(ag)) {
-    ag <- m_end - m_start  
-  }
+  
+  ## Check for non-numeric values
+  if(any(!is.numeric(c(ibw, fbw, fi, dm, nut_f))))
+    stop("Inputs must be numeric!")
+  
+  
+  ## Check for c(fi, dm, nut_f) == 0
+  if(any(c(fi, dm, nut_f) == 0))
+    stop("Inputs must not be zero! Result cannot be calculated.")
+  
+  
+  ## Check for negative values
+  if(any(c(ibw, fbw, fi, nut_f, dm) < 0))
+    warning("Inputs are negative. Result is not meaningful.")
+  
+  
+  ## Check for dm | nut_f > 1
+  if(any(c(dm, nut_f) > 1))
+    warning("Input is >1 (>100%). The result is not meaningful.")
+  
+  
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
+  
+  
+  ## Check for inputs of differing length
+  length_ratios <- c(length(ibw), length(fbw), 
+                     length(fi), length(nut_f), length(dm)) / length(dm)
+  if(!all(length_ratios == 1))
+    message("Inputs have different lengths.")
+  
+
+
+  # Calculations----
+  ag <- fbw - ibw  
   
   ner <- ag / (fi * dm * nut_f)
+  
   return(ner)
 }

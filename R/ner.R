@@ -4,10 +4,10 @@
 #' 
 #' It should be noted that all input values must be provided in the same unit.
 #' 
-#' @param m_start a numeric value for the initial weight (either average
+#' @param ibw a numeric value for the initial weight (either average
 #' weight of the individuals or the total biomass) of the livestock at the
 #' beginning of the feeding trial.
-#' @param m_end a numeric value for the final weight (either average
+#' @param fbw a numeric value for the final weight (either average
 #' weight of the individuals or the total biomass) of the livestock at the end
 #' of the feeding trial.
 #' @param ag optional; can be provided instead of the initial and final
@@ -26,14 +26,14 @@
 #' 
 #' @examples
 #' # Calculate the NER using the initial and final weight
-#' ner(m_start = 1, m_end = 10, fi = 24, nut_f = 0.5)
+#' ner(ibw = 1, fbw = 10, fi = 24, nut_f = 0.5)
 #' 
 #' # Calculate the NER using the weight gain instead
 #' ner(ag = 9, fi = 24, nut_f = 0.5)
 #' 
 #' @export
-ner <- function(m_start = NULL, 
-                m_end = NULL, 
+ner <- function(ibw = NULL, 
+                fbw = NULL, 
                 ag = NULL, 
                 fi = NULL,
                 dm = 1,
@@ -41,12 +41,12 @@ ner <- function(m_start = NULL,
   
   # Checks----
   ## Check for NA values
-  if(any(is.na(c(m_start, m_end, ag, fi, dm, nut_f))))
+  if(any(is.na(c(ibw, fbw, ag, fi, dm, nut_f))))
     stop("Inputs must not be NA!")
   
   
   ## Check for non-numeric values
-  if(any(!is.numeric(c(m_start, m_end, ag, fi, dm, nut_f))))
+  if(any(!is.numeric(c(ibw, fbw, ag, fi, dm, nut_f))))
     stop("Inputs must be numeric!")
   
   
@@ -56,7 +56,7 @@ ner <- function(m_start = NULL,
   
   
   ## Check for negative values
-  if(any(c(ag, m_start, m_end, fi, nut_f, dm) < 0))
+  if(any(c(ag, ibw, fbw, fi, nut_f, dm) < 0))
     warning("Inputs are negative. Result is not meaningful.")
   
   
@@ -65,13 +65,13 @@ ner <- function(m_start = NULL,
     warning("DM is >100%. The result is not meaningful.")
   
   
-  ## Check m_start > m_end
-  if (m_start > m_end)
-    warning("m_start is greater than m_end.")
+  ## Check ibw > fbw
+  if (ibw > fbw)
+    warning("ibw is greater than fbw.")
   
   
   ## Check for inputs of differing length
-  length_ratios <- c(length(ag), length(m_start), length(m_end), 
+  length_ratios <- c(length(ag), length(ibw), length(fbw), 
                      length(fi), length(nut_f), length(dm)) / length(dm)
   if(!all(length_ratios == 1))
     message("Inputs have different lengths.")
@@ -80,7 +80,7 @@ ner <- function(m_start = NULL,
 
   # Calculations----
   if(is.null(ag)) 
-    ag <- m_end - m_start  
+    ag <- fbw - ibw  
   
   ner <- ag / (fi * dm * nut_f)
   

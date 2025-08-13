@@ -39,20 +39,28 @@
 mbw <- function(ibw, 
                 fbw, 
                 gbw = NULL){
-  # Check numeric and non-missing
-  if (!is.null(ibw) && (!is.numeric(ibw) || is.na(ibw))) stop("ibw must be numeric and not NA")
-  if (!is.null(fbw) && (!is.numeric(fbw) || is.na(fbw))) stop("fbw must be numeric and not NA")
-  if (!is.null(gbw) && (!is.numeric(gbw) || is.na(gbw))) stop("gbw must be numeric and not NA")
+  # Checks----
   
-  # Check non-negative
-  if (!is.null(ibw) && ibw < 0) stop("ibw must be non-negative")
-  if (!is.null(ibw) && ibw==0) stop("ibw cannot be zero")
-  if (!is.null(fbw) && fbw < 0) stop("fbw must be non-negative")
-  if (!is.null(gbw) && gbw < 0) stop("gbw must be non-negative")
+  ## Check whether inputs are NA
+  stopifnot("Inputs cannot be NA" = !is.na(ibw), !is.na(fbw), !is.na(gbw))
   
-  # Check start ≤ end
-  if (!is.null(ibw) && !is.null(fbw) && ibw > fbw) stop("ibw cannot be greater than fbw")
+  ## Check whether inputs are non-numeric
+  stopifnot("All inputs must be numeric" = is.numeric(ibw), is.numeric(fbw), is.numeric(gbw))
   
+  ## Check whether inputs == 0
+  stopifnot("'ibw' == 0. The result cannot be calculated." = all(ibw != 0))
+  stopifnot("'fbw' == 0. The result cannot be calculated." = all(fbw != 0))
+  
+  ## Check whether inputs are < 0
+  if (any(ibw < 0) | any(fbw < 0)) {
+    warning("Some inputs values are negative. The result may not be meaningful.")
+  }
+  
+  ## Check whether inputs have the same length
+  input_lengths <- c(length(ibw), length(fbw))
+  if (length(unique(input_lengths)) != 1) {
+    stop("All input vectors must have the same length.")
+  }
   
   # Calculate gain body weight if not provided
   if (is.null(gbw)) {

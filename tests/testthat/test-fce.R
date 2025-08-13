@@ -44,8 +44,8 @@ test_that("fce() throws message if inputs are not of same length.", {
 test_that("fce() calculates Feed Conversion Efficiency correctly.", {
   expect_equal(fce(ibw = 1, fbw = 2, fi = 0.5, dm = 1), 2)
   expect_equal(fce(ibw = 1, fbw = 2, fi = 0.5), 2)
-  expect_equal(fce(ibw = c(1,1), fbw = 2, fi = 0.5, dm = 1), c(2, 2))
-  expect_equal(fce(ibw = 1, fbw = c(2,2), fi = 0.5, dm = 1), c(2,2))
-  expect_equal(fce(ibw = 1, fbw = 2, fi = c(0.5,0.5), dm = 1), c(2,2))
-  expect_equal(fce(ibw = 1, fbw = 2, fi = 0.5, dm = c(1,1)), c(2,2))
+  expect_message(expect_equal(fce(ibw = c(1,1), fbw = 2, fi = 0.5, dm = 1), c(2, 2)))
+  expect_message(expect_equal(fce(ibw = 1, fbw = c(2,2), fi = 0.5, dm = 1), c(2,2)))
+  expect_message(expect_equal(fce(ibw = 1, fbw = 2, fi = c(0.5,0.5), dm = 1), c(2,2)))
+  expect_message(expect_equal(fce(ibw = 1, fbw = 2, fi = 0.5, dm = c(1,1)), c(2,2)))
   })

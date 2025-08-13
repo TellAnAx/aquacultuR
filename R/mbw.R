@@ -65,6 +65,9 @@ mbw <- function(ibw,
     stop("All input vectors must have the same length.")
   }
   
+  ## Check whether mb_exp is 0-1
+  stopifnot("'mb_exp' must be between 0 and 1" = ibw >= 0 & ibw <= 1)
+  
   # Calculate gain body weight if not provided
   if (is.null(gbw)) {
     gbw <- fbw - ibw

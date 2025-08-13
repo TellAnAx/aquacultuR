@@ -9,7 +9,6 @@
 #' grams.
 #' @param fbw a numeric value that is providing the final weight in
 #' grams.
-#' @param gbw a numeric value providing the geometric bodyweight in grams.
 #' @param mb_exp a numeric value between 0-1 providing the exponent. Default 
 #' is 0.8 adapted to most fish species.
 #' 
@@ -39,51 +38,44 @@
 #' 
 #' @export
 mbw <- function(ibw, 
-                fbw, 
-                gbw = NULL,
+                fbw,
                 mb_exp = 0.8){
-  # Checks----
   
+  # Checks----
   ## Check whether inputs are NA
-  stopifnot("Inputs cannot be NA" = !is.na(ibw), !is.na(fbw), !is.na(gbw))
+  stopifnot("Inputs cannot be NA" = any(c(!is.na(ibw), !is.na(fbw))))
+  
   
   ## Check whether inputs are non-numeric
-  stopifnot("All inputs must be numeric" = is.numeric(ibw), is.numeric(fbw), is.numeric(gbw))
-  
-  ## Check whether inputs == 0
-  stopifnot("'ibw' == 0. The result cannot be calculated." = all(ibw != 0))
-  stopifnot("'fbw' == 0. The result cannot be calculated." = all(fbw != 0))
+  stopifnot("All inputs must be numeric" = any(c(is.numeric(ibw), is.numeric(fbw))))
+
   
   ## Check whether inputs are < 0
-  if (any(ibw < 0) | any(fbw < 0)) {
-    warning("Some inputs values are negative. The result may not be meaningful.")
-  }
+  if (any(c(ibw, fbw) < 0))
+    stop("Some inputs values are zero or negative. Result cannot be calculated.")
+
   
-  ## Check whether inputs have the same length
-  input_lengths <- c(length(ibw), length(fbw))
-  if (length(unique(input_lengths)) != 1) {
-    stop("All input vectors must have the same length.")
-  }
+  ## Check whether inputs are == 0
+  if (any(c(ibw, fbw) == 0))
+    warning("Some inputs values are zero or negative. The result is not meaningful.")
+  
   
   ## Check whether mb_exp is 0-1
-  stopifnot("'mb_exp' must be between 0 and 1" = ibw >= 0 & ibw <= 1)
-  
-  # Calculate gain body weight if not provided
-  if (is.null(gbw)) {
-    gbw <- fbw - ibw
-  }
+  if(any(mb_exp > 1) | any(mb_exp < 0))
+    warning("'mb_exp' should be between 0 and 1")
   
   
-  if(is.null(gbw) == TRUE){
-    
-    # Calculate the geometric mean bodyweight using initWeight and finalWeight
-    mbw <- sqrt(ibw * fbw) ^ mb_exp
-    
-  } else {
-    
-    mbw <- gbw ^ mb_exp
-  }
+  ## Check whether inputs have the same length
+  length_ratio <- c(length(ibw), length(fbw), length(mb_exp)) / length(ibw)
+  if (any(length_ratio != 1))
+    message("Input vectors do not have the same length.")
+
   
-  # Return the result
+  
+  # Calculations----
+  gbw <- sqrt(ibw * fbw)
+  
+  mbw <- gbw^mb_exp
+  
   return(mbw)
 }

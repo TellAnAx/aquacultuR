@@ -2,14 +2,26 @@
 #' 
 #' Function to calculate the nutrient retention
 #' 
-#' @param ibw numeric; value that is providing the initial weight in grams
-#' @param fbw numeric; value that is providing the final weight in grams
-#' @param ibn numeric; value between 0 and 1 that provides the initial
-#' mass fraction of the target nutrient in the tissue of the experimental animal.
-#' @param fbn numeric; value between 0 and 1 that provides the final mass fraction
-#' of the target nutrient in the tissue of the experimental animal.
+#' @param ibw numeric; initial weight in grams
+#' @param fbw numeric; final weight in grams
+#' @param ibn numeric between 0 and 1; initial mass fraction of the target 
+#' nutrient in the tissue of the experimental animal.
+#' @param fbn numeric between 0 and 1; final mass fraction of the target 
+#' nutrient in the tissue of the experimental animal.
 #' 
 #' @return a numeric value
+#' 
+#' @examples
+#' # initial bodyweight = 10 g
+#' # final bodyweight = 100 g
+#' # initial mass fraction of N = 100 g/kg (10%)
+#' # final mass fraction of N = 150 g/kg (15%)
+#' # -> 14 g N have been taken up.
+#' nr(ibw = 10, fbw = 100, ibn = 0.1, fbn = 0.15)
+#' 
+#' # multiple fish
+#' nr(ibw = 10, fbw = c(93, 102, 99, 98, 101, 132), ibn = 0.1, fbn = 0.15)
+#' 
 #' 
 #' @author Anıl Axel Tellbüscher
 #' 
@@ -49,7 +61,7 @@ nr <- function(ibw,
 
 
   # Calculations----
-  retention <- fbw * fbn - ibw * ibn
+  nr <- fbw * fbn - ibw * ibn
   
-  return(retention)
+  return(nr)
 }

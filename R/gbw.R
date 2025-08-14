@@ -3,13 +3,15 @@
 #' A function that calculates the geometric mean of the initial and final 
 #' bodyweight.
 #' 
+#' While the arithmetic mean assumes a linear relationship between the averaged
+#' numbers, the geometric mean accounts for the non-linear and potentially variable 
+#' nature of animal growth.  
 #' 
-#' @param ibw a numeric value that is providing the initial weight in
-#' grams.
-#' @param fbw a numeric value that is providing the final weight in
-#' grams.
 #' 
-#' @return returns a numeric value that is the geometric mean bodyweight.
+#' @param ibw numeric; initial bodyweight weight in grams.
+#' @param fbw numeric; final bodyweight in grams.
+#' 
+#' @return numeric value that is the geometric mean bodyweight.
 #' 
 #' 
 #' @author Anıl Axel Tellbüscher
@@ -30,7 +32,7 @@ gbw <- function(ibw,
   
   # Checks----
   ## Check whether inputs are NA
-  stopifnot("Inputs must not be NA!" = any(!is.na(ibw, fbw)))
+  stopifnot("Inputs must not be NA!" = any(!is.na(c(ibw, fbw))))
   
   
   ## Check whether inputs are numeric
@@ -42,7 +44,7 @@ gbw <- function(ibw,
   
   
   # Check whether inputs are == 0
-  if(any(c(ibw, fbw)) == 0)
+  if(any(c(ibw, fbw) == 0))
     warning("Inputs are == 0! The result is not meaningful.")
   
   
@@ -54,7 +56,7 @@ gbw <- function(ibw,
   
   
   # Calculations----
-  gbw = sqrt(ibw * fbw) 
+  gbw <- sqrt(ibw * fbw)
   
   return(gbw)
 }

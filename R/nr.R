@@ -14,7 +14,7 @@
 #' @author Anıl Axel Tellbüscher
 #' 
 #' @export
-retention <- function(ibw,
+nr <- function(ibw,
                nut_start,
                fbw,
                nut_end) {

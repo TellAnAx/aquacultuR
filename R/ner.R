@@ -1,9 +1,12 @@
 #' Nutrient Efficiency Ratio (NER)
 #' 
-#' Function to calculate the Nutrient Efficiency Ratio (NER)
-#' 
-#' All input values must be provided in the same unit.
-#' 
+#' Function to calculate the Nutrient Efficiency Ratio (NER). The NER is a metric 
+#' that puts the intake of a compound into relation with the bodyweight increase.
+#' If the feed intake (FI) is restricted and the administered diets are of 
+#' comparable digestibility, then potential differences in growth could be 
+#' related to differences in the sub-composition of target nutrients that are 
+#' also controlled for. This would be reflected by the NER.
+#'
 #' @param ibw a numeric value for the initial weight (either average
 #' weight of the individuals or the total biomass) of the livestock at the
 #' beginning of the feeding trial.
@@ -13,11 +16,11 @@
 #' @param fi numeric; value providing the total feed intake in grams during the 
 #' experiment.
 #' @param dm numeric; value within the interval of (0,1), indicating the dry matter
-#' content of the feed. Default is 1 (100%).
+#' content of the feed. Default is 1 (100\%).
 #' @param nut_f numeric; value within the interval of (0,1), indicating the 
 #' inclusion rate of the nutrient of interest in the feed fed.
 #' 
-#' @return returns a single numeric value
+#' @returns returns a single numeric value
 #' 
 #' 
 #' @author Anıl Axel Tellbüscher 

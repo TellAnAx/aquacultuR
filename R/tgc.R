@@ -44,52 +44,39 @@ tgc <- function(ibw,
                 temp, scale_coef = 1000
                 ){
   
-  # Checks
-  
-  # no-NAs
+  # Checks----
+  ## Check whether input is NA
   if (any(is.na(c(ibw, fbw, duration, temp)))) 
-    stop("Inputs cannot be NA")
+    stop("Inputs must not be NA!")
   
-  #numeric
-  if (!is.numeric(ibw) || !is.numeric(fbw) || !is.numeric(duration) || !is.numeric(temp)) 
-    stop("All inputs must be numeric")
   
-  #positive
-  if (ibw < 0) 
-    stop("IBW is negative. The result cannot be calculated.")
+  ## Check whether input is numeric
+  if (any(!is.numeric(ibw) | !is.numeric(fbw) | !is.numeric(duration) | !is.numeric(temp)) | !is.numeric(scale_coef))
+    stop("Inputs must be numeric!")
   
-  if (fbw < 0) 
-    stop("FBW is negative. The result cannot be calculated.")
   
-  if (duration < 0) 
-    stop("Duration is negative. The result cannot be calculated.")
+  ## Check whether duration | temp == 0
+  if(any(duration == 0 | temp == 0))
+    stop("'duration' or 'temp' is zero! Result cannot be calculated.")
   
-  if (temp < 0) 
-    stop("Temperature is negative. The result is not meaningful.")
   
-  # no-zeros
-  if (ibw == 0)
-    warning("IBW is zero. The result is not meaningful.")
+  ## Check whether inputs are < 0
+  if (any(ibw <= 0 | fbw <= 0)) 
+    warning("IBW or FBW <= 0! The result is not meaningful.")
   
-  if (fbw == 0) 
-    warning("FBW is zero. The result is not meaningful.")
+  if (any(duration < 0 | temp < 0)) 
+    warning("duration or temp < 0! The result is not meaningful.")
   
-  if (duration == 0) 
-    warning("Duration is zero. The result is not meaningful.")
   
-  if (temp == 0) 
-    warning("Temperature is zero. The result may not be meaningful.")
-  
-  # Ensure inputs have the same length
-  input_lengths <- c(length(ibw), length(fbw), length(duration))
-  if (length(unique(input_lengths)) != 1) {
-    stop("All input vectors must have the same length.")
-  }
+  ## Check whether inputs have the same length
+  length_ratio <- c(length(ibw), length(fbw), length(duration), length(temp)) / length(ibw)
+  if (any(length_ratio != 1))
+    message("Input do not have the same length.")
 
 
-  # Calculate the SGR
+
+  # Calculations----
   tgc <- ((fbw^(1/3) - ibw^(1/3)) / (duration * temp)) * scale_coef
 
-  # Return the result
   return(tgc)
 }

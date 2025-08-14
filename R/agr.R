@@ -40,38 +40,31 @@
 agr <- function(ibw, 
                 fbw, 
                 duration){
-  # checks
-  # Error checks
+  
+  # Checks----
+  ## Check whether input is NA
   if (any(is.na(c(ibw, fbw, duration)))) 
     stop("Inputs cannot be NA")
   
-  if (!is.numeric(ibw) || !is.numeric(fbw) || !is.numeric(duration)) 
+
+  if (any(!is.numeric(ibw) | !is.numeric(fbw) | !is.numeric(duration)))
     stop("All inputs must be numeric")
   
-  if (ibw < 0) 
-    stop("ibw cannot be negative")
+  if (any(duration == 0))
+    stop("Duration == 0! The result cannot be calculated.")
   
-  if (fbw < 0) 
-    stop("fbw cannot be negative")
+  if (any(ibw <= 0 | fbw <= 0 | duration < 0)) 
+    warning("Input is zero or negative! The result is not meaningful.")
   
-  if (duration < 0) 
-    stop("duration cannot be negative")
-  
-  
-  # Warnings for zeros
-  if (ibw == 0)
-    warning("ibw is zero")
-  
-  if (fbw == 0) 
-    warning("fbw is zero")
-  
-  if (duration == 0) 
-    warning("duration is zero")
+  ## Check for inputs of differing length
+  length_ratios <- c(length(ibw), length(fbw), length(duration)) / length(ibw)
+  if(!all(length_ratios == 1))
+    message("Inputs have different lengths.")
   
   
-  # Calculate the absolute growth rate
+  
+  # Calculations----
   agr <- (fbw - ibw) / duration
   
-  # Return the result
   return(agr)
 }

@@ -16,8 +16,11 @@
 #' grams.
 #' @param duration numeric value that is providing the duration of the
 #' experiment in days.
+#' @param return_igr logical; default is FALSE. Indicates whether the instantaneous
+#' growth rate shall be returned together with the SGR or not.
 #'
-#' @return Returns the SGR as percentage of the body weight gain per day.
+#' @return Returns a numeric, which is the SGR as percentage of the body 
+#' weight gain per day, or a list containing the SGR and the IGR.
 #'
 #' @author Anıl Axel Tellbüscher
 #' @author Davide A. Machado e Silva
@@ -37,43 +40,39 @@
 #'
 #'
 #' @export
-sgr <- function(ibw, fbw, duration, return_igr = FALSE){
+sgr <- function(ibw, 
+                fbw, 
+                duration, 
+                return_igr = FALSE){
 
-  # Checks
+  # Checks----
   
-  # no-NAs
+  ## Check whether inputs are NA
   if (any(is.na(c(ibw, fbw, duration)))) 
     stop("Inputs cannot be NA")
   
-  #numeric
-  if (!is.numeric(ibw) || !is.numeric(fbw) || !is.numeric(duration)) 
+  ## Check whether inputs are non-numeric
+  if (any(!is.numeric(ibw) | !is.numeric(fbw) | !is.numeric(duration)))
     stop("All inputs must be numeric")
+
   
-  #positive
-  if (ibw < 0) 
-    stop("IBW is negative. The result cannot be calculated.")
+  if (any(duration == 0))
+    stop("Input == 0! The result cannot be calculated.")
   
-  if (fbw < 0) 
-    stop("FBW is negative. The result cannot be calculated.")
+  if (any(ibw <= 0 | fbw <= 0))
+    stop("Input <= 0! The result cannot be calculated.")
   
-  if (duration < 0) 
-    stop("Duration is negative. The result cannot be calculated.")
   
-  # no-zeros
-  if (ibw == 0)
-    warning("IBW is zero. The result is not meaningful.")
+  if (any(duration < 0)) 
+    warning("Input is negative! The result is not meaningful.")
   
-  if (fbw == 0) 
-    warning("FBW is zero. The result is not meaningful.")
   
-  if (duration == 0) 
-    warning("duration is zero. The result is not meaningful.")
+  ## Check for inputs of differing length
+  length_ratios <- c(length(ibw), length(fbw), length(duration)) / length(ibw)
+  if(!all(length_ratios == 1))
+    message("Inputs have different lengths.")
   
-  ## Ensure inputs have the same length
-  input_lengths <- c(length(ibw), length(fbw), length(duration))
-  if (length(unique(input_lengths)) != 1) {
-    stop("All input vectors must have the same length.")
-  }
+  
 
   # Calculations----
   ## Calculate IGR

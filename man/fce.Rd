@@ -4,28 +4,34 @@
 \alias{fce}
 \title{Feed conversion efficiency (FCE)}
 \usage{
-fce(m_start, m_end, fi, dm = 1)
+fce(ibw, fbw, fi, dm = 1)
 }
 \arguments{
-\item{m_start}{numeric; value that is providing the initial weight in
+\item{ibw}{numeric; value that is providing the initial body weight in
 grams.}
 
-\item{m_end}{numeric; value that is providing the final weight in
+\item{fbw}{numeric; value that is providing the final body weight in
 grams.}
 
 \item{fi}{numeric; value providing the total feed intake in grams
 during the experiment.}
 
-\item{dm}{numeric; value within the interval of (0:1), indicating the dry 
-matter content of the feed.}
+\item{dm}{numeric; value indicating the dry matter content of the feed.
+Value in the interval of (0:1). Default is 1.}
 }
 \value{
-a numeric value
+a numeric value that is the feed conversion efficiency (FCE)
 }
 \description{
 A function that calculates the feed conversion efficiency (FCE), which is the 
-inverse of the feed conversion ratio
+inverse of the feed conversion ratio (FCR). As FCR, this metric measures how
+effectively cultivated species convert feed into weight. However, contrarily 
+to FCR, the higher the FCE the more efficient the feed conversion is.
 }
 \author{
 Anıl Axel Tellbüscher
+
+Davide A. Machado e Silva
+
+Madhav Karthikeyan
 }

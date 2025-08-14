@@ -7,19 +7,19 @@
 rgr(m_start, m_end, duration)
 }
 \arguments{
-\item{m_start}{a numeric value that is providing the initial weight in
-grams.}
+\item{m_start}{numeric; provides the initial weight in gram.}
 
-\item{m_end}{a numeric value that is providing the final weight in
-grams.}
+\item{m_end}{numeric; provides the final weight in gram.}
 
-\item{duration}{a numeric value describing the duration of the growth experiment.}
+\item{duration}{numeric; duration of the growth experiment.}
 }
 \value{
-returns a numeric value that is the RGR.
+either a single numeric value or vector holding the calculated RGR 
+values. Multiply by 100 for conversion into percentage.
 }
 \description{
-A function that calculates the Relative Growth Rate (RGR).
+A function that calculates the Relative Growth Rate (RGR), which is the relative
+weight increase per time unit.
 }
 \examples{
 data(weight2)

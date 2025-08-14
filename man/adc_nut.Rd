@@ -4,13 +4,13 @@
 \alias{adc_nut}
 \title{ADC of a nutrient (ADCnut)}
 \usage{
-adc_nut(es_diet, es_feces, nut_diet, nut_feces)
+adc_nut(std_diet, std_feces, nut_diet, nut_feces)
 }
 \arguments{
-\item{es_diet}{numeric; value resembling the inclusion rate of external
+\item{std_diet}{numeric; value resembling the inclusion rate of
 standard in the experimental diet given to the livestock.}
 
-\item{es_feces}{numeric; value resembling the inclusion rate of external
+\item{std_feces}{numeric; value resembling the inclusion rate of
 standard in the feces recovered during the digestibility trial.}
 
 \item{nut_diet}{numeric; value representing the inclusion rate of the 
@@ -20,8 +20,8 @@ target nutrient in the diet.}
 target nutrient in the feces.}
 }
 \value{
-returns a single numeric value which is the relative ADC for a
-single nutrient in the diet. If the value is not within the interval [0,1],
+returns a single numeric value in the interval [0, 1] which is the relative ADC for a
+single nutrient in the diet. If the value is not within the interval,
 an additional warning is returned.
 }
 \description{

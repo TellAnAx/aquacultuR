@@ -2,20 +2,23 @@
 % Please edit documentation in R/rfr.R
 \name{rfr}
 \alias{rfr}
-\title{Relative Feeding Rate (FR)}
+\alias{fr}
+\title{Relative Feeding Rate (RFR)}
 \usage{
-rfr(m_feed = NULL, m_bio = NULL, duration = NULL)
+rfr(m_feed = NULL, ag = NULL, duration = NULL)
+
+fr(m_feed = NULL, ag = NULL, duration = NULL)
 }
 \arguments{
-\item{m_feed}{numeric; total amount of feed given in grams over the period of 
-interest.}
+\item{m_feed}{numeric; total amount of feed given in grams over the time 
+period of interest.}
 
-\item{m_bio}{numeric}
+\item{ag}{numeric value; absolute growth in grams during the experimental period.}
 
-\item{duration}{numeric; time period}
+\item{duration}{numeric; time period of interest in days.}
 }
 \value{
-numeric
+numeric; multiply by 100 for conversion into percentage.
 }
 \description{
 Feed administered per time unit and biomass. The feeding rate usually 

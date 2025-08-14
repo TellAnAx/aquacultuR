@@ -4,17 +4,21 @@
 \alias{agr}
 \title{Absolute Growth Rate (AGR)}
 \usage{
-agr(m_start, m_end, duration)
+agr(ibw, fbw, duration)
 }
 \arguments{
-\item{m_start}{a numeric value providing the initial weight in grams.}
+\item{ibw}{numeric; value that is providing the initial body weight in
+grams.}
 
-\item{m_end}{a numeric value providing the final weight in grams.}
+\item{fbw}{numeric; value that is providing the final body weight in
+grams.}
 
-\item{duration}{a numeric value describing the duration of the growth experiment.}
+\item{duration}{numeric value that is providing the duration of the
+experiment in days.}
 }
 \value{
-returns a numeric value that is the AGR.
+returns a numeric value which is the total body weight change
+over the specified period of time.
 }
 \description{
 A function that calculates the Absolute Growth Rate (AGR), also denoted as 
@@ -33,7 +37,14 @@ Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 (2016): A review on fish growth calculation: multiple functions in fish
 production and their specific application. Reviews in Aquaculture, 8,
 p.30–42.
+
+Hopkins K.D. (1992) Reporting fish growth, a review of the basics. Journal 
+of World Aquaculture Society, 23, p.173-179
 }
 \author{
 Anıl Axel Tellbüscher
+
+Madhav Karthikeyan
+
+Davide A. Machado e Silva
 }

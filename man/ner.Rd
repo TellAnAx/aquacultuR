@@ -4,44 +4,41 @@
 \alias{ner}
 \title{Nutrient Efficiency Ratio (NER)}
 \usage{
-ner(m_start = NULL, m_end = NULL, ag = NULL, fi = NULL, dm = 1, nut_f = NULL)
+ner(ibw, fbw, fi, nut_f, dm = 1)
 }
 \arguments{
-\item{m_start}{a numeric value for the initial weight (either average
+\item{ibw}{a numeric value for the initial weight (either average
 weight of the individuals or the total biomass) of the livestock at the
 beginning of the feeding trial.}
 
-\item{m_end}{a numeric value for the final weight (either average
+\item{fbw}{a numeric value for the final weight (either average
 weight of the individuals or the total biomass) of the livestock at the end
 of the feeding trial.}
-
-\item{ag}{optional; can be provided instead of the initial and final
-weight.}
 
 \item{fi}{numeric; value providing the total feed intake in grams during the 
 experiment.}
 
-\item{dm}{numeric; value within the interval of (0,1), indicating the dry matter
-content of the feed.}
-
 \item{nut_f}{numeric; value within the interval of (0,1), indicating the 
 inclusion rate of the nutrient of interest in the feed fed.}
+
+\item{dm}{numeric; value within the interval of (0,1), indicating the dry matter
+content of the feed. Default is 1 (100\%).}
 }
 \value{
 returns a single numeric value
 }
 \description{
-Function to calculate the Nutrient Efficiency Ratio (NER)
-}
-\details{
-It should be noted that all input values must be provided in the same unit.
+Function to calculate the Nutrient Efficiency Ratio (NER). The NER is a metric 
+that puts the intake of a compound into relation with the bodyweight increase.
+If the feed intake (FI) is restricted and the administered diets are of 
+comparable digestibility, then potential differences in growth could be 
+related to differences in the sub-composition of target nutrients that are 
+also controlled for. This would be reflected by the NER.
 }
 \examples{
 # Calculate the NER using the initial and final weight
-ner(m_start = 1, m_end = 10, fi = 24, nut_f = 0.5)
+ner(ibw = 1, fbw = 10, fi = 24, nut_f = 0.5)
 
-# Calculate the NER using the weight gain instead
-ner(ag = 9, fi = 24, nut_f = 0.5)
 
 }
 \author{

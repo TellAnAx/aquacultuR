@@ -29,17 +29,14 @@ Digestibility Coefficient (ADC) of the nutrient in an ingredient will be
 calculated.}
 }
 \value{
-returns a single numeric value which is the relative ADC for the
-diet. If the value is not within the interval [0,1], an additional warning
+returns a single numeric value in the interval [0, 1], which is the relative ADC for the
+diet. If the value is not within the interval, an additional warning
 is returned.
 }
 \description{
 Function to calculate the Apparent Digestibility Coefficient of a nutrient 
-contained in a feed ingredient of a compound diet.
-}
-\note{
-The calculation of the ADCingr is based on the equation proposed by Bureau
-and Hua (2006).
+contained in a feed ingredient of a compound diet. The calculation of the 
+ADCingr is based on the equation proposed by Bureau and Hua (2006).
 }
 \references{
 Bureau, D. P., & Hua, K. (2006): Letter to the Editor of

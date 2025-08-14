@@ -5,25 +5,22 @@
 \alias{weight_gain}
 \title{Absolute Growth (AG)}
 \usage{
-ag(m_start, m_end)
+ag(ibw, fbw)
 
-weight_gain(m_start, m_end)
+weight_gain(ibw, fbw)
 }
 \arguments{
-\item{m_start}{numeric; value providing the initial weight in grams.}
+\item{ibw}{numeric; value providing the initial weight in grams.}
 
-\item{m_end}{numeric; value providing the final weight in grams.}
+\item{fbw}{numeric; value providing the final weight in grams.}
 }
 \value{
 returns a numeric value that is the AG.
 }
 \description{
-Calculates the Absolute Growth
-}
-\details{
 A function that calculates the Absolute Growth (AG), also denoted as
 Absolute Weight Gain (AWG) based on the Initial Body weight (IBW;
-m_start) in gram (g) and the Final Body Weight (FBW; m_end)
+ibw) in gram (g) and the Final Body Weight (FBW; fbw)
 in gram (g).
 }
 \examples{

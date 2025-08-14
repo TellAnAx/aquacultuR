@@ -11,7 +11,7 @@
 #' 
 #' @examples
 #' # 100 g fed over 10 d
-#' afr(m_feed = 100, duration = 10 d)
+#' afr(m_feed = 100, duration = 10)
 #' 
 #' # 354 g, 846 g, and 1222 g fed over 83 d
 #' afr(m_feed = c(354, 846, 1222), duration = 83)

@@ -4,10 +4,10 @@
 #' 
 #' @param ibw numeric; value that is providing the initial weight in grams
 #' @param fbw numeric; value that is providing the final weight in grams
-#' @param nut_start numeric; value between 0 and 1 that provides the initial
-#' inclusion rate of the target nutrient in the tissue of the experimental animal.
-#' @param nut_end numeric; value between 0 and 1 that provides the final inclusion
-#' rate of the target nutrient in the tissue of the experimental animal.
+#' @param ibn numeric; value between 0 and 1 that provides the initial
+#' mass fraction of the target nutrient in the tissue of the experimental animal.
+#' @param fbn numeric; value between 0 and 1 that provides the final mass fraction
+#' of the target nutrient in the tissue of the experimental animal.
 #' 
 #' @return a numeric value
 #' 
@@ -15,24 +15,41 @@
 #' 
 #' @export
 nr <- function(ibw,
-               nut_start,
                fbw,
-               nut_end) {
-  # Check for numeric and non-missing
-  if (any(is.na(c(ibw, fbw, nut_start, nut_end)))) 
-    stop("Inputs must not be NA")
+               ninit,
+               nfin) {
   
-  if (!all(sapply(list(ibw, fbw, nut_start, nut_end), is.numeric))) 
-    stop("All inputs must be numeric")
-
+  # Checks----
+  ## Check whether inputs are NA
+  if (any(is.na(c(ibw, fbw, ibn, fbn)))) 
+    stop("Inputs must not be NA!")
   
-  # Warn if any value is <= 0
-  if (ibw <= 0) warning("ibw is zero or negative; result may not be meaningful")
-  if (fbw <= 0) warning("fbw is zero or negative; result may not be meaningful")
-  if (nut_start <= 0) warning("nut_start is zero or negative; result may not be meaningful")
-  if (nut_end <= 0) warning("nut_end is zero or negative; result may not be meaningful")
   
-  retention <- fbw * nut_end - ibw * nut_start
+  ## Check whether inputs are non-numeric
+  if (any(!is.numeric(c(ibw, fbw, ibn, fbn))))
+    stop("Inputs must be numeric!")
+  
+  
+  ## Check whether inputs are within the range
+  if (any(ibw <= 0)) 
+    warning("ibw is <= 0! The result is not meaningful.")
+  if (any(fbw <= 0)) 
+    warning("fbw is <= 0! The result is not meaningful.")
+  if (any(ibn < 0 | ibn > 1)) 
+    warning("ibn is out of range! The result is not meaningful.")
+  if (any(fbn < 0 | fbn > 1)) 
+    warning("fbn is out of range! The result is not meaningful.")
+  
+  
+  ## Check whether inputs are of same length
+  length_ratio <- c(length(ibw), length(fbw), length(ibn), length(fbn)) / length(ibw)
+  if(any(length_ratio != 1))
+    message("Inputs differ in length.")
+  
+  
+  
+  # Calculations----
+  retention <- fbw * fbn - ibw * ibn
   
   return(retention)
 }

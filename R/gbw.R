@@ -58,5 +58,6 @@ gbw <- function(ibw,
   # Calculations----
   gbw <- sqrt(ibw * fbw)
   
+
   return(gbw)
 }

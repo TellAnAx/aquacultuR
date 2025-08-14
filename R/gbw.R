@@ -1,14 +1,17 @@
-#' Geometric Bodyweight (GBW)
+#' Geometric Mean Bodyweight (GMBW)
 #' 
-#' A function that calculates the geometric mean bodyweight.
+#' A function that calculates the geometric mean of the initial and final 
+#' bodyweight.
+#' 
+#' While the arithmetic mean assumes a linear relationship between the averaged
+#' numbers, the geometric mean accounts for the non-linear and potentially variable 
+#' nature of animal growth.  
 #' 
 #' 
-#' @param ibw a numeric value that is providing the initial weight in
-#' grams.
-#' @param fbw a numeric value that is providing the final weight in
-#' grams.
+#' @param ibw numeric; initial bodyweight weight in grams.
+#' @param fbw numeric; final bodyweight in grams.
 #' 
-#' @return returns a numeric value that is the geometric bodyweight.
+#' @return numeric value that is the geometric mean bodyweight.
 #' 
 #' 
 #' @author Anıl Axel Tellbüscher
@@ -19,7 +22,7 @@
 #' @examples
 #' data(weight2)
 #' 
-#' dplyr::mutate(weight2, GBW = gbw(W_start, W_end))
+#' dplyr::mutate(weight2, GMBW = gbw(W_start, W_end))
 #' 
 #' 
 #' 
@@ -28,27 +31,33 @@ gbw <- function(ibw,
                 fbw){
   
   # Checks----
-  ## Ensure inputs are numeric
-  stopifnot(is.numeric(ibw), is.numeric(fbw))
+  ## Check whether inputs are NA
+  stopifnot("Inputs must not be NA!" = any(!is.na(c(ibw, fbw))))
   
   
-  ## Ensure inputs have the same length
-  input_lengths <- c(length(ibw), length(fbw))
-  if (length(unique(input_lengths)) != 1) {
-    stop("All input vectors must have the same length.")
-  }
+  ## Check whether inputs are numeric
+  stopifnot("Inputs must be numeric!" = any(is.numeric(c(ibw, fbw))))
   
   
-  ## Check whether inputs are >= 0
-  if (any(ibw <= 0 | fbw <= 0)) {
-    stop("Some input values are negative. The result cannot be calculated.")
-  }
+  ## Check whether inputs are < 0
+  stopifnot("Inputs are < 0! Result cannot be calculated." = all(c(ibw, fbw) >= 0))
+  
+  
+  # Check whether inputs are == 0
+  if(any(c(ibw, fbw) == 0))
+    warning("Inputs are == 0! The result is not meaningful.")
+  
+  
+  ## Check whether inputs have the same length
+  length_ratio <- c(length(ibw), length(fbw)) / length(ibw)
+  if (any(length_ratio != 1))
+    message("Inputs have different lengths.")
+
   
   
   # Calculations----
-  ## Calculate the geometric mean bodyweight
-  gbw = sqrt(ibw * fbw) 
+  gbw <- sqrt(ibw * fbw)
   
-  ## Return the result
+
   return(gbw)
 }

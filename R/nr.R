@@ -16,20 +16,20 @@
 #' @export
 nr <- function(ibw,
                fbw,
-               ninit,
-               nfin) {
-  
+               ibn,
+               fbn) {
+
   # Checks----
   ## Check whether inputs are NA
   if (any(is.na(c(ibw, fbw, ibn, fbn)))) 
     stop("Inputs must not be NA!")
-  
-  
+
+
   ## Check whether inputs are non-numeric
   if (any(!is.numeric(c(ibw, fbw, ibn, fbn))))
     stop("Inputs must be numeric!")
-  
-  
+
+
   ## Check whether inputs are within the range
   if (any(ibw <= 0)) 
     warning("ibw is <= 0! The result is not meaningful.")
@@ -39,15 +39,15 @@ nr <- function(ibw,
     warning("ibn is out of range! The result is not meaningful.")
   if (any(fbn < 0 | fbn > 1)) 
     warning("fbn is out of range! The result is not meaningful.")
-  
-  
+
+
   ## Check whether inputs are of same length
   length_ratio <- c(length(ibw), length(fbw), length(ibn), length(fbn)) / length(ibw)
   if(any(length_ratio != 1))
     message("Inputs differ in length.")
-  
-  
-  
+
+
+
   # Calculations----
   retention <- fbw * fbn - ibw * ibn
   

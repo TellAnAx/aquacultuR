@@ -14,6 +14,10 @@
 #' 
 #' @return a numeric value. Multiply by 100 to convert into percentage.
 #' 
+#' @references Willer, D.F., Newton, R., Malcorps, W. et al. Wild fish 
+#' consumption can balance nutrient retention in farmed fish. Nat Food 5, 
+#' 221–229 (2024). https://doi.org/10.1038/s43016-024-00932-z
+#' 
 #' @examples
 #' # initial bodyweight = 10 g
 #' # final bodyweight = 100 g

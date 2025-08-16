@@ -5,9 +5,9 @@
 #' @param ibw numeric; initial weight in grams
 #' @param fbw numeric; final weight in grams
 #' @param ibn numeric; initial mass fraction of the target nutrient in the tissue 
-#' of the experimental animal. The value must be between 0 and 1.
+#' of the experimental animal (on dry matter basis). The value must be between 0 and 1.
 #' @param fbn numeric; final mass fraction of the target nutrient in the tissue 
-#' of the experimental animal. The value must be between 0 and 1.
+#' of the experimental animal (on dry matter basis). The value must be between 0 and 1.
 #' @param fi numeric; mass of feed given
 #' @param nut_diet numeric; mass fraction of nutrient in the diet. The value must
 #' be between 0 and 1.

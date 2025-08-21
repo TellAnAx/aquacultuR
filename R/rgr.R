@@ -55,7 +55,7 @@ rgr <- function(m_start,
   
   # Calculations----
   ## Calculate the relative growth rate
-  rgr = (m_end - m_start) / (m_start * duration)
+  rgr <- (m_end - m_start) / (m_start * duration)
   
   ## Return the result
   return(rgr)

@@ -1,7 +1,7 @@
 #' ADC of DM
 #' 
-#' Function to calculate the Apparent Digestibility Coefficient (ADC) of the dry 
-#' matter fraction of a compound diet.
+#' Function to calculate the Apparent Digestibility Coefficient (ADC) of 
+#' the dry matter fraction of a compound diet.
 #' 
 #' @param dm_diet a numeric value, being the dry matter content of the diet
 #' @param std_diet a numeric value, resembling the inclusion rate of
@@ -9,15 +9,15 @@
 #' @param std_feces a numeric value, resembling the inclusion rate of
 #' standard in the feces recovered during the digestibility trial.
 #' 
-#' @return returns a single numeric value in the interval [0, 1], which is the relative ADC for the
-#' dry matter content of the diet. If the value is not within the interval, 
-#' an additional warning is returned.
+#' @return returns a single numeric value in the interval [0, 1], which is 
+#' the relative ADC for the dry matter content of the diet. If the value is 
+#' not within the interval, an additional warning is returned.
 #' 
 #' @author Anıl Axel Tellbüscher
 #' 
-#' @references Bureau, D. P., Harris, A. M. & Cho, C. Y. (1999): Apparent digestibility of rendered 
-#' animal protein ingredients for rainbow troue (Oncorhynchus mykiss). 
-#' Aquaculture, 180, p.345-358.
+#' @references Bureau, D. P., Harris, A. M. & Cho, C. Y. (1999): Apparent 
+#' digestibility of rendered animal protein ingredients for rainbow trout 
+#' (Oncorhynchus mykiss). Aquaculture, 180, p.345-358.
 #' 
 #' @examples
 #' # 900 g/kg (90%) dry matter content of feed

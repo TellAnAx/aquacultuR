@@ -21,9 +21,9 @@
 #' Digestibility Coefficient (ADC) of the nutrient in an ingredient will be
 #' calculated.
 #' 
-#' @return returns a single numeric value in the interval [0, 1], which is the relative ADC for the
-#' diet. If the value is not within the interval, an additional warning
-#' is returned.
+#' @return returns a single numeric value in the interval [0, 1], which is the 
+#' relative ADC for the diet. If the value is not within the interval, an 
+#' additional warning is returned.
 #' 
 #' @author Anıl Axel Tellbüscher
 #' 
@@ -56,15 +56,20 @@ adc_ingr <- function(adc_test,
   
   
   ## Warn if inputs are < 0
-  if (any(adc_test < 0 | adc_ref < 0 | nut_ref < 0 | nut_ingr < 0 | incl_ingr < 0)) {
+  if (any(adc_test < 0 |
+          adc_ref < 0 |
+          nut_ref < 0 |
+          nut_ingr < 0 |
+          incl_ingr < 0)) {
     warning("Some input values are negative. The result may not be meaningful.")
   }
   
   
   
   # Calculations----
-  adc_ingr <- ( adc_test + ( ((1-incl_ingr) * nut_ref) / (incl_ingr * nut_ingr) ) * (adc_test - adc_ref) )
-
+  adc_ingr <- (adc_test + (((1 - incl_ingr) * nut_ref) / 
+                             (incl_ingr * nut_ingr)) * (adc_test - adc_ref))
+  
   
   if(adc_ingr > 1) {
     warning("ADC > 1")

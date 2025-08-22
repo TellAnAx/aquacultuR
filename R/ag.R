@@ -5,8 +5,8 @@
 #' ibw) in gram (g) and the Final Body Weight (FBW; fbw)
 #' in gram (g).
 #'
-#' @param ibw numeric; value providing the initial weight in grams.
-#' @param fbw numeric; value providing the final weight in grams.
+#' @param ibw numeric; value providing the initial bodyweight in grams.
+#' @param fbw numeric; value providing the final bodyweight in grams.
 #'
 #' @return returns a numeric value that is the AG.
 #'
@@ -27,29 +27,30 @@
 #'
 #'
 #' @export
-ag <- function(ibw,
-               fbw) {
-
+ag <- function(ibw, fbw) {
   # Checks----
+  ## Check whether inputs are NA
+  if(any(is.na(ibw) | is.na(fbw)))
+    stop("Inputs must not be NA!")
   
-  ## Ensure inputs are numeric
-  stopifnot(is.numeric(ibw), is.numeric(fbw))
-
-  ## Ensure inputs have the same length
-  if (length(ibw) != length(fbw)) {
-    stop("Error: 'ibw' and 'fbw' must be of the same length.")
-  }
-
+  ## Check whether inputs are numeric
+  if(any(!is.numeric(ibw)| !is.numeric(fbw)))
+    stop("Inputs must be numeric!")
+  
   ## Check whether inputs are > 0
-  if (any(ibw < 0 | fbw < 0)) {
-    warning("Some input values are negative. The result may not be meaningful.")
-  }
-
-
+  if (any(ibw <= 0 | fbw <= 0))
+    warning("Inputs are <= 0. The result is not meaningful.")
+  
+  ## Check whether inputs have the same length
+  if (length(ibw) != length(fbw))
+    message("Inputs have different lengths.")
+  
+  
+  
   # Calculations----
   ## Calculate AG
   ag <- fbw - ibw
-
+  
   ## Return result
   return(ag)
 }

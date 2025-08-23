@@ -13,7 +13,7 @@ grams.}
 \item{fbw}{a numeric value that is providing the final weight in
 grams.}
 
-\item{mb_exp}{a numeric value between 0-1 providing the exponent. Default 
+\item{mb_exp}{a numeric value between 0-1 providing the exponent. Default
 is 0.8 adapted to most fish species.}
 }
 \value{
@@ -21,12 +21,12 @@ returns a numeric value that is the metabolic bodyweight.
 }
 \description{
 The metabolic bodyweight is the rate of energy expenditure in dependence of
-the bodyweight of an organism. The metabolism of larger animals is generally 
-slower per Kg when comparing with smaller animals. An exponent between 0-1 
+the bodyweight of an organism. The metabolism of larger animals is generally
+slower per Kg when comparing with smaller animals. An exponent between 0-1
 takes that relationship into account in a fairly simple equation.
 }
 \note{
-Default exponent is suited to fish only. It was set to 0.8 based on 
+Default exponent is suited to fish only. It was set to 0.8 based on
 Lupatsch et al. (2003) and should be adjusted to other scenarios.
 }
 \examples{

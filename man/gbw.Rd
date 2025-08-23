@@ -15,13 +15,13 @@ gbw(ibw, fbw)
 numeric value that is the geometric mean bodyweight.
 }
 \description{
-A function that calculates the geometric mean of the initial and final 
+A function that calculates the geometric mean of the initial and final
 bodyweight.
 }
 \details{
 While the arithmetic mean assumes a linear relationship between the averaged
-numbers, the geometric mean accounts for the non-linear and potentially variable 
-nature of animal growth.
+numbers, the geometric mean accounts for the non-linear and potentially 
+variable nature of animal growth.
 }
 \examples{
 data(weight2)

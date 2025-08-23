@@ -15,25 +15,25 @@ beginning of the feeding trial.}
 weight of the individuals or the total biomass) of the livestock at the end
 of the feeding trial.}
 
-\item{fi}{numeric; value providing the total feed intake in grams during the 
+\item{fi}{numeric; value providing the total feed intake in grams during the
 experiment.}
 
-\item{nut_f}{numeric; value within the interval of (0,1), indicating the 
+\item{nut_f}{numeric; value within the interval of (0,1), indicating the
 inclusion rate of the nutrient of interest in the feed fed.}
 
-\item{dm}{numeric; value within the interval of (0,1), indicating the dry matter
-content of the feed. Default is 1 (100\%).}
+\item{dm}{numeric; value within the interval of (0,1), indicating the dry 
+matter content of the feed. Default is 1 (100\%).}
 }
 \value{
 returns a single numeric value
 }
 \description{
-Function to calculate the Nutrient Efficiency Ratio (NER). The NER is a metric 
-that puts the intake of a compound into relation with the bodyweight increase.
-If the feed intake (FI) is restricted and the administered diets are of 
-comparable digestibility, then potential differences in growth could be 
-related to differences in the sub-composition of target nutrients that are 
-also controlled for. This would be reflected by the NER.
+Function to calculate the Nutrient Efficiency Ratio (NER). The NER is a 
+metric that puts the intake of a compound into relation with the bodyweight 
+increase. If the feed intake (FI) is restricted and the administered diets 
+are of comparable digestibility, then potential differences in growth could 
+be related to differences in the sub-composition of target nutrients that 
+are also controlled for. This would be reflected by the NER.
 }
 \examples{
 # Calculate the NER using the initial and final weight

@@ -16,18 +16,18 @@ grams.}
 \item{duration}{numeric value that is providing the duration of the
 experiment in days.}
 
-\item{return_igr}{logical; default is FALSE. Indicates whether the instantaneous
-growth rate shall be returned together with the SGR or not.}
+\item{return_igr}{logical; default is FALSE. Indicates whether the 
+instantaneous growth rate shall be returned together with the SGR or not.}
 }
 \value{
-Returns a numeric, which is the SGR as percentage of the body 
+Returns a numeric, which is the SGR as percentage of the body
 weight gain per day, or a list containing the SGR and the IGR.
 }
 \description{
 This function calculates the Specific Growth Rate (SGR) based on
 the Instantaneous Growth Rate (IGR). The IGR is a useful
-metric, although hard to interpret. The SGR, derived from IGR, can then be easily
-interpreted as the percentage of Body Weight gained each day.
+metric, although hard to interpret. The SGR, derived from IGR, can then be 
+easily interpreted as the percentage of Body Weight gained each day.
 The SGR is a growth metric for aquaculture products (e.g., fish,
 crustaceans, bivalves, algae), describing the increase in body weight over
 a period of time. Body weight can be substituted by other metrics,

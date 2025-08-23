@@ -7,7 +7,7 @@
 afr(m_feed = NULL, duration = NULL)
 }
 \arguments{
-\item{m_feed}{numeric; total amount of feed provided in grams over the 
+\item{m_feed}{numeric; total amount of feed provided in grams over the
 time period of interest.}
 
 \item{duration}{numeric; time period over which the animals are fed}
@@ -16,7 +16,7 @@ time period of interest.}
 numeric; returns a vector if multiple values are provided.
 }
 \description{
-Feed administered per unit of time. The absolute feeding rate usually refers 
+Feed administered per unit of time. The absolute feeding rate usually refers
 to the amount of feed given, but not to the true feed intake.
 }
 \examples{

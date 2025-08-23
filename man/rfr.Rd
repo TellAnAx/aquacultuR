@@ -10,10 +10,11 @@ rfr(m_feed = NULL, ag = NULL, duration = NULL)
 fr(m_feed = NULL, ag = NULL, duration = NULL)
 }
 \arguments{
-\item{m_feed}{numeric; total amount of feed given in grams over the time 
+\item{m_feed}{numeric; total amount of feed given in grams over the time
 period of interest.}
 
-\item{ag}{numeric value; absolute growth in grams during the experimental period.}
+\item{ag}{numeric value; absolute growth in grams during the experimental 
+period.}
 
 \item{duration}{numeric; time period of interest in days.}
 }
@@ -21,7 +22,7 @@ period of interest.}
 numeric; multiply by 100 for conversion into percentage.
 }
 \description{
-Feed administered per time unit and biomass. The feeding rate usually 
+Feed administered per time unit and biomass. The feeding rate usually
 refers to the amount of feed given, but not to the true feed intake.
 }
 \author{

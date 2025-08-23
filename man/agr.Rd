@@ -21,7 +21,7 @@ returns a numeric value which is the total body weight change
 over the specified period of time.
 }
 \description{
-A function that calculates the Absolute Growth Rate (AGR), also denoted as 
+A function that calculates the Absolute Growth Rate (AGR), also denoted as
 Weight Gain (WG) when applied to weight data.
 }
 \examples{
@@ -38,7 +38,7 @@ Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 production and their specific application. Reviews in Aquaculture, 8,
 p.30–42.
 
-Hopkins K.D. (1992) Reporting fish growth, a review of the basics. Journal 
+Hopkins K.D. (1992) Reporting fish growth, a review of the basics. Journal
 of World Aquaculture Society, 23, p.173-179
 }
 \author{

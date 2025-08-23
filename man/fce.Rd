@@ -23,9 +23,9 @@ Value in the interval of (0:1). Default is 1.}
 a numeric value that is the feed conversion efficiency (FCE)
 }
 \description{
-A function that calculates the feed conversion efficiency (FCE), which is the 
+A function that calculates the feed conversion efficiency (FCE), which is the
 inverse of the feed conversion ratio (FCR). As FCR, this metric measures how
-effectively cultivated species convert feed into weight. However, contrarily 
+effectively cultivated species convert feed into weight. However, contrarily
 to FCR, the higher the FCE the more efficient the feed conversion is.
 }
 \author{

@@ -11,16 +11,18 @@ nr(ibw, fbw, ibn, fbn, fi, nut_diet)
 
 \item{fbw}{numeric; final weight in grams}
 
-\item{ibn}{numeric; initial mass fraction of the target nutrient in the tissue 
-of the experimental animal (on dry matter basis). The value must be between 0 and 1.}
+\item{ibn}{numeric; initial mass fraction of the target nutrient in the 
+tissue of the experimental animal (on dry matter basis). The value must be 
+between 0 and 1.}
 
-\item{fbn}{numeric; final mass fraction of the target nutrient in the tissue 
-of the experimental animal (on dry matter basis). The value must be between 0 and 1.}
+\item{fbn}{numeric; final mass fraction of the target nutrient in the tissue
+of the experimental animal (on dry matter basis). The value must be between 
+0 and 1.}
 
 \item{fi}{numeric; mass of feed given}
 
-\item{nut_diet}{numeric; mass fraction of nutrient in the diet. The value must
-be between 0 and 1.}
+\item{nut_diet}{numeric; mass fraction of nutrient in the diet. The value 
+must be between 0 and 1.}
 }
 \value{
 a numeric value. Multiply by 100 to convert into percentage.
@@ -42,15 +44,15 @@ nr(10, 100, 0.128, 0.132, 200, 0.072) * 100
 
 
 # multiple fish
-nr(ibw = 10, fbw = c(93, 102, 99, 98, 101, 132), 
-   ibn = 0.128, fbn = 0.132, 
+nr(ibw = 10, fbw = c(93, 102, 99, 98, 101, 132),
+   ibn = 0.128, fbn = 0.132,
    fi = 200, nut_diet = 0.072)
 
 
 }
 \references{
-Willer, D.F., Newton, R., Malcorps, W. et al. Wild fish 
-consumption can balance nutrient retention in farmed fish. Nat Food 5, 
+Willer, D.F., Newton, R., Malcorps, W. et al. Wild fish
+consumption can balance nutrient retention in farmed fish. Nat Food 5,
 221–229 (2024). https://doi.org/10.1038/s43016-024-00932-z
 }
 \author{

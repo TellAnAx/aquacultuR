@@ -13,16 +13,16 @@ standard in the experimental diet given to the livestock.}
 \item{std_feces}{numeric; value resembling the inclusion rate of
 standard in the feces recovered during the digestibility trial.}
 
-\item{nut_diet}{numeric; value representing the inclusion rate of the 
+\item{nut_diet}{numeric; value representing the inclusion rate of the
 target nutrient in the diet.}
 
-\item{nut_feces}{numeric; value representing the inclusion rate of the 
+\item{nut_feces}{numeric; value representing the inclusion rate of the
 target nutrient in the feces.}
 }
 \value{
-returns a single numeric value in the interval [0, 1] which is the relative ADC for a
-single nutrient in the diet. If the value is not within the interval,
-an additional warning is returned.
+returns a single numeric value in the interval [0, 1] which is the
+relative ADC for a single nutrient in the diet. If the value is not within
+the interval, an additional warning is returned.
 }
 \description{
 Function to calculate the Apparent Digestibility Coefficient of a nutrient

@@ -14,12 +14,12 @@ rgr(m_start, m_end, duration)
 \item{duration}{numeric; duration of the growth experiment.}
 }
 \value{
-either a single numeric value or vector holding the calculated RGR 
+either a single numeric value or vector holding the calculated RGR
 values. Multiply by 100 for conversion into percentage.
 }
 \description{
-A function that calculates the Relative Growth Rate (RGR), which is the relative
-weight increase per time unit.
+A function that calculates the Relative Growth Rate (RGR), which is the 
+relative weight increase per time unit.
 }
 \examples{
 data(weight2)

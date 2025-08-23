@@ -13,10 +13,11 @@ grams.}
 \item{fbw}{numeric; value that is providing the final weight in
 grams.}
 
-\item{ff}{numeric; value providing the feed fed in grams during the experiment.}
+\item{ff}{numeric; value providing the feed fed in grams during the 
+experiment.}
 
-\item{dm}{numeric; value within the interval of ]0:1], indicating the relative 
-dry matter content of the feed.}
+\item{dm}{numeric; value within the interval of ]0:1], indicating the 
+relative dry matter content of the feed.}
 }
 \value{
 returns a numeric value that is the FCR.
@@ -24,23 +25,24 @@ returns a numeric value that is the FCR.
 \description{
 A function that calculates the Feed Conversion Ratio (FCR) based on
 the Initial Body weight (IBW; ibw) in gram (g), the Final Body
-Weight (FBW; fbw) in gram (g), the Feed fed (Ff; ff) in gram and the 
+Weight (FBW; fbw) in gram (g), the Feed fed (Ff; ff) in gram and the
 dry matter (DM; dm) content of the feed in percent.
 }
 \details{
 The Feed Conversion Ratio (FCR) describes the amount of feed on dry matter
 (DM) basis that is required to gain 1 kg of body weight on wet weight basis.
-Depending on whether the Feed fed refers to the total amount of feed administered
-or the total amount corrected for non-eaten feed, the result resembles the 
-economic FCR (eFCR) or the biological FCR (bFCR), respectively (Glencross et al., 2024).
+Depending on whether the Feed fed refers to the total amount of feed 
+administered or the total amount corrected for non-eaten feed, the result 
+resembles the economic FCR (eFCR) or the biological FCR (bFCR), respectively 
+(Glencross et al., 2024).
 }
 \references{
 Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 (2016): A review on fish growth calculation: multiple functions in fish
 production and their specific application. Reviews in Aquaculture, 8,
 p.30–42.
-Glencross, B., Bachis, E., Robb, D., & Newton, R. (2024): The evolution of 
-sustainability metrics for the marine ingredient sector: Moving towards 
+Glencross, B., Bachis, E., Robb, D., & Newton, R. (2024): The evolution of
+sustainability metrics for the marine ingredient sector: Moving towards
 holistic assessments of aquaculture feed. Reviews in Fisheries Science &
 Aquaculture, 32(4), p.545-561.
 }

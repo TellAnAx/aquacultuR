@@ -19,7 +19,7 @@ experiment in days.}
 \item{temp}{a numeric value that is providing the average temperature during
 the experiment in degrees Celsius.}
 
-\item{scale_coef}{Scaling coefficient. A numeric value that scales the 
+\item{scale_coef}{Scaling coefficient. A numeric value that scales the
 TGC result so it is more intuitive and interpretable. Default is 1000.}
 }
 \value{
@@ -28,16 +28,17 @@ Returns a numeric value that is the TGC.
 \description{
 A function that calculates Thermal Growth Coefficient (TGC) based on
  the Initial Body weight (IBW) in grams (g), the Final Body
- Weight (FBW) in grams (g) and the average water temperature (Temp.) in Celsius (°C)
- for the duration of the trial.
+ Weight (FBW) in grams (g) and the average water temperature (Temp.) in 
+ Celsius (°C) for the duration of the trial.
 }
 \note{
-The TGC is an alternative growth metric for fishes, describing the increase
-in bodyweight over a period of time. It is suitable for poikilothermic
-animals due to its standardisation for temperature. It should, however, be
-taken into account, that the temperature during the experiment should remain
-within the optimum range. It is also noteworthy that the equation is 
-optimized for a constant temperature throughout the experiment.
+The TGC is an alternative growth metric for fishes, describing the 
+increase in bodyweight over a period of time. It is suitable for 
+poikilothermic animals due to its standardisation for temperature. It 
+should, however, be taken into account, that the temperature during the 
+experiment should remain within the optimum range. It is also noteworthy 
+that the equation is optimized for a constant temperature throughout the 
+experiment.
 }
 \references{
 Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
@@ -45,7 +46,7 @@ Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 production and their specific application. Reviews in Aquaculture, 8,
 p.30–42.
 
-Jobling, M. (2003): The thermal growth coefﬁcient (TGC) model 
+Jobling, M. (2003): The thermal growth coefﬁcient (TGC) model
 of ﬁsh growth: a cautionary note. Aquaculture Research, 34, p. 581–584.
 }
 \author{

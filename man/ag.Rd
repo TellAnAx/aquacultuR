@@ -10,9 +10,9 @@ ag(ibw, fbw)
 weight_gain(ibw, fbw)
 }
 \arguments{
-\item{ibw}{numeric; value providing the initial weight in grams.}
+\item{ibw}{numeric; value providing the initial bodyweight in grams.}
 
-\item{fbw}{numeric; value providing the final weight in grams.}
+\item{fbw}{numeric; value providing the final bodyweight in grams.}
 }
 \value{
 returns a numeric value that is the AG.

@@ -16,7 +16,7 @@ returns a numeric value that is the Relative Growth. Multiply by 100
 for conversion into a percentage.
 }
 \description{
-A function that calculates the Relative Growth (RG) based on the 
+A function that calculates the Relative Growth (RG) based on the
 Initial Body weight (IBW; ibw) and the Final Body Weight (FBW; fbw)
 in grams (g).
 }

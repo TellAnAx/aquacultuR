@@ -16,6 +16,14 @@
 #'
 #' @return a numeric value that is the feed conversion efficiency (FCE)
 #'
+#' @examples
+#' # Feed intake = 1500 g
+#' # Feed dry matter = 0.96 g/g (= 96%)
+#' # Initial bodyweight = 100 g
+#' # Final bodyweight = 1000 g
+#' 
+#' fce(100, 1000, 1500, 0.96)
+#'
 #' @author Anıl Axel Tellbüscher
 #' @author Davide A. Machado e Silva
 #' @author Madhav Karthikeyan

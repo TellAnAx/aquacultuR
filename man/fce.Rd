@@ -28,6 +28,15 @@ inverse of the feed conversion ratio (FCR). As FCR, this metric measures how
 effectively cultivated species convert feed into weight. However, contrarily
 to FCR, the higher the FCE the more efficient the feed conversion is.
 }
+\examples{
+# Feed intake = 1500 g
+# Feed dry matter = 0.96 g/g (= 96\%)
+# Initial bodyweight = 100 g
+# Final bodyweight = 1000 g
+
+fce(100, 1000, 1500, 0.96)
+
+}
 \author{
 Anıl Axel Tellbüscher
 

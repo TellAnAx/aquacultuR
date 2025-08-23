@@ -4,7 +4,7 @@
 \alias{adc_ingr}
 \title{ADC of a feed ingredient (ADCingr)}
 \usage{
-adc_ingr(adc_test, adc_ref, nut_ref, nut_ingr, incl_ingr)
+adc_ingr(adc_test, adc_ref, nut_ref, nut_ingr, incl_ingr = 0.3)
 }
 \arguments{
 \item{adc_test}{a numeric value in the interval [0,1] that represents the
@@ -38,9 +38,26 @@ Function to calculate the Apparent Digestibility Coefficient of a nutrient
 contained in a feed ingredient of a compound diet. The calculation of the
 ADCingr is based on the equation proposed by Bureau and Hua (2006).
 }
+\examples{
+# Example from Bureau et al. (1999) - Blood meal 2
+
+# reference feed dry matter: 0.928 (92.8\%)
+# reference feed nutrient mass frac.: 0.45 (45\%)
+# reference feed apparent digestibility coef.: 0.923 (92.3\%)
+# test feed apparent digestibility coef.: 0.902 (90.2\%)
+# test ingredient dry matter: 0.895 (89.5\%)
+# test ingredient nutrient mass frac.: 0.846 (84.6\%)
+
+adc_ingr(adc_ref = 0.923, nut_ref = 0.45, adc_test = 0.902, nut_ingr = 0.846)
+
+}
 \references{
 Bureau, D. P., & Hua, K. (2006): Letter to the Editor of
 Aquaculture. Aquaculture, 252, p.103–105.
+
+Bureau, D. P., Harris, A. M., & Cho, C. Y. (1999): Apparent 
+digestibility of rendered animal protein ingredients for rainbow trout 
+(Oncorhynchus mykiss). Aquaculture 180, p.345-358.
 }
 \author{
 Anıl Axel Tellbüscher

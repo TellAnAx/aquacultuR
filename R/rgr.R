@@ -3,7 +3,6 @@
 #' A function that calculates the Relative Growth Rate (RGR), which is the 
 #' relative weight increase per time unit.
 #'
-#'
 #' @param m_start numeric; provides the initial weight in gram.
 #' @param m_end numeric; provides the final weight in gram.
 #' @param duration numeric; duration of the growth experiment.
@@ -11,9 +10,11 @@
 #' @return either a single numeric value or vector holding the calculated RGR
 #' values. Multiply by 100 for conversion into percentage.
 #'
+#' @examples
+#' data(weight2)
+#' dplyr::mutate(weight2, RGR = rgr(ibw_g, fbw_g, duration = 84))
 #'
 #' @author Anıl Axel Tellbüscher
-#'
 #'
 #' @references Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 #' (2016): A review on fish growth calculation: multiple functions in fish
@@ -21,13 +22,6 @@
 #' p.30–42.
 #'
 #' @importFrom dplyr mutate
-#'
-#' @examples
-#' data(weight2)
-#'
-#' dplyr::mutate(weight2, RGR = rgr(W_start, W_end, duration = 84))
-#'
-#'
 #'
 #' @export
 rgr <- function(m_start, m_end, duration) {

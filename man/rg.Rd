@@ -22,10 +22,7 @@ in grams (g).
 }
 \examples{
 data(weight2)
-
-dplyr::mutate(weight2, RG = rg(W_start, W_end))
-
-
+dplyr::mutate(weight2, RG = rg(ibw_g, fbw_g))
 
 }
 \author{

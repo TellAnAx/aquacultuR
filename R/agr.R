@@ -14,27 +14,22 @@
 #' @return returns a numeric value which is the total body weight change
 #' over the specified period of time.
 #'
+#' @examples
+#' data(weight2)
+#' dplyr::mutate(weight2, AGR = agr(ibw_g, fbw_g, duration = 84))
+#'
 #' @author Anıl Axel Tellbüscher
 #' @author Madhav Karthikeyan
 #' @author Davide A. Machado e Silva
 #
-#'
 #' @references Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 #' (2016): A review on fish growth calculation: multiple functions in fish
 #' production and their specific application. Reviews in Aquaculture, 8,
 #' p.30–42.
-#'
-#' Hopkins K.D. (1992) Reporting fish growth, a review of the basics. Journal
-#' of World Aquaculture Society, 23, p.173-179
+#' @references Hopkins K.D. (1992) Reporting fish growth, a review of the 
+#' basics. Journal of World Aquaculture Society, 23, p.173-179
 #'
 #' @importFrom dplyr mutate
-#'
-#' @examples
-#' data(weight2)
-#'
-#' dplyr::mutate(weight2, AGR = agr(W_start, W_end, duration = 84))
-#'
-#'
 #'
 #' @export
 agr <- function(ibw, fbw, duration) {

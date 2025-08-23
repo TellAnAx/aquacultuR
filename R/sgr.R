@@ -22,6 +22,10 @@
 #' @return Returns a numeric, which is the SGR as percentage of the body
 #' weight gain per day, or a list containing the SGR and the IGR.
 #'
+#' @examples
+#' data(weight2)
+#' dplyr::mutate(weight2, SGR = sgr(ibw_g, fbw_g, duration = 84))
+#' 
 #' @author Anıl Axel Tellbüscher
 #' @author Davide A. Machado e Silva
 #'
@@ -31,13 +35,6 @@
 #' https://doi.org/10.1111/raq.12396
 #'
 #' @importFrom dplyr mutate
-#'
-#' @examples
-#' data(weight2)
-#'
-#' dplyr::mutate(weight2, SGR = sgr(W_start, W_end, duration = 84))
-#'
-#'
 #'
 #' @export
 sgr <- function(ibw, fbw, duration, return_igr = FALSE) {

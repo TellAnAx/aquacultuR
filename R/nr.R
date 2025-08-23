@@ -16,10 +16,6 @@
 #'
 #' @return a numeric value. Multiply by 100 to convert into percentage.
 #'
-#' @references Willer, D.F., Newton, R., Malcorps, W. et al. Wild fish
-#' consumption can balance nutrient retention in farmed fish. Nat Food 5,
-#' 221–229 (2024). https://doi.org/10.1038/s43016-024-00932-z
-#'
 #' @examples
 #' # initial bodyweight = 10 g (0.01 kg)
 #' # final bodyweight = 100 g (0.1 kg)
@@ -38,9 +34,12 @@
 #'    ibn = 0.128, fbn = 0.132,
 #'    fi = 200, nut_diet = 0.072)
 #'
-#'
 #' @author Anıl Axel Tellbüscher
 #'
+#' @references Willer, D.F., Newton, R., Malcorps, W. et al. Wild fish
+#' consumption can balance nutrient retention in farmed fish. Nat Food 5,
+#' 221–229 (2024). https://doi.org/10.1038/s43016-024-00932-z
+#' 
 #' @export
 nr <- function(ibw, fbw, ibn, fbn, fi, nut_diet) {
   # Checks----

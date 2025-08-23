@@ -28,9 +28,23 @@ the interval, an additional warning is returned.
 Function to calculate the Apparent Digestibility Coefficient of a nutrient
 in the dry matter fraction of a compound diet.
 }
+\examples{
+# 0.4 g/g (40\%) CP on dry matter basis in feed
+# 0.1 g/g (10\%) CP on dry matter basis in feces
+# 0.010 g/g (1\%) digestibility standard in feed
+# 0.045 g/g (4.5\%) digestibility standard in feces
+
+adc_nut(nut_diet = 0.4, nut_feces = 0.1, 
+        std_diet = 0.01, std_feces = 0.045)
+
+}
 \references{
-Bureau, D. P., & Hua, K. (2006): Letter to the Editor of
+Bureau, D.P., & Hua, K. (2006): Letter to the Editor of
 Aquaculture. Aquaculture, 252, p.103–105.
+
+Cho, C.Y., Slinger, S.J., & Bayley, H.S. (1982): Bioenergetics 
+of salmonid fishes: energy intake, expenditure and productivity. Comp. 
+Biochem. Physiol. 73B, p.25–41.
 }
 \author{
 Anıl Axel Tellbüscher

@@ -13,18 +13,13 @@
 #'
 #' @return numeric value that is the geometric mean bodyweight.
 #'
+#' @examples
+#' data(weight2)
+#' dplyr::mutate(weight2, GMBW = gbw(ibw_g, fbw_g))
 #'
 #' @author Anıl Axel Tellbüscher
 #'
-#'
 #' @importFrom dplyr mutate
-#'
-#' @examples
-#' data(weight2)
-#'
-#' dplyr::mutate(weight2, GMBW = gbw(W_start, W_end))
-#'
-#'
 #'
 #' @export
 gbw <- function(ibw, fbw) {

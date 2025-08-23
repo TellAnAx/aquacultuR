@@ -10,6 +10,10 @@
 #'
 #' @return returns a numeric value that is the AG.
 #'
+#' @examples
+#' data(weight2)
+#' dplyr::mutate(weight2, AG = ag(ibw_g, fbw_g))
+#' 
 #' @author Anıl Axel Tellbüscher
 #'
 #' @references Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
@@ -18,13 +22,6 @@
 #' p.30–42.
 #'
 #' @importFrom dplyr mutate
-#'
-#' @examples
-#' data(weight2)
-#'
-#' dplyr::mutate(weight2, AG = ag(W_start, W_end))
-#'
-#'
 #'
 #' @export
 ag <- function(ibw, fbw) {

@@ -22,13 +22,14 @@
 #'
 #' @returns returns a single numeric value
 #'
+#' @examples
+#' # Initial bodyweight = 10 g
+#' # Final bodyweight = 100 g
+#' # Feed intake = 240 g
+#' # Nutrient mass fraction in feed = 0.5 g/g
+#' ner(ibw = 10, fbw = 100, fi = 240, nut_f = 0.5)
 #'
 #' @author Anıl Axel Tellbüscher
-#'
-#' @examples
-#' # Calculate the NER using the initial and final weight
-#' ner(ibw = 1, fbw = 10, fi = 24, nut_f = 0.5)
-#'
 #'
 #' @export
 ner <- function(ibw, fbw, fi, nut_f, dm = 1) {

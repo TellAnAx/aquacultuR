@@ -5,6 +5,9 @@
 #' slower per Kg when comparing with smaller animals. An exponent between 0-1
 #' takes that relationship into account in a fairly simple equation.
 #'
+#' The default exponent is suited to fish only. It was set to 0.8 based on
+#' Lupatsch et al. (2003) and should be adjusted to other scenarios.
+#'
 #' @param ibw a numeric value that is providing the initial weight in
 #' grams.
 #' @param fbw a numeric value that is providing the final weight in
@@ -14,8 +17,9 @@
 #'
 #' @return returns a numeric value that is the metabolic bodyweight.
 #'
-#' @note Default exponent is suited to fish only. It was set to 0.8 based on
-#' Lupatsch et al. (2003) and should be adjusted to other scenarios.
+#' @examples
+#' data(weight2)
+#' dplyr::mutate(weight2, MBW = mbw(ibw_g, fbw_g))
 #'
 #' @author Anıl Axel Tellbüscher
 #' @author Davide A. Machado e Silva
@@ -28,13 +32,6 @@
 #' 225, p.175-189.
 #'
 #' @importFrom dplyr mutate
-#'
-#' @examples
-#' data(weight2)
-#'
-#' dplyr::mutate(weight2, MBW = mbw(W_start, W_end))
-#'
-#'
 #'
 #' @export
 mbw <- function(ibw, fbw, mb_exp = 0.8) {

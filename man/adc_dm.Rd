@@ -30,7 +30,6 @@ the dry matter fraction of a compound diet.
 # 45 g/kg (4.5\%) digestibility standard in feces
 adc_dm(dm_diet = 0.95, std_diet = 0.01, std_feces = 0.045)
 
-
 }
 \references{
 Bureau, D. P., Harris, A. M. & Cho, C. Y. (1999): Apparent

@@ -10,17 +10,13 @@
 #' @return returns a numeric value that is the Relative Growth. Multiply by 100
 #' for conversion into a percentage.
 #'
-#' @author Anıl Axel Tellbüscher
-#'
-#'
-#' @importFrom dplyr mutate
-#'
 #' @examples
 #' data(weight2)
+#' dplyr::mutate(weight2, RG = rg(ibw_g, fbw_g))
 #'
-#' dplyr::mutate(weight2, RG = rg(W_start, W_end))
+#' @author Anıl Axel Tellbüscher
 #'
-#'
+#' @importFrom dplyr mutate
 #'
 #' @export
 rg <- function(ibw, fbw) {

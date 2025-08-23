@@ -1,9 +1,17 @@
-#'  Thermal Growth Coefficient (TGC).
+#' Thermal Growth Coefficient (TGC)
 #'
-#'  A function that calculates Thermal Growth Coefficient (TGC) based on
-#'  the Initial Body weight (IBW) in grams (g), the Final Body
-#'  Weight (FBW) in grams (g) and the average water temperature (Temp.) in 
-#'  Celsius (°C) for the duration of the trial.
+#' A function that calculates Thermal Growth Coefficient (TGC) based on
+#' the Initial Body weight (IBW) in grams (g), the Final Body
+#' Weight (FBW) in grams (g) and the average water temperature (Temp.) in 
+#' Celsius (°C) for the duration of the trial.
+#'  
+#' The TGC is an alternative growth metric for fishes, describing the 
+#' increase in bodyweight over a period of time. It is suitable for 
+#' poikilothermic animals due to its standardisation for temperature. It 
+#' should, however, be taken into account, that the temperature during the 
+#' experiment should remain within the optimum range. It is also noteworthy 
+#' that the equation is optimized for a constant temperature throughout the 
+#' experiment.
 #'
 #' @param ibw a numeric value that is providing the initial body weight in
 #' grams.
@@ -11,20 +19,14 @@
 #' grams.
 #' @param duration a numeric value that is providing the duration of the
 #' experiment in days.
-#' @param temp a numeric value that is providing the average temperature during
-#' the experiment in degrees Celsius.
+#' @param temp a numeric value that is providing the average temperature 
+#' during the experiment in degrees Celsius.
 #' @param scale_coef Scaling coefficient. A numeric value that scales the
 #' TGC result so it is more intuitive and interpretable. Default is 1000.
 #'
 #' @return Returns a numeric value that is the TGC.
 #'
-#' @note The TGC is an alternative growth metric for fishes, describing the 
-#' increase in bodyweight over a period of time. It is suitable for 
-#' poikilothermic animals due to its standardisation for temperature. It 
-#' should, however, be taken into account, that the temperature during the 
-#' experiment should remain within the optimum range. It is also noteworthy 
-#' that the equation is optimized for a constant temperature throughout the 
-#' experiment.
+#'
 #'
 #' @author Anıl Axel Tellbüscher
 #' @author Davide A. Machado e Silva
@@ -36,7 +38,6 @@
 #' p.30–42.
 #' @references Jobling, M. (2003): The thermal growth coefﬁcient (TGC) model
 #' of ﬁsh growth: a cautionary note. Aquaculture Research, 34, p. 581–584.
-#'
 #'
 #' @export
 tgc <- function(ibw, fbw, duration, temp, scale_coef = 1000) {
@@ -73,6 +74,7 @@ tgc <- function(ibw, fbw, duration, temp, scale_coef = 1000) {
                     length(duration), 
                     length(temp)
                     ) / length(ibw)
+  
   if (any(length_ratio != 1))
     message("Input do not have the same length.")
   

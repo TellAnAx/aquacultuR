@@ -25,16 +25,13 @@ the bodyweight of an organism. The metabolism of larger animals is generally
 slower per Kg when comparing with smaller animals. An exponent between 0-1
 takes that relationship into account in a fairly simple equation.
 }
-\note{
-Default exponent is suited to fish only. It was set to 0.8 based on
+\details{
+The default exponent is suited to fish only. It was set to 0.8 based on
 Lupatsch et al. (2003) and should be adjusted to other scenarios.
 }
 \examples{
 data(weight2)
-
-dplyr::mutate(weight2, MBW = mbw(W_start, W_end))
-
-
+dplyr::mutate(weight2, MBW = mbw(ibw_g, fbw_g))
 
 }
 \references{

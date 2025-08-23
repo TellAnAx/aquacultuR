@@ -48,7 +48,6 @@ nr(ibw = 10, fbw = c(93, 102, 99, 98, 101, 132),
    ibn = 0.128, fbn = 0.132,
    fi = 200, nut_diet = 0.072)
 
-
 }
 \references{
 Willer, D.F., Newton, R., Malcorps, W. et al. Wild fish

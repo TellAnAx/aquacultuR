@@ -2,7 +2,7 @@
 % Please edit documentation in R/tgc.R
 \name{tgc}
 \alias{tgc}
-\title{Thermal Growth Coefficient (TGC).}
+\title{Thermal Growth Coefficient (TGC)}
 \usage{
 tgc(ibw, fbw, duration, temp, scale_coef = 1000)
 }
@@ -16,8 +16,8 @@ grams.}
 \item{duration}{a numeric value that is providing the duration of the
 experiment in days.}
 
-\item{temp}{a numeric value that is providing the average temperature during
-the experiment in degrees Celsius.}
+\item{temp}{a numeric value that is providing the average temperature 
+during the experiment in degrees Celsius.}
 
 \item{scale_coef}{Scaling coefficient. A numeric value that scales the
 TGC result so it is more intuitive and interpretable. Default is 1000.}
@@ -27,11 +27,10 @@ Returns a numeric value that is the TGC.
 }
 \description{
 A function that calculates Thermal Growth Coefficient (TGC) based on
- the Initial Body weight (IBW) in grams (g), the Final Body
- Weight (FBW) in grams (g) and the average water temperature (Temp.) in 
- Celsius (°C) for the duration of the trial.
-}
-\note{
+the Initial Body weight (IBW) in grams (g), the Final Body
+Weight (FBW) in grams (g) and the average water temperature (Temp.) in 
+Celsius (°C) for the duration of the trial.
+ 
 The TGC is an alternative growth metric for fishes, describing the 
 increase in bodyweight over a period of time. It is suitable for 
 poikilothermic animals due to its standardisation for temperature. It 

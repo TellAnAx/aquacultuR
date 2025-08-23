@@ -23,10 +23,7 @@ relative weight increase per time unit.
 }
 \examples{
 data(weight2)
-
-dplyr::mutate(weight2, RGR = rgr(W_start, W_end, duration = 84))
-
-
+dplyr::mutate(weight2, RGR = rgr(ibw_g, fbw_g, duration = 84))
 
 }
 \references{

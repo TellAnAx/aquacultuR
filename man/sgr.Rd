@@ -36,10 +36,7 @@ of studies and alternatives are not advised for the sake of consistency.
 }
 \examples{
 data(weight2)
-
-dplyr::mutate(weight2, SGR = sgr(W_start, W_end, duration = 84))
-
-
+dplyr::mutate(weight2, SGR = sgr(ibw_g, fbw_g, duration = 84))
 
 }
 \references{

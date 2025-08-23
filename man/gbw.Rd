@@ -25,10 +25,7 @@ variable nature of animal growth.
 }
 \examples{
 data(weight2)
-
-dplyr::mutate(weight2, GMBW = gbw(W_start, W_end))
-
-
+dplyr::mutate(weight2, GMBW = gbw(ibw_g, fbw_g))
 
 }
 \author{

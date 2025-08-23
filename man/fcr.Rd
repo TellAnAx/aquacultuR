@@ -36,6 +36,15 @@ administered or the total amount corrected for non-eaten feed, the result
 resembles the economic FCR (eFCR) or the biological FCR (bFCR), respectively 
 (Glencross et al., 2024).
 }
+\examples{
+# Feed intake = 1500 g
+# Feed dry matter = 0.96 g/g (= 96\%)
+# Initial bodyweight = 100 g
+# Final bodyweight = 1000 g
+
+fcr(100, 1000, 1500, 0.96)
+
+}
 \references{
 Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 (2016): A review on fish growth calculation: multiple functions in fish

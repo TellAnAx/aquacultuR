@@ -26,10 +26,7 @@ Weight Gain (WG) when applied to weight data.
 }
 \examples{
 data(weight2)
-
-dplyr::mutate(weight2, AGR = agr(W_start, W_end, duration = 84))
-
-
+dplyr::mutate(weight2, AGR = agr(ibw_g, fbw_g, duration = 84))
 
 }
 \references{
@@ -38,8 +35,8 @@ Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 production and their specific application. Reviews in Aquaculture, 8,
 p.30–42.
 
-Hopkins K.D. (1992) Reporting fish growth, a review of the basics. Journal
-of World Aquaculture Society, 23, p.173-179
+Hopkins K.D. (1992) Reporting fish growth, a review of the 
+basics. Journal of World Aquaculture Society, 23, p.173-179
 }
 \author{
 Anıl Axel Tellbüscher

@@ -23,9 +23,15 @@
 #'
 #' @return returns a numeric value that is the FCR.
 #'
-#'
+#' @examples
+#' # Feed intake = 1500 g
+#' # Feed dry matter = 0.96 g/g (= 96%)
+#' # Initial bodyweight = 100 g
+#' # Final bodyweight = 1000 g
+#' 
+#' fcr(100, 1000, 1500, 0.96)
+#' 
 #' @author Anıl Axel Tellbüscher
-#'
 #'
 #' @references Lugert, V., Thaller, G., Tetens, J., Schulz, C., & Krieter, J.
 #' (2016): A review on fish growth calculation: multiple functions in fish
@@ -35,8 +41,6 @@
 #' sustainability metrics for the marine ingredient sector: Moving towards
 #' holistic assessments of aquaculture feed. Reviews in Fisheries Science &
 #' Aquaculture, 32(4), p.545-561.
-#'
-#'
 #'
 #' @export
 fcr <- function(ibw, fbw, ff, dm = 1) {

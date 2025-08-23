@@ -36,9 +36,11 @@ be related to differences in the sub-composition of target nutrients that
 are also controlled for. This would be reflected by the NER.
 }
 \examples{
-# Calculate the NER using the initial and final weight
-ner(ibw = 1, fbw = 10, fi = 24, nut_f = 0.5)
-
+# Initial bodyweight = 10 g
+# Final bodyweight = 100 g
+# Feed intake = 240 g
+# Nutrient mass fraction in feed = 0.5 g/g
+ner(ibw = 10, fbw = 100, fi = 240, nut_f = 0.5)
 
 }
 \author{

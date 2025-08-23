@@ -1,6 +1,6 @@
 #' Relative Growth (RG)
 #'
-#' A function that calculates the Relative Growth (RG) based on the 
+#' A function that calculates the Relative Growth (RG) based on the
 #' Initial Body weight (IBW; ibw) and the Final Body Weight (FBW; fbw)
 #' in grams (g).
 #'
@@ -23,9 +23,7 @@
 #'
 #'
 #' @export
-rg <- function(ibw,
-               fbw) {
-  
+rg <- function(ibw, fbw) {
   # Checks----
   
   ## Check whether inputs are NA
@@ -38,14 +36,12 @@ rg <- function(ibw,
   stopifnot("'ibw' == 0. The result cannot be calculated." = all(ibw != 0))
   
   ## Check whether inputs are < 0
-  if (any(ibw < 0) | any(fbw < 0)) {
-    warning("Some inputs values are negative. The result may not be meaningful.")
-  }
+  if (any(ibw < 0) | any(fbw < 0))
+    warning("Some input values are negative. The result may not be meaningful.")
   
   ## Check whether inputs have the same length
-  if (length(ibw) != length(fbw)) {
+  if (length(ibw) != length(fbw))
     message("Inputs are of different length.")
-  }
   
   
   

@@ -22,7 +22,7 @@ A number of metrics is employed in the field of aquaculture in order to describe
 
 |Trivial                                          |Abbrev.  |Synonyms   |Symbol               |SI unit|
 |-------------------------------------------------|---------|-----------|---------------------|-------|
-|Absolute growth                                  |AG       |weight gain|$m_{\text{AG}}$      |g
+|Absolute growth                                  |AG       |weight gain|$\Delta m$      |g
 |Absolute growth rate                             |AGR      |           |$r_{\text{AG}}$      |g/d
 |Apparent Digestibility Coefficient               |ADC      |           |
 |Apparent Digestibility Coefficient - Dry Matter  |ADC-DM   |           |
@@ -57,10 +57,8 @@ A number of metrics is employed in the field of aquaculture in order to describe
 
 ## Absolute Growth
 
-
-
 $$
-m_{\text{AG}}
+\Delta m
   = m_{\text{end}} - m_{\text{init}} 
 $$
 
@@ -69,11 +67,13 @@ $$
 
 ## Absolute Growth Rate
 
+- average growth rate
+
 $$
 \text{AGR} 
-  = \frac{m_{\text{end}} - m_{\text{init}}}{t} 
-  = \frac{\Delta m}{t}
+  = \frac{\Delta m}{\Delta t}
 $$
+
 
 
 ## Apparent Digestibility Coefficient - Dry Matter
@@ -106,8 +106,7 @@ The Feed Conversion Efficiency (FCE) is the inverse of the Feed Conversion Ratio
 $$
 \text{FCE} 
   = \frac{1}{\text{FCR}} 
-  = \frac{m_{\text{end}} - m_{\text{init}}}{\text{FI} \cdot \text{DM}}
-  = \frac{\text{AG}}{\text{FI} \cdot \text{DM}}
+  = \frac{\Delta m}{\text{FI} \cdot \text{DM}}
 $$
 
 
@@ -118,16 +117,16 @@ The $eFCR$ takes the amount of feed fed ($Ff$) into consideration for the comput
 
 $$
 \text{eFCR}
-  = \frac{\text{Ff} \cdot \text{DM}}{m_{\text{end}} - m_{\text{init}}}
-  = \frac{\text{Ff} \cdot \text{DM}}{\text{AG}}
+  = \frac{\text{Ff} \cdot \text{DM}}{\Delta m}
 $$
+
+
 
 The $bFCR$, meanwhile, only considers the true feed intake ($FI$), which is the amount of feed fed, but corrected for feed refusal or feed losses. 
 
 $$
 \text{bFCR}
-  = \frac{\text{FI} \cdot \text{DM}}{m_{\text{end}} - m_{\text{init}}}
-  = \frac{\text{FI} \cdot \text{DM}}{\text{AG}}
+  = \frac{\text{FI} \cdot \text{DM}}{\Delta m}
 $$
 
 
@@ -137,9 +136,10 @@ $$
 Usually reported in g/d.
 
 $$
-\text{FR} = \frac{m_{feed}}{t}
+\text{FR} = \frac{m_{feed}}{\Delta t}
 $$
-with $m_{feed}}$ being the total mass of feed administered over a period of time $t$.
+, with $m_{feed}}$ being the total mass of feed administered between two time points $\Delta t$.
+
 
 
 ## Geometric bodyweight
@@ -162,16 +162,27 @@ $$
 
 $$
 \text{NER} 
-  = \frac{\text{AG}}{\text{FI} \cdot \gamma_{x} \cdot \text{DM}_{feed}}
+  = \frac{\Delta m}{\text{FI} \cdot \gamma_{x} \cdot \text{DM}_{feed}}
 $$
-with $\gamma_{x}$ denoting the mass fraction of a nutrient $x$ in the feed.
+, with $\gamma_{x}$ denoting the mass fraction of a nutrient $x$ in the feed.
+
+
+
+
+## Relative Growth
+
+$$
+\Delta m_{rel}
+  = \frac{m_{\text{end}} - m_{\text{init}}}{m_{end}}
+$$
+
 
 
 ## Relative Growth Rate
 
 $$
 \text{RGR}
-  = \frac{m_{end} - m_{start}}{t \cdot \sqrt{m_{end} \cdot m_{start}}}
+  = \frac{\Delta m}{\Delta t \cdot \sqrt{m_{end} \cdot m_{start}}}
 $$
 
 
@@ -181,8 +192,8 @@ Also called Instantaneous Growth Rate.
 
 $$
 \text{SGR} 
-  = \frac{\ln {m_{\text{end}} } - \ln {m_{\text{init}}} }{t}
-  = \frac{\ln \frac{m_{\text{end}}}{m_{\text{init}}}} {t}
+  = \frac{\ln {m_{\text{end}} } - \ln {m_{\text{init}}} }{\Delta t}
+  = \frac{\ln \frac{m_{\text{end}}}{m_{\text{init}}}} {\Delta t}
 $$
 
 

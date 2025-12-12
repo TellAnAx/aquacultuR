@@ -1,5 +1,5 @@
 Package: aquacultuR
-Title: Frequently used Equations in Aquaculture Research
+Title: A Comprehensive R Tool for Zootechnical Metrics
 Version: 0.3.0
 Authors@R: c(
     person("Anıl Axel", "Tellbüscher", , "atellbuscher@frov.jcu.cz", 
@@ -15,7 +15,7 @@ Authors@R: c(
            role = c("dtc"))
            )
 Description: The purpose of this package is to provide tools for aquaculture 
-    by implementing equations that are frequently used as ready-to-use 
+    by implementing frequently used zootechnical metrics as ready-to-use 
     functions in R language.
 License: GPL (>= 3)
 VignetteBuilder: knitr

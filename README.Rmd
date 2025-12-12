@@ -75,9 +75,16 @@ library(aquacultuR)
 
 # About
 
-**Author:**
+**Authors:**
 
 -   [Anıl Axel Tellbüscher](https://anil.tellbuescher.online)
+-   [Davide Machado e Silva](https://www.cesam-la.pt/davidemachadoesilva/)
+-   [Simão Correia](https://www.researchgate.net/profile/Simao-Correia)
+
+
+**Contributors:**
+
+-   [Madhav Karthikeyan]()
 
 
 **Logo design:**

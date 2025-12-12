@@ -5,6 +5,12 @@ Authors@R: c(
     person("Anıl Axel", "Tellbüscher", , "atellbuscher@frov.jcu.cz", 
            role = c("aut", "cre", "cph"), 
            comment = c(ORCID = "0000-0002-6065-9494")),
+    person("Davide", "Machado e Silva", , "dams@ua.pt", 
+           role = c("aut")),
+    person("Simão", "Correia", , "simaodomcorreia@gmail.com", 
+           role = c("aut")),
+    person("Madhav", "Karthikeyan", , "madhavleo2000@gmail.com", 
+           role = c("ctb")),
     person("Tomáš", "Pěnka", , "penkat00@frov.jcu.cz", 
            role = c("dtc"))
            )

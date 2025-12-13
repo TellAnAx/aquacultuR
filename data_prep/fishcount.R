@@ -6,10 +6,10 @@ library(purrr)
 
 # --- 1) Read the sheet without headers ---
 df_raw <- read_excel(
-  "data/Trial_A_data.xlsx", 
-  sheet = "Samplings", 
+  "data_prep/Trial_A_data.xlsx", 
+  sheet = "NumberOfFish", 
   col_names = FALSE, 
-  skip = 1
+  skip = 2
 )
 
 
@@ -41,5 +41,35 @@ final_names <- ifelse(
 # --- 5) Apply column names and drop the first two header rows ---
 df <- df_raw %>%
   slice(-(1:2)) %>%            # remove header rows
-  setNames(final_names)
+  setNames(final_names) %>% 
+  print()
 
+
+# --- 6) Data wrangling
+fishcount <- df %>%
+  pivot_longer(
+    cols = 2:last_col(),
+    names_to = c("parameter", "tank"),
+    names_pattern = "^(.*)_(.*)$",
+    values_to = "value"
+  ) %>% 
+  pivot_wider(
+    names_from = "parameter",
+    values_from = "value"
+  ) %>% 
+  rename_with(~str_to_lower(.x)) %>% 
+  rename_with(~str_remove_all(.x, " of fish| fish")) %>%
+  rename_with(~str_replace(.x, " ", "_")) %>% 
+  mutate(
+    date = as.Date(as.numeric(date), origin = "1899-12-30"),
+    tank = as.factor(tank),
+    across(c(`total_number`, `dead`), as.numeric)
+  ) %>%
+  print()
+
+
+save(
+  object = fishcount,
+  file = here::here("data", "fishcount.RData"),
+  compress = TRUE
+)

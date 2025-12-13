@@ -1,15 +1,19 @@
-library(readxl)
+#' This dataset contains compositional data of Skretting Protec, a commercial
+#' fish feed. The data comprises the proximate composition, phosphorus, and
+#' some essential amino acids. 
+
 library(dplyr)
 library(tidyr)
 library(stringr)
 library(purrr)
 
 # --- 1) Read the sheet without headers ---
-df_raw <- read_excel(
-  "data/Trial_A_data.xlsx", 
-  sheet = "WaterParametersDaily", 
+df_raw <- readxl::read_excel(
+  "data_prep/Trial_A_data.xlsx", 
+  sheet = "DietComposition", 
   col_names = FALSE, 
-  skip = 1
+  skip = 2,
+  na = "NA"
 )
 
 
@@ -18,23 +22,14 @@ hdr1 <- df_raw %>% slice(1) %>% as.character() %>% print()
 hdr2 <- df_raw %>% slice(2) %>% as.character() %>% print()
 
 
-# --- 3) Forward-fill group labels across NAs (e.g., "Water temperature (°C)" across T1..T11) ---
-# Convert to tibble for fill, then back to vector
-hdr1_filled <- tibble(hdr1 = hdr1) %>%
-  tidyr::fill(hdr1, .direction = "down") %>%
-  pull(hdr1) %>% 
-  print()
-
-
 # --- 4) Build final names by combining hdr1_filled and hdr2 ---
 # For columns where hdr1_filled is NA/empty (like the date column),
 # just use hdr2; otherwise combine with an underscore.
-hdr1_filled[is.na(hdr1_filled)] <- ""
 final_names <- ifelse(
-  hdr1_filled == "",
-  hdr2,
-  paste0(hdr1_filled, "_", hdr2)
-) %>% 
+  hdr2 == "-",
+  hdr1,
+  paste0(hdr1, "_", hdr2)
+  ) %>% 
   print()
 
 
@@ -43,3 +38,22 @@ df <- df_raw %>%
   slice(-(1:2)) %>%            # remove header rows
   setNames(final_names)
 
+
+feedcomp <- df %>%
+  rename_with(~str_to_lower(.x)) %>%
+  rename_with(~str_replace(.x, "%", "perc")) %>% 
+  rename_with(~str_replace_all(.x, " ", "_")) %>% 
+  rename_with(~str_replace_all(.x, "/", "_per_")) %>%
+  rename_with(~str_remove(.x, "_perc_as_fed")) %>%
+  rename_with(~str_remove(.x, "_mj_per_kg_as_fed")) %>%
+  mutate(
+    across(.cols = 2:last_col(), ~as.numeric(.x))
+  ) %>% 
+  print()
+
+
+save(
+  object = feedcomp,
+  file = here::here("data", "feedcomp.RData"),
+  compress = TRUE
+)

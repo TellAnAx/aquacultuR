@@ -5,23 +5,23 @@
 \alias{samplings}
 \title{Sampling data}
 \format{
-A data frame with 181 rows and 14 columns:
+A tibble with 181 rows and 14 columns:
 \describe{
- \item{date}{date; date of data recording}
- \item{tank}{factor; rearing tank identifier}
- \item{replicate}{factor; replicate identifier}
- \item{sample_type}{character; type of sample}
- \item{fish_weight}{numeric; weight of fish in gram}
+ \item{date}{date; date of data recording.}
+ \item{tank}{factor; rearing tank identifier.}
+ \item{replicate}{factor; replicate identifier.}
+ \item{sample_type}{character; type of sample.}
+ \item{fish_weight}{numeric; weight of fish in gram.}
  \item{fork_length}{numeric; length of fish from the tip of the snout to the 
- end of the middle caudal fin rays in centimeter}
- \item{liver_weight}{numeric; weight of the liver in gram}
- \item{hsi}{numeric; hepatosomatic index in percent}
- \item{heart_weight}{numeric; weight of the heart in gram}
- \item{csi}{numeric; cardiosomatic index in percent}
- \item{gonad_weight}{numeric; weight of the gonads in gram}
- \item{gsi}{numeric; gonadosomatic index in percent}
- \item{viscera_weight}{numeric; weight of the viscera ni gram}
- \item{vsi}{numeric; viscerosomatic index in percent}
+ end of the middle caudal fin rays in centimeter.}
+ \item{liver_weight}{numeric; weight of the liver in gram.}
+ \item{hsi}{numeric; hepatosomatic index in percent.}
+ \item{heart_weight}{numeric; weight of the heart in gram.}
+ \item{csi}{numeric; cardiosomatic index in percent.}
+ \item{gonad_weight}{numeric; weight of the gonads in gram.}
+ \item{gsi}{numeric; gonadosomatic index in percent.}
+ \item{viscera_weight}{numeric; weight of the viscera in gram.}
+ \item{vsi}{numeric; viscerosomatic index in percent.}
 }
 }
 \description{

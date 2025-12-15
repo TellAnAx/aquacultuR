@@ -5,31 +5,31 @@
 \alias{bodycomp}
 \title{Fish body composition}
 \format{
-A data frame with 12 rows and 14 columns:
+A tibble with 12 rows and 14 columns:
 \describe{
- \item{date}{date; }
- \item{treatment}{factor; }
- \item{tank}{factor; }
- \item{dm}{numeric; dry matter content of fish tissue in g/100 g}
- \item{water}{numeric; content of fish tissue in g/100 g}
+ \item{date}{date; date of data recording.}
+ \item{treatment}{factor; treatment identifier.}
+ \item{tank}{factor; rearing tank identifier.}
+ \item{dm}{numeric; dry matter content of fish tissue in g/100 g.}
+ \item{water}{numeric; content of fish tissue in g/100 g.}
  \item{ash}{numeric; content of fish tissue in g/100 g on dry matter 
- basis}
+ basis.}
  \item{energy}{numeric; gross energy content of fish tissue in kJ/g on dry 
- matter basis}
+ matter basis.}
  \item{fat}{numeric; crude fat content of fish tissue in g/100 g on dry 
- matter basis}
+ matter basis.}
  \item{protein}{numeric; crude protein content of fish tissue in g/100 g on
- dry matter basis}
+ dry matter basis.}
  \item{ca}{numeric; calcium content of fish tissue in mg/kg on dry matter 
- basis}
+ basis.}
  \item{k}{numeric; potassium content of fish tissue in mg/kg on dry matter 
- basis}
+ basis.}
  \item{mg}{numeric; magnesium content of fish tissue in mg/kg on dry matter 
- basis}
+ basis.}
  \item{na}{numeric; sodium content of fish tissue in mg/kg on dry matter 
- basis}
- \item{phosphorus}{numeric; content of fish tissue in mg/kg on 
- dry matter basis}
+ basis.}
+ \item{phosphorus}{numeric; content of fish tissue in mg/kg on dry matter 
+ basis.}
 }
 }
 \description{

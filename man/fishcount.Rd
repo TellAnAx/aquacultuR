@@ -5,12 +5,14 @@
 \alias{fishcount}
 \title{Daily count of live and dead fish}
 \format{
-A data frame with 270 rows and 4 columns:
+A tibble with 270 rows and 4 columns:
 \describe{
- \item{date}{date; date of data recording}
- \item{tank}{factor; rearing tank identifier}
- \item{total_number}{numeric; count of fish stocked at the beginning of the experiment}
- \item{dead}{numeric; count of dead fish on each recorded day of the experiment}
+ \item{date}{date; date of data recording.}
+ \item{tank}{factor; rearing tank identifier.}
+ \item{total_number}{numeric; count of fish stocked at the beginning of the 
+ experiment.}
+ \item{dead}{numeric; count of dead fish on each recorded day of the 
+ experiment.}
 }
 }
 \description{

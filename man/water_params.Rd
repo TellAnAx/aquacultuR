@@ -5,14 +5,14 @@
 \alias{water_params}
 \title{Daily water parameters}
 \format{
-A data frame with 270 rows and 6 columns:
+A tibble with 270 rows and 6 columns:
 \describe{
- \item{date}{date; date of data recording}
- \item{tank}{factor; rearing tank identifier}
- \item{temp}{numeric; water temperature in degrees Celsius}
- \item{salinity}{numeric; salinity in parts per thousand}
- \item{do_perc}{numeric; dissolved oxygen in percentage saturation}
- \item{do_conc}{numeric; dissolved oxygen concentration in mg/L}
+ \item{date}{date; date of data recording.}
+ \item{tank}{factor; rearing tank identifier.}
+ \item{temp}{numeric; water temperature in degrees Celsius.}
+ \item{salinity}{numeric; salinity in parts per thousand.}
+ \item{do_perc}{numeric; dissolved oxygen in percentage saturation.}
+ \item{do_conc}{numeric; dissolved oxygen concentration in mg/L.}
 }
 }
 \description{

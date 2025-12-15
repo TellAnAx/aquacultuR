@@ -9,14 +9,14 @@
 #' 2) shortening the column names, and 3) converting the table into long 
 #' format by moving the tank IDs into a separate column.
 #' 
-#' @format A data frame with 270 rows and 6 columns:
+#' @format A tibble with 270 rows and 6 columns:
 #' \describe{
-#'  \item{date}{date; date of data recording}
-#'  \item{tank}{factor; rearing tank identifier}
-#'  \item{temp}{numeric; water temperature in degrees Celsius}
-#'  \item{salinity}{numeric; salinity in parts per thousand}
-#'  \item{do_perc}{numeric; dissolved oxygen in percentage saturation}
-#'  \item{do_conc}{numeric; dissolved oxygen concentration in mg/L}
+#'  \item{date}{date; date of data recording.}
+#'  \item{tank}{factor; rearing tank identifier.}
+#'  \item{temp}{numeric; water temperature in degrees Celsius.}
+#'  \item{salinity}{numeric; salinity in parts per thousand.}
+#'  \item{do_perc}{numeric; dissolved oxygen in percentage saturation.}
+#'  \item{do_conc}{numeric; dissolved oxygen concentration in mg/L.}
 #' }
 #'
 #' @examples
@@ -49,12 +49,13 @@ NULL
 #' column. NA values have been replaced by the recalculated feed intakes for 
 #' the respective day.
 #' 
-#' @format A data frame with 270 rows and 4 columns:
+#' @format A tibble with 270 rows and 4 columns:
 #' \describe{
-#'  \item{date}{date; date of data recording}
-#'  \item{tank}{factor; rearing tank identifier}
-#'  \item{daily_feed_intake}{numeric; daily feed intake in gram per fish}
-#'  \item{cumulative_feed_intake}{numeric; cumulatic feed intake in gram per fish}
+#'  \item{date}{date; date of data recording.}
+#'  \item{tank}{factor; rearing tank identifier.}
+#'  \item{daily_feed_intake}{numeric; daily feed intake in gram per fish.}
+#'  \item{cumulative_feed_intake}{numeric; cumulatic feed intake in gram per 
+#'  fish.}
 #' }
 #' 
 #' @examples
@@ -86,23 +87,23 @@ NULL
 #' original data structure were done by 1) converting the double-row column 
 #' names into single-row column names, and 2) removing the 'sex' column.
 #' 
-#' @format A data frame with 181 rows and 14 columns:
+#' @format A tibble with 181 rows and 14 columns:
 #' \describe{
-#'  \item{date}{date; date of data recording}
-#'  \item{tank}{factor; rearing tank identifier}
-#'  \item{replicate}{factor; replicate identifier}
-#'  \item{sample_type}{character; type of sample}
-#'  \item{fish_weight}{numeric; weight of fish in gram}
+#'  \item{date}{date; date of data recording.}
+#'  \item{tank}{factor; rearing tank identifier.}
+#'  \item{replicate}{factor; replicate identifier.}
+#'  \item{sample_type}{character; type of sample.}
+#'  \item{fish_weight}{numeric; weight of fish in gram.}
 #'  \item{fork_length}{numeric; length of fish from the tip of the snout to the 
-#'  end of the middle caudal fin rays in centimeter}
-#'  \item{liver_weight}{numeric; weight of the liver in gram}
-#'  \item{hsi}{numeric; hepatosomatic index in percent}
-#'  \item{heart_weight}{numeric; weight of the heart in gram}
-#'  \item{csi}{numeric; cardiosomatic index in percent}
-#'  \item{gonad_weight}{numeric; weight of the gonads in gram}
-#'  \item{gsi}{numeric; gonadosomatic index in percent}
-#'  \item{viscera_weight}{numeric; weight of the viscera ni gram}
-#'  \item{vsi}{numeric; viscerosomatic index in percent}
+#'  end of the middle caudal fin rays in centimeter.}
+#'  \item{liver_weight}{numeric; weight of the liver in gram.}
+#'  \item{hsi}{numeric; hepatosomatic index in percent.}
+#'  \item{heart_weight}{numeric; weight of the heart in gram.}
+#'  \item{csi}{numeric; cardiosomatic index in percent.}
+#'  \item{gonad_weight}{numeric; weight of the gonads in gram.}
+#'  \item{gsi}{numeric; gonadosomatic index in percent.}
+#'  \item{viscera_weight}{numeric; weight of the viscera in gram.}
+#'  \item{vsi}{numeric; viscerosomatic index in percent.}
 #' }
 #' 
 #' @examples
@@ -134,12 +135,14 @@ NULL
 #' converting the table into long format by moving the tank IDs into a separate 
 #' column.
 #' 
-#' @format A data frame with 270 rows and 4 columns:
+#' @format A tibble with 270 rows and 4 columns:
 #' \describe{
-#'  \item{date}{date; date of data recording}
-#'  \item{tank}{factor; rearing tank identifier}
-#'  \item{total_number}{numeric; count of fish stocked at the beginning of the experiment}
-#'  \item{dead}{numeric; count of dead fish on each recorded day of the experiment}
+#'  \item{date}{date; date of data recording.}
+#'  \item{tank}{factor; rearing tank identifier.}
+#'  \item{total_number}{numeric; count of fish stocked at the beginning of the 
+#'  experiment.}
+#'  \item{dead}{numeric; count of dead fish on each recorded day of the 
+#'  experiment.}
 #' }
 #' 
 #' @examples
@@ -170,31 +173,31 @@ NULL
 #' the original data structure were done by 1) converting the double-row column 
 #' names into single-row column names and 2) removing the 'sex' column.
 #' 
-#' @format A data frame with 12 rows and 14 columns:
+#' @format A tibble with 12 rows and 14 columns:
 #' \describe{
-#'  \item{date}{date; }
-#'  \item{treatment}{factor; }
-#'  \item{tank}{factor; }
-#'  \item{dm}{numeric; dry matter content of fish tissue in g/100 g}
-#'  \item{water}{numeric; content of fish tissue in g/100 g}
+#'  \item{date}{date; date of data recording.}
+#'  \item{treatment}{factor; treatment identifier.}
+#'  \item{tank}{factor; rearing tank identifier.}
+#'  \item{dm}{numeric; dry matter content of fish tissue in g/100 g.}
+#'  \item{water}{numeric; content of fish tissue in g/100 g.}
 #'  \item{ash}{numeric; content of fish tissue in g/100 g on dry matter 
-#'  basis}
+#'  basis.}
 #'  \item{energy}{numeric; gross energy content of fish tissue in kJ/g on dry 
-#'  matter basis}
+#'  matter basis.}
 #'  \item{fat}{numeric; crude fat content of fish tissue in g/100 g on dry 
-#'  matter basis}
+#'  matter basis.}
 #'  \item{protein}{numeric; crude protein content of fish tissue in g/100 g on
-#'  dry matter basis}
+#'  dry matter basis.}
 #'  \item{ca}{numeric; calcium content of fish tissue in mg/kg on dry matter 
-#'  basis}
+#'  basis.}
 #'  \item{k}{numeric; potassium content of fish tissue in mg/kg on dry matter 
-#'  basis}
+#'  basis.}
 #'  \item{mg}{numeric; magnesium content of fish tissue in mg/kg on dry matter 
-#'  basis}
+#'  basis.}
 #'  \item{na}{numeric; sodium content of fish tissue in mg/kg on dry matter 
-#'  basis}
-#'  \item{phosphorus}{numeric; content of fish tissue in mg/kg on 
-#'  dry matter basis}
+#'  basis.}
+#'  \item{phosphorus}{numeric; content of fish tissue in mg/kg on dry matter 
+#'  basis.}
 #' } 
 #' 
 #' @examples
@@ -221,33 +224,33 @@ NULL
 #' fish feed. The data comprises the proximate composition, phosphorus, and
 #' some essential amino acids. 
 #' 
-#' @format A data frame with one row and 25 columns:
+#' @format A tibble with one row and 25 columns:
 #' \describe{
-#'  \item{diet}{character; feed name}
-#'  \item{dry_matter}{numeric; content of feed in percent}
-#'  \item{crude_protein}{numeric; content of feed in percent as fed}
-#'  \item{crude_lipids}{numeric; content of feed in percent as fed}
-#'  \item{ash}{numeric; content of feed in percent as fed}
-#'  \item{gross_energy}{numeric; content of feed in MJ per kg as fed}
-#'  \item{phosphorus}{numeric; content of feed in percent as fed}
-#'  \item{arginine}{numeric; content of feed in percent as fed}
-#'  \item{histidine}{numeric; content of feed in percent as fed}
-#'  \item{isoleucine}{numeric; content of feed in percent as fed}
-#'  \item{leucine}{numeric; content of feed in percent as fed} 
-#'  \item{lysine}{numeric; content of feed in percent as fed}
-#'  \item{threonine}{numeric; content of feed in percent as fed}
-#'  \item{tryptophan}{numeric; content of feed in percent as fed}
-#'  \item{valine}{numeric; content of feed in percent as fed}
-#'  \item{methionine}{numeric; content of feed in percent as fed}
-#'  \item{cysteine}{numeric; content of feed in percent as fed}
-#'  \item{phenylalanine}{numeric; content of feed in percent as fed}
-#'  \item{tyrosine}{numeric; content of feed in percent as fed}
-#'  \item{aspartic_acid}{numeric; content of feed in percent as fed}
-#'  \item{glutamic_acid}{numeric; content of feed in percent as fed}
-#'  \item{alanine}{numeric; content of feed in percent as fed}
-#'  \item{glycine}{numeric; content of feed in percent as fed}
-#'  \item{proline}{numeric; content of feed in percent as fed}
-#'  \item{serine}{numeric; content of feed in percent as fed}
+#'  \item{diet}{character; feed name.}
+#'  \item{dry_matter}{numeric; content of feed in percent.}
+#'  \item{crude_protein}{numeric; content of feed in percent as fed.}
+#'  \item{crude_lipids}{numeric; content of feed in percent as fed.}
+#'  \item{ash}{numeric; content of feed in percent as fed.}
+#'  \item{gross_energy}{numeric; content of feed in MJ per kg as fed.}
+#'  \item{phosphorus}{numeric; content of feed in percent as fed.}
+#'  \item{arginine}{numeric; content of feed in percent as fed.}
+#'  \item{histidine}{numeric; content of feed in percent as fed.}
+#'  \item{isoleucine}{numeric; content of feed in percent as fed.}
+#'  \item{leucine}{numeric; content of feed in percent as fed.} 
+#'  \item{lysine}{numeric; content of feed in percent as fed.}
+#'  \item{threonine}{numeric; content of feed in percent as fed.}
+#'  \item{tryptophan}{numeric; content of feed in percent as fed.}
+#'  \item{valine}{numeric; content of feed in percent as fed.}
+#'  \item{methionine}{numeric; content of feed in percent as fed.}
+#'  \item{cysteine}{numeric; content of feed in percent as fed.}
+#'  \item{phenylalanine}{numeric; content of feed in percent as fed.}
+#'  \item{tyrosine}{numeric; content of feed in percent as fed.}
+#'  \item{aspartic_acid}{numeric; content of feed in percent as fed.}
+#'  \item{glutamic_acid}{numeric; content of feed in percent as fed.}
+#'  \item{alanine}{numeric; content of feed in percent as fed.}
+#'  \item{glycine}{numeric; content of feed in percent as fed.}
+#'  \item{proline}{numeric; content of feed in percent as fed.}
+#'  \item{serine}{numeric; content of feed in percent as fed.}
 #' }
 #' 
 #' @examples
@@ -263,3 +266,94 @@ NULL
 #' @keywords datasets
 #' @name feedcomp
 NULL
+
+
+
+
+
+#' Digestibility of dry matter
+#' 
+#' This dataset contains example data to calculate the apparent digestibility
+#' of two diets that differ in their dry matter mass fraction and in the mass 
+#' fraction of digestibility markers in the feces.
+#' 
+#' @format A tibble with two rows and four columns:
+#' \describe{
+#'  \item{diet}{character; feed identifier.}
+#'  \item{dm}{numeric; mass fraction of dry matter in the feed.}
+#'  \item{std_feed}{numeric; mass fraction of digestibility marker in feed.}
+#'  \item{std_feces}{numeric; mass fraction of digestibility marker in feces.}
+#' }
+#' 
+#' @examples
+#' digestdm
+#' 
+#' @docType data
+#' @keywords datasets
+#' @name digestdm
+NULL
+
+
+
+
+
+#' Digestibility of feed nutrients
+#' 
+#' This dataset contains example data for the calculation of apparent 
+#' digestibility coefficients for the digestibility of nitrogen in the dry 
+#' matter fraction of an aquaculture feed.
+#' 
+#' @format A tibble with two rows and six columns:
+#' \describe{
+#'  \item{diet}{character; feed identifier.}
+#'  \item{dm}{numeric; mass fraction of dry matter in the feed. Data reported 
+#'  as relative value between 0 and 1.}
+#'  \item{N_feed}{numeric; mass fraction of nitrogen in feed. Data reported in 
+#'  g/kg.}
+#'  \item{std_feed}{numeric; mass fraction of digestibility marker in feed.
+#'  Data reported in g/kg.}
+#'  \item{N_feces}{numeric; mass fraction of nitrogen in feces in g/kg.}
+#'  \item{std_feces}{numeric; mass fraction of digestibility marker in feces. 
+#'  Data reported in g/kg.}
+#' }
+#' 
+#' @examples
+#' digestnut
+#' 
+#' @docType data
+#' @keywords dataset
+#' @name digestnut
+NULL
+
+
+
+
+
+#' Digestibility of a feed ingredient
+#' 
+#' This dataset contains example data for the determination of the apparent 
+#' digestibility of feed ingredients by using a reference diet and replacing 
+#' a part (usually 30%) of it by the feed ingredient to be evaluated.
+#' 
+#' @format A tibble with one row and six columns
+#' \describe{
+#'  \item{diet_reference}{character; reference feed identifier.}
+#'  \item{ingredient}{character; feed ingredient identifier.}
+#'  \item{adc_reference}{numeric; apparent digestibility coefficient of the 
+#'  reference feed.}
+#'  \item{adc_test}{numeric; apparent digestibility coefficient of the test 
+#'  feed.}
+#'  \item{dm_ingr}{numeric; mass fraction of dry matter in the feed ingredient. 
+#'  Data reported as relative value between 0 and 1.}
+#'  \item{N_ingr}{numeric; mass fraction of nitrogen in the feed ingredient 
+#'  in g/kg.}
+#' }
+#' 
+#' @examples
+#' digestingr
+#' 
+#' @docType data
+#' @keywords dataset
+#' @name digestingr
+NULL
+

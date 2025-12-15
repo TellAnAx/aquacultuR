@@ -5,12 +5,13 @@
 \alias{feed_intake}
 \title{Daily feed intake}
 \format{
-A data frame with 270 rows and 4 columns:
+A tibble with 270 rows and 4 columns:
 \describe{
- \item{date}{date; date of data recording}
- \item{tank}{factor; rearing tank identifier}
- \item{daily_feed_intake}{numeric; daily feed intake in gram per fish}
- \item{cumulative_feed_intake}{numeric; cumulatic feed intake in gram per fish}
+ \item{date}{date; date of data recording.}
+ \item{tank}{factor; rearing tank identifier.}
+ \item{daily_feed_intake}{numeric; daily feed intake in gram per fish.}
+ \item{cumulative_feed_intake}{numeric; cumulatic feed intake in gram per 
+ fish.}
 }
 }
 \description{

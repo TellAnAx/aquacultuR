@@ -5,14 +5,23 @@
 #' salmoides), at the beginning and the end of a polyculture experiment for 
 #' aquaculture purposes.
 #' 
-#' @docType data
-#' @keywords datasets
-#' @name weight2
-#' @usage data(weight2)
+#' @format A tibble with 396 rows and four columns:
+#' \describe{
+#'  \item{species}{character; species identifier.}
+#'  \item{culture_sys}{character; culture system identifier.}
+#'  \item{ibw_g}{numeric; initial bodyweight in gram.}
+#'  \item{fbw_g}{numeric; final bodyweight in gram.}
+#' }
+#' 
+#' @examples
+#' weight2
+#'
 #' @references Pěnka T., Malinovskyi O., Křišťan J., Imentai A., Policar T. 
 #' (2021): Effect of density and mixed culture with pikeperch (Sander 
 #' lucioperca) on effectivity of largemouth bass (Micropterus salmoides) 
 #' intensive culture. Czech Journal of Animal Science, 66: 428–440.
-#' @format A data frame with 4 variables ('species', 'culture_sys', 'ibw_g', 
-#' 'fbw_g') and 396 observations.  
+#' 
+#' @docType data
+#' @keywords datasets
+#' @name weight2
 NULL

@@ -3,9 +3,11 @@
 #' A function that calculates the Relative Growth Rate (RGR), which is the 
 #' relative weight increase per time unit.
 #'
-#' @param m_start numeric; provides the initial weight in gram.
-#' @param m_end numeric; provides the final weight in gram.
+#' @param ibw numeric; provides the initial weight in gram.
+#' @param fbw numeric; provides the final weight in gram.
 #' @param duration numeric; duration of the growth experiment.
+#' @param mean_fun character; specifies the mean ("geometric" or "arithmetic")
+#' to be calculated as denominator. Default: "geometric". 
 #'
 #' @return either a single numeric value or vector holding the calculated RGR
 #' values. Multiply by 100 for conversion into percentage.
@@ -24,30 +26,43 @@
 #' @importFrom dplyr mutate
 #'
 #' @export
-rgr <- function(m_start, m_end, duration) {
+rgr <- function(ibw, fbw, duration, mean_fun = "geometric") {
+  
   # Checks----
   ## Ensure inputs are numeric
-  stopifnot("Inputs must be numeric!" = is.numeric(m_start) &
-              is.numeric(m_end) & is.numeric(duration))
+  stopifnot("Inputs must be numeric!" = is.numeric(ibw) &
+              is.numeric(fbw) & is.numeric(duration))
   
-  ## Ensure m_start and duration are != 0
-  stopifnot("Inputs must be != 0!" = m_start != 0 & duration != 0)
+  ## Ensure ibw and duration are != 0
+  stopifnot("Inputs must be != 0!" = ibw != 0 & duration != 0)
+  
+  ## Ensure mean_fun %in% c("geometric", "arithmetic")
+  stopifnot("mean_fun must be 'geometric' or 'arithmetic'!" = 
+              mean_fun %in% c("geometric", "arithmetic"))
   
   ## Warn if inputs are < 0
-  if (any(m_start < 0) | any(m_end < 0) | any(duration < 0)) {
+  if (any(ibw < 0) | any(fbw < 0) | any(duration < 0)) {
     warning("Inputs < 0. The result is not meaningful.")
   }
   
   ## Warn if inputs are not of the same length
-  if (any(c(length(m_start), length(m_end), length(duration)) > 1)) {
+  if (any(c(length(ibw), length(fbw), length(duration)) > 1)) {
     message("Inputs are not of same length.")
   }
   
   
   
   # Calculations----
+  numerator <- fbw - ibw
+  denominator <- switch(mean_fun,
+                        geometric = gbw(ibw, fbw = fbw),
+                        arithmetic = (ibw + fbw)/2
+                        )
+  
+  
   ## Calculate the relative growth rate
-  rgr <- (m_end - m_start) / (m_start * duration)
+  rgr <- numerator / (denominator * duration)
+  
   
   ## Return the result
   return(rgr)

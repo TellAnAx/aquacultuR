@@ -1,0 +1,205 @@
+---
+title: "Formulary"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Formulary}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+A number of metrics is employed in the field of aquaculture in order to describe aspects such as the growth or feed conversion in a comparable manner. This vignette provides a formulary and expands the background on the metrics that have been implemented in the aquacultuR package.
+
+
+
+# Overview
+
+|Trivial                                          |Abbrev.  |Synonyms   |Symbol               |SI unit|
+|-------------------------------------------------|---------|-----------|---------------------|-------|
+|Absolute growth                                  |AG       |weight gain|$\Delta m$      |g
+|Absolute growth rate                             |AGR      |           |$r_{\text{AG}}$      |g/d
+|Apparent Digestibility Coefficient               |ADC      |           |
+|Apparent Digestibility Coefficient - Dry Matter  |ADC-DM   |           |
+|Apparent Digestibility Coefficient - Nutrient    |ADC-Nut  |           |
+|Apparent Digestibility Coefficient - Ingredient  |ADC-Ingr |           |
+|Body weight                                      |BW       |           |$m_{\text{BW}}$      |g
+|Feed conversion ratio                            |FCR      |           |$m_{f}:m_{\text{AG}}$|g/g
+|Feed efficiency ratio                            |FER      |           |$m_{\text{AG}}:m_{f}$|g/g
+|Feed fed                                         |Ff       |           |$r_{\text{Ff}}$      |g/d
+|Feed intake                                      |FI       |           |$r_{\text{FI}}$      |g/d
+|Feeding rate                                     |FR       |           |$r_{\text{FR}}$      |g/m d
+|Final body weight                                |FBW      |           |$m_{\text{end}}$     |g
+|Geometric body weight                            |GBW      |           |$m_{geom}$           |g
+|Initial body weight                              |IBW      |           |$m_{\text{init}}$    |g
+|Metabolic body weight                            |MBW      |           |$m_{\text{MBW}}$     |g
+|Relative growth rate                             |RGR      |           |$r_{\text{RGR}}$
+|Specific growth rate                             |SGR      |           |
+|Thermal growth coefficient                       |TGC      |           |
+
+
+
+|Parameter                  |Abbrev.    |Symbol     |SI unit|
+|---------------------------|-----------|-----------|-------|
+|Time                       |           |$t$        |d
+|Temperature                |temp       |$T$        |°C
+
+
+
+
+
+# Alphabetic Formulary
+
+## Absolute Growth
+
+$$
+\Delta m
+  = m_{\text{end}} - m_{\text{init}} 
+$$
+
+
+
+
+## Absolute Growth Rate
+
+- average growth rate
+
+$$
+\text{AGR} 
+  = \frac{\Delta m}{\Delta t}
+$$
+
+
+
+## Apparent Digestibility Coefficient - Dry Matter
+
+$$
+\text{ADC}_{\text{DM}} = 
+  1 - (\frac{\gamma_{feed}}{\gamma_{feces}})
+$$
+
+
+## Apparent Digestibility Coefficient - Nutrient
+
+$$
+\text{ADC}_{\text{x}} = 
+  1 - (\frac{\gamma_{std, feed}} {\gamma_{std,feces}} \cdot \frac{\gamma_{x,feces}}{\gamma_{x, feed}})
+$$
+
+
+## Apparent Digestibility Coefficient - Ingredient
+
+$$
+\text{ADC}_{ingr} = ADC_{test} + (ADC_{test} - ADC_{ref}) \cdot (\frac{f_{ref} \cdot \gamma_{x,ref}}{f_{ingredient} \cdot \gamma_{x, ingredient}})
+$$
+
+
+## Feed Conversion Efficiency
+
+The Feed Conversion Efficiency (FCE) is the inverse of the Feed Conversion Ratio (FCR). 
+
+$$
+\text{FCE} 
+  = \frac{1}{\text{FCR}} 
+  = \frac{\Delta m}{\text{FI} \cdot \text{DM}}
+$$
+
+
+## Feed Conversion Ratio
+The Feed Conversion Ratio (FCR) is one of the most commonly used metrics in the field of animal production and animal nutrition, as it provides a simple way of relating the quantity of feed administered to achieve a certain increase in biomass. Several versions of the FCR are used in literature. After correction for the true dry matter ($DM$) content of the feed, which makes FCRs comparable, the two most common FCRs are the $eFCR$ (economic FCR) and the $bFCR$ (biological FCR) (Glencross et al., 2024).
+
+The $eFCR$ takes the amount of feed fed ($Ff$) into consideration for the computation of the result. This is more meaningful in a business setup, because the $eFCR$ would also respond to, for instance, changes in the feeding strategy that might lead to a decrease in feed loss.
+
+$$
+\text{eFCR}
+  = \frac{\text{Ff} \cdot \text{DM}}{\Delta m}
+$$
+
+
+
+The $bFCR$, meanwhile, only considers the true feed intake ($FI$), which is the amount of feed fed, but corrected for feed refusal or feed losses. 
+
+$$
+\text{bFCR}
+  = \frac{\text{FI} \cdot \text{DM}}{\Delta m}
+$$
+
+
+
+## Feeding Rate
+
+Usually reported in g/d.
+
+$$
+\text{FR} = \frac{m_{feed}}{\Delta t}
+$$
+, with $m_{feed}}$ being the total mass of feed administered between two time points $\Delta t$.
+
+
+
+## Geometric bodyweight
+
+$$
+\text{GBW} = \sqrt{m_{start} \cdot m_{end}}
+$$
+
+
+## Metabolic bodyweight
+
+$$
+\text{MBW} 
+  = \text{GBW}^{0.8} 
+  = \sqrt{m_{start} \cdot m_{end}}^{0.8}
+$$
+
+
+## Nutrient Efficiency Ratio
+
+$$
+\text{NER} 
+  = \frac{\Delta m}{\text{FI} \cdot \gamma_{x} \cdot \text{DM}_{feed}}
+$$
+, with $\gamma_{x}$ denoting the mass fraction of a nutrient $x$ in the feed.
+
+
+
+
+## Relative Growth
+
+$$
+\Delta m_{rel}
+  = \frac{m_{\text{end}} - m_{\text{init}}}{m_{end}}
+$$
+
+
+
+## Relative Growth Rate
+
+$$
+\text{RGR}
+  = \frac{\Delta m}{\Delta t \cdot \sqrt{m_{end} \cdot m_{start}}}
+$$
+
+
+## Specific Growth Rate
+
+Also called Instantaneous Growth Rate.
+
+$$
+\text{SGR} 
+  = \frac{\ln {m_{\text{end}} } - \ln {m_{\text{init}}} }{\Delta t}
+  = \frac{\ln \frac{m_{\text{end}}}{m_{\text{init}}}} {\Delta t}
+$$
+
+
+## Thermal Growth Coefficient
+
+$$
+\text{TGC} = 
+  \frac{\sqrt[3]{m_{\text{end}}} - \sqrt[3]{m_{\text{init}}}}{\sum_1^t T \cdot t} \cdot 1000
+$$

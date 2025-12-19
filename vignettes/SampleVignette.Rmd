@@ -1,0 +1,174 @@
+---
+title: "aquacultuR"
+author: "Anıl Axel Tellbüscher"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{aquacultuR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(aquacultuR)
+library(magrittr)
+library(dplyr)
+```
+
+This package consist of key formulas and functions used in aquaculture practices,these formulas help quantify feed utilization, growth performance,nutrient retention and digestiblity, This vignette provides coding examples that are relatable and simple to follow.
+
+The following metrics are demonstrated:
+1. Digestibility metrics: adc_dm(), adc_ingr(), adc_nut()
+2. Growth metrics: ag(), agr(), sgr(), tgc(), rgr()
+3. Feed metrics: fcr(), fce(), ner(),retention()
+4. Biomass metrics: gbw(), mbw(), rfr()
+5. Data handling: rearing and weight sample datasets.
+
+## Load example data
+
+we start by merging the rearin and weight datasets and applying them in aquaculture formulas.
+
+```{r}
+data("rearing")
+str(rearing)
+
+data("weight")
+str(weight)
+
+rearing %>% 
+  left_join(weight, join_by(tank)) %>% 
+  mutate(
+    ag = ag(bodyweight_g_start, bodyweight_g_end),
+    agr = agr(bodyweight_g_start, bodyweight_g_end, duration),
+    fcr = fcr(bodyweight_g_start, bodyweight_g_end, feed_g),
+    sgr = sgr(bodyweight_g_start, bodyweight_g_end, duration),
+    tgc = tgc(bodyweight_g_start, bodyweight_g_end, duration, sum(temp_C)),
+    fce = fce(bodyweight_g_start, bodyweight_g_end, feed_g),
+    gbw = gbw(bodyweight_g_start, bodyweight_g_end,n),
+    mbw= mbw(bodyweight_g_start, bodyweight_g_end),
+    rfr = rfr ( fish_survived=n, fish_stocked = initial_n),
+    rgr = rgr( bodyweight_g_start, bodyweight_g_end, duration) 
+  ) -> metrics_table
+head(metrics_table)
+```
+## Digestiblity calculations:
+
+#1. Dry matter ADC:
+
+```{r}
+adc_dm(es_diet = 0.01, es_feces = 0.04)
+
+```
+#2. Ingredient-level ADC:
+```{r}
+adc_ingr(
+  adc_test = 0.80,
+  adc_ref = 0.75,
+  nut_ref = 0.20,
+  nut_ingr = 0.35,
+  incl_ingr = 0.30
+)
+```
+#3. Nutrient-level ADC:
+```{r}
+adc_nut(
+  nutrient_diet = 0.35,
+  nutrient_feces = 0.10,
+  marker_diet = 0.01,
+  marker_feces = 0.03
+)
+```
+##Nutrient retention
+```{r}
+retention(
+  retained = 2.5,      # total nutrient gain in biomass (e.g., g protein)
+  intake = 10          # total nutrient fed (e.g., g protein fed)
+)
+```
+##Net energy retention (NER)
+```{r}
+ner(
+  energy_retained = 5,   # MJ/kg
+  energy_intake = 20     # MJ/kg
+)
+```
+## Growth and feed efficiency
+#Ag
+```{r}
+ag(initial = 50, final = 120)
+```
+
+#agr
+```{r}
+ag(initial = 50, final = 120, days=30)
+```
+#fcr
+```{r}
+fcr(initial = 50, final = 120, feed = 100)
+```
+
+#fce
+```{r}
+fce(initial = 50, final = 120, feed = 100)
+```
+
+#sgr
+```{r}
+sgr(initial = 50, final = 120, days = 30)
+```
+#tgc
+```{r}
+tgc(initial = 50, final = 120, days = 30, temp = 22)
+```
+#rgr
+```{r}
+rgr(initial = 50, final = 120, days = 30)
+```
+
+#gbw
+```{r}
+gbw(initial = 50, final = 120, n = 20)
+```
+
+#rfr
+```{r}
+rfr(fish_survived = 18, fish_stocked = 20)
+```
+
+## Summary of metrics:
+| Function      | Metric                        | Description                            |
+| ------------- | ----------------------------- | -------------------------------------- |
+| `adc_dm()`    | ADC of Dry Matter             | Digestibility based on external marker |
+| `adc_ingr()`  | ADC of Ingredient Nutrient    | Digestibility of a feed ingredient     |
+| `adc_nut()`   | ADC of Nutrient               | Digestibility of a specific nutrient   |
+| `ag()`        | Absolute Growth               | Weight gain (end - start)              |
+| `agr()`       | Absolute Growth Rate          | Growth over time                       |
+| `fcr()`       | Feed Conversion Ratio         | Feed given per unit weight gain        |
+| `fce()`       | Feed Conversion Efficiency    | Weight gain per unit feed              |
+| `sgr()`       | Specific Growth Rate          | Relative growth per day                |
+| `tgc()`       | Thermal Growth Coefficient    | Growth corrected for temperature       |
+| `rgr()`       | Relative Growth Rate          | Percent growth per unit time           |
+| `gbw()`       | Group Biomass Gain            | Total biomass gain in group            |
+| `mbw()`       | Mean Biomass Gain             | Mean biomass change                    |
+| `rfr()`       | Relative Fish Recovery        | Survival or harvest yield ratio        |
+| `ner()`       | Net Energy Retention          | Energy retained vs. consumed           |
+| `retention()` | Nutrient Retention Efficiency | Nutrient retained vs. intake           |
+
+## Conclusion
+
+These metrics are essential for assessing performance, efficeiency and digetsiblity in aquuaculture practices and growth trails based on nutrition. The aquacultuR package provides standardized functions to streamline such calculations across studies.
+
+## References:
+
+## Session info
+```{r}
+sessionInfo()
+```
+

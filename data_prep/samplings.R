@@ -54,7 +54,7 @@ samplings <- df %>%
   
   mutate(
     date = as.Date(as.numeric(date), origin = "1899-12-30"),
-    across(.cols = c(tank, replicate), as.factor),
+    across(.cols = c(tank, replicate, sample_type), as.factor),
     across(fish_weight:last_col(), as.numeric)
     ) %>%
   print()

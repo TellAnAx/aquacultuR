@@ -92,7 +92,7 @@ NULL
 #'  \item{date}{date; date of data recording.}
 #'  \item{tank}{factor; rearing tank identifier.}
 #'  \item{replicate}{factor; replicate identifier.}
-#'  \item{sample_type}{character; type of sample.}
+#'  \item{sample_type}{factor; type of sample.}
 #'  \item{fish_weight}{numeric; weight of fish in gram.}
 #'  \item{fork_length}{numeric; length of fish from the tip of the snout to the 
 #'  end of the middle caudal fin rays in centimeter.}

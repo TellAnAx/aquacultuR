@@ -5,12 +5,24 @@
 \alias{weight}
 \title{Fish biomass and bodyweights from the first polyculture experiment}
 \format{
-A data frame with 24 rows and 8 variables
+A tibble with 24 rows and eight columns:
+\describe{
+ \item{tank}{character; rearing tank identifier.}
+ \item{treat_id}{character; treatment identifier.}
+ \item{count_start}{numeric; fish count at the beginning of the experiment.}
+ \item{count_end}{numeric; fish count at the end of the experiment.}
+ \item{biomass_kg_start}{numeric; total fish biomass in kg at the beginning
+ of the experiment.}
+ \item{biomass_kg_end}{numeric; total fish biomass in kg at the end of the 
+ experiment.}
 }
-\usage{
-data(weight)
 }
 \description{
-A dataset containing fish weights
+A dataset containing fish weights from a polyculture experiment with 
+pikeperch (Sander lucioperca) and Russian sturgeon.
+}
+\examples{
+weight
+
 }
 \keyword{datasets}

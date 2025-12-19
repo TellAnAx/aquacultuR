@@ -5,22 +5,22 @@
 \alias{rearing}
 \title{Rearing data from the first polyculture experiment}
 \format{
-A data frame with 24 rows and 4 variables.
+A data frame containing 24 rows and four columns:
+\describe{
+   \item{tank}{character; unique identifier for each fish tank.}
+   \item{feed_g}{numeric; total feed input in gram over the duration of the 
+   experiment.}
+   \item{temp_C}{numeric; average water temperature in degrees Celsius.}
+   \item{duration}{numeric; total duration of the experiment in days.}
 }
-\usage{
-data(rearing)
 }
 \description{
 A dataset containing feed quantities fed per tank and the average water 
 temperature over all tanks stocked with pikeperch oder sturgeon. The 
 variables are as follows:
 }
-\details{
-\itemize{
-   \item tank. unique identifier for each fish tank.
-   \item feed_g. feed input in gram over the duration of the experiment.
-   \item temp_C. water temperature in degrees Celsius.
-   \item duration. duration of the experiment.
-}
+\examples{
+rearing
+
 }
 \keyword{datasets}

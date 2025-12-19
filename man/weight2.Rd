@@ -5,17 +5,23 @@
 \alias{weight2}
 \title{Individual fish bodyweights during a polyculture experiment}
 \format{
-A data frame with 4 variables ('species', 'culture_sys', 'ibw_g', 
-'fbw_g') and 396 observations.
+A tibble with 396 rows and four columns:
+\describe{
+ \item{species}{character; species identifier.}
+ \item{culture_sys}{character; culture system identifier.}
+ \item{ibw_g}{numeric; initial bodyweight in gram.}
+ \item{fbw_g}{numeric; final bodyweight in gram.}
 }
-\usage{
-data(weight2)
 }
 \description{
 A dataset holding weight data of tagged individuals of two different fish 
 species, pikeperch (Sander lucioperca) and largemouth bass (Micropterus 
 salmoides), at the beginning and the end of a polyculture experiment for 
 aquaculture purposes.
+}
+\examples{
+weight2
+
 }
 \references{
 Pěnka T., Malinovskyi O., Křišťan J., Imentai A., Policar T. 

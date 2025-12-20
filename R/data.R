@@ -1,3 +1,30 @@
+#' Treatments
+#' 
+#' This dataset contains the rearing tank and respective treatment assigned to 
+#' it. It represents the metadata from a feeding trial with Atlantic salmon 
+#' (Salmo salar). The related dataset was published by Liland et al. (2024) 
+#' and is from the first out of two trials ("Trial A"). 
+#' 
+#' @format A tibble with nine rows and two columns:
+#' \describe{
+#'  \item{tank}{factor; rearing tank identifier.}
+#'  \item{treatment}{factor; treatment identifier.}
+#' }
+#' 
+#' @examples
+#' treatments
+#' 
+#' @references Liland, N., Rønnestad, I., Azevedo, M., Lai, F., Oulie, F., 
+#' Conceição, L., Soares, F. (2024): Dataset on the performance of Atlantic 
+#' salmon (Salmo salar) reared at different dissolved oxygen levels under 
+#' experimental conditions. Data in Brief 57, 110983. 
+#' https://doi.org/10.1016/j.dib.2024.110983
+#' 
+#' @docType data
+#' @keywords datasets
+#' @name treatments
+NULL
+
 #' Daily water parameters
 #' 
 #' This dataset contains daily readings of water temperature, salinity, and 
@@ -280,9 +307,12 @@ NULL
 #' @format A tibble with two rows and four columns:
 #' \describe{
 #'  \item{diet}{character; feed identifier.}
-#'  \item{dm}{numeric; mass fraction of dry matter in the feed.}
-#'  \item{std_feed}{numeric; mass fraction of digestibility marker in feed.}
-#'  \item{std_feces}{numeric; mass fraction of digestibility marker in feces.}
+#'  \item{dm}{numeric; mass fraction of dry matter in the feed. Data reported 
+#'  as value between 0 and 1, corresponding to g/g.}
+#'  \item{std_feed}{numeric; mass fraction of digestibility marker in feed. 
+#'  Data reported as value between 0 and 1, corresponding to g/g.}
+#'  \item{std_feces}{numeric; mass fraction of digestibility marker in feces.
+#'  Data reported as value between 0 and 1, corresponding to g/g.}
 #' }
 #' 
 #' @examples
@@ -307,14 +337,14 @@ NULL
 #' \describe{
 #'  \item{diet}{character; feed identifier.}
 #'  \item{dm}{numeric; mass fraction of dry matter in the feed. Data reported 
-#'  as relative value between 0 and 1.}
-#'  \item{N_feed}{numeric; mass fraction of nitrogen in feed. Data reported in 
-#'  g/kg.}
+#'  as value between 0 and 1, corresponding to g/g.}
+#'  \item{N_feed}{numeric; mass fraction of nitrogen in feed. Data reported as 
+#'  value between 0 and 1, corresponding to g/g.}
 #'  \item{std_feed}{numeric; mass fraction of digestibility marker in feed.
-#'  Data reported in g/kg.}
+#'  Data reported as value between 0 and 1, corresponding to g/g.}
 #'  \item{N_feces}{numeric; mass fraction of nitrogen in feces in g/kg.}
 #'  \item{std_feces}{numeric; mass fraction of digestibility marker in feces. 
-#'  Data reported in g/kg.}
+#'  Data reported as value between 0 and 1, corresponding to g/g.}
 #' }
 #' 
 #' @examples
@@ -334,26 +364,39 @@ NULL
 #' This dataset contains example data for the determination of the apparent 
 #' digestibility of feed ingredients by using a reference diet and replacing 
 #' a part (usually 30%) of it by the feed ingredient to be evaluated.
+#' The dataset is based on Bureau et al. (1999) but was presented in its 
+#' complete form in Bureau & Hua (2006).
 #' 
-#' @format A tibble with one row and six columns
+#' @format A tibble with one row and eight columns
 #' \describe{
 #'  \item{diet_reference}{character; reference feed identifier.}
 #'  \item{ingredient}{character; feed ingredient identifier.}
 #'  \item{adc_reference}{numeric; apparent digestibility coefficient of the 
-#'  reference feed.}
+#'  reference feed. The data is a value between 0 and 1.}
 #'  \item{adc_test}{numeric; apparent digestibility coefficient of the test 
-#'  feed.}
+#'  feed. The data is a value between 0 and 1.}
+#'  \item{dm_ref}{numeric; mass fraction of dry matter in the reference feed.
+#'  Data reported as value between 0 and 1, corresponding to g/g.}
 #'  \item{dm_ingr}{numeric; mass fraction of dry matter in the feed ingredient. 
-#'  Data reported as relative value between 0 and 1.}
-#'  \item{N_ingr}{numeric; mass fraction of nitrogen in the feed ingredient 
-#'  in g/kg.}
+#'  Data reported as value between 0 and 1, corresponding to g/g.}
+#'  \item{N_reference}{numeric; mass fraction of nitrogen in the reference
+#'  feed reported as value between 0 and 1, corresponding to g/g.}
+#'  \item{N_ingr}{numeric; mass fraction of nitrogen in the feed ingredient. 
+#'  Data reported as value between 0 and 1, corresponding to g/g.}
 #' }
 #' 
 #' @examples
 #' digestingr
 #' 
+#' @references Bureau, D. P. & Hua, K. (2006). Letter to the Editor of 
+#' Aquaculture. Aquaculture, 252(2-4), 103–105. 
+#' https://doi.org/10.1016/j.aquaculture.2006.01.028
+#' @references Bureau, D. P., Harris, A. M. & Cho, C. Y. (1999). Apparent 
+#' digestibility of rendered animal protein ingredients for rainbow trout 
+#' (Oncorhynchus mykiss). Aquaculture, 180, 345–358. 
+#' https://doi.org/10.1016/S0044-8486(99)00210-0
+#' 
 #' @docType data
 #' @keywords dataset
 #' @name digestingr
 NULL
-

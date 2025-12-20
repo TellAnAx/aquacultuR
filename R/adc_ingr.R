@@ -2,7 +2,7 @@
 #'
 #' Function to calculate the Apparent Digestibility Coefficient of a nutrient
 #' contained in a feed ingredient of a compound diet. The calculation of the
-#' ADCingr is based on the equation proposed by Bureau and Hua (2006).
+#' ADCingr is based on equation 4 proposed by Bureau & Hua (2006).
 #'
 #' @param adc_test a numeric value in the interval [0,1] that represents the
 #' Apparent Digestibility Coefficient (ADC) of the diet that contains the
@@ -16,10 +16,14 @@
 #' inclusion rate of the nutrient in the test diet for which the Apparent
 #' Digestibility Coefficient (ADC) of the nutrient in the ingredient will be
 #' calculated.
-#' @param incl_ingr a numeric value in the interval [0,1] that represents the
-#' inclusion rate of the ingredient in the test diet for which the Apparent
-#' Digestibility Coefficient (ADC) of the nutrient in an ingredient will be
-#' calculated.
+#' @param dm_ref a numeric value in the interval [0,1] (default: 1) that 
+#' represents the dry matter content of the reference diet.
+#' @param dm_ingr a numeric value in the interval [0,1] (default: 1) that
+#' represents the dry matter content of the tested feed ingredient.
+#' @param incl_ingr a numeric value in the interval [0,1] (default: 0.3) that 
+#' represents the inclusion rate of the ingredient in the test diet for which 
+#' the Apparent Digestibility Coefficient (ADC) of the nutrient in an 
+#' ingredient will be calculated.
 #'
 #' @return returns a single numeric value in the interval [0, 1], which is the
 #' relative ADC for the diet. If the value is not within the interval, an
@@ -35,7 +39,12 @@
 #' # test ingredient dry matter: 0.895 (89.5%)
 #' # test ingredient nutrient mass frac.: 0.846 (84.6%)
 #' 
-#' adc_ingr(adc_ref = 0.923, nut_ref = 0.45, adc_test = 0.902, nut_ingr = 0.846)
+#' adc_ingr(adc_ref = 0.923, 
+#'          nut_ref = 0.45, 
+#'          dm_ref = 0.928,
+#'          adc_test = 0.902, 
+#'          nut_ingr = 0.846,
+#'          dm_ingr = 0.895)
 #'
 #' @author Anıl Axel Tellbüscher
 #'
@@ -50,6 +59,8 @@ adc_ingr <- function(adc_test,
                      adc_ref,
                      nut_ref,
                      nut_ingr,
+                     dm_ref = 1,
+                     dm_ingr = 1,
                      incl_ingr = 0.3) {
   # Checks----
   ## Ensure inputs are numeric
@@ -58,7 +69,9 @@ adc_ingr <- function(adc_test,
     is.numeric(adc_ref),
     is.numeric(nut_ref),
     is.numeric(nut_ingr),
-    is.numeric(incl_ingr)
+    is.numeric(incl_ingr),
+    is.numeric(dm_ref),
+    is.numeric(dm_ingr)
   )
   
   
@@ -68,10 +81,13 @@ adc_ingr <- function(adc_test,
     length(adc_ref),
     length(nut_ref),
     length(nut_ingr),
-    length(incl_ingr)
+    length(incl_ingr),
+    length(dm_ref),
+    length(dm_ingr)
   )
   if (length(unique(input_lengths)) != 1) {
-    stop("All input vectors must have the same length.")
+    warning("Input vectors do not have the same length. The matching might be
+            incorrect.")
   }
   
   
@@ -80,15 +96,18 @@ adc_ingr <- function(adc_test,
           adc_ref < 0 |
           nut_ref < 0 |
           nut_ingr < 0 |
-          incl_ingr < 0)) {
-    warning("Some input values are negative. The result may not be meaningful.")
+          incl_ingr < 0 |
+          dm_ref < 0 |
+          dm_ingr < 0)) {
+    warning("Some input values are negative. The result is not meaningful.")
   }
   
   
   
   # Calculations----
-  adc_ingr <- (adc_test + (((1 - incl_ingr) * nut_ref) /
-                             (incl_ingr * nut_ingr)) * (adc_test - adc_ref))
+  adc_ingr <- adc_test + ((adc_test - adc_ref) * 
+                            (((1 - incl_ingr) * nut_ref * dm_ref) /
+                            (incl_ingr * nut_ingr * dm_ingr)))
   
   
   if (adc_ingr > 1) {

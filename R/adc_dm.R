@@ -14,10 +14,21 @@
 #' not within the interval, an additional warning is returned.
 #'
 #' @examples
+#' # use function to calculate a single ADC value
+#' 
 #' # 900 g/kg (90%) dry matter content of feed
 #' # 10 g/kg (1%) digestibility standard in feed
 #' # 45 g/kg (4.5%) digestibility standard in feces
 #' adc_dm(dm_diet = 0.95, std_diet = 0.01, std_feces = 0.045)
+#' 
+#' 
+#' # function can also be used within a tidyverse pipeline.
+#' digestdm %>% 
+#'   group_by(diet) %>% 
+#'   summarise(
+#'     `ADC DM` = adc_dm(dm = dm, 
+#'                       std_diet = std_feed, 
+#'                       std_feces = std_feces))
 #'
 #' @author Anıl Axel Tellbüscher
 #'

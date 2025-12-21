@@ -5,7 +5,7 @@ test_that("nr() throws error when input is NA.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -13,7 +13,7 @@ test_that("nr() throws error when input is NA.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -21,7 +21,7 @@ test_that("nr() throws error when input is NA.", {
     ibn = NA,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -29,7 +29,7 @@ test_that("nr() throws error when input is NA.", {
     ibn = 0.1,
     fbn = NA,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -37,7 +37,7 @@ test_that("nr() throws error when input is NA.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = NA,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -45,7 +45,7 @@ test_that("nr() throws error when input is NA.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = NA
+    nut_f = NA
   ))
 })
 
@@ -57,7 +57,7 @@ test_that("nr() throws an error when input is non-numeric.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -65,7 +65,7 @@ test_that("nr() throws an error when input is non-numeric.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -73,7 +73,7 @@ test_that("nr() throws an error when input is non-numeric.", {
     ibn = "test",
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -81,7 +81,7 @@ test_that("nr() throws an error when input is non-numeric.", {
     ibn = 0.1,
     fbn = "test",
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -89,7 +89,7 @@ test_that("nr() throws an error when input is non-numeric.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = "test",
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_error(nr(
     ibw = 1,
@@ -97,19 +97,19 @@ test_that("nr() throws an error when input is non-numeric.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = "test"
+    nut_f = "test"
   ))
 })
 
 
-test_that("nr() throws error if fi or nut_diet are == 0.", {
+test_that("nr() throws error if fi or nut_f are == 0.", {
   expect_error(nr(
     ibw = 1,
     fbw = 2,
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0
+    nut_f = 0
   ))
   expect_error(nr(
     ibw = 1,
@@ -117,7 +117,7 @@ test_that("nr() throws error if fi or nut_diet are == 0.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
 })
 
@@ -129,7 +129,7 @@ test_that("nr() throws warning when inputs are out of range.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_warning(nr(
     ibw = 1,
@@ -137,7 +137,7 @@ test_that("nr() throws warning when inputs are out of range.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_warning(nr(
     ibw = 1,
@@ -145,7 +145,7 @@ test_that("nr() throws warning when inputs are out of range.", {
     ibn = -0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_warning(nr(
     ibw = 1,
@@ -153,7 +153,7 @@ test_that("nr() throws warning when inputs are out of range.", {
     ibn = 0.1,
     fbn = 1.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_warning(nr(
     ibw = 1,
@@ -161,7 +161,7 @@ test_that("nr() throws warning when inputs are out of range.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = -0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_warning(nr(
     ibw = 1,
@@ -169,7 +169,7 @@ test_that("nr() throws warning when inputs are out of range.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 1.1
+    nut_f = 1.1
   ))
 })
 
@@ -181,7 +181,7 @@ test_that("nr() throws message when inputs differ in length.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_message(nr(
     ibw = 1,
@@ -189,7 +189,7 @@ test_that("nr() throws message when inputs differ in length.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_message(nr(
     ibw = 1,
@@ -197,7 +197,7 @@ test_that("nr() throws message when inputs differ in length.", {
     ibn = c(0.1, 0.1),
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_message(nr(
     ibw = 1,
@@ -205,7 +205,7 @@ test_that("nr() throws message when inputs differ in length.", {
     ibn = 0.1,
     fbn = c(0.2, 0.2),
     fi = 0.5,
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_message(nr(
     ibw = 1,
@@ -213,7 +213,7 @@ test_that("nr() throws message when inputs differ in length.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = c(0.5, 0.5),
-    nut_diet = 0.1
+    nut_f = 0.1
   ))
   expect_message(nr(
     ibw = 1,
@@ -221,7 +221,7 @@ test_that("nr() throws message when inputs differ in length.", {
     ibn = 0.1,
     fbn = 0.2,
     fi = 0.5,
-    nut_diet = c(0.1, 0.1)
+    nut_f = c(0.1, 0.1)
   ))
 })
 
@@ -233,7 +233,7 @@ test_that("nr() calculates result correctly.", {
     ibn = 0.1,
     fbn = 0.4,
     fi = 100,
-    nut_diet = 0.02
+    nut_f = 0.02
   ),
   0.55)
   expect_message(expect_equal(
@@ -243,7 +243,7 @@ test_that("nr() calculates result correctly.", {
       ibn = 0.1,
       fbn = c(0.3, 0.4),
       fi = 100,
-      nut_diet = 0.02
+      nut_f = 0.02
     ),
     c(0.4, 0.95)
   ))

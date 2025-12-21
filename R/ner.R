@@ -1,11 +1,12 @@
 #' Nutrient Efficiency Ratio (NER)
 #'
-#' Function to calculate the Nutrient Efficiency Ratio (NER). The NER is a 
-#' metric that puts the intake of a compound into relation with the bodyweight 
-#' increase. If the feed intake (FI) is restricted and the administered diets 
-#' are of comparable digestibility, then potential differences in growth could 
-#' be related to differences in the sub-composition of target nutrients that 
-#' are also controlled for. This would be reflected by the NER.
+#' Function to calculate the Nutrient Efficiency Ratio (NER). The NER belongs 
+#' to the Nutrient Use Efficiency metrics and relates the intake of a compound 
+#' with the bodyweight increase. If the feed intake (FI) is restricted and the 
+#' administered diets are of comparable digestibility, then potential 
+#' differences in growth could be related to differences in the sub-composition 
+#' of target nutrients that are also controlled for. This would be reflected by 
+#' the NER.
 #'
 #' @param ibw a numeric value for the initial weight (either average
 #' weight of the individuals or the total biomass) of the livestock at the
@@ -76,9 +77,12 @@ ner <- function(ibw, fbw, fi, nut_f, dm = 1) {
   
   
   # Calculations----
-  ag <- fbw - ibw
+  ## Numerator
+  numerator <- ag(ibw, fbw)
+  denominator <- fi * dm * nut_f
   
-  ner <- ag / (fi * dm * nut_f)
+  
+  ner <- numerator / denominator
   
   return(ner)
 }

@@ -1,6 +1,8 @@
 #' Nutrient retention (NR)
 #'
-#' Function to calculate the nutrient retention
+#' Function to calculate the Nutrient Retention (NR). The NR 
+#' belongs to the Nutrient Use Efficiency metrics and is a measure for the 
+#' proportion of a consumed nutrient that is retained in the tissue.
 #'
 #' @param ibw numeric; initial weight in grams
 #' @param fbw numeric; final weight in grams
@@ -10,9 +12,13 @@
 #' @param fbn numeric; final mass fraction of the target nutrient in the tissue
 #' of the experimental animal (on dry matter basis). The value must be between 
 #' 0 and 1.
-#' @param fi numeric; mass of feed given
+#' @param fi numeric; mass of feed given.
 #' @param nut_diet numeric; mass fraction of nutrient in the diet. The value 
 #' must be between 0 and 1.
+#' @param dm numeric; dry matter content of feed. Default is 1.
+#' @param dm_ib numeric; initial dry matter content of body tissue. Default is 
+#' 1.
+#' @param dm_fb numeric; final dry matter content of body tissue. Default is 1.
 #'
 #' @return a numeric value. Multiply by 100 to convert into percentage.
 #'
@@ -41,20 +47,28 @@
 #' 221–229 (2024). https://doi.org/10.1038/s43016-024-00932-z
 #' 
 #' @export
-nr <- function(ibw, fbw, ibn, fbn, fi, nut_diet) {
+nr <- function(ibw, 
+               fbw, 
+               ibn, 
+               fbn, 
+               fi,
+               nut_diet,
+               dm = 1,
+               dm_ib = 1,
+               dm_fb = 1) {
   # Checks----
   ## Check whether inputs are NA
-  if (any(is.na(c(ibw, fbw, ibn, fbn, fi, nut_diet))))
+  if (any(is.na(c(ibw, fbw, ibn, fbn, fi, dm, dm_ib, dm_fb, nut_diet))))
     stop("Inputs must not be NA!")
   
   
   ## Check whether inputs are non-numeric
-  if (any(!is.numeric(c(ibw, fbw, ibn, fbn, fi, nut_diet))))
+  if (any(!is.numeric(c(ibw, fbw, ibn, fbn, fi, dm, dm_ib, dm_fb, nut_diet))))
     stop("Inputs must be numeric!")
   
   
   ## Check whether feed|nut_diet == 0
-  if (any(fi == 0 | nut_diet == 0))
+  if (any(fi == 0 | nut_diet == 0 | dm == 0 | dm_ib == 0 | dm_fb == 0))
     stop("Input must not be zero! Result cannot be calculated.")
   
   
@@ -67,6 +81,12 @@ nr <- function(ibw, fbw, ibn, fbn, fi, nut_diet) {
     warning("fi is < 0! The result is not meaningful.")
   if (any(ibn < 0 | ibn > 1))
     warning("ibn is out of range! The result is not meaningful.")
+  if (any(dm < 0 | dm > 1))
+    warning("dm is out of range! The result is not meaningful.")
+  if (any(dm_ib < 0 | dm_ib > 1))
+    warning("dm_ib is out of range! The result is not meaningful.")
+  if (any(dm_fb < 0 | dm_fb > 1))
+    warning("dm_fb is out of range! The result is not meaningful.")
   if (any(fbn < 0 | fbn > 1))
     warning("fbn is out of range! The result is not meaningful.")
   if (any(nut_diet < 0 | nut_diet > 1))
@@ -79,6 +99,9 @@ nr <- function(ibw, fbw, ibn, fbn, fi, nut_diet) {
                     length(ibn),
                     length(fbn),
                     length(fi),
+                    length(dm),
+                    length(dm_fb),
+                    length(dm_ib),
                     length(nut_diet)) / length(ibw)
   if (any(length_ratio != 1))
     message("Inputs differ in length.")
@@ -86,7 +109,7 @@ nr <- function(ibw, fbw, ibn, fbn, fi, nut_diet) {
   
   
   # Calculations----
-  nr <- (fbw * fbn - ibw * ibn) / (fi * nut_diet)
+  nr <- (fbw * fbn * dm_fb - ibw * ibn * dm_ib) / (fi * dm * nut_diet)
   
   return(nr)
 }

@@ -64,14 +64,14 @@ adc_dm <- function(std_diet,
   # Calculations----
   adc_dm <- 1 - (dm_diet * std_diet / std_feces)
   
-  if (adc_dm > 1) {
+  if (any(adc_dm > 1, na.rm = TRUE)) {
     warning("ADC > 1")
   }
   
   return(adc_dm)
 }
 
-
+ 
 
 
 

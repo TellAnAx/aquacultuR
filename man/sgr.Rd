@@ -35,7 +35,6 @@ such as length. However, body weight is the used in the vast majority
 of studies and alternatives are not advised for the sake of consistency.
 }
 \examples{
-data(weight2)
 dplyr::mutate(weight2, SGR = sgr(ibw_g, fbw_g, duration = 84))
 
 }

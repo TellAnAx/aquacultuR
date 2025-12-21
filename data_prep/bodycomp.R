@@ -53,11 +53,14 @@ bodycomp <- df %>%
   rename_with(~str_replace_all(.x, "/", "_per_")) %>%
   rename(dm = "dry_matter_g_per_100g") %>%
   rename_with(~str_remove_all(.x, "_.*")) %>%
+  
+  # convert from percentage to g/g
   mutate(
     date = as.Date(as.numeric(date), origin = "1899-12-30"),
     treatment = str_remove(treatment, "%") %>% as.factor(),
-    tank = as.factor(tank),
-    across(.cols = 4:last_col(), ~as.numeric(.x))
+    tank = str_remove(tank, " .$") %>% as.factor(),
+    across(.cols = 4:last_col(), ~as.numeric(.x)),
+    across(dm:protein, ~.x/100)
     ) %>% 
   print()
 

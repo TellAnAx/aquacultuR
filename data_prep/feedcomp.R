@@ -39,15 +39,22 @@ df <- df_raw %>%
   setNames(final_names)
 
 
+
 feedcomp <- df %>%
+  
+  # remove clutter to make colnames easier accessible
   rename_with(~str_to_lower(.x)) %>%
   rename_with(~str_replace(.x, "%", "perc")) %>% 
   rename_with(~str_replace_all(.x, " ", "_")) %>% 
   rename_with(~str_replace_all(.x, "/", "_per_")) %>%
   rename_with(~str_remove(.x, "_perc_as_fed")) %>%
   rename_with(~str_remove(.x, "_mj_per_kg_as_fed")) %>%
+  
+  # convert from percentage to g/g
   mutate(
-    across(.cols = 2:last_col(), ~as.numeric(.x))
+    across(.cols = 2:last_col(), ~as.numeric(.x)),
+    across(where(is.numeric), ~.x / 100),
+    gross_energy = gross_energy * 100
   ) %>% 
   print()
 

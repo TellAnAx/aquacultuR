@@ -23,7 +23,6 @@
 #' weight gain per day, or a list containing the SGR and the IGR.
 #'
 #' @examples
-#' data(weight2)
 #' dplyr::mutate(weight2, SGR = sgr(ibw_g, fbw_g, duration = 84))
 #' 
 #' @author Anıl Axel Tellbüscher

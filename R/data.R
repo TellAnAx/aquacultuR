@@ -205,15 +205,15 @@ NULL
 #'  \item{date}{date; date of data recording.}
 #'  \item{treatment}{factor; treatment identifier.}
 #'  \item{tank}{factor; rearing tank identifier.}
-#'  \item{dm}{numeric; dry matter content of fish tissue in g/100 g.}
-#'  \item{water}{numeric; content of fish tissue in g/100 g.}
-#'  \item{ash}{numeric; content of fish tissue in g/100 g on dry matter 
+#'  \item{dm}{numeric; dry matter content of fish tissue in g/g.}
+#'  \item{water}{numeric; content of fish tissue in g/g.}
+#'  \item{ash}{numeric; content of fish tissue in g/g on dry matter 
 #'  basis.}
 #'  \item{energy}{numeric; gross energy content of fish tissue in kJ/g on dry 
 #'  matter basis.}
-#'  \item{fat}{numeric; crude fat content of fish tissue in g/100 g on dry 
+#'  \item{fat}{numeric; crude fat content of fish tissue in g/g on dry 
 #'  matter basis.}
-#'  \item{protein}{numeric; crude protein content of fish tissue in g/100 g on
+#'  \item{protein}{numeric; crude protein content of fish tissue in g/g on
 #'  dry matter basis.}
 #'  \item{ca}{numeric; calcium content of fish tissue in mg/kg on dry matter 
 #'  basis.}
@@ -254,30 +254,30 @@ NULL
 #' @format A tibble with one row and 25 columns:
 #' \describe{
 #'  \item{diet}{character; feed name.}
-#'  \item{dry_matter}{numeric; content of feed in percent.}
-#'  \item{crude_protein}{numeric; content of feed in percent as fed.}
-#'  \item{crude_lipids}{numeric; content of feed in percent as fed.}
-#'  \item{ash}{numeric; content of feed in percent as fed.}
+#'  \item{dry_matter}{numeric; content of feed in g/g.}
+#'  \item{crude_protein}{numeric; content of feed in g/g as fed.}
+#'  \item{crude_lipids}{numeric; content of feed in g/g as fed.}
+#'  \item{ash}{numeric; content of feed in g/g as fed.}
 #'  \item{gross_energy}{numeric; content of feed in MJ per kg as fed.}
-#'  \item{phosphorus}{numeric; content of feed in percent as fed.}
-#'  \item{arginine}{numeric; content of feed in percent as fed.}
-#'  \item{histidine}{numeric; content of feed in percent as fed.}
-#'  \item{isoleucine}{numeric; content of feed in percent as fed.}
-#'  \item{leucine}{numeric; content of feed in percent as fed.} 
-#'  \item{lysine}{numeric; content of feed in percent as fed.}
-#'  \item{threonine}{numeric; content of feed in percent as fed.}
-#'  \item{tryptophan}{numeric; content of feed in percent as fed.}
-#'  \item{valine}{numeric; content of feed in percent as fed.}
-#'  \item{methionine}{numeric; content of feed in percent as fed.}
-#'  \item{cysteine}{numeric; content of feed in percent as fed.}
-#'  \item{phenylalanine}{numeric; content of feed in percent as fed.}
-#'  \item{tyrosine}{numeric; content of feed in percent as fed.}
-#'  \item{aspartic_acid}{numeric; content of feed in percent as fed.}
-#'  \item{glutamic_acid}{numeric; content of feed in percent as fed.}
-#'  \item{alanine}{numeric; content of feed in percent as fed.}
-#'  \item{glycine}{numeric; content of feed in percent as fed.}
-#'  \item{proline}{numeric; content of feed in percent as fed.}
-#'  \item{serine}{numeric; content of feed in percent as fed.}
+#'  \item{phosphorus}{numeric; content of feed in g/g as fed.}
+#'  \item{arginine}{numeric; content of feed in g/g as fed.}
+#'  \item{histidine}{numeric; content of feed in g/g as fed.}
+#'  \item{isoleucine}{numeric; content of feed in g/g as fed.}
+#'  \item{leucine}{numeric; content of feed in g/g as fed.} 
+#'  \item{lysine}{numeric; content of feed in g/g as fed.}
+#'  \item{threonine}{numeric; content of feed in g/g as fed.}
+#'  \item{tryptophan}{numeric; content of feed in g/g as fed.}
+#'  \item{valine}{numeric; content of feed in g/g as fed.}
+#'  \item{methionine}{numeric; content of feed in g/g as fed.}
+#'  \item{cysteine}{numeric; content of feed in g/g as fed.}
+#'  \item{phenylalanine}{numeric; content of feed in g/g as fed.}
+#'  \item{tyrosine}{numeric; content of feed in g/g as fed.}
+#'  \item{aspartic_acid}{numeric; content of feed in g/g as fed.}
+#'  \item{glutamic_acid}{numeric; content of feed in g/g as fed.}
+#'  \item{alanine}{numeric; content of feed in g/g as fed.}
+#'  \item{glycine}{numeric; content of feed in g/g as fed.}
+#'  \item{proline}{numeric; content of feed in g/g as fed.}
+#'  \item{serine}{numeric; content of feed in g/g as fed.}
 #' }
 #' 
 #' @examples
@@ -375,14 +375,14 @@ NULL
 #'  reference feed. The data is a value between 0 and 1.}
 #'  \item{adc_test}{numeric; apparent digestibility coefficient of the test 
 #'  feed. The data is a value between 0 and 1.}
-#'  \item{dm_ref}{numeric; mass fraction of dry matter in the reference feed.
+#'  \item{dm_reference}{numeric; mass fraction of dry matter in the reference feed.
 #'  Data reported as value between 0 and 1, corresponding to g/g.}
 #'  \item{dm_ingr}{numeric; mass fraction of dry matter in the feed ingredient. 
 #'  Data reported as value between 0 and 1, corresponding to g/g.}
-#'  \item{N_reference}{numeric; mass fraction of nitrogen in the reference
-#'  feed reported as value between 0 and 1, corresponding to g/g.}
-#'  \item{N_ingr}{numeric; mass fraction of nitrogen in the feed ingredient. 
-#'  Data reported as value between 0 and 1, corresponding to g/g.}
+#'  \item{CP_reference}{numeric; mass fraction of crude protein in the pelleted 
+#'  reference feed reported as value between 0 and 1, corresponding to g/g.}
+#'  \item{CP_ingr}{numeric; mass fraction of crude protein in the feed 
+#'  ingredient. Data reported as value between 0 and 1, corresponding to g/g.}
 #' }
 #' 
 #' @examples

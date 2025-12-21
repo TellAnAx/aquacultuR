@@ -5,27 +5,43 @@
 \alias{digestingr}
 \title{Digestibility of a feed ingredient}
 \format{
-A tibble with one row and six columns
+A tibble with one row and eight columns
 \describe{
  \item{diet_reference}{character; reference feed identifier.}
  \item{ingredient}{character; feed ingredient identifier.}
  \item{adc_reference}{numeric; apparent digestibility coefficient of the 
- reference feed.}
+ reference feed. The data is a value between 0 and 1.}
  \item{adc_test}{numeric; apparent digestibility coefficient of the test 
- feed.}
+ feed. The data is a value between 0 and 1.}
+ \item{dm_reference}{numeric; mass fraction of dry matter in the reference feed.
+ Data reported as value between 0 and 1, corresponding to g/g.}
  \item{dm_ingr}{numeric; mass fraction of dry matter in the feed ingredient. 
- Data reported as relative value between 0 and 1.}
- \item{N_ingr}{numeric; mass fraction of nitrogen in the feed ingredient 
- in g/kg.}
+ Data reported as value between 0 and 1, corresponding to g/g.}
+ \item{CP_reference}{numeric; mass fraction of crude protein in the pelleted 
+ reference feed reported as value between 0 and 1, corresponding to g/g.}
+ \item{CP_ingr}{numeric; mass fraction of crude protein in the feed 
+ ingredient. Data reported as value between 0 and 1, corresponding to g/g.}
 }
 }
 \description{
 This dataset contains example data for the determination of the apparent 
 digestibility of feed ingredients by using a reference diet and replacing 
 a part (usually 30%) of it by the feed ingredient to be evaluated.
+The dataset is based on Bureau et al. (1999) but was presented in its 
+complete form in Bureau & Hua (2006).
 }
 \examples{
 digestingr
 
+}
+\references{
+Bureau, D. P. & Hua, K. (2006). Letter to the Editor of 
+Aquaculture. Aquaculture, 252(2-4), 103–105. 
+https://doi.org/10.1016/j.aquaculture.2006.01.028
+
+Bureau, D. P., Harris, A. M. & Cho, C. Y. (1999). Apparent 
+digestibility of rendered animal protein ingredients for rainbow trout 
+(Oncorhynchus mykiss). Aquaculture, 180, 345–358. 
+https://doi.org/10.1016/S0044-8486(99)00210-0
 }
 \keyword{dataset}

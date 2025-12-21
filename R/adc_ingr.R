@@ -110,7 +110,7 @@ adc_ingr <- function(adc_test,
                             (incl_ingr * nut_ingr * dm_ingr)))
   
   
-  if (adc_ingr > 1) {
+  if (any(adc_ingr > 1)) {
     warning("ADC > 1")
   }
   

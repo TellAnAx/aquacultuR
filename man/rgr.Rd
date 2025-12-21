@@ -4,14 +4,17 @@
 \alias{rgr}
 \title{Relative Growth Rate (RGR)}
 \usage{
-rgr(m_start, m_end, duration)
+rgr(ibw, fbw, duration, mean_fun = "geometric")
 }
 \arguments{
-\item{m_start}{numeric; provides the initial weight in gram.}
+\item{ibw}{numeric; provides the initial weight in gram.}
 
-\item{m_end}{numeric; provides the final weight in gram.}
+\item{fbw}{numeric; provides the final weight in gram.}
 
 \item{duration}{numeric; duration of the growth experiment.}
+
+\item{mean_fun}{character; specifies the mean ("geometric" or "arithmetic")
+to be calculated as denominator. Default: "geometric".}
 }
 \value{
 either a single numeric value or vector holding the calculated RGR

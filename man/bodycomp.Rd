@@ -10,15 +10,15 @@ A tibble with 12 rows and 14 columns:
  \item{date}{date; date of data recording.}
  \item{treatment}{factor; treatment identifier.}
  \item{tank}{factor; rearing tank identifier.}
- \item{dm}{numeric; dry matter content of fish tissue in g/100 g.}
- \item{water}{numeric; content of fish tissue in g/100 g.}
- \item{ash}{numeric; content of fish tissue in g/100 g on dry matter 
+ \item{dm}{numeric; dry matter content of fish tissue in g/g.}
+ \item{water}{numeric; content of fish tissue in g/g.}
+ \item{ash}{numeric; content of fish tissue in g/g on dry matter 
  basis.}
  \item{energy}{numeric; gross energy content of fish tissue in kJ/g on dry 
  matter basis.}
- \item{fat}{numeric; crude fat content of fish tissue in g/100 g on dry 
+ \item{fat}{numeric; crude fat content of fish tissue in g/g on dry 
  matter basis.}
- \item{protein}{numeric; crude protein content of fish tissue in g/100 g on
+ \item{protein}{numeric; crude protein content of fish tissue in g/g on
  dry matter basis.}
  \item{ca}{numeric; calcium content of fish tissue in mg/kg on dry matter 
  basis.}

@@ -9,14 +9,14 @@ A tibble with two rows and six columns:
 \describe{
  \item{diet}{character; feed identifier.}
  \item{dm}{numeric; mass fraction of dry matter in the feed. Data reported 
- as relative value between 0 and 1.}
- \item{N_feed}{numeric; mass fraction of nitrogen in feed. Data reported in 
- g/kg.}
+ as value between 0 and 1, corresponding to g/g.}
+ \item{N_feed}{numeric; mass fraction of nitrogen in feed. Data reported as 
+ value between 0 and 1, corresponding to g/g.}
  \item{std_feed}{numeric; mass fraction of digestibility marker in feed.
- Data reported in g/kg.}
+ Data reported as value between 0 and 1, corresponding to g/g.}
  \item{N_feces}{numeric; mass fraction of nitrogen in feces in g/kg.}
  \item{std_feces}{numeric; mass fraction of digestibility marker in feces. 
- Data reported in g/kg.}
+ Data reported as value between 0 and 1, corresponding to g/g.}
 }
 }
 \description{

@@ -4,13 +4,14 @@
 \alias{adc_dm}
 \title{ADC of DM}
 \usage{
-adc_dm(dm_diet, std_diet, std_feces)
+adc_dm(std_diet, dm_diet = 1, std_feces)
 }
 \arguments{
-\item{dm_diet}{a numeric value, being the dry matter content of the diet}
-
 \item{std_diet}{a numeric value, resembling the inclusion rate of
-standard in the experimental diet given to the livestock.}
+standard in the experimental feed given to the livestock.}
+
+\item{dm_diet}{a numeric value in the interval [0, 1], being the dry matter 
+content of the feed. The default is 1 gram per gram}
 
 \item{std_feces}{a numeric value, resembling the inclusion rate of
 standard in the feces recovered during the digestibility trial.}
@@ -25,10 +26,21 @@ Function to calculate the Apparent Digestibility Coefficient (ADC) of
 the dry matter fraction of a compound diet.
 }
 \examples{
+# use function to calculate a single ADC value
+
 # 900 g/kg (90\%) dry matter content of feed
 # 10 g/kg (1\%) digestibility standard in feed
 # 45 g/kg (4.5\%) digestibility standard in feces
 adc_dm(dm_diet = 0.95, std_diet = 0.01, std_feces = 0.045)
+
+
+# function can also be used within a tidyverse pipeline.
+digestdm \%>\% 
+  dplyr::group_by(diet) \%>\%  
+  dplyr::summarise(
+    `ADC DM` = adc_dm(dm = dm, 
+                      std_diet = std_feed, 
+                      std_feces = std_feces))
 
 }
 \references{

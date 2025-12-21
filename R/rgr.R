@@ -26,26 +26,33 @@
 #' @importFrom dplyr mutate
 #'
 #' @export
-rgr <- function(ibw, fbw, duration, mean_fun = "geometric") {
+rgr <- function(ibw, 
+                fbw, 
+                duration, 
+                mean_fun = "geometric") {
   
   # Checks----
   ## Ensure inputs are numeric
-  stopifnot("Inputs must be numeric!" = is.numeric(ibw) &
-              is.numeric(fbw) & is.numeric(duration))
-  
-  ## Ensure ibw and duration are != 0
-  stopifnot("Inputs must be != 0!" = ibw != 0 & duration != 0)
-  
-  ## Ensure mean_fun %in% c("geometric", "arithmetic")
-  stopifnot("mean_fun must be 'geometric' or 'arithmetic'!" = 
-              mean_fun %in% c("geometric", "arithmetic"))
-  
-  ## Warn if inputs are < 0
-  if (any(ibw < 0) | any(fbw < 0) | any(duration < 0)) {
-    warning("Inputs < 0. The result is not meaningful.")
+  if (any(!is.numeric(ibw) | !is.numeric(fbw) | !is.numeric(duration))) {
+    stop("Inputs must be numeric!")
   }
   
-  ## Warn if inputs are not of the same length
+  ## Ensure ibw and duration are != 0
+  if (any(ibw == 0 | duration == 0)) {
+    stop("Inputs must be != 0!")
+  }
+  
+  ## Ensure mean_fun %in% c("geometric", "arithmetic")
+  if (!mean_fun %in% c("geometric", "arithmetic")) {
+    stop("mean_fun must be 'geometric' or 'arithmetic'!")
+  }
+  
+  ## Stop if ibw or fbw are < 0 (related to gbw())
+  if (any(ibw < 0) | any(fbw < 0)) {
+    stop("Inputs < 0. The result cannot be calculated!")
+  }
+  
+  ## Inform if inputs are not of the same length
   if (any(c(length(ibw), length(fbw), length(duration)) > 1)) {
     message("Inputs are not of same length.")
   }
@@ -55,7 +62,7 @@ rgr <- function(ibw, fbw, duration, mean_fun = "geometric") {
   # Calculations----
   numerator <- fbw - ibw
   denominator <- switch(mean_fun,
-                        geometric = gbw(ibw, fbw = fbw),
+                        geometric = gbw(ibw, fbw),
                         arithmetic = (ibw + fbw)/2
                         )
   

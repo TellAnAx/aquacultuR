@@ -34,8 +34,8 @@ save(
 #' # test ingredient nutrient mass frac.: 0.846 (84.6%)
 
 digestingr <- tibble::tribble(
-  ~diet_reference, ~ingredient, ~adc_reference, ~adc_test, ~dm_ref, ~dm_ingr, ~N_reference, ~N_ingr,
-  "reference diet b", "blood meal 2", 0.923, 0.902, 0.928, 0.895, 0.45, 0.846
+  ~diet_reference, ~ingredient, ~adc_reference, ~adc_test, ~dm_reference, ~dm_ingr, ~CP_reference, ~CP_ingr,
+  "reference diet b", "blood meal 2", 0.923, 0.902, 0.928, 0.895, 0.465, 0.846
 )
 
 save(

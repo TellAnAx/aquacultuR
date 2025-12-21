@@ -8,30 +8,30 @@
 A tibble with one row and 25 columns:
 \describe{
  \item{diet}{character; feed name.}
- \item{dry_matter}{numeric; content of feed in percent.}
- \item{crude_protein}{numeric; content of feed in percent as fed.}
- \item{crude_lipids}{numeric; content of feed in percent as fed.}
- \item{ash}{numeric; content of feed in percent as fed.}
+ \item{dry_matter}{numeric; content of feed in g/g.}
+ \item{crude_protein}{numeric; content of feed in g/g as fed.}
+ \item{crude_lipids}{numeric; content of feed in g/g as fed.}
+ \item{ash}{numeric; content of feed in g/g as fed.}
  \item{gross_energy}{numeric; content of feed in MJ per kg as fed.}
- \item{phosphorus}{numeric; content of feed in percent as fed.}
- \item{arginine}{numeric; content of feed in percent as fed.}
- \item{histidine}{numeric; content of feed in percent as fed.}
- \item{isoleucine}{numeric; content of feed in percent as fed.}
- \item{leucine}{numeric; content of feed in percent as fed.} 
- \item{lysine}{numeric; content of feed in percent as fed.}
- \item{threonine}{numeric; content of feed in percent as fed.}
- \item{tryptophan}{numeric; content of feed in percent as fed.}
- \item{valine}{numeric; content of feed in percent as fed.}
- \item{methionine}{numeric; content of feed in percent as fed.}
- \item{cysteine}{numeric; content of feed in percent as fed.}
- \item{phenylalanine}{numeric; content of feed in percent as fed.}
- \item{tyrosine}{numeric; content of feed in percent as fed.}
- \item{aspartic_acid}{numeric; content of feed in percent as fed.}
- \item{glutamic_acid}{numeric; content of feed in percent as fed.}
- \item{alanine}{numeric; content of feed in percent as fed.}
- \item{glycine}{numeric; content of feed in percent as fed.}
- \item{proline}{numeric; content of feed in percent as fed.}
- \item{serine}{numeric; content of feed in percent as fed.}
+ \item{phosphorus}{numeric; content of feed in g/g as fed.}
+ \item{arginine}{numeric; content of feed in g/g as fed.}
+ \item{histidine}{numeric; content of feed in g/g as fed.}
+ \item{isoleucine}{numeric; content of feed in g/g as fed.}
+ \item{leucine}{numeric; content of feed in g/g as fed.} 
+ \item{lysine}{numeric; content of feed in g/g as fed.}
+ \item{threonine}{numeric; content of feed in g/g as fed.}
+ \item{tryptophan}{numeric; content of feed in g/g as fed.}
+ \item{valine}{numeric; content of feed in g/g as fed.}
+ \item{methionine}{numeric; content of feed in g/g as fed.}
+ \item{cysteine}{numeric; content of feed in g/g as fed.}
+ \item{phenylalanine}{numeric; content of feed in g/g as fed.}
+ \item{tyrosine}{numeric; content of feed in g/g as fed.}
+ \item{aspartic_acid}{numeric; content of feed in g/g as fed.}
+ \item{glutamic_acid}{numeric; content of feed in g/g as fed.}
+ \item{alanine}{numeric; content of feed in g/g as fed.}
+ \item{glycine}{numeric; content of feed in g/g as fed.}
+ \item{proline}{numeric; content of feed in g/g as fed.}
+ \item{serine}{numeric; content of feed in g/g as fed.}
 }
 }
 \description{

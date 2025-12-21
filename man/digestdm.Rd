@@ -8,9 +8,12 @@
 A tibble with two rows and four columns:
 \describe{
  \item{diet}{character; feed identifier.}
- \item{dm}{numeric; mass fraction of dry matter in the feed.}
- \item{std_feed}{numeric; mass fraction of digestibility marker in feed.}
- \item{std_feces}{numeric; mass fraction of digestibility marker in feces.}
+ \item{dm}{numeric; mass fraction of dry matter in the feed. Data reported 
+ as value between 0 and 1, corresponding to g/g.}
+ \item{std_feed}{numeric; mass fraction of digestibility marker in feed. 
+ Data reported as value between 0 and 1, corresponding to g/g.}
+ \item{std_feces}{numeric; mass fraction of digestibility marker in feces.
+ Data reported as value between 0 and 1, corresponding to g/g.}
 }
 }
 \description{

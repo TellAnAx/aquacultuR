@@ -4,7 +4,15 @@
 \alias{adc_ingr}
 \title{ADC of a feed ingredient (ADCingr)}
 \usage{
-adc_ingr(adc_test, adc_ref, nut_ref, nut_ingr, incl_ingr = 0.3)
+adc_ingr(
+  adc_test,
+  adc_ref,
+  nut_ref,
+  nut_ingr,
+  dm_ref = 1,
+  dm_ingr = 1,
+  incl_ingr = 0.3
+)
 }
 \arguments{
 \item{adc_test}{a numeric value in the interval [0,1] that represents the
@@ -23,10 +31,16 @@ inclusion rate of the nutrient in the test diet for which the Apparent
 Digestibility Coefficient (ADC) of the nutrient in the ingredient will be
 calculated.}
 
-\item{incl_ingr}{a numeric value in the interval [0,1] that represents the
-inclusion rate of the ingredient in the test diet for which the Apparent
-Digestibility Coefficient (ADC) of the nutrient in an ingredient will be
-calculated.}
+\item{dm_ref}{a numeric value in the interval [0,1] (default: 1) that 
+represents the dry matter content of the reference diet.}
+
+\item{dm_ingr}{a numeric value in the interval [0,1] (default: 1) that
+represents the dry matter content of the tested feed ingredient.}
+
+\item{incl_ingr}{a numeric value in the interval [0,1] (default: 0.3) that 
+represents the inclusion rate of the ingredient in the test diet for which 
+the Apparent Digestibility Coefficient (ADC) of the nutrient in an 
+ingredient will be calculated.}
 }
 \value{
 returns a single numeric value in the interval [0, 1], which is the
@@ -36,7 +50,7 @@ additional warning is returned.
 \description{
 Function to calculate the Apparent Digestibility Coefficient of a nutrient
 contained in a feed ingredient of a compound diet. The calculation of the
-ADCingr is based on the equation proposed by Bureau and Hua (2006).
+ADCingr is based on equation 4 proposed by Bureau & Hua (2006).
 }
 \examples{
 # Example from Bureau et al. (1999) - Blood meal 2
@@ -48,7 +62,12 @@ ADCingr is based on the equation proposed by Bureau and Hua (2006).
 # test ingredient dry matter: 0.895 (89.5\%)
 # test ingredient nutrient mass frac.: 0.846 (84.6\%)
 
-adc_ingr(adc_ref = 0.923, nut_ref = 0.45, adc_test = 0.902, nut_ingr = 0.846)
+adc_ingr(adc_ref = 0.923, 
+         nut_ref = 0.45, 
+         dm_ref = 0.928,
+         adc_test = 0.902, 
+         nut_ingr = 0.846,
+         dm_ingr = 0.895)
 
 }
 \references{

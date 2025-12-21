@@ -1,5 +1,5 @@
 ---
-title: "Growth metrics"
+title: "Feed conversion"
 author: "Anıl Axel Tellbüscher"
 date: "Last updated: December 22, 2025 (rebuilt `r Sys.Date()`)"
 output: 
@@ -12,7 +12,7 @@ output:
 bibliography: references.bib
 csl: aquaculture-international.csl
 vignette: >
-  %\VignetteIndexEntry{aquacultuR}
+  %\VignetteIndexEntry{feedconv}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -24,11 +24,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r options}
-options(digits = 3)
-```
 
-```{r load_packages, echo=FALSE}
+This vignette provides coding examples on how to use the functions provided by this package in order to calculate key zootechnical metrics commonly used in the field of aquaculture.
+
+
+
+```{r load_packages, message=FALSE, warning=FALSE}
 library(aquacultuR)
 library(magrittr)
 library(dplyr)
@@ -36,7 +37,9 @@ library(tidyr)
 library(lubridate)
 ```
 
-This vignette provides coding examples on how to use the functions provided by this package in order to calculate key zootechnical metrics commonly used in the field of aquaculture.
+```{r options}
+options(digits = 3)
+```
 
 
 
@@ -51,6 +54,25 @@ The data we will assess in order to demonstrate the calculation of feed conversi
 ## Overview
 
 To calculate the feed conversion and nutrient 
+
+```{r}
+df <- samplings %>%
+  mutate(timepoint = case_when(
+    date == ymd("2023-03-16") ~ "bw_beginning",
+    date == ymd("2023-04-14") ~ "bw_end",
+    .default = NA
+  )) %>%
+  group_by(tank, timepoint, sample_type) %>%
+  summarise(mean_weight = mean(fish_weight)) %>% 
+  select(-sample_type, -starts_with("sd")) %>%
+  pivot_wider(
+    names_from = timepoint,
+    values_from = mean_weight
+  ) %>% print()
+```
+
+
+
 
 The study dataset provides information on the feed they used, such as the proximate composition and essential amino acid profile.
 
@@ -104,8 +126,18 @@ It is eventually possible to calculate the **Feed Conversion Ratio** (FCR) with 
 feed_conversion <- df %>%
   group_by(tank) %>%
   summarise(
-    feed_conversion_ratio = fcr(beginning, end, cumulative_feed_intake, dm = 0.93),
-    feed_conversion_efficiency = fce(beginning, end, cumulative_feed_intake, dm = 0.93)
+    feed_conversion_ratio = fcr(
+      ibw = bw_beginning,
+      fbw = bw_end,
+      feed = cumulative_feed_intake,
+      dm = 0.93
+    ),
+    feed_conversion_efficiency = fce(
+      ibw = bw_beginning,
+      fbw = bw_end,
+      feed = cumulative_feed_intake,
+      dm = 0.93
+    )
   ) %>%
   print()
 ```
@@ -124,8 +156,8 @@ df %>%
   bind_cols(feedcomp %>% 
               select(dry_matter, crude_protein)) %>% 
   mutate(
-    protein_efficiency_ratio = ner(ibw = beginning, 
-                                   fbw = end, 
+    protein_efficiency_ratio = ner(ibw = bw_beginning, 
+                                   fbw = bw_end, 
                                    fi = cumulative_feed_intake, 
                                    nut_f = crude_protein, 
                                    dm = dry_matter)
@@ -146,7 +178,7 @@ summary(bodycomp)
 In an initial step, we specify the start and end date again.
 
 ```{r assign_nr_time}
-df <- bodycomp %>% 
+df2 <- bodycomp %>% 
     mutate(
       timepoint = case_when(
         date == ymd("2023-03-16") ~ "beginning", 
@@ -159,7 +191,7 @@ df <- bodycomp %>%
 Now we calculate the initial tissue protein content based on the three samples that were taken to determine the body composition and save the result in a new R object.
 
 ```{r prepare_nr_init_data}
-initial <- df %>% 
+initial <- df2 %>% 
   group_by(timepoint) %>% 
   summarise(tissue_protein_start = mean(protein)) %>%
   ungroup() %>% 
@@ -170,7 +202,7 @@ initial <- df %>%
 Eventually, we can remove the initial timepoint and add the data together with the feed intake, weight gain, and feed composition data.
 
 ```{r join_nr_data}
-nutrient_retention <- df %>%
+nutrient_retention <- df2 %>%
   filter(timepoint != "beginning") %>% 
   rename(tissue_protein = "protein") %>% 
   select(-timepoint) %>% 
@@ -184,12 +216,12 @@ After joining all necessary data, we can calculate the NR.
 ```{r calculate_nr}
 nutrient_retention %>% 
   mutate(
-    protein_retention = nr(ibw = beginning, 
-                           fbw = end, 
+    protein_retention = nr(ibw = bw_beginning, 
+                           fbw = bw_end, 
                            ibn = tissue_protein_start,
                            fbn = tissue_protein, 
                            fi = cumulative_feed_intake,
-                           nut_diet = crude_protein
+                           nut_f = crude_protein
                            )
     ) %>% 
   select(treatment, protein_retention)

@@ -1,5 +1,5 @@
 ---
-title: "Growth metrics"
+title: "Digestibility"
 author: "Anıl Axel Tellbüscher"
 date: "Last updated: December 22, 2025 (rebuilt `r Sys.Date()`)"
 output: 
@@ -12,7 +12,7 @@ output:
 bibliography: references.bib
 csl: aquaculture-international.csl
 vignette: >
-  %\VignetteIndexEntry{aquacultuR}
+  %\VignetteIndexEntry{digestibility}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

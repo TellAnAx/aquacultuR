@@ -1,5 +1,5 @@
 ---
-title: "Growth metrics"
+title: "Growth"
 author: "Anıl Axel Tellbüscher"
 date: "Last updated: December 22, 2025 (rebuilt `r Sys.Date()`)"
 output: 
@@ -12,7 +12,7 @@ output:
 bibliography: references.bib
 csl: aquaculture-international.csl
 vignette: >
-  %\VignetteIndexEntry{aquacultuR}
+  %\VignetteIndexEntry{growth}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -155,7 +155,7 @@ To calculate the **Thermal Growth Coefficient** (TGC) with the `tgc()` function,
 water_params %>%
   group_by(tank) %>%
   summarise(temp = mean(temp)) %>%
-  right_join(growth, join_by(tank)) %>%
+  right_join(df, join_by(tank)) %>%
   mutate(thermal_growth_coefficient = tgc(
     ibw = beginning,
     fbw = end,

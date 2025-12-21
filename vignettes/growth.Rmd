@@ -1,0 +1,178 @@
+---
+title: "Growth metrics"
+author: "Anıl Axel Tellbüscher"
+date: "Last updated: December 22, 2025 (rebuilt `r Sys.Date()`)"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+      toc_depth: 2
+bibliography: references.bib
+csl: aquaculture-international.csl
+vignette: >
+  %\VignetteIndexEntry{aquacultuR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r knitr_setup, include = FALSE, echo=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+This short vignette provides coding examples on how to use the functions provided by the `aquacultuR` package to calculate **growth metrics** commonly used in the field of aquaculture.
+
+
+
+```{r load_packages, message=FALSE, warning=FALSE}
+library(aquacultuR)
+library(magrittr)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+```
+
+```{r options}
+options(digits = 3)
+```
+
+
+
+# Data 
+
+## Source and Adjustments
+
+The data we will assess in order to demonstrate the calculation of growth and feed conversion metrics originates from one out of two experiments during with Atlantic salmon (*Salmo salar*) has been exposed to different levels of dissolved oxygen saturation. The original data was published by @Liland2024a. The original Excel workbook and can be found together with additional information in the dedicated publication. The data has been tidied by converting the double-row into single-row column names. More information on tidy data can be found for instance in @Wickham2014a. In addition, proximate and amino acid compositions have been converted from percentages to mass fractions in gram per gram.
+
+
+
+## Overview
+
+To calculate growth and the zootechnical metrics related to it, we generally need data related to the
+
+1. weight (or length) over time and
+2. water temperature over time.
+
+The **weight data** is recorded in the `samplings` dataset.
+
+```{r samplings_data}
+head(samplings)
+```
+
+**Water parameters**, meanwhile, are recorded in the `water_params` dataset.
+
+```{r}
+head(water_params)
+```
+
+
+
+## Preprocessing
+
+To calculate some metrics related to fish growth, we are interested in the fish weight at the beginning and the end of the experiment for each tank, which is exactly the data that the dataset provides. Therefore, we do not need to filter the dataset. However, we will add an additional column that specifies the timepoint in relation to the date and will make our life easier later on and calculate the mean and standard deviation per tank.
+
+```{r prepare_growth_data}
+df <- samplings %>%
+  mutate(timepoint = case_when(
+    date == ymd("2023-03-16") ~ "beginning",
+    date == ymd("2023-04-14") ~ "end",
+    .default = NA
+  )) %>%
+  group_by(tank, timepoint, sample_type) %>%
+  summarise(mean_weight = mean(fish_weight),
+            sd_weight = sd(fish_weight)) %>% print()
+```
+
+The initial weighing was done in bulk per tank, which is why there was no standard deviation calculated for the respective time points. 
+Now we convert the data into wide format and calculate the duration of the experiment.
+
+```{r growth_wide}
+df <- df %>%
+  select(-sample_type, -starts_with("sd")) %>%
+  pivot_wider(
+    names_from = timepoint,
+    values_from = c(mean_weight),
+    names_vary = "slowest"
+  ) %>%
+  mutate(duration = as.numeric(max(samplings$date) - min(samplings$date))) %>% print()
+```
+
+
+
+# Absolute Growth, Absolute and Specific Growth Rate
+
+After data preparation, we can now calculate some growth-related metrics, including the **Absolute Growth** (AG) with the `ag()` function, the **Relative Growth** (RG) with the `rg()` function, and the time-related **Absolute Growth Rate** (AGR) using the `agr()` function. 
+A special case is the **Relative Growth Rate** (RGR) that is calculated with the `rgr()` function. Note that the denominator of the Relative Growth Rate is calculated by default by applying the geometric mean, but the arithmetic mean can also be used.
+Lastly, we also calculate the **Specific Growth Rate** (SGR) with the `sgr()` function.
+
+```{r calculate_growth_metrics}
+df %>%
+  group_by(tank) %>%
+  mutate(
+    absolute_growth = ag(ibw = beginning, fbw = end),
+    relative_growth = rg(ibw = beginning, fbw = end),
+    absolute_growth_rate = agr(ibw = beginning, fbw = end, duration),
+    specific_growth_rate = sgr(ibw = beginning, fbw = end, duration)
+  ) %>% print()
+```
+
+
+```{r}
+df %>%
+  group_by(tank) %>%
+  mutate(
+    geometric_bodyweight = gbw(ibw = beginning, fbw = end),
+    relative_growth_rate_geom = rgr(
+      ibw = beginning,
+      fbw = end,
+      duration,
+      mean_fun = "geometric"
+    ),
+        relative_growth_rate_arith = rgr(
+      ibw = beginning,
+      fbw = end,
+      duration,
+      mean_fun = "arithmetic"
+    )
+  )
+```
+
+
+
+# Thermal Growth Coefficient
+
+To calculate the **Thermal Growth Coefficient** (TGC) with the `tgc()` function, we need to add temperature data, which is supplied in the *water_params* dataset. We will thus join this dataset into our growth dataset after calculating the average temperature throughout the experiment. 
+
+```{r calculate_tgc}
+# 1. calculate mean temperature 
+# 2. join into growth data
+# 3. calculate TGC
+water_params %>%
+  group_by(tank) %>%
+  summarise(temp = mean(temp)) %>%
+  right_join(growth, join_by(tank)) %>%
+  mutate(thermal_growth_coefficient = tgc(
+    ibw = beginning,
+    fbw = end,
+    duration = duration,
+    temp = temp
+  )) %>% print()
+```
+
+
+
+# Session info
+
+```{r show_session_info}
+sessionInfo()
+```
+
+
+
+# References
+

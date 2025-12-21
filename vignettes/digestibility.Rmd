@@ -1,0 +1,164 @@
+---
+title: "Growth metrics"
+author: "Anıl Axel Tellbüscher"
+date: "Last updated: December 22, 2025 (rebuilt `r Sys.Date()`)"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+      toc_depth: 2
+bibliography: references.bib
+csl: aquaculture-international.csl
+vignette: >
+  %\VignetteIndexEntry{aquacultuR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r knitr_setup, include = FALSE, echo=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+This short vignette provides coding examples on how to use the functions provided by the `aquacultuR` package to calculate **Apparent Digestibility Coefficients** of feeds, feed nutrients, and feed ingredients.
+
+
+
+```{r load_packages, message=FALSE, warning=FALSE}
+library(aquacultuR)
+library(magrittr)
+library(dplyr)
+```
+
+```{r options}
+options(digits = 3)
+```
+
+
+
+# Data
+
+*Note: We could not find any published dataset on digestibility trials in data journals or Open Access repositories (Zenodo, Mendeley Data). We would thus appreciate data contributions from the aquaculture community!* 
+
+While the example data for the dry matter and specific nutrient digestibility calculations provided are constructed, the data for the calculation of ingredient digestibility originates from @Bureau1999a and @Bureau2006a.
+
+```{r}
+digestdm
+```
+
+```{r}
+digestnut
+```
+
+
+```{r}
+digestingr
+```
+
+
+
+# Dry matter digestibility
+
+Based on the *digestdm* dataset, the **Apparent Digestibility Coefficient** for the dry matter fraction of a feed ($\text{ADC}_{\text{DM}}$) can immediately be calculated using the `adc_dm()` function.
+
+```{r calculate_adc_dm_short}
+digestdm %>%
+  group_by(diet) %>%
+  summarise(`ADC DM` = adc_dm(std_diet = std_feed, std_feces = std_feces))
+```
+
+Note that the function default for the dry matter content of the feed is set to 1. This can be changed with the `dm` argument of the `adc_dm()` function. The dry matter content of the feces cannot be adjusted.
+
+```{r calculate_adc_dm_additional_arguments}
+digestdm %>%
+  group_by(diet) %>%
+  summarise(`ADC DM` = adc_dm(
+    dm = dm,
+    std_diet = std_feed,
+    std_feces = std_feces
+  ))
+```
+
+Applied on a data frame or tibble, the code outputs the $\text{ADC}_{\text{DM}}$ for each diet.
+
+
+
+
+
+# Nutrient digestibility
+
+The **Apparent Digestibility Coefficient** for specific nutrients in a feed ($\text{ADC}_{\text{nut}}$) can be calculated analogously with the `adc_nut()` function. Here, additional function arguments are the mass fractions of the nutrient of interest in the feed and the feces in gram per gram.
+
+```{r calculate_adc_nut}
+digestnut %>%
+  group_by(diet) %>%
+  summarise(
+    `ADC CP` = adc_nut(
+      std_diet = std_feed,
+      std_feces = std_feces,
+      nut_diet = N_feed,
+      nut_feces = N_feces
+    )
+  )
+```
+
+
+
+
+
+# Ingredient digestibility
+
+Lastly, the **Apparent Digestibility Coefficient** can also be calculated for the dry matter fraction of a specific ingredient in a feed ($\text{ADC}_{\text{ingr}}$). This is possible with the `adc_ingr()` function that 
+
+```{r calculate_adc_ingr_short}
+digestingr %>%
+  summarise(
+    `ADC Ingredient` = adc_ingr(
+      adc_test = adc_test,
+      adc_ref = adc_reference,
+      nut_ref = CP_reference,
+      nut_ingr = CP_ingr
+    )
+  )
+```
+
+Same as `adc_dm()`, the function assumes that the dry matter of the reference feed and the feed ingredient is 1 gram per gram by default. To change this, the function arguments `dm_ref` and `dm_ingr` can be used. In addition, the mass fraction of the feed ingredient into the test diet can be set by using the function argument `incl_ingr`. The default is 0.3 gram per gram.
+
+```{r calculate_adc_ingr_additional_arguments}
+digestingr %>%
+  summarise(
+    `ADC Ingredient` = adc_ingr(
+      adc_test = adc_test,
+      adc_ref = adc_reference,
+      nut_ref = CP_reference,
+      nut_ingr = CP_ingr,
+      dm_ref = dm_reference,
+      dm_ingr = dm_ingr
+    )
+  )
+```
+
+The difference from the result stated in @Bureau2006a ($\text{ADC} =  87.5\%$) originates from rounding of the result. 
+
+
+
+
+
+# Session info
+
+```{r show_session_info}
+sessionInfo()
+```
+
+
+
+
+
+# References
+

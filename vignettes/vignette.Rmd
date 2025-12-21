@@ -2,64 +2,372 @@
 title: "aquacultuR"
 author: "Anıl Axel Tellbüscher"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+      toc_depth: 2
+bibliography: references.bib
+csl: aquaculture-international.csl
 vignette: >
   %\VignetteIndexEntry{aquacultuR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{r knitr_setup, include = FALSE, echo=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
-
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
-
-## Vignette Info
-
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r options}
+options(digits = 3)
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+```{r load_packages}
+library(aquacultuR)
+library(magrittr)
+library(dplyr)
+library(tidyr)
+library(lubridate)
 ```
 
-Also a quote using `>`:
+This vignette provides coding examples on how to use the functions provided by this package in order to calculate key zootechnical metrics commonly used in the field of aquaculture.
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+
+
+# Growth and Feed Conversion
+
+The data we will assess in order to demonstrate the calculation of growth and feed conversion metrics originates from one out of two experiments during with Atlantic salmon (*Salmo salar*) has been exposed to different levels of dissolved oxygen saturation. The original data was published by @Liland2024a in form of a typical Excel workbook and can be found together with additional information in the dedicated publication. The respective data has been tidied by converting the double-row into single-row column names. More information on tidy data can be found for instance in @Wickham2014a. In addition, proximate and amino acid compositions have been converted from percentages to mass fractions in gram per gram.
+
+Let us start with the growth data, which is part of the datasets that were acquired during the samplings.
+
+```{r summarise_samplings_data}
+summary(samplings)
+```
+
+To calculate some metrics related to fish growth, we are interested in the fish weight at the beginning and the end of the experiment for each tank, which is exactly the data that the dataset provides. Therefore, we do not need to filter the dataset. However, we will add an additional column that specifies the timepoint in relation to the date and will make our life easier later on and calculate the mean and standard deviation per tank.
+
+```{r prepare_growth_data}
+df <- samplings %>% 
+  mutate(
+    timepoint = case_when(
+      date == ymd("2023-03-16") ~ "beginning", 
+      date == ymd("2023-04-14") ~ "end",
+      .default = NA
+    )
+    ) %>%
+  
+  group_by(tank, timepoint, sample_type) %>% 
+  summarise(
+    mean_weight = mean(fish_weight),
+    sd_weight = sd(fish_weight)
+    ) %>% print()
+```
+
+
+
+## Absolute Growth, Absolute and Specific Growth Rate
+
+The initial weighing was done in bulk per tank, which is why there was no standard deviation calculated for the respective time points. 
+Now we convert the data into wide format and calculate the duration of the experiment.
+
+```{r growth_wide}
+df <- df %>% 
+  select(-sample_type, -starts_with("sd")) %>% 
+  pivot_wider(
+    names_from = timepoint,
+    values_from = c(mean_weight),
+    names_vary = "slowest"
+  ) %>% 
+  mutate(
+    duration = as.numeric(max(samplings$date) - min(samplings$date))
+  ) %>% print()
+```
+
+From this, we can now calculate some growth-related metrics, including the **Absolute Growth** (AG) with the `ag()` function, the **Relative Growth** (RG) with the `rg()` function, and the time-related **Absolute Growth Rate** (AGR) using the `agr()` function. 
+A special case is the **Relative Growth Rate** (RGR) that is calculated with the `rgr()` function. Note that the denominator of the Relative Growth Rate is calculated by default by applying the geometric mean, but the arithmetic mean can also be used.
+Lastly, we also calculate the **Specific Growth Rate** (SGR) with the `sgr()` function.
+
+```{r calculate_growth_metrics}
+growth <- df %>% 
+  group_by(tank) %>% 
+  mutate(
+    absolute_growth = ag(ibw = beginning, 
+                         fbw = end),
+    relative_growth = rg(ibw = beginning, 
+                         fbw = end),
+    absolute_growth_rate = agr(ibw = beginning, 
+                               fbw = end, 
+                               duration),
+    relative_growth_rate = rgr(ibw = beginning, 
+                               fbw = end, 
+                               duration, 
+                               mean_fun = "geometric"),
+    geometric_bodyweight = gbw(ibw = beginning, 
+                               fbw = end),
+    specific_growth_rate = sgr(ibw = beginning, 
+                               fbw = end, 
+                               duration)
+  ) %>% print()
+```
+
+
+
+## Thermal Growth Coefficient
+
+To calculate the **Thermal Growth Coefficient** (TGC) with the `tgc()` function, we additionally need temperature data, which is supplied in the *water_params* dataset. We will thus join this dataset into our growth dataset after calculating the average temperature throughout the experiment. 
+
+```{r calculate_tgc}
+growth <- water_params %>% 
+  group_by(tank) %>% 
+  summarise(
+    temp = mean(temp)
+    ) %>% 
+  right_join(growth, join_by(tank)) %>% 
+  mutate(
+    thermal_growth_coefficient = tgc(ibw = beginning, 
+                                     fbw = end, 
+                                     duration = duration, 
+                                     temp = temp)
+  ) %>% print()
+```
+
+
+
+
+
+# Feed
+
+The study dataset provides information on the feed they used, such as the proximate composition and essential amino acid profile.
+
+```{r feedcomp}
+feedcomp
+```
+
+After removing the non-numeric *diet* column, we will convert the data into long format for improved readability.
+
+```{r feedcomp_long}
+feedcomp %>% 
+  select(-diet) %>% 
+  pivot_longer(
+    everything(),
+    names_to = "parameter",
+    values_to = "value"
+  )
+```
+
+The unit of the data is gram per gram. It is highly recommended to use a package such as `units` to ensure that there are no mistakes occurring with unit conversion.
+
+To assess feed conversion, we need data on the feed intake throughout the experiment. The *feed_intake* dataset already comes with the cumulative feed intake pre-calculated, which means we only need to retain the ultimate value.
+
+```{r feed_intake}
+df <- feed_intake %>% 
+  filter(date == max(date)) %>% 
+  select(tank, cumulative_feed_intake) %>% 
+  right_join(df, join_by(tank)) %>% 
+  print()
+```
+
+
+
+## Feed Conversion Ratio and Efficiency
+
+It is eventually possible to calculate the **Feed Conversion Ratio** (FCR) with the `fcr()` function and the **Feed Conversion Efficiency** (FCE) with the `fce()` function. Note that we can account for the dry matter content of the feed, which is not 100%.
+
+```{r calculate_fcr_fce}
+feed_conversion <- df %>%
+  group_by(tank) %>%
+  summarise(
+    feed_conversion_ratio = fcr(beginning, end, cumulative_feed_intake, dm = 0.93),
+    feed_conversion_efficiency = fce(beginning, end, cumulative_feed_intake, dm = 0.93)
+  ) %>%
+  print()
+```
+
+
+
+## Nutrient Efficiency Ratio
+
+For looking deeper into aspects such as the **Nutrient Efficiency Ratio** (NER) with the `ner()` function, we need to add the feed composition to the dataset as well. As an example, we will focus on the crude protein and calculate the Protein Efficiency Ratio. Note that the `ner()` function requires the feed composition data to be provided in gram per gram, which corresponds to possible values within the interval [0,1].
+
+```{r calculate_ner}
+df %>% 
+  bind_cols(feedcomp %>% 
+              select(dry_matter, crude_protein)) %>% 
+  mutate(
+    protein_efficiency_ratio = ner(ibw = beginning, 
+                                   fbw = end, 
+                                   fi = cumulative_feed_intake, 
+                                   nut_f = crude_protein, 
+                                   dm = dry_matter)
+  ) %>% 
+  relocate(tank, protein_efficiency_ratio) # change column order
+```
+
+
+
+## Nutrient Retention
+
+An additional metric we might be interested in is the actual **Nutrient Retention** (NR), which can be calculated with the `nr()` function. The Nutrient Retention indicates how much of a specific nutrient provided has actually been retained in the tissue of the fed organism. For this purpose, we require data on the tissue composition.
+
+```{r summarise_bodycomp}
+summary(bodycomp)
+```
+
+In an initial step, we specify the start and end date again.
+
+```{r assign_nr_time}
+df2 <- bodycomp %>% 
+    mutate(
+      timepoint = case_when(
+        date == ymd("2023-03-16") ~ "beginning", 
+        date == ymd("2023-04-14") ~ "end",
+        .default = NA
+        )
+      )
+```
+
+Now we calculate the initial tissue protein content based on the three samples that were taken to determine the body composition and save the result in a new R object.
+
+```{r prepare_nr_init_data}
+initial <- df2 %>% 
+  group_by(timepoint) %>% 
+  summarise(tissue_protein_start = mean(protein)) %>%
+  ungroup() %>% 
+  filter(timepoint == "beginning") %>% 
+  select(tissue_protein_start) %>% print()
+```
+
+Eventually, we can remove the initial timepoint and add the data together with the feed intake, weight gain, and feed composition data.
+
+```{r join_nr_data}
+nutrient_retention <- df2 %>%
+  filter(timepoint != "beginning") %>% 
+  rename(tissue_protein = "protein") %>% 
+  select(-timepoint) %>% 
+  bind_cols(initial) %>% 
+  right_join(df, join_by(tank)) %>% 
+  bind_cols(feedcomp %>% select(dry_matter, crude_protein))
+```
+
+After joining all necessary data, we can calculate the NR.
+
+```{r calculate_nr}
+nutrient_retention %>% 
+  mutate(
+    protein_retention = nr(ibw = beginning, 
+                           fbw = end, 
+                           ibn = tissue_protein_start,
+                           fbn = tissue_protein, 
+                           fi = cumulative_feed_intake,
+                           nut_diet = crude_protein
+                           )
+    ) %>% 
+  select(treatment, protein_retention)
+```
+
+
+
+
+
+
+# Digestibility
+
+While the data for the dry matter and specific nutrient digestibilities are constructed, the data for the calculation of the ingredient digestibility originates from @Bureau1999a and @Bureau2006a.
+
+
+
+## Dry matter
+
+Based on the *digestdm* dataset, the **Apparent Digestibility Coefficient** for the dry matter fraction of a feed ($\text{ADC}_{\text{DM}}$) can immediately be calculated using the `adc_dm()` function.
+
+```{r calculate_adc_dm_short}
+digestdm %>% 
+  group_by(diet) %>% 
+  summarise(
+    `ADC DM` = adc_dm(std_diet = std_feed, 
+                      std_feces = std_feces)
+  )
+```
+
+Note that the dry matter content of the feed is set to 1 by default. This can be changed by using the `dm` argument of the `adc_dm()` function. The dry matter content of the feces cannot be adjusted.
+
+```{r calculate_adc_dm_additional_arguments}
+digestdm %>% 
+  group_by(diet) %>% 
+  summarise(
+    `ADC DM` = adc_dm(dm = dm, 
+                      std_diet = std_feed, 
+                      std_feces = std_feces)
+  )
+```
+
+Applied on a data frame or tibble, the code outputs the $\text{ADC}_{\text{DM}}$ for each diet.
+
+
+
+## Nutrient
+
+The **Apparent Digestibility Coefficient** for specific nutrients in a feed ($\text{ADC}_{\text{nut}}$) can be calculated analogously with the `adc_nut()` function. Here, additional function arguments are the mass fractions of the nutrient of interest in the feed and the feces in gram per gram.
+
+```{r calculate_adc_nut}
+digestnut %>% 
+  group_by(diet) %>% 
+  summarise(
+    `ADC CP` = adc_nut(std_diet = std_feed,
+                       std_feces = std_feces,
+                       nut_diet = N_feed,
+                       nut_feces = N_feces)
+  )
+```
+
+
+
+## Ingredient
+
+Lastly, the **Apparent Digestibility Coefficient** can also be calculated for the dry matter fraction of a specific ingredient in a feed ($\text{ADC}_{\text{ingr}}$). This is possible with the `adc_ingr()` function that 
+
+```{r calculate_adc_ingr_short}
+digestingr %>%
+  summarise(
+    `ADC Ingredient` = adc_ingr(adc_test = adc_test,
+                                adc_ref = adc_reference,
+                                nut_ref = CP_reference,
+                                nut_ingr = CP_ingr)
+  )
+```
+
+Same as `adc_dm()`, the function assumes that the dry matter of the reference feed and the feed ingredient is 1 gram per gram by default. To change this, the function arguments `dm_ref` and `dm_ingr` can be used. In addition, the mass fraction of the feed ingredient into the test diet can be set by using the function argument `incl_ingr`. The default is 0.3 gram per gram.
+
+```{r calculate_adc_ingr_additional_arguments}
+digestingr %>%
+  summarise(
+    `ADC Ingredient` = adc_ingr(adc_test = adc_test,
+                                adc_ref = adc_reference,
+                                nut_ref = CP_reference,
+                                nut_ingr = CP_ingr,
+                                dm_ref = dm_reference,
+                                dm_ingr = dm_ingr)
+  )
+```
+
+The difference from the result stated in @Bureau2006a ($\text{ADC} =  87.5\%$) originates from rounding of the result. 
+
+
+
+
+
+# Session info
+```{r show_session_info}
+sessionInfo()
+```
+
+
+
+# References
+

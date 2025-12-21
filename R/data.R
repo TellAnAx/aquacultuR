@@ -400,3 +400,90 @@ NULL
 #' @keywords dataset
 #' @name digestingr
 NULL
+
+
+
+
+#' Fish biomass and bodyweights from the first polyculture experiment
+#' 
+#' A dataset containing fish weights from a polyculture experiment with 
+#' pikeperch (Sander lucioperca) and Russian sturgeon.
+#' 
+#' @format A tibble with 24 rows and eight columns:
+#' \describe{
+#'  \item{tank}{character; rearing tank identifier.}
+#'  \item{treat_id}{character; treatment identifier.}
+#'  \item{count_start}{numeric; fish count at the beginning of the experiment.}
+#'  \item{count_end}{numeric; fish count at the end of the experiment.}
+#'  \item{biomass_kg_start}{numeric; total fish biomass in kg at the beginning
+#'  of the experiment.}
+#'  \item{biomass_kg_end}{numeric; total fish biomass in kg at the end of the 
+#'  experiment.}
+#' }
+#' 
+#' @examples
+#' weight
+#' 
+#' @docType data
+#' @keywords datasets
+#' @name weight
+NULL
+
+
+
+
+
+#' Individual fish bodyweights during a polyculture experiment
+#' 
+#' A dataset holding weight data of tagged individuals of two different fish 
+#' species, pikeperch (Sander lucioperca) and largemouth bass (Micropterus 
+#' salmoides), at the beginning and the end of a polyculture experiment for 
+#' aquaculture purposes.
+#' 
+#' @format A tibble with 396 rows and four columns:
+#' \describe{
+#'  \item{species}{character; species identifier.}
+#'  \item{culture_sys}{character; culture system identifier.}
+#'  \item{ibw_g}{numeric; initial bodyweight in gram.}
+#'  \item{fbw_g}{numeric; final bodyweight in gram.}
+#' }
+#' 
+#' @examples
+#' weight2
+#'
+#' @references Pěnka T., Malinovskyi O., Křišťan J., Imentai A., Policar T. 
+#' (2021): Effect of density and mixed culture with pikeperch (Sander 
+#' lucioperca) on effectivity of largemouth bass (Micropterus salmoides) 
+#' intensive culture. Czech Journal of Animal Science, 66: 428–440.
+#' 
+#' @docType data
+#' @keywords datasets
+#' @name weight2
+NULL
+
+
+
+
+
+#' Rearing data from the first polyculture experiment
+#' 
+#' A dataset containing feed quantities fed per tank and the average water 
+#' temperature over all tanks stocked with pikeperch oder sturgeon. The 
+#' variables are as follows:
+#' 
+#' @format A data frame containing 24 rows and four columns:
+#' \describe{
+#'    \item{tank}{character; unique identifier for each fish tank.}
+#'    \item{feed_g}{numeric; total feed input in gram over the duration of the 
+#'    experiment.}
+#'    \item{temp_C}{numeric; average water temperature in degrees Celsius.}
+#'    \item{duration}{numeric; total duration of the experiment in days.}
+#' }
+#' 
+#' @examples
+#' rearing
+#' 
+#' @docType data
+#' @keywords datasets
+#' @name rearing
+NULL

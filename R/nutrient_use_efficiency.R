@@ -13,7 +13,7 @@
 #' of the experimental animal (on dry matter basis). The value must be between 
 #' 0 and 1.
 #' @param fi numeric; mass of feed given.
-#' @param nut_diet numeric; mass fraction of nutrient in the diet. The value 
+#' @param nut_f numeric; mass fraction of nutrient in the diet. The value 
 #' must be between 0 and 1.
 #' @param dm numeric; dry matter content of feed. Default is 1.
 #' @param dm_ib numeric; initial dry matter content of body tissue. Default is 
@@ -38,7 +38,7 @@
 #' # multiple fish
 #' nr(ibw = 10, fbw = c(93, 102, 99, 98, 101, 132),
 #'    ibn = 0.128, fbn = 0.132,
-#'    fi = 200, nut_diet = 0.072)
+#'    fi = 200, nut_f = 0.072)
 #'
 #' @author Anıl Axel Tellbüscher
 #'
@@ -52,23 +52,23 @@ nr <- function(ibw,
                ibn, 
                fbn, 
                fi,
-               nut_diet,
+               nut_f,
                dm = 1,
                dm_ib = 1,
                dm_fb = 1) {
   # Checks----
   ## Check whether inputs are NA
-  if (any(is.na(c(ibw, fbw, ibn, fbn, fi, dm, dm_ib, dm_fb, nut_diet))))
+  if (any(is.na(c(ibw, fbw, ibn, fbn, fi, dm, dm_ib, dm_fb, nut_f))))
     stop("Inputs must not be NA!")
   
   
   ## Check whether inputs are non-numeric
-  if (any(!is.numeric(c(ibw, fbw, ibn, fbn, fi, dm, dm_ib, dm_fb, nut_diet))))
+  if (any(!is.numeric(c(ibw, fbw, ibn, fbn, fi, dm, dm_ib, dm_fb, nut_f))))
     stop("Inputs must be numeric!")
   
   
-  ## Check whether feed|nut_diet == 0
-  if (any(fi == 0 | nut_diet == 0 | dm == 0 | dm_ib == 0 | dm_fb == 0))
+  ## Check whether feed|nut_f == 0
+  if (any(fi == 0 | nut_f == 0 | dm == 0 | dm_ib == 0 | dm_fb == 0))
     stop("Input must not be zero! Result cannot be calculated.")
   
   
@@ -89,8 +89,8 @@ nr <- function(ibw,
     warning("dm_fb is out of range! The result is not meaningful.")
   if (any(fbn < 0 | fbn > 1))
     warning("fbn is out of range! The result is not meaningful.")
-  if (any(nut_diet < 0 | nut_diet > 1))
-    warning("nut_diet is out of range! The result is not meaningful.")
+  if (any(nut_f < 0 | nut_f > 1))
+    warning("nut_f is out of range! The result is not meaningful.")
   
   
   ## Check whether inputs are of same length
@@ -102,14 +102,17 @@ nr <- function(ibw,
                     length(dm),
                     length(dm_fb),
                     length(dm_ib),
-                    length(nut_diet)) / length(ibw)
+                    length(nut_f)) / length(ibw)
   if (any(length_ratio != 1))
     message("Inputs differ in length.")
   
   
   
   # Calculations----
-  nr <- (fbw * fbn * dm_fb - ibw * ibn * dm_ib) / (fi * dm * nut_diet)
+  numerator <- (fbw * fbn * dm_fb) - (ibw * ibn * dm_ib)
+  denominator <- fi * dm * nut_f
+    
+  nr <-  numerator / denominator 
   
   return(nr)
 }

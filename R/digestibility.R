@@ -68,6 +68,10 @@ adc_dm <- function(std_diet,
     warning("ADC > 1")
   }
   
+  if (any(adc_dm < 0)) {
+    warning("ADC < 0")
+  }
+  
   return(adc_dm)
 }
 
@@ -144,6 +148,10 @@ adc_nut <- function(std_diet, std_feces, nut_diet, nut_feces) {
   
   if (any(adc_nut > 1)) {
     warning("ADC > 1")
+  }
+  
+  if (any(adc_nut < 0)) {
+    warning("ADC < 0")
   }
   
   return(adc_nut)
@@ -246,15 +254,22 @@ adc_ingr <- function(adc_test,
   }
   
   
-  ## Warn if inputs are < 0
+  ## Warn if inputs are < 0 or > 1 
   if (any(adc_test < 0 |
+          adc_test > 1 |
           adc_ref < 0 |
+          adc_ref > 1 |
           nut_ref < 0 |
+          nut_ref > 1 |
           nut_ingr < 0 |
+          nut_ingr > 1 |
           incl_ingr < 0 |
+          incl_ingr > 1 |
           dm_ref < 0 |
-          dm_ingr < 0)) {
-    warning("Some input values are negative. The result is not meaningful.")
+          dm_ref > 1 |
+          dm_ingr < 0 |
+          dm_ingr > 1)) {
+    warning("Inputs are out of bounds [0,1]. The result is not meaningful.")
   }
   
   

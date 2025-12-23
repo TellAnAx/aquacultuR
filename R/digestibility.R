@@ -64,7 +64,7 @@ adc_dm <- function(std_diet,
   # Calculations----
   adc_dm <- 1 - (dm_diet * std_diet / std_feces)
   
-  if (any(adc_dm > 1, na.rm = TRUE)) {
+  if (any(adc_dm > 1)) {
     warning("ADC > 1")
   }
   
@@ -142,7 +142,7 @@ adc_nut <- function(std_diet, std_feces, nut_diet, nut_feces) {
   # Calculations----
   adc_nut <- (1 - (std_diet / std_feces) * (nut_feces / nut_diet))
   
-  if (adc_nut > 1) {
+  if (any(adc_nut > 1)) {
     warning("ADC > 1")
   }
   

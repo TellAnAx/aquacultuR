@@ -67,7 +67,7 @@ fcr <- function(ibw, fbw, feed, dm = 1) {
   
   
   ## Check whether inputs are < 0
-  if (any(c(ibw, fbw) < 0) | any(feed < 0))
+  {if (any(c(ibw, fbw) < 0) | any(feed < 0))
     warning("Inputs are negative. The result is not meaningful.")
     return(NA) #Returning NAs so AG calculation does not interfere with the tests
   }

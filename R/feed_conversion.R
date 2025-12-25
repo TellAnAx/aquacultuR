@@ -122,15 +122,16 @@ fcr <- function(ibw, fbw, feed, dm = 1) {
 #' @export
 fce <- function(ibw, fbw, feed, dm = 1) {
   # Checks----
+  ## Ensure inputs are numeric
+  stopifnot(is.numeric(ibw),
+            is.numeric(fbw),
+            is.numeric(feed),
+            is.numeric(dm))
+  
   ## Check whether inputs are NA
   if (any(is.na(c(ibw, fbw, feed, dm))))
     stop("Inputs cannot be NA")
-  
-  
-  ## Check whether inputs are non-numeric
-  if (any(!is.numeric(c(ibw, fbw, feed, dm))))
-    stop("All inputs must be numeric")
-  
+
   
   ## Check whether inputs == 0
   if (any(feed == 0))

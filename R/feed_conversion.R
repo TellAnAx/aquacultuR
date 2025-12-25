@@ -58,10 +58,17 @@ fcr <- function(ibw, fbw, feed, dm = 1) {
     stop("All input vectors must have the same length.")
   }
  
+  ## Check whether inputs == 0
+  if (any(feed == 0))
+    stop("Feed given or feed intake is zero. The result cannot be calculated.")
   
-  ## Check whether inputs are >= 0
-  if (any(ibw <= 0 | fbw <= 0 | feed <= 0)) {
-    warning("Some input values are zero or negative. The result is not meaningful.")
+  if (any(dm == 0))
+    stop("Dry matter is zero. The result cannot be calculated.")
+  
+  
+  ## Check whether inputs are < 0
+  if (any(c(ibw, fbw) < 0) | any(feed < 0))
+    warning("Inputs are negative. The result is not meaningful.")
     return(NA) #Returning NAs so AG calculation does not interfere with the tests
   }
   
@@ -142,9 +149,10 @@ fce <- function(ibw, fbw, feed, dm = 1) {
   
   
   ## Check whether inputs are < 0
-  if (any(c(ibw, fbw) <= 0) | any(feed < 0))
+  {if (any(c(ibw, fbw) <= 0) | any(feed < 0))
     warning("The result is not meaningful.")
-  
+  return(NA) #Returning NAs so AG calculation does not interfere with the test
+}
   
   ## Check whether dm is outside of interval ]0,1]
   if (any(dm > 1))

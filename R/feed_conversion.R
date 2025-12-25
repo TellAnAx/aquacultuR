@@ -61,7 +61,7 @@ fcr <- function(ibw, fbw, feed, dm = 1) {
   
   ## Check whether inputs are >= 0
   if (any(ibw <= 0 | fbw <= 0 | feed <= 0)) {
-    warning("Some input values are negative. The result is not meaningful.")
+    warning("Some input values are zero or negative. The result is not meaningful.")
   }
   
   
@@ -81,9 +81,6 @@ fcr <- function(ibw, fbw, feed, dm = 1) {
   
   return(fcr)
 }
-
-
-
 
 
 #' Feed conversion efficiency (FCE)

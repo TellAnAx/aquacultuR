@@ -72,6 +72,11 @@ fcr <- function(ibw, fbw, feed, dm = 1) {
             meaningful.")
   }
   
+  ## Check whether FCR is negative
+  if (any(ibw > fbw)) {
+    warning("FCR is negative. The result may not be
+            meaningful.")
+  }
   
   # Calculation----
   

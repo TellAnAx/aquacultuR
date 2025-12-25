@@ -50,18 +50,19 @@ fcr <- function(ibw, fbw, feed, dm = 1) {
             is.numeric(fbw),
             is.numeric(feed),
             is.numeric(dm))
-  
+
   
   ## Ensure inputs have the same length
   input_lengths <- c(length(ibw), length(fbw), length(feed), length(dm))
   if (length(unique(input_lengths)) != 1) {
     stop("All input vectors must have the same length.")
   }
-  
+ 
   
   ## Check whether inputs are >= 0
   if (any(ibw <= 0 | fbw <= 0 | feed <= 0)) {
     warning("Some input values are zero or negative. The result is not meaningful.")
+    return(NA) #Returning NAs so AG calculation does not interfere with the tests
   }
   
   

@@ -90,12 +90,9 @@ rg <- function(ibw, fbw) {
   ## Check whether inputs are non-numeric
   stopifnot("All inputs must be numeric" = is.numeric(ibw), is.numeric(fbw))
   
-  ## Check whether ibw == 0
-  stopifnot("'ibw' == 0. The result cannot be calculated." = all(ibw != 0))
-  
   ## Check whether inputs are < 0
-  if (any(ibw < 0) | any(fbw < 0))
-    warning("Some input values are negative. The result may not be meaningful.")
+  if (any(ibw <= 0 | fbw <= 0))
+    warning("Inputs are <= 0. The result is not meaningful.")
   
   ## Check whether inputs have the same length
   if (length(ibw) != length(fbw))

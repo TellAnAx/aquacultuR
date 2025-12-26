@@ -73,8 +73,10 @@ test_that("adc_dm() calculates ADC correctly", {
 })
 
 test_that("adc_dm warns when ADC < 0", {
-  expect_warning(
-    adc_dm(std_diet = 10, dm_diet = 1, std_feces = 5),
+  expect_warning(adc_dm(
+    std_diet = 10,
+    dm_diet = 1,
+    std_feces = 5),
     "ADC < 0"
   )
 })
@@ -201,8 +203,11 @@ test_that("adc_nut() calculates ADC correctly", {
 })
 
 test_that("adc_nut warns when ADC < 0", {
-  expect_warning(
-    adc_nut(std_diet = 10, std_feces = 5, nut_diet = 5, nut_feces = 10),
+  expect_warning(adc_nut(
+    std_diet = 10,
+    std_feces = 5,
+    nut_diet = 5,
+    nut_feces = 10),
     "ADC < 0"
   )
 })
@@ -468,8 +473,14 @@ test_that("adc_ingr() calculates ADC correctly", {
 
 
 test_that("adc_ingr warns when ADC > 1", {
-  expect_warning(
-    adc_ingr(adc_test = 1, adc_ref = 0.1, nut_ref = 1, dm_ref = 1, dm_ingr = 0.1, incl_ingr = 0.1, nut_ingr = 0.1),
+  expect_warning(adc_ingr(
+    adc_test = 1,
+    adc_ref = 0.1,
+    nut_ref = 1,
+    dm_ref = 1,
+    dm_ingr = 0.1,
+    incl_ingr = 0.1,
+    nut_ingr = 0.1),
     "ADC > 1"
   )
 })

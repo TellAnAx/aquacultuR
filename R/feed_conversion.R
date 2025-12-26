@@ -67,7 +67,7 @@ fcr <- function(ibw, fbw, feed, dm = 1) {
   
   
   ## Check whether inputs are < 0
-  {if (any(c(ibw, fbw) < 0) | any(feed < 0))
+  if (any(c(ibw, fbw, feed) < 0)){
     warning("Inputs are negative. The result is not meaningful.")
     return(NA) #Returning NAs so AG calculation does not interfere with the tests
   }
@@ -135,6 +135,12 @@ fce <- function(ibw, fbw, feed, dm = 1) {
             is.numeric(feed),
             is.numeric(dm))
   
+  ## Ensure inputs have the same length
+  input_lengths <- c(length(ibw), length(fbw), length(feed), length(dm))
+  if (length(unique(input_lengths)) != 1) {
+    stop("All input vectors must have the same length.")
+  }
+  
   ## Check whether inputs are NA
   if (any(is.na(c(ibw, fbw, feed, dm))))
     stop("Inputs cannot be NA")
@@ -149,7 +155,7 @@ fce <- function(ibw, fbw, feed, dm = 1) {
   
   
   ## Check whether inputs are < 0
-  {if (any(c(ibw, fbw) <= 0) | any(feed < 0))
+  if (any(c(ibw, fbw) <= 0) | any(feed < 0)){
     warning("The result is not meaningful.")
   return(NA) #Returning NAs so AG calculation does not interfere with the test
 }
@@ -160,13 +166,6 @@ fce <- function(ibw, fbw, feed, dm = 1) {
   
   if (any(dm < 0))
     warning("Dry matter content is below 0%. The result is not meaningful.")
-  
-  
-  ## Check whether inputs have the same length
-  if (any(c(length(ibw), length(fbw), length(feed), length(dm)) != 1)) {
-    message("Inputs are not of the same length.")
-  }
-  
   
   
   # Calculations----

@@ -153,17 +153,21 @@ agr <- function(ibw, fbw, duration) {
   
   
   if (any(!is.numeric(ibw) |
-          !is.numeric(fbw) | !is.numeric(duration)))
+          !is.numeric(fbw) | 
+          !is.numeric(duration)))
     stop("All inputs must be numeric")
   
-  if (any(duration == 0))
-    stop("Duration == 0! The result cannot be calculated.")
+  if (any(duration <= 0))
+    stop("Duration <= 0! The result cannot be calculated.")
   
-  if (any(ibw <= 0 | fbw <= 0 | duration < 0))
+  if (any(ibw <= 0 | 
+          fbw <= 0 ))
     warning("Input is zero or negative! The result is not meaningful.")
   
   ## Check for inputs of differing length
-  length_ratios <- c(length(ibw), length(fbw), length(duration)) / length(ibw)
+  length_ratios <- c(length(ibw), 
+                     length(fbw), 
+                     length(duration)) / length(ibw)
   if (!all(length_ratios == 1))
     message("Inputs have different lengths.")
   
@@ -174,8 +178,6 @@ agr <- function(ibw, fbw, duration) {
   
   return(agr)
 }
-
-
 
 
 

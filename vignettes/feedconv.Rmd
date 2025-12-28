@@ -1,0 +1,241 @@
+---
+title: "Feed conversion"
+author: "Anıl Axel Tellbüscher"
+date: "Last updated: December 22, 2025 (rebuilt `r Sys.Date()`)"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+      toc_depth: 2
+bibliography: references.bib
+csl: aquaculture-international.csl
+vignette: >
+  %\VignetteIndexEntry{feedconv}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r knitr_setup, include = FALSE, echo=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+This vignette provides coding examples on how to use the functions provided by this package in order to calculate key zootechnical metrics commonly used in the field of aquaculture.
+
+
+
+```{r load_packages, message=FALSE, warning=FALSE}
+library(aquacultuR)
+library(magrittr)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+```
+
+```{r options}
+options(digits = 3)
+```
+
+
+
+# Data
+
+## Source and Adjustments
+
+The data we will assess in order to demonstrate the calculation of feed conversion metrics originates from one out of two experiments during with Atlantic salmon (*Salmo salar*) has been exposed to different levels of dissolved oxygen saturation. The original data was published by @Liland2024a in form of a typical Excel workbook and can be found together with additional information in the dedicated publication. The respective data has been tidied by converting the double-row into single-row column names. More information on tidy data can be found for instance in @Wickham2014a. In addition, proximate and amino acid compositions have been converted from percentages to mass fractions in gram per gram.
+
+
+
+## Overview
+
+To calculate the feed conversion and nutrient 
+
+```{r}
+df <- samplings %>%
+  mutate(timepoint = case_when(
+    date == ymd("2023-03-16") ~ "bw_beginning",
+    date == ymd("2023-04-14") ~ "bw_end",
+    .default = NA
+  )) %>%
+  group_by(tank, timepoint, sample_type) %>%
+  summarise(mean_weight = mean(fish_weight)) %>% 
+  select(-sample_type, -starts_with("sd")) %>%
+  pivot_wider(
+    names_from = timepoint,
+    values_from = mean_weight
+  ) %>% print()
+```
+
+
+
+
+The study dataset provides information on the feed they used, such as the proximate composition and essential amino acid profile.
+
+```{r feedcomp}
+feedcomp
+```
+
+After removing the non-numeric *diet* column, we will convert the data into long format for improved readability.
+
+```{r feedcomp_long}
+feedcomp %>% 
+  select(-diet) %>% 
+  pivot_longer(
+    everything(),
+    names_to = "parameter",
+    values_to = "value"
+  )
+```
+
+The unit of the data is gram per gram. It is highly recommended to use a package such as `units` to ensure that there are no mistakes occurring with unit conversion.
+
+
+
+```{r}
+head(feed_intake)
+```
+
+
+
+```{r}
+head(bodycomp)
+```
+
+
+
+# Feed Conversion Ratio and Efficiency
+
+To assess feed conversion, we need data on the feed intake throughout the experiment. The *feed_intake* dataset already comes with the cumulative feed intake pre-calculated, which means we only need to retain the ultimate value.
+
+```{r feed_intake}
+df <- feed_intake %>% 
+  filter(date == max(date)) %>% 
+  select(tank, cumulative_feed_intake) %>% 
+  right_join(df, join_by(tank)) %>% 
+  print()
+```
+
+It is eventually possible to calculate the **Feed Conversion Ratio** (FCR) with the `fcr()` function and the **Feed Conversion Efficiency** (FCE) with the `fce()` function. Note that we can account for the dry matter content of the feed, which is not 100%.
+
+```{r calculate_fcr_fce}
+feed_conversion <- df %>%
+  group_by(tank) %>%
+  summarise(
+    feed_conversion_ratio = fcr(
+      ibw = bw_beginning,
+      fbw = bw_end,
+      feed = cumulative_feed_intake,
+      dm = 0.93
+    ),
+    feed_conversion_efficiency = fce(
+      ibw = bw_beginning,
+      fbw = bw_end,
+      feed = cumulative_feed_intake,
+      dm = 0.93
+    )
+  ) %>%
+  print()
+```
+
+
+
+# Nutrient Use Efficiency
+
+## Nutrient Efficiency Ratio
+
+To look deeper into the **Nutrient Use Efficiency**, we are interested in calculating metrics such as the **Nutrient Efficiency Ratio** (NER). This can be achieved with the `ner()` function. For this purpose, we need to add the feed composition to the dataset as well. 
+As an example, we will focus on the crude protein and calculate the *Protein* Efficiency Ratio. Note that the `ner()` function requires the feed composition data to be provided in gram per gram, which corresponds to possible values within the interval [0,1].
+
+```{r calculate_ner}
+df %>% 
+  bind_cols(feedcomp %>% 
+              select(dry_matter, crude_protein)) %>% 
+  mutate(
+    protein_efficiency_ratio = ner(ibw = bw_beginning, 
+                                   fbw = bw_end, 
+                                   fi = cumulative_feed_intake, 
+                                   nut_f = crude_protein, 
+                                   dm = dry_matter)
+  ) %>% 
+  relocate(tank, protein_efficiency_ratio) # change column order
+```
+
+
+
+# Nutrient Retention
+
+An additional metric we might be interested in is the actual **Nutrient Retention** (NR), which can be calculated with the `nr()` function. The Nutrient Retention indicates how much of a specific nutrient provided has actually been retained in the tissue of the fed organism. For this purpose, we require data on the tissue composition.
+
+```{r summarise_bodycomp}
+summary(bodycomp)
+```
+
+In an initial step, we specify the start and end date again.
+
+```{r assign_nr_time}
+df2 <- bodycomp %>% 
+    mutate(
+      timepoint = case_when(
+        date == ymd("2023-03-16") ~ "beginning", 
+        date == ymd("2023-04-14") ~ "end",
+        .default = NA
+        )
+      )
+```
+
+Now we calculate the initial tissue protein content based on the three samples that were taken to determine the body composition and save the result in a new R object.
+
+```{r prepare_nr_init_data}
+initial <- df2 %>% 
+  group_by(timepoint) %>% 
+  summarise(tissue_protein_start = mean(protein)) %>%
+  ungroup() %>% 
+  filter(timepoint == "beginning") %>% 
+  select(tissue_protein_start) %>% print()
+```
+
+Eventually, we can remove the initial timepoint and add the data together with the feed intake, weight gain, and feed composition data.
+
+```{r join_nr_data}
+nutrient_retention <- df2 %>%
+  filter(timepoint != "beginning") %>% 
+  rename(tissue_protein = "protein") %>% 
+  select(-timepoint) %>% 
+  bind_cols(initial) %>% 
+  right_join(df, join_by(tank)) %>% 
+  bind_cols(feedcomp %>% select(dry_matter, crude_protein))
+```
+
+After joining all necessary data, we can calculate the NR.
+
+```{r calculate_nr}
+nutrient_retention %>% 
+  mutate(
+    protein_retention = nr(ibw = bw_beginning, 
+                           fbw = bw_end, 
+                           ibn = tissue_protein_start,
+                           fbn = tissue_protein, 
+                           fi = cumulative_feed_intake,
+                           nut_f = crude_protein
+                           )
+    ) %>% 
+  select(treatment, protein_retention)
+```
+
+
+
+# Session info
+
+```{r show_session_info}
+sessionInfo()
+```
+
+
+
+# References
+

@@ -6,3 +6,4 @@
 ^revdep$
 ^dependencies\.R$
 ^CONTRIBUTING\.md$
+^data_prep$

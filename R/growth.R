@@ -331,15 +331,14 @@ tgc <- function(ibw, fbw, duration, temp, scale_coef = 1000) {
   
   ## Check whether duration | temp == 0
   if (any(duration == 0 | temp == 0))
-    stop("'duration' or 'temp' is zero! Result cannot be calculated.")
-  
+    stop("Duration or Temperature is zero. Result cannot be calculated.")
   
   ## Check whether inputs are < 0
   if (any(ibw <= 0 | fbw <= 0))
-    warning("IBW or FBW <= 0! The result is not meaningful.")
+    warning("IBW or FBW is zero or negative. The result may not meaningful.")
   
   if (any(duration < 0 | temp < 0))
-    warning("duration or temp < 0! The result is not meaningful.")
+    warning("Duration or Temperature is negative. The result is not meaningful.")
   
   
   ## Check whether inputs have the same length

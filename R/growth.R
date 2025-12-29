@@ -417,10 +417,14 @@ rgr <- function(ibw,
     stop("Inputs < 0. The result cannot be calculated!")
   }
   
-  ## Inform if inputs are not of the same length
-  if (any(c(length(ibw), length(fbw), length(duration)) > 1)) {
-    message("Inputs are not of same length.")
-  }
+  ## Check whether inputs have the same length
+  length_ratio <- c(length(ibw), 
+                    length(fbw), 
+                    length(duration)
+  ) / length(ibw)
+  
+  if (any(length_ratio != 1))
+    message("Input do not have the same length.")
   
   
   

@@ -548,23 +548,24 @@ rgr <- function(ibw,
 #' @export
 mbw <- function(ibw, fbw, mb_exp = 0.8) {
   # Checks----
-  ## Check whether inputs are NA
-  stopifnot("Inputs cannot be NA" = any(c(!is.na(ibw), !is.na(fbw))))
+  ## Ensure inputs are numeric
+  if (any(!is.numeric(ibw) | !is.numeric(fbw))) {
+    stop("Inputs must be numeric!")
+  }
   
-  
-  ## Check whether inputs are non-numeric
-  stopifnot("All inputs must be numeric" = any(c(is.numeric(ibw), 
-                                                 is.numeric(fbw))))
-  
+  ## Ensure inputs are numeric
+  if (any(c(is.na(ibw), is.na(fbw)))) {
+    stop("Inputs must not be NA")
+  }
   
   ## Check whether inputs are < 0
   if (any(c(ibw, fbw) < 0))
-    stop("Input values are zero or negative. Result cannot be calculated.")
+    stop("IBW or FBW are negative. Result cannot be calculated.")
   
   
   ## Check whether inputs are == 0
   if (any(c(ibw, fbw) == 0))
-    warning("Input values are zero or negative. The result is not meaningful.")
+    warning("IBW or FBW are zero. The result may not meaningful.")
   
   
   ## Check whether mb_exp is 0-1

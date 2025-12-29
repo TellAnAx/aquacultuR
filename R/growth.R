@@ -235,8 +235,11 @@ sgr <- function(ibw, fbw, duration, return_igr = FALSE) {
   if (any(duration == 0))
     stop("Duration is 0. The result cannot be calculated.")
   
-  if (any(ibw <= 0 | fbw <= 0))
-    warning("Body Weight is zero or negative. The result may not be meaningful.")
+  if (any(ibw < 0 | fbw < 0))
+    stop("Body weight is negative. The result cannot be calculated.")
+  
+  if (any(ibw == 0 | fbw == 0))
+    warning("Body Weight is zero. The result may not be meaningful.")
   
   
   if (any(duration < 0))

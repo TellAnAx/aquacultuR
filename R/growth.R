@@ -233,14 +233,14 @@ sgr <- function(ibw, fbw, duration, return_igr = FALSE) {
   
   
   if (any(duration == 0))
-    stop("Input == 0! The result cannot be calculated.")
+    stop("Duration is 0. The result cannot be calculated.")
   
   if (any(ibw <= 0 | fbw <= 0))
-    stop("Input <= 0! The result cannot be calculated.")
+    warning("Body Weight is zero or negative. The result may not be meaningful.")
   
   
   if (any(duration < 0))
-    warning("Input is negative! The result is not meaningful.")
+    warning("Duration is negative. The result may not meaningful.")
   
   
   ## Check for inputs of differing length

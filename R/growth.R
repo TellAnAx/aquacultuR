@@ -459,19 +459,24 @@ rgr <- function(ibw,
     stop("Inputs must be numeric!")
   }
   
-  ## Ensure ibw and duration are != 0
-  if (any(ibw == 0 | duration == 0)) {
-    stop("Inputs must be != 0!")
+  ## Ensure ibw and fbw are <= 0
+  if (any(ibw <= 0 | fbw <= 0)) {
+    stop("IBW or FBW is zero or negative. The result cannot be calculated.")
   }
   
   ## Ensure mean_fun %in% c("geometric", "arithmetic")
   if (!mean_fun %in% c("geometric", "arithmetic")) {
-    stop("mean_fun must be 'geometric' or 'arithmetic'!")
+    stop("mean_fun must be 'geometric' or 'arithmetic'")
   }
   
-  ## Stop if ibw or fbw are < 0 (related to gbw())
-  if (any(ibw < 0) | any(fbw < 0)) {
-    stop("Inputs < 0. The result cannot be calculated!")
+  ## Ensure duration is < 0 
+  if (any(duration < 0)) {
+    warning("Duration is negative. The result may not be meaningful")
+  }
+  
+  ## Stop if duration is 0 (related to gbw())
+  if (any(duration == 0)) {
+    stop("Duration is 0. Result cannot be calculated")
   }
   
   ## Check whether inputs have the same length
@@ -500,14 +505,6 @@ rgr <- function(ibw,
   ## Return the result
   return(rgr)
 }
-
-
-
-
-
-
-
-
 
 
 #' Metabolic bodyweight (MBW)

@@ -386,26 +386,29 @@ tgc <- function(ibw, fbw, duration, temp, scale_coef = 1000) {
 #' @export
 gbw <- function(ibw, fbw) {
   # Checks----
-  ## Check whether inputs are NA
-  stopifnot("Inputs must not be NA!" = any(!is.na(c(ibw, fbw))))
+  ## Check whether input is NA
+  if (any(is.na(c(ibw, fbw))))
+    stop("Inputs must not be NA!")
   
   
-  ## Check whether inputs are numeric
-  stopifnot("Inputs must be numeric!" = any(is.numeric(c(ibw, fbw))))
+  ## Check whether input is numeric
+  if (any(!is.numeric(ibw) |
+          !is.numeric(fbw)))
+    stop("Inputs must be numeric!")
   
   
   ## Check whether inputs are < 0
-  stopifnot("Inputs are < 0! Result cannot be calculated." = all(c(ibw, 
-                                                                   fbw) >= 0))
-  
+  if (all(c(ibw, fbw) < 0))
+    stop("IBW or FBW are negative. Result cannot be calculated.")
   
   # Check whether inputs are == 0
   if (any(c(ibw, fbw) == 0))
-    warning("Inputs are == 0! The result is not meaningful.")
+    warning("IBW or FBW are zero. The result may not be meaningful.")
   
   
   ## Check whether inputs have the same length
-  length_ratio <- c(length(ibw), length(fbw)) / length(ibw)
+  length_ratio <- c(length(ibw), 
+                    length(fbw)) / length(ibw)
   if (any(length_ratio != 1))
     message("Inputs have different lengths.")
   

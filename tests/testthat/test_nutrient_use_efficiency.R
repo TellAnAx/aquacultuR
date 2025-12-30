@@ -588,6 +588,21 @@ test_that("nr() throws warning when input is out of bounds", {
   ))
 })
 
+test_that("ibw is lower than fbw", {
+  expect_warning(nr(
+    ibw = 1,
+    fbw = 0.01,
+    ibn = 0.05,
+    fbn = 0.01,
+    fi = 0.05,
+    nut_f = 0.01,
+    dm = 0.05,
+    dm_ib = 0.01,
+    dm_fb = 0.9
+  ))
+})
+
+
 test_that("nr() calculates correctly", {
   expect_equal(nr(
     ibw = 1,
@@ -814,6 +829,16 @@ test_that("ner() throws warning when input is out of bounds", {
     fi = 0.05,
     nut_f = 0.01,
     dm = 2
+  ))
+})
+
+test_that("ibw is lower than fbw", {
+  expect_warning(ner(
+    ibw = 1,
+    fbw = 0.01,
+    fi = 0.05,
+    nut_f = 0.01,
+    dm = 0.05
   ))
 })
 

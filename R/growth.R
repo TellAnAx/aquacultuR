@@ -42,7 +42,9 @@ ag <- function(ibw, fbw) {
   if (length(ibw) != length(fbw))
     message("Inputs have different lengths.")
   
-  
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   # Calculations----
   ## Calculate AG
@@ -55,10 +57,6 @@ ag <- function(ibw, fbw) {
 #' @rdname ag
 #' @export
 weight_gain <- ag
-
-
-
-
 
 #' Relative Growth (RG)
 #'
@@ -98,7 +96,9 @@ rg <- function(ibw, fbw) {
   if (length(ibw) != length(fbw))
     message("Inputs are of different length.")
   
-  
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   # Calculations----
   ## Calculate RG
@@ -107,8 +107,6 @@ rg <- function(ibw, fbw) {
   ## Return result
   return(rg)
 }
-
-
 
 
 #' Absolute Growth Rate (AGR)
@@ -164,6 +162,10 @@ agr <- function(ibw, fbw, duration) {
           fbw <= 0 ))
     warning("Input is zero or negative! The result is not meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
+  
   ## Check for inputs of differing length
   length_ratios <- c(length(ibw), 
                      length(fbw), 
@@ -178,7 +180,6 @@ agr <- function(ibw, fbw, duration) {
   
   return(agr)
 }
-
 
 
 #' Specific Growth Rate (SGR)
@@ -245,6 +246,9 @@ sgr <- function(ibw, fbw, duration, return_igr = FALSE) {
   if (any(duration < 0))
     warning("Duration is negative. The result may not meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check for inputs of differing length
   length_ratios <- c(length(ibw), length(fbw), length(duration)) / length(ibw)
@@ -267,9 +271,6 @@ sgr <- function(ibw, fbw, duration, return_igr = FALSE) {
     return(sgr)
   }
 }
-
-
-
 
 
 #' Thermal Growth Coefficient (TGC)
@@ -340,6 +341,9 @@ tgc <- function(ibw, fbw, duration, temp, scale_coef = 1000) {
   if (any(duration < 0 | temp < 0))
     warning("Duration or Temperature is negative. The result is not meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check whether inputs have the same length
   length_ratio <- c(length(ibw), 
@@ -405,6 +409,9 @@ gbw <- function(ibw, fbw) {
   if (any(c(ibw, fbw) == 0))
     warning("IBW or FBW are zero. The result may not be meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check whether inputs have the same length
   length_ratio <- c(length(ibw), 
@@ -481,6 +488,10 @@ rgr <- function(ibw,
   if (any(duration == 0)) {
     stop("Duration is 0. Result cannot be calculated")
   }
+  
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check whether inputs have the same length
   length_ratio <- c(length(ibw), 
@@ -572,6 +583,9 @@ mbw <- function(ibw, fbw, mb_exp = 0.8) {
   if (any(mb_exp > 1) | any(mb_exp < 0))
     warning("'mb_exp' should be between 0 and 1")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check whether inputs have the same length
   length_ratio <- c(length(ibw), length(fbw), length(mb_exp)) / length(ibw)

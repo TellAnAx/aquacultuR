@@ -46,6 +46,13 @@ test_that("ag() throws warning if inputs are <= 0.", {
   ))
 })
 
+test_that("ibw is lower than fbw", {
+  expect_warning(ag(
+    ibw = 1,
+    fbw = 0.01
+  ))
+})
+
 test_that("ag() corrects result correctly.", {
   expect_equal(ag(
     ibw = 1,
@@ -106,6 +113,14 @@ test_that("rg() throws warning if inputs are <= 0.", {
     fbw = 0
   ))
 })
+
+test_that("ibw is lower than fbw", {
+  expect_warning(rg(
+    ibw = 1,
+    fbw = 0.01
+  ))
+})
+
 
 test_that("rg() corrects result correctly.", {
   expect_equal(rg(
@@ -222,6 +237,14 @@ test_that("agr() throws error if duration is <= 0.", {
   ))
 })
 
+test_that("ibw is lower than fbw", {
+  expect_warning(agr(
+    ibw = 1,
+    fbw = 0.01,
+    duration = 10
+  ))
+})
+
 test_that("agr() calculates result correctly.", {
   expect_equal(agr(
     ibw = 1,
@@ -330,6 +353,14 @@ test_that("sgr() throws warning or errors if inputs are <= 0.", {
     ibw = 1,
     fbw = 2,
     duration = 0
+  ))
+})
+
+test_that("ibw is lower than fbw", {
+  expect_warning(sgr(
+    ibw = 1,
+    fbw = 0.01,
+    duration = 10
   ))
 })
 
@@ -493,6 +524,15 @@ test_that("tgc() throws warning or errors if inputs are <= 0.", {
   ))
 })
 
+test_that("ibw is lower than fbw", {
+  expect_warning(tgc(
+    ibw = 1,
+    fbw = 0.01,
+    duration = 10,
+    temp = 20
+  ))
+})
+
 test_that("tgc() calculates result correctly.", {
   expect_equal(tgc(
     ibw = 1,
@@ -573,6 +613,13 @@ test_that("gbw() throws warning or errors if inputs are <= 0.", {
   expect_error(gbw(
     ibw = 1,
     fbw = 0,
+  ))
+})
+
+test_that("ibw is lower than fbw", {
+  expect_warning(gbw(
+    ibw = 1,
+    fbw = 0.01
   ))
 })
 
@@ -685,6 +732,14 @@ test_that("rgr() throws warning or errors if inputs are <= 0.", {
     ibw = 1,
     fbw = 2,
     duration = 0
+  ))
+})
+
+test_that("ibw is lower than fbw", {
+  expect_warning(rgr(
+    ibw = 1,
+    fbw = 0.01,
+    duration = 10
   ))
 })
 
@@ -803,6 +858,14 @@ expect_warning(mbw(
   fbw = 2,
   mb_exp = 1.5
 ))
+})
+
+test_that("ibw is lower than fbw", {
+  expect_warning(mbw(
+    ibw = 1,
+    fbw = 0.01,
+    mb_exp = 0.9
+  ))
 })
 
 test_that("mbw() calculates result correctly.", {

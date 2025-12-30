@@ -104,7 +104,7 @@ test_that("fcr() throws warning if input values are <= 0", {
   ))
 })
 
-test_that("fcr() calculates ADC correctly", {
+test_that("fcr() calculates correctly", {
   expect_equal(fcr(
     ibw = 1,
     fbw = 5,
@@ -272,7 +272,16 @@ test_that("fce() throws warning if dm is outside ]0,1].", {
   ))
 })
 
-test_that("fce() calculates ADC correctly", {
+test_that("ibw is lower than fbw", {
+  expect_warning(expect_warning(fce(
+    ibw = 1,
+    fbw = 0.01,
+    feed = 10,
+    dm = 0.9
+  )))
+})
+
+test_that("fce() calculates correctly", {
   expect_equal(fce(
     ibw = 1,
     fbw = 3,

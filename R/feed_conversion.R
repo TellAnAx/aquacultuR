@@ -167,6 +167,9 @@ fce <- function(ibw, fbw, feed, dm = 1) {
   if (any(dm < 0))
     warning("Dry matter content is below 0%. The result is not meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   # Calculations----
   numerator <- ag(ibw, fbw)

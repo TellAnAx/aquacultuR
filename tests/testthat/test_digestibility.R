@@ -20,12 +20,12 @@ test_that("adc_dm() throws error when input is not numeric", {
 
 test_that("adc_dm() works with vectors", {
   result <- adc_dm(
-    std_diet = c(10, 20, 30),
+    std_diet = c(5, 10, 15),
     dm_diet = c(1, 1, 1),
-    std_feces = c(5, 10, 15)
+    std_feces = c(10, 20, 30)
   )
   expect_length(result, 3)
-  expect_equal(result, c(-1, -1, -1))
+  expect_equal(result, c(0.5, 0.5, 0.5))
 })
 
 test_that("adc_dm() throws error when inputs have different lengths", {
@@ -121,13 +121,14 @@ test_that("adc_nut() throws error when input is not numeric", {
 
 test_that("adc_nut() works with vectors", {
   result <- adc_nut(
-    std_diet = c(10, 20, 30),
-    std_feces = c(1, 1, 1),
-    nut_diet = c(5, 10, 15),
-    nut_feces = c(1,2,3)
+    std_diet = c(5, 10, 15),
+    std_feces = c(1, 2, 3),
+    nut_diet = c(10, 20, 30),
+    nut_feces = c(1,1,1)
   )
   expect_length(result, 3)
-  expect_equal(result, c(-1, -3, -5))
+  expect_equal(result, c(0.5, 0.75, 0.833),
+               tolerance = 0.01)
 })
 
 test_that("adc_nut() throws error when inputs are of different length", {

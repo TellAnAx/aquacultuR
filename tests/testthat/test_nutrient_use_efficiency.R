@@ -219,7 +219,7 @@ test_that("nr() works with vectors", {
 test_that("nr() throws error when inputs have different lengths", {
   expect_message(nr(
     ibw = c(1, 2),
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -241,7 +241,7 @@ test_that("nr() throws error when inputs have different lengths", {
   ))
   expect_message(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = c(0.1, 0.9),
     fbn = 0.01,
     fi = 0.05,
@@ -252,7 +252,7 @@ test_that("nr() throws error when inputs have different lengths", {
   ))
   expect_message(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = c(0.1, 0.9),
     fi = 0.05,
@@ -263,7 +263,7 @@ test_that("nr() throws error when inputs have different lengths", {
   ))
   expect_message(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = c(10, 20),
@@ -274,7 +274,7 @@ test_that("nr() throws error when inputs have different lengths", {
   ))
   expect_message(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -285,7 +285,7 @@ test_that("nr() throws error when inputs have different lengths", {
   ))
   expect_message(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -296,7 +296,7 @@ test_that("nr() throws error when inputs have different lengths", {
   ))
   expect_message(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -307,7 +307,7 @@ test_that("nr() throws error when inputs have different lengths", {
   ))
   expect_message(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -330,7 +330,7 @@ test_that("nr() throws warning or error when input is <= 0", {
     dm_ib = 0.01,
     dm_fb = 0.05
   ))
-  expect_warning(nr(
+  expect_warning(expect_warning(nr(
     ibw = 1,
     fbw = 0,
     ibn = 0.05,
@@ -340,10 +340,10 @@ test_that("nr() throws warning or error when input is <= 0", {
     dm = 0.05,
     dm_ib = 0.01,
     dm_fb = 0.05
-  ))
+  )))
   expect_warning(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0,
     fbn = 0.01,
     fi = 0.05,
@@ -354,7 +354,7 @@ test_that("nr() throws warning or error when input is <= 0", {
   ))
   expect_warning(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0,
     fi = 0.05,
@@ -429,7 +429,7 @@ test_that("nr() throws warning or error when input is <= 0", {
     dm_ib = 0.01,
     dm_fb = 0.05
   ))
-  expect_warning(nr(
+  expect_warning(expect_warning(nr(
     ibw = 1,
     fbw = -1,
     ibn = 0.05,
@@ -439,10 +439,10 @@ test_that("nr() throws warning or error when input is <= 0", {
     dm = 0.05,
     dm_ib = 0.01,
     dm_fb = 0.05
-  ))
+  )))
   expect_warning(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = -1,
     fbn = 0.01,
     fi = 0.05,
@@ -453,7 +453,7 @@ test_that("nr() throws warning or error when input is <= 0", {
   ))
   expect_warning(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = -1,
     fi = 0.05,
@@ -464,7 +464,7 @@ test_that("nr() throws warning or error when input is <= 0", {
   ))
   expect_warning(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = -1,
@@ -475,7 +475,7 @@ test_that("nr() throws warning or error when input is <= 0", {
   ))
   expect_warning(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -486,7 +486,7 @@ test_that("nr() throws warning or error when input is <= 0", {
   ))
   expect_warning(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -497,7 +497,7 @@ test_that("nr() throws warning or error when input is <= 0", {
   ))
   expect_warning(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -508,7 +508,7 @@ test_that("nr() throws warning or error when input is <= 0", {
   ))
   expect_warning(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -606,7 +606,7 @@ test_that("ibw is lower than fbw", {
 test_that("nr() calculates correctly", {
   expect_equal(nr(
     ibw = 1,
-    fbw = 0.01,
+    fbw = 3,
     ibn = 0.05,
     fbn = 0.01,
     fi = 0.05,
@@ -614,7 +614,7 @@ test_that("nr() calculates correctly", {
     dm = 0.05,
     dm_ib = 0.01,
     dm_fb = 0.9
-  ), -16.4)
+  ), 1060)
 })
 
 # Testing the Nutrient Efficiency Ratio (NER)
@@ -750,13 +750,13 @@ test_that("ner() throws warning or error when input is <= 0", {
     nut_f = 0.01,
     dm = 0.05
   )))
-  expect_warning(expect_warning(expect_warning(ner(
+  expect_warning(expect_warning(expect_warning(expect_warning(ner(
     ibw = 1,
     fbw = 0,
     fi = 0.05,
     nut_f = 0.01,
     dm = 0.05
-  ))))
+  )))))
   expect_error(ner(
     ibw = 1,
     fbw = 2.01,
@@ -785,13 +785,13 @@ test_that("ner() throws warning or error when input is <= 0", {
     nut_f = 0.01,
     dm = 0.05
   )))
-  expect_warning(expect_warning(expect_warning(ner(
+  expect_warning(expect_warning(expect_warning(expect_warning(ner(
     ibw = 1,
     fbw = -1,
     fi = 0.05,
     nut_f = 0.01,
     dm = 0.05
-  ))))
+  )))))
   expect_warning(ner(
     ibw = 1,
     fbw = 2.01,
@@ -833,13 +833,13 @@ test_that("ner() throws warning when input is out of bounds", {
 })
 
 test_that("ibw is lower than fbw", {
-  expect_warning(ner(
+  expect_warning(expect_warning(ner(
     ibw = 1,
     fbw = 0.01,
     fi = 0.05,
     nut_f = 0.01,
     dm = 0.05
-  ))
+  )))
 })
 
 test_that("ner() calculates correctly", {

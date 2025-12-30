@@ -128,11 +128,11 @@ test_that("fcr() throws warning if DM is outside of ]0, 1]", {
 })
 
 test_that("fcr() warns when FCR < 0", {
-  expect_warning(
+  expect_warning(expect_warning(
     fcr(ibw = 10, fbw = 5, feed = 5, dm = 1),
     "FCR is negative. The result may not be
             meaningful."
-  )
+  ))
 })
 
 

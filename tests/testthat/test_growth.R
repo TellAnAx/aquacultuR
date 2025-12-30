@@ -10,11 +10,11 @@ test_that("ag() throws error when input is not numeric", {
 
 test_that("ag() works with vectors", {
   result <- ag(
-    ibw = c(10, 20, 30),
-    fbw = c(1, 1, 1)
+    ibw = c(1, 1, 1),
+    fbw = c(10, 20, 30)
   )
   expect_length(result, 3)
-  expect_equal(result, c(-9, -19, -29))
+  expect_equal(result, c(9, 19, 29))
 })
 
 test_that("ag() throws message if inputs differ in length.", {
@@ -32,18 +32,18 @@ test_that("ag() throws warning if inputs are <= 0.", {
     ibw = -1, 
     fbw = 2
     ))
-  expect_warning(ag(
+  expect_warning(expect_warning(ag(
     ibw = 1,
     fbw = -2
-    ))
+    )))
   expect_warning(ag(
     ibw = 0, 
     fbw = 2
   ))
-  expect_warning(ag(
+  expect_warning(expect_warning(ag(
     ibw = 1,
     fbw = 0
-  ))
+  )))
 })
 
 test_that("ibw is lower than fbw", {
@@ -100,18 +100,18 @@ test_that("rg() throws warning if inputs are <= 0.", {
     ibw = -1, 
     fbw = 2
   ))
-  expect_warning(rg(
+  expect_warning(expect_warning(rg(
     ibw = 1,
     fbw = -2
-  ))
+  )))
   expect_warning(rg(
     ibw = 0, 
     fbw = 2
   ))
-  expect_warning(rg(
+  expect_warning(expect_warning(rg(
     ibw = 1,
     fbw = 0
-  ))
+  )))
 })
 
 test_that("ibw is lower than fbw", {
@@ -207,21 +207,21 @@ test_that("agr() throws warning if inputs are <= 0.", {
     fbw = 2,
     duration = 10
   ))
-  expect_warning(agr(
+  expect_warning(expect_warning(agr(
     ibw = 1,
     fbw = -2,
     duration = 10
-  ))
+  )))
   expect_warning(agr(
     ibw = 0,
     fbw = 2,
     duration = 10
   ))
-  expect_warning(agr(
+  expect_warning(expect_warning(agr(
     ibw = 1,
     fbw = 0,
     duration = 10
-  ))
+  )))
 })
 
 test_that("agr() throws error if duration is <= 0.", {
@@ -339,11 +339,11 @@ test_that("sgr() throws warning or errors if inputs are <= 0.", {
     fbw = 2,
     duration = 10
   ))
-  expect_warning(sgr(
+  expect_warning(expect_warning(sgr(
     ibw = 1,
     fbw = 0,
     duration = 10
-  ))
+  )))
   expect_warning(sgr(
     ibw = 1, 
     fbw = 2,
@@ -480,24 +480,24 @@ test_that("tgc() throws warning or errors if inputs are <= 0.", {
     duration = 10,
     temp = 15
   ))
-  expect_warning(tgc(
+  expect_warning(expect_warning(tgc(
     ibw = 1,
     fbw = -2,
     duration = 10,
     temp = 15
-  ))
+  )))
   expect_warning(tgc(
     ibw = 0,
     fbw = 2,
     duration = 10,
     temp = 15
   ))
-  expect_warning(tgc(
+  expect_warning(expect_warning(tgc(
     ibw = 1,
     fbw = 0,
     duration = 10,
     temp = 15
-  ))
+  )))
   expect_warning(tgc(
     ibw = 1, 
     fbw = 2,
@@ -736,11 +736,11 @@ test_that("rgr() throws warning or errors if inputs are <= 0.", {
 })
 
 test_that("ibw is lower than fbw", {
-  expect_warning(rgr(
+  expect_warning(expect_warning(rgr(
     ibw = 1,
     fbw = 0.01,
     duration = 10
-  ))
+  )))
 })
 
 test_that("rgr() calculates result correctly.", {
@@ -772,11 +772,11 @@ test_that("mbw() throws error when input is not numeric", {
     fbw = NULL,
     mb_exp = 0.9
   ))
-  expect_error(mbw(
+  expect_error(expect_warning(mbw(
     ibw = 1,
     fbw = 2,
-    mb_exp = FALSE
-  ))
+    mb_exp = "a"
+  )))
   expect_error(mbw(
     ibw = NA,
     fbw = 2,
@@ -840,11 +840,11 @@ test_that("mbw() throws warning or errors if inputs are <= 0.", {
     fbw = 2,
     mb_exp = 0.9
   ))
-  expect_warning(mbw(
+  expect_warning(expect_warning(mbw(
     ibw = 1,
     fbw = 0,
     mb_exp = 0.9
-  ))
+  )))
 })
 
 test_that("mbw() throws warning if mb_exp is [0,1]", {

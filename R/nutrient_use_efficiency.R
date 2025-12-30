@@ -108,6 +108,9 @@ nr <- function(ibw,
   if (any(nut_f < 0 | nut_f > 1))
     warning("nut_f is out of range! The result is not meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check whether inputs are of same length
   length_ratio <- c(length(ibw),

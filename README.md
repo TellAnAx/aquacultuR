@@ -59,7 +59,7 @@ library(aquacultuR)
 | `tgc()` | Thermal growth coefficient (TGC) |  |
 | `fr()` | Feeding rate (FR) |  |
 | `rfr()` | Relative feeding rate | Feeding rate |
-| `retention()` | Nutrient retention |  |
+| `nr()` | Nutrient retention |  |
 | `fcr()` | Feed conversion ratio (FCR) |  |
 | `fce()` | Feed conversion efficiency (FCE) |  |
 | `ner()` | Nutrient efficiency ratio (NER) | Protein/Energy/X efficiency ratio |
@@ -72,13 +72,13 @@ library(aquacultuR)
 **Authors:**
 
 - [Anıl Axel Tellbüscher](https://anil.tellbuescher.online)
-- [Davide Machado e Silva](https://www.researchgate.net/profile/Davide-Machado-E-Silva)
-- [Simão Correia](https://www.researchgate.net/profile/Simao-Correia)
+- Davide Machado e Silva
+- Simão Correia
 
 **Contributors:**
 
-- [Madhav Karthikeyan]()
+- Madhav Karthikeyan
 
 **Logo design:**
 
-- [Tomáš Pěnka](https://www.linkedin.com/in/tomáš-pěnka-a25866287/)
+- Tomáš Pěnka

@@ -1,7 +1,7 @@
 ---
-title: "Digestibility"
-author: "Anıl Axel Tellbüscher"
-date: "Last updated: December 22, 2025 (rebuilt `r Sys.Date()`)"
+title: "Calculating Apparent Digestibility"
+author: "Written by: Anıl Axel Tellbüscher"
+date: "Last updated: 2025-12-31 (rebuilt `r Sys.Date()`)"
 output: 
   html_document:
     toc: true
@@ -46,16 +46,19 @@ options(digits = 3)
 
 *Note: We could not find any published dataset on digestibility trials in data journals or Open Access repositories (Zenodo, Mendeley Data). We would thus appreciate data contributions from the aquaculture community!* 
 
-While the example data for the dry matter and specific nutrient digestibility calculations provided are constructed, the data for the calculation of ingredient digestibility originates from @Bureau1999a and @Bureau2006a.
+The *digestdm* dataset contains two fictious diets that differ in their dry matter content and the mass fraction of marker that was found in the feces of an imaginary fish species.
 
 ```{r}
 digestdm
 ```
 
+The *digestnut*  dataset contains the same two fictious feeds but the dataset is enriched by fictious total nitrogen contents from which the crude protein content of the samples can be estimated.
+
 ```{r}
 digestnut
 ```
 
+While the example data for the dry matter and specific nutrient digestibility calculations provided are constructed, the data for the calculation of ingredient digestibility originates from @Bureau1999a and @Bureau2006a. It contains all required data for a blood meal that was tested for apparent digestibility in the scope of the cited studies.
 
 ```{r}
 digestingr

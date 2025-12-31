@@ -1,20 +1,43 @@
 Package: aquacultuR
 Title: A Comprehensive R Tool for Zootechnical Metrics
-Version: 0.9.0
+Version: 1.0.0
 Authors@R: c(
-    person("Anıl Axel", "Tellbüscher", , "atellbuscher@frov.jcu.cz", 
-           role = c("aut", "cre", "cph"), 
-           comment = c(ORCID = "0000-0002-6065-9494")),
-    person("Davide", "Machado e Silva", , "dams@ua.pt", 
-           role = c("aut")
-           comment = c(ORCID = "0000-00003-2892-8292")),
-    person("Simão", "Correia", , "simaodomcorreia@gmail.com", 
-           role = c("aut")),
-    person("Madhav", "Karthikeyan", , "madhavleo2000@gmail.com", 
-           role = c("ctb")),
-    person("Tomáš", "Pěnka", , "penkat00@frov.jcu.cz", 
-           role = c("dtc"))
-           )
+    person(
+      given = c("Anıl", "Axel"),
+      family = "Tellbüscher", 
+      email = "atellbuscher@frov.jcu.cz", 
+      role = c("aut", "cre", "cph"), 
+      comment = c(ORCID = "0000-0002-6065-9494")
+      ),
+    person(
+      given = "Davide", 
+      family = c("Machado", "e", "Silva"), 
+      email = "dams@ua.pt", 
+      role = c("aut"),
+      comment = c(ORCID = "0000-0003-2892-8292")
+      ),
+    person(
+      given = "Simão", 
+      family = "Correia",
+      email = "simaodomcorreia@gmail.com", 
+      role = c("aut"),
+      comment = c(ORCID = "0000-0003-2877-0317")
+      ),
+    person(
+      given = "Madhav", 
+      family = "Karthikeyan",
+      email = "madhavleo2000@gmail.com", 
+      role = c("ctb"),
+      comment = c(ORCID = "0000-0002-1284-4652")
+      ),
+    person(
+      given = "Tomáš", 
+      family = "Pěnka",
+      email = "penkat00@frov.jcu.cz", 
+      role = c("dtc"),
+      comment = c(ORCID = "0000-0002-5923-3242")
+      )
+    )
 Description: The purpose of this package is to provide tools for aquaculture 
     by implementing frequently used zootechnical metrics as ready-to-use 
     functions in R language.

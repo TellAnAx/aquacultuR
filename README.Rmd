@@ -79,15 +79,15 @@ library(aquacultuR)
 **Authors:**
 
 -   [Anıl Axel Tellbüscher](https://anil.tellbuescher.online)
--   [Davide Machado e Silva](https://www.researchgate.net/profile/Davide-Machado-E-Silva)
--   [Simão Correia](https://www.researchgate.net/profile/Simao-Correia)
+-   Davide Machado e Silva
+-   Simão Correia
 
 
 **Contributors:**
 
--   [Madhav Karthikeyan]()
+-   Madhav Karthikeyan
 
 
 **Logo design:**
 
--   [Tomáš Pěnka](https://www.linkedin.com/in/tomáš-pěnka-a25866287/)
+-   Tomáš Pěnka

@@ -7,3 +7,4 @@
 ^dependencies\.R$
 ^CONTRIBUTING\.md$
 ^data_prep$
+^CRAN-SUBMISSION$

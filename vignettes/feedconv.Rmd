@@ -1,7 +1,7 @@
 ---
-title: "Feed conversion"
-author: "Anıl Axel Tellbüscher"
-date: "Last updated: December 22, 2025 (rebuilt `r Sys.Date()`)"
+title: "Calculating Feed Conversion and Nutrient Use Efficiency"
+author: "Written by: Anıl Axel Tellbüscher"
+date: "Last updated: 2025-12-31 (rebuilt `r Sys.Date()`)"
 output: 
   html_document:
     toc: true
@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ```
 
 
-This vignette provides coding examples on how to use the functions provided by this package in order to calculate key zootechnical metrics commonly used in the field of aquaculture.
+This short vignette provides coding examples on how to use the functions provided by the `aquacultuR` package to calculate **feed conversion metrics** and **nutrient use efficiency metrics**. 
 
 
 
@@ -53,32 +53,13 @@ The data we will assess in order to demonstrate the calculation of feed conversi
 
 ## Overview
 
-To calculate the feed conversion and nutrient 
-
-```{r}
-df <- samplings %>%
-  mutate(timepoint = case_when(
-    date == ymd("2023-03-16") ~ "bw_beginning",
-    date == ymd("2023-04-14") ~ "bw_end",
-    .default = NA
-  )) %>%
-  group_by(tank, timepoint, sample_type) %>%
-  summarise(mean_weight = mean(fish_weight)) %>% 
-  select(-sample_type, -starts_with("sd")) %>%
-  pivot_wider(
-    names_from = timepoint,
-    values_from = mean_weight
-  ) %>% print()
-```
-
-
-
-
-The study dataset provides information on the feed they used, such as the proximate composition and essential amino acid profile.
+The original dataset provides some information on the feed they used, such as the proximate composition and essential amino acid profile.
 
 ```{r feedcomp}
 feedcomp
 ```
+
+We can notice that the dry matter content has not been scaled to 1 (=100%). The other data is thus provided on wet weight basis, which will be important later.
 
 After removing the non-numeric *diet* column, we will convert the data into long format for improved readability.
 
@@ -94,13 +75,34 @@ feedcomp %>%
 
 The unit of the data is gram per gram. It is highly recommended to use a package such as `units` to ensure that there are no mistakes occurring with unit conversion.
 
+To calculate the feed conversion and nutrient use efficiency, we need the biomass of the fish stock at the beginning and the end of the growth phase. This data can be found in the *samplings* dataset. 
+As the data is not in the right shape, we need to make some adjustments. First of all, we will add an additional column (`timepoint`) as identifier for the fish bodyweight at the beginning and the end. In the next step, we will calculate the arithmetic mean of the weights for each or our timepoints of interest because at the beginning of the growth period the weight was determined in bulk, while fish were weighed individually at the end of the growth period. Lastly, we will convert the data into wide format.
 
+```{r}
+df <- samplings %>%
+  mutate(
+    timepoint = case_when(
+      date == ymd("2023-03-16") ~ "bw_beginning",
+      date == ymd("2023-04-14") ~ "bw_end",
+      .default = NA
+  )) %>%
+  group_by(tank, timepoint, sample_type) %>%
+  summarise(mean_weight = mean(fish_weight)) %>% 
+  select(-sample_type, -starts_with("sd")) %>%
+  pivot_wider(
+    names_from = timepoint,
+    values_from = mean_weight
+  ) %>% 
+  print()
+```
+
+Additional data we require is that related to the feed intake throughout the growth phase. This can be found in the *feed_intake* dataset.
 
 ```{r}
 head(feed_intake)
 ```
 
-
+To calculate **nutrient use efficiency**, we also need some data on the bodycomposition at the beginning and the end of the growth period, which can be found in the *bodycomp* dataset.
 
 ```{r}
 head(bodycomp)
@@ -110,7 +112,7 @@ head(bodycomp)
 
 # Feed Conversion Ratio and Efficiency
 
-To assess feed conversion, we need data on the feed intake throughout the experiment. The *feed_intake* dataset already comes with the cumulative feed intake pre-calculated, which means we only need to retain the ultimate value.
+To assess feed conversion, we need data on the feed intake throughout the experiment. The *feed_intake* dataset already comes with the cumulative feed intake pre-calculated, which means we only need to retain the ultimate value. We then join the bodyweight at the beginning and the end of the growth period with the feed intake dataset.
 
 ```{r feed_intake}
 df <- feed_intake %>% 
@@ -120,7 +122,7 @@ df <- feed_intake %>%
   print()
 ```
 
-It is eventually possible to calculate the **Feed Conversion Ratio** (FCR) with the `fcr()` function and the **Feed Conversion Efficiency** (FCE) with the `fce()` function. Note that we can account for the dry matter content of the feed, which is not 100%.
+It is eventually possible to calculate the **Feed Conversion Ratio** (FCR) with the `fcr()` function and the **Feed Conversion Efficiency** (FCE) with the `fce()` function. Note that we account for the dry matter content of the feed, which is not 100%.
 
 ```{r calculate_fcr_fce}
 feed_conversion <- df %>%
@@ -141,6 +143,8 @@ feed_conversion <- df %>%
   ) %>%
   print()
 ```
+
+The **FCR** indicates the quantity of feed required to gain a unit of bodyweight. The **FCE**, meanwhile, is the inverse of the FCR and thus describes the bodyweight gain per mass unit of feed. Please note that the specific FCR or FCE (economic, biological, etc.) depend on whether the feed quantity is corrected for feed refusal or other kinds of feed losses and whether both the feed quantity and biomass are corrected for their respective dry matter contents.
 
 
 
@@ -167,7 +171,7 @@ df %>%
 
 
 
-# Nutrient Retention
+## Nutrient Retention
 
 An additional metric we might be interested in is the actual **Nutrient Retention** (NR), which can be calculated with the `nr()` function. The Nutrient Retention indicates how much of a specific nutrient provided has actually been retained in the tissue of the fed organism. For this purpose, we require data on the tissue composition.
 
@@ -229,7 +233,7 @@ nutrient_retention %>%
 
 
 
-# Session info
+# Session Info
 
 ```{r show_session_info}
 sessionInfo()

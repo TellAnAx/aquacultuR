@@ -1,7 +1,7 @@
 ---
-title: "Growth"
-author: "Anıl Axel Tellbüscher"
-date: "Last updated: December 22, 2025 (rebuilt `r Sys.Date()`)"
+title: "Calculating Growth"
+author: "Written by: Anıl Axel Tellbüscher"
+date: "Last updated: 2025-12-31 (rebuilt `r Sys.Date()`)"
 output: 
   html_document:
     toc: true
@@ -70,6 +70,8 @@ head(samplings)
 head(water_params)
 ```
 
+Both datasets share the `date` and `tank` column and can be merged by them.
+
 
 
 ## Preprocessing
@@ -85,7 +87,8 @@ df <- samplings %>%
   )) %>%
   group_by(tank, timepoint, sample_type) %>%
   summarise(mean_weight = mean(fish_weight),
-            sd_weight = sd(fish_weight)) %>% print()
+            sd_weight = sd(fish_weight)) %>% 
+  print()
 ```
 
 The initial weighing was done in bulk per tank, which is why there was no standard deviation calculated for the respective time points. 
@@ -99,7 +102,8 @@ df <- df %>%
     values_from = c(mean_weight),
     names_vary = "slowest"
   ) %>%
-  mutate(duration = as.numeric(max(samplings$date) - min(samplings$date))) %>% print()
+  mutate(duration = as.numeric(max(samplings$date) - min(samplings$date))) %>% 
+  print()
 ```
 
 
@@ -118,7 +122,7 @@ df %>%
     relative_growth = rg(ibw = beginning, fbw = end),
     absolute_growth_rate = agr(ibw = beginning, fbw = end, duration),
     specific_growth_rate = sgr(ibw = beginning, fbw = end, duration)
-  ) %>% print()
+  )
 ```
 
 
@@ -133,7 +137,7 @@ df %>%
       duration,
       mean_fun = "geometric"
     ),
-        relative_growth_rate_arith = rgr(
+    relative_growth_rate_arith = rgr(
       ibw = beginning,
       fbw = end,
       duration,
@@ -156,17 +160,18 @@ water_params %>%
   group_by(tank) %>%
   summarise(temp = mean(temp)) %>%
   right_join(df, join_by(tank)) %>%
-  mutate(thermal_growth_coefficient = tgc(
+  mutate(
+    thermal_growth_coefficient = tgc(
     ibw = beginning,
     fbw = end,
     duration = duration,
     temp = temp
-  )) %>% print()
+  ))
 ```
 
 
 
-# Session info
+# Session Info
 
 ```{r show_session_info}
 sessionInfo()

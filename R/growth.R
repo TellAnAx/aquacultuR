@@ -42,7 +42,9 @@ ag <- function(ibw, fbw) {
   if (length(ibw) != length(fbw))
     message("Inputs have different lengths.")
   
-  
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   # Calculations----
   ## Calculate AG
@@ -55,10 +57,6 @@ ag <- function(ibw, fbw) {
 #' @rdname ag
 #' @export
 weight_gain <- ag
-
-
-
-
 
 #' Relative Growth (RG)
 #'
@@ -90,18 +88,17 @@ rg <- function(ibw, fbw) {
   ## Check whether inputs are non-numeric
   stopifnot("All inputs must be numeric" = is.numeric(ibw), is.numeric(fbw))
   
-  ## Check whether ibw == 0
-  stopifnot("'ibw' == 0. The result cannot be calculated." = all(ibw != 0))
-  
   ## Check whether inputs are < 0
-  if (any(ibw < 0) | any(fbw < 0))
-    warning("Some input values are negative. The result may not be meaningful.")
+  if (any(ibw <= 0 | fbw <= 0))
+    warning("Inputs are <= 0. The result is not meaningful.")
   
   ## Check whether inputs have the same length
   if (length(ibw) != length(fbw))
     message("Inputs are of different length.")
   
-  
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   # Calculations----
   ## Calculate RG
@@ -110,8 +107,6 @@ rg <- function(ibw, fbw) {
   ## Return result
   return(rg)
 }
-
-
 
 
 #' Absolute Growth Rate (AGR)
@@ -156,17 +151,25 @@ agr <- function(ibw, fbw, duration) {
   
   
   if (any(!is.numeric(ibw) |
-          !is.numeric(fbw) | !is.numeric(duration)))
+          !is.numeric(fbw) | 
+          !is.numeric(duration)))
     stop("All inputs must be numeric")
   
-  if (any(duration == 0))
-    stop("Duration == 0! The result cannot be calculated.")
+  if (any(duration <= 0))
+    stop("Duration <= 0! The result cannot be calculated.")
   
-  if (any(ibw <= 0 | fbw <= 0 | duration < 0))
+  if (any(ibw <= 0 | 
+          fbw <= 0 ))
     warning("Input is zero or negative! The result is not meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
+  
   ## Check for inputs of differing length
-  length_ratios <- c(length(ibw), length(fbw), length(duration)) / length(ibw)
+  length_ratios <- c(length(ibw), 
+                     length(fbw), 
+                     length(duration)) / length(ibw)
   if (!all(length_ratios == 1))
     message("Inputs have different lengths.")
   
@@ -177,9 +180,6 @@ agr <- function(ibw, fbw, duration) {
   
   return(agr)
 }
-
-
-
 
 
 #' Specific Growth Rate (SGR)
@@ -234,15 +234,21 @@ sgr <- function(ibw, fbw, duration, return_igr = FALSE) {
   
   
   if (any(duration == 0))
-    stop("Input == 0! The result cannot be calculated.")
+    stop("Duration is 0. The result cannot be calculated.")
   
-  if (any(ibw <= 0 | fbw <= 0))
-    stop("Input <= 0! The result cannot be calculated.")
+  if (any(ibw < 0 | fbw < 0))
+    stop("Body weight is negative. The result cannot be calculated.")
+  
+  if (any(ibw == 0 | fbw == 0))
+    warning("Body Weight is zero. The result may not be meaningful.")
   
   
   if (any(duration < 0))
-    warning("Input is negative! The result is not meaningful.")
+    warning("Duration is negative. The result may not meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check for inputs of differing length
   length_ratios <- c(length(ibw), length(fbw), length(duration)) / length(ibw)
@@ -265,9 +271,6 @@ sgr <- function(ibw, fbw, duration, return_igr = FALSE) {
     return(sgr)
   }
 }
-
-
-
 
 
 #' Thermal Growth Coefficient (TGC)
@@ -329,16 +332,18 @@ tgc <- function(ibw, fbw, duration, temp, scale_coef = 1000) {
   
   ## Check whether duration | temp == 0
   if (any(duration == 0 | temp == 0))
-    stop("'duration' or 'temp' is zero! Result cannot be calculated.")
-  
+    stop("Duration or Temperature is zero. Result cannot be calculated.")
   
   ## Check whether inputs are < 0
   if (any(ibw <= 0 | fbw <= 0))
-    warning("IBW or FBW <= 0! The result is not meaningful.")
+    warning("IBW or FBW is zero or negative. The result may not meaningful.")
   
   if (any(duration < 0 | temp < 0))
-    warning("duration or temp < 0! The result is not meaningful.")
+    warning("Duration or Temperature is negative. The result is not meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check whether inputs have the same length
   length_ratio <- c(length(ibw), 
@@ -359,6 +364,69 @@ tgc <- function(ibw, fbw, duration, temp, scale_coef = 1000) {
 }
 
 
+#' Geometric Mean Bodyweight (GMBW)
+#'
+#' A function that calculates the geometric mean of the initial and final
+#' bodyweight.
+#'
+#' While the arithmetic mean assumes a linear relationship between the averaged
+#' numbers, the geometric mean accounts for the non-linear and potentially 
+#' variable nature of animal growth.
+#'
+#'
+#' @param ibw numeric; initial bodyweight weight in grams.
+#' @param fbw numeric; final bodyweight in grams.
+#'
+#' @return numeric value that is the geometric mean bodyweight.
+#'
+#' @examples
+#' data(weight2)
+#' dplyr::mutate(weight2, GMBW = gbw(ibw_g, fbw_g))
+#'
+#' @author Anıl Axel Tellbüscher
+#'
+#' @importFrom dplyr mutate
+#'
+#' @export
+gbw <- function(ibw, fbw) {
+  # Checks----
+  ## Check whether input is NA
+  if (any(is.na(c(ibw, fbw))))
+    stop("Inputs must not be NA!")
+  
+  
+  ## Check whether input is numeric
+  if (any(!is.numeric(ibw) |
+          !is.numeric(fbw)))
+    stop("Inputs must be numeric!")
+  
+  
+  ## Check whether inputs are < 0
+  if (all(c(ibw, fbw) < 0))
+    stop("IBW or FBW are negative. Result cannot be calculated.")
+  
+  # Check whether inputs are == 0
+  if (any(c(ibw, fbw) == 0))
+    warning("IBW or FBW are zero. The result may not be meaningful.")
+  
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
+  
+  ## Check whether inputs have the same length
+  length_ratio <- c(length(ibw), 
+                    length(fbw)) / length(ibw)
+  if (any(length_ratio != 1))
+    message("Inputs have different lengths.")
+  
+  
+  
+  # Calculations----
+  gbw <- sqrt(ibw * fbw)
+  
+  
+  return(gbw)
+}
 
 
 
@@ -401,25 +469,38 @@ rgr <- function(ibw,
     stop("Inputs must be numeric!")
   }
   
-  ## Ensure ibw and duration are != 0
-  if (any(ibw == 0 | duration == 0)) {
-    stop("Inputs must be != 0!")
+  ## Ensure ibw and fbw are <= 0
+  if (any(ibw <= 0 | fbw <= 0)) {
+    stop("IBW or FBW is zero or negative. The result cannot be calculated.")
   }
   
   ## Ensure mean_fun %in% c("geometric", "arithmetic")
   if (!mean_fun %in% c("geometric", "arithmetic")) {
-    stop("mean_fun must be 'geometric' or 'arithmetic'!")
+    stop("mean_fun must be 'geometric' or 'arithmetic'")
   }
   
-  ## Stop if ibw or fbw are < 0 (related to gbw())
-  if (any(ibw < 0) | any(fbw < 0)) {
-    stop("Inputs < 0. The result cannot be calculated!")
+  ## Ensure duration is < 0 
+  if (any(duration < 0)) {
+    warning("Duration is negative. The result may not be meaningful")
   }
   
-  ## Inform if inputs are not of the same length
-  if (any(c(length(ibw), length(fbw), length(duration)) > 1)) {
-    message("Inputs are not of same length.")
+  ## Stop if duration is 0 (related to gbw())
+  if (any(duration == 0)) {
+    stop("Duration is 0. Result cannot be calculated")
   }
+  
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
+  
+  ## Check whether inputs have the same length
+  length_ratio <- c(length(ibw), 
+                    length(fbw), 
+                    length(duration)
+  ) / length(ibw)
+  
+  if (any(length_ratio != 1))
+    message("Input do not have the same length.")
   
   
   
@@ -438,71 +519,6 @@ rgr <- function(ibw,
   ## Return the result
   return(rgr)
 }
-
-
-
-
-
-#' Geometric Mean Bodyweight (GMBW)
-#'
-#' A function that calculates the geometric mean of the initial and final
-#' bodyweight.
-#'
-#' While the arithmetic mean assumes a linear relationship between the averaged
-#' numbers, the geometric mean accounts for the non-linear and potentially 
-#' variable nature of animal growth.
-#'
-#'
-#' @param ibw numeric; initial bodyweight weight in grams.
-#' @param fbw numeric; final bodyweight in grams.
-#'
-#' @return numeric value that is the geometric mean bodyweight.
-#'
-#' @examples
-#' data(weight2)
-#' dplyr::mutate(weight2, GMBW = gbw(ibw_g, fbw_g))
-#'
-#' @author Anıl Axel Tellbüscher
-#'
-#' @importFrom dplyr mutate
-#'
-#' @export
-gbw <- function(ibw, fbw) {
-  # Checks----
-  ## Check whether inputs are NA
-  stopifnot("Inputs must not be NA!" = any(!is.na(c(ibw, fbw))))
-  
-  
-  ## Check whether inputs are numeric
-  stopifnot("Inputs must be numeric!" = any(is.numeric(c(ibw, fbw))))
-  
-  
-  ## Check whether inputs are < 0
-  stopifnot("Inputs are < 0! Result cannot be calculated." = all(c(ibw, 
-                                                                   fbw) >= 0))
-  
-  
-  # Check whether inputs are == 0
-  if (any(c(ibw, fbw) == 0))
-    warning("Inputs are == 0! The result is not meaningful.")
-  
-  
-  ## Check whether inputs have the same length
-  length_ratio <- c(length(ibw), length(fbw)) / length(ibw)
-  if (any(length_ratio != 1))
-    message("Inputs have different lengths.")
-  
-  
-  
-  # Calculations----
-  gbw <- sqrt(ibw * fbw)
-  
-  
-  return(gbw)
-}
-
-
-
 
 
 #' Metabolic bodyweight (MBW)
@@ -543,29 +559,33 @@ gbw <- function(ibw, fbw) {
 #' @export
 mbw <- function(ibw, fbw, mb_exp = 0.8) {
   # Checks----
-  ## Check whether inputs are NA
-  stopifnot("Inputs cannot be NA" = any(c(!is.na(ibw), !is.na(fbw))))
+  ## Ensure inputs are numeric
+  if (any(!is.numeric(ibw) | !is.numeric(fbw))) {
+    stop("Inputs must be numeric!")
+  }
   
-  
-  ## Check whether inputs are non-numeric
-  stopifnot("All inputs must be numeric" = any(c(is.numeric(ibw), 
-                                                 is.numeric(fbw))))
-  
+  ## Ensure inputs are numeric
+  if (any(c(is.na(ibw), is.na(fbw)))) {
+    stop("Inputs must not be NA")
+  }
   
   ## Check whether inputs are < 0
   if (any(c(ibw, fbw) < 0))
-    stop("Input values are zero or negative. Result cannot be calculated.")
+    stop("IBW or FBW are negative. Result cannot be calculated.")
   
   
   ## Check whether inputs are == 0
   if (any(c(ibw, fbw) == 0))
-    warning("Input values are zero or negative. The result is not meaningful.")
+    warning("IBW or FBW are zero. The result may not meaningful.")
   
   
   ## Check whether mb_exp is 0-1
   if (any(mb_exp > 1) | any(mb_exp < 0))
     warning("'mb_exp' should be between 0 and 1")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check whether inputs have the same length
   length_ratio <- c(length(ibw), length(fbw), length(mb_exp)) / length(ibw)

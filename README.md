@@ -72,7 +72,7 @@ library(aquacultuR)
 **Authors:**
 
 - [Anıl Axel Tellbüscher](https://anil.tellbuescher.online)
-- [Davide Machado e Silva](https://www.cesam-la.pt/davidemachadoesilva/)
+- [Davide Machado e Silva](https://www.researchgate.net/profile/Davide-Machado-E-Silva)
 - [Simão Correia](https://www.researchgate.net/profile/Simao-Correia)
 
 **Contributors:**

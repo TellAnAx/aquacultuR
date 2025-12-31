@@ -58,14 +58,30 @@ nr <- function(ibw,
                dm_fb = 1) {
   # Checks----
   ## Check whether inputs are NA
-  if (any(is.na(c(ibw, fbw, ibn, fbn, fi, dm, dm_ib, dm_fb, nut_f))))
+  if(any(is.na(ibw) | 
+         is.na(fbw) | 
+         is.na(ibn) | 
+         is.na(fbn) | 
+         is.na(fi) | 
+         is.na(dm) | 
+         is.na(dm_ib) |
+         is.na(dm_fb) |
+         is.na(nut_f)
+         ))
     stop("Inputs must not be NA!")
   
-  
-  ## Check whether inputs are non-numeric
-  if (any(!is.numeric(c(ibw, fbw, ibn, fbn, fi, dm, dm_ib, dm_fb, nut_f))))
+  ## Check whether inputs are numeric
+  if(any(!is.numeric(ibw) | 
+         !is.numeric(fbw) | 
+         !is.numeric(ibn) | 
+         !is.numeric(fbn) | 
+         !is.numeric(fi) | 
+         !is.numeric(dm) | 
+         !is.numeric(dm_ib) | 
+         !is.numeric(dm_fb) | 
+         !is.numeric(nut_f)
+         ))
     stop("Inputs must be numeric!")
-  
   
   ## Check whether feed|nut_f == 0
   if (any(fi == 0 | nut_f == 0 | dm == 0 | dm_ib == 0 | dm_fb == 0))
@@ -79,7 +95,7 @@ nr <- function(ibw,
     warning("fbw is <= 0! The result is not meaningful.")
   if (any(fi < 0))
     warning("fi is < 0! The result is not meaningful.")
-  if (any(ibn < 0 | ibn > 1))
+  if (any(ibn <= 0 | ibn > 1))
     warning("ibn is out of range! The result is not meaningful.")
   if (any(dm < 0 | dm > 1))
     warning("dm is out of range! The result is not meaningful.")
@@ -87,11 +103,14 @@ nr <- function(ibw,
     warning("dm_ib is out of range! The result is not meaningful.")
   if (any(dm_fb < 0 | dm_fb > 1))
     warning("dm_fb is out of range! The result is not meaningful.")
-  if (any(fbn < 0 | fbn > 1))
+  if (any(fbn <= 0 | fbn > 1))
     warning("fbn is out of range! The result is not meaningful.")
   if (any(nut_f < 0 | nut_f > 1))
     warning("nut_f is out of range! The result is not meaningful.")
   
+  ## Check ibw > fbw
+  if (any(ibw > fbw))
+    warning("ibw is greater than fbw.")
   
   ## Check whether inputs are of same length
   length_ratio <- c(length(ibw),
@@ -158,13 +177,22 @@ nr <- function(ibw,
 #' @export
 ner <- function(ibw, fbw, fi, nut_f, dm = 1) {
   # Checks----
-  ## Check for NA values
-  if (any(is.na(c(ibw, fbw, fi, dm, nut_f))))
+  ## Check whether inputs are NA
+  if(any(is.na(ibw) | 
+         is.na(fbw) | 
+         is.na(fi) | 
+         is.na(dm) | 
+         is.na(nut_f)
+  ))
     stop("Inputs must not be NA!")
   
-  
-  ## Check for non-numeric values
-  if (any(!is.numeric(c(ibw, fbw, fi, dm, nut_f))))
+  ## Check whether inputs are numeric
+  if(any(!is.numeric(ibw) | 
+         !is.numeric(fbw) | 
+         !is.numeric(fi) | 
+         !is.numeric(dm) | 
+         !is.numeric(nut_f)
+  ))
     stop("Inputs must be numeric!")
   
   
@@ -172,16 +200,17 @@ ner <- function(ibw, fbw, fi, nut_f, dm = 1) {
   if (any(c(fi, dm, nut_f) == 0))
     stop("Inputs must not be zero! Result cannot be calculated.")
   
-  
-  ## Check for negative values
-  if (any(c(ibw, fbw, fi, nut_f, dm) < 0))
-    warning("Inputs are negative. Result is not meaningful.")
-  
-  
-  ## Check for dm | nut_f > 1
-  if (any(c(dm, nut_f) > 1))
-    warning("Input is >1 (>100%). The result is not meaningful.")
-  
+  ## Check whether inputs are within the range
+  if (any(ibw <= 0))
+    warning("ibw is <= 0! The result is not meaningful.")
+  if (any(fbw <= 0))
+    warning("fbw is <= 0! The result is not meaningful.")
+  if (any(fi < 0))
+    warning("fi is < 0! The result is not meaningful.")
+  if (any(dm < 0 | dm > 1))
+    warning("dm is out of range! The result is not meaningful.")
+  if (any(nut_f < 0 | nut_f > 1))
+    warning("nut_f is out of range! The result is not meaningful.")
   
   ## Check ibw > fbw
   if (any(ibw > fbw))

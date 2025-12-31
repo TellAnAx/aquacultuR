@@ -20,12 +20,12 @@ test_that("adc_dm() throws error when input is not numeric", {
 
 test_that("adc_dm() works with vectors", {
   result <- adc_dm(
-    std_diet = c(10, 20, 30),
+    std_diet = c(5, 10, 15),
     dm_diet = c(1, 1, 1),
-    std_feces = c(5, 10, 15)
+    std_feces = c(10, 20, 30)
   )
   expect_length(result, 3)
-  expect_equal(result, c(-1, -1, -1))
+  expect_equal(result, c(0.5, 0.5, 0.5))
 })
 
 test_that("adc_dm() throws error when inputs have different lengths", {
@@ -73,8 +73,10 @@ test_that("adc_dm() calculates ADC correctly", {
 })
 
 test_that("adc_dm warns when ADC < 0", {
-  expect_warning(
-    adc_dm(std_diet = 10, dm_diet = 1, std_feces = 5),
+  expect_warning(adc_dm(
+    std_diet = 10,
+    dm_diet = 1,
+    std_feces = 5),
     "ADC < 0"
   )
 })
@@ -119,13 +121,14 @@ test_that("adc_nut() throws error when input is not numeric", {
 
 test_that("adc_nut() works with vectors", {
   result <- adc_nut(
-    std_diet = c(10, 20, 30),
-    std_feces = c(1, 1, 1),
-    nut_diet = c(5, 10, 15),
-    nut_feces = c(1,2,3)
+    std_diet = c(5, 10, 15),
+    std_feces = c(1, 2, 3),
+    nut_diet = c(10, 20, 30),
+    nut_feces = c(1,1,1)
   )
   expect_length(result, 3)
-  expect_equal(result, c(-1, -3, -5))
+  expect_equal(result, c(0.5, 0.75, 0.833),
+               tolerance = 0.01)
 })
 
 test_that("adc_nut() throws error when inputs are of different length", {
@@ -201,8 +204,11 @@ test_that("adc_nut() calculates ADC correctly", {
 })
 
 test_that("adc_nut warns when ADC < 0", {
-  expect_warning(
-    adc_nut(std_diet = 10, std_feces = 5, nut_diet = 5, nut_feces = 10),
+  expect_warning(adc_nut(
+    std_diet = 10,
+    std_feces = 5,
+    nut_diet = 5,
+    nut_feces = 10),
     "ADC < 0"
   )
 })
@@ -468,8 +474,14 @@ test_that("adc_ingr() calculates ADC correctly", {
 
 
 test_that("adc_ingr warns when ADC > 1", {
-  expect_warning(
-    adc_ingr(adc_test = 1, adc_ref = 0.1, nut_ref = 1, dm_ref = 1, dm_ingr = 0.1, incl_ingr = 0.1, nut_ingr = 0.1),
+  expect_warning(adc_ingr(
+    adc_test = 1,
+    adc_ref = 0.1,
+    nut_ref = 1,
+    dm_ref = 1,
+    dm_ingr = 0.1,
+    incl_ingr = 0.1,
+    nut_ingr = 0.1),
     "ADC > 1"
   )
 })

@@ -6,7 +6,8 @@ Authors@R: c(
            role = c("aut", "cre", "cph"), 
            comment = c(ORCID = "0000-0002-6065-9494")),
     person("Davide", "Machado e Silva", , "dams@ua.pt", 
-           role = c("aut")),
+           role = c("aut")
+           comment = c(ORCID = "0000-00003-2892-8292")),
     person("Simão", "Correia", , "simaodomcorreia@gmail.com", 
            role = c("aut")),
     person("Madhav", "Karthikeyan", , "madhavleo2000@gmail.com", 

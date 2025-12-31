@@ -1,3 +1,3 @@
-# aquacultuR 0.9.0
+# aquacultuR 1.0.0
 
 * Initial CRAN submission.

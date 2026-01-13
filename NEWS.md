@@ -1,3 +1,5 @@
+# aquacultuR 1.1.1
+
 # aquacultuR 1.1.0
 
 - add option to calculate `rgr()` expressed as relative to the ibw

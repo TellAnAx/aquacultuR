@@ -37,9 +37,9 @@ library(dplyr)
 ```
 
 ```{r options}
+oldopts <- options()
 options(digits = 3)
 ```
-
 
 
 # Data
@@ -159,7 +159,9 @@ The difference from the result stated in @Bureau2006a ($\text{ADC} =  87.5\%$) o
 sessionInfo()
 ```
 
-
+```{r reset_options}
+options(oldopts)
+```
 
 
 

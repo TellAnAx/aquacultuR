@@ -38,6 +38,7 @@ library(lubridate)
 ```
 
 ```{r options}
+oldopts <- options()
 options(digits = 3)
 ```
 
@@ -237,6 +238,10 @@ nutrient_retention %>%
 
 ```{r show_session_info}
 sessionInfo()
+```
+
+```{r reset_options}
+options(oldopts)
 ```
 
 

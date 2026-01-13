@@ -1,5 +1,10 @@
-## R CMD check results
+The requested changes were addressed:
 
-0 errors | 0 warnings | 1 note
+[x] a more informative Description of the package.
+[x] resetting changed options in the vignettes.
+[ ] adding methodological references to the DESCRIPTION file.
 
-* This is a new release.
+No references were added to the DESCRIPTION file because there is no single 
+literature source that would address all metrics implemented in this package. 
+This is, meanwhile, the purpose of an accompanying publication we are working 
+on as author team.

@@ -38,9 +38,12 @@ Authors@R: c(
       comment = c(ORCID = "0000-0002-5923-3242")
       )
     )
-Description: The purpose of this package is to provide tools for aquaculture 
-    by implementing frequently used zootechnical metrics as ready-to-use 
-    functions in R language.
+Description: A collection of functions to compute frequently used metrics for 
+             nutrition trials in aquaculture. Implementations include metrics 
+             to calculate growth, feed conversion, nutrient use efficiency, 
+             and feed digestibility. The package supports reproducible 
+             workflows for summarising experimental results and reduces manual 
+             calculation errors.
 License: GPL (>= 3)
 VignetteBuilder: knitr
 URL: https://github.com/TellAnAx/aquacultuR

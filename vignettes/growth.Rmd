@@ -38,6 +38,7 @@ library(lubridate)
 ```
 
 ```{r options}
+oldopts <- options()
 options(digits = 3)
 ```
 
@@ -177,6 +178,9 @@ water_params %>%
 sessionInfo()
 ```
 
+```{r reset_options}
+options(oldopts)
+```
 
 
 # References

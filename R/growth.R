@@ -438,8 +438,8 @@ gbw <- function(ibw, fbw) {
 #' @param ibw numeric; provides the initial weight in gram.
 #' @param fbw numeric; provides the final weight in gram.
 #' @param duration numeric; duration of the growth experiment.
-#' @param mean_fun character; specifies the mean ("geometric" or "arithmetic")
-#' to be calculated as denominator. Default: "geometric". 
+#' @param mean_fun character; specifies how ("init", "geometric" or 
+#' "arithmetic") to calculate the denominator. Default: "init". 
 #'
 #' @return either a single numeric value or vector holding the calculated RGR
 #' values. Multiply by 100 for conversion into percentage.
@@ -461,7 +461,7 @@ gbw <- function(ibw, fbw) {
 rgr <- function(ibw, 
                 fbw, 
                 duration, 
-                mean_fun = "geometric") {
+                mean_fun = "init") {
   
   # Checks----
   ## Ensure inputs are numeric
@@ -474,9 +474,9 @@ rgr <- function(ibw,
     stop("IBW or FBW is zero or negative. The result cannot be calculated.")
   }
   
-  ## Ensure mean_fun %in% c("geometric", "arithmetic")
-  if (!mean_fun %in% c("geometric", "arithmetic")) {
-    stop("mean_fun must be 'geometric' or 'arithmetic'")
+  ## Ensure mean_fun %in% c("init", "geometric", "arithmetic")
+  if (!mean_fun %in% c("geometric", "arithmetic", "init")) {
+    stop("mean_fun must be 'init', 'geometric' or 'arithmetic'")
   }
   
   ## Ensure duration is < 0 
@@ -507,6 +507,7 @@ rgr <- function(ibw,
   # Calculations----
   numerator <- fbw - ibw
   denominator <- switch(mean_fun,
+                        init = ibw,
                         geometric = gbw(ibw, fbw),
                         arithmetic = (ibw + fbw)/2
   )

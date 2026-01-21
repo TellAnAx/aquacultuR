@@ -676,7 +676,8 @@ test_that("rgr() works with vectors", {
   result <- rgr(
     ibw = c(1, 2, 3),
     fbw = c(4, 8, 12),
-    duration = c(2, 2, 2)
+    duration = c(2, 2, 2),
+    mean_fun = "geometric"
   )
   expect_length(result, 3)
   expect_equal(result, c(0.75, 0.75, 0.75),
@@ -735,26 +736,28 @@ test_that("rgr() throws warning or errors if inputs are <= 0.", {
   ))
 })
 
-test_that("ibw is lower than fbw", {
-  expect_warning(expect_warning(rgr(
+test_that("ibw is greater than fbw", {
+  expect_warning(rgr(
     ibw = 1,
     fbw = 0.01,
     duration = 10
-  )))
+  ))
 })
 
 test_that("rgr() calculates result correctly.", {
   expect_equal(rgr(
     ibw = 1,
     fbw = 5,
-    duration = 11),
+    duration = 11,
+    mean_fun = "geometric"),
     0.163, 
     tolerance = 0.01
   )
   expect_equal(rgr(
     ibw = c(1,2),
     fbw = c(2,4),
-    duration = c(10,20)),
+    duration = c(10,20),
+    mean_fun = "geometric"),
     c(0.071,0.035), 
     tolerance = 0.01
   )

@@ -5,19 +5,20 @@
 
 <!-- badges: start -->
 
+[![GitHub
+release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://GitHub.com/Naereen/StrapDown.js/releases/)
+[![Github
+tag](https://badgen.net/github/tag/Naereen/Strapdown.js)](https://github.com/Naereen/Strapdown.js/tags/)
+[![GitHub
+contributors](https://img.shields.io/github/contributors/Naereen/badges.svg)](https://GitHub.com/Naereen/badges/graphs/contributors/)
+[![GPLv3
+license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 [![R-CMD-check](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/TellAnAx/aquacultuR/graph/badge.svg)](https://app.codecov.io/gh/TellAnAx/aquacultuR)
-
 <!-- badges: end -->
 
 aquacultuR is an R package providing functions for the calculation of
 growth and feed conversion metrics. The provided example datasets
 originate from studies in the field of aquaculture.
-
-# Notes
-
-**merge into cran, not into main!**
 
 # Why using aquacultuR?
 
@@ -65,8 +66,6 @@ library(aquacultuR)
 | `rgr()` | Relative growth rate (RGR) |  |
 | `sgr()` | Specific growth rate (SGR) |  |
 | `tgc()` | Thermal growth coefficient (TGC) |  |
-| `fr()` | Feeding rate (FR) |  |
-| `rfr()` | Relative feeding rate | Feeding rate |
 | `nr()` | Nutrient retention |  |
 | `fcr()` | Feed conversion ratio (FCR) |  |
 | `fce()` | Feed conversion efficiency (FCE) |  |

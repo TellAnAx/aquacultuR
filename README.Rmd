@@ -18,10 +18,12 @@ knitr::opts_chunk$set(
 # aquacultuR <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
-[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://GitHub.com/Naereen/StrapDown.js/releases/)
-[![Github tag](https://badgen.net/github/tag/Naereen/Strapdown.js)](https://github.com/Naereen/Strapdown.js/tags/)
-[![GitHub contributors](https://img.shields.io/github/contributors/Naereen/badges.svg)](https://GitHub.com/Naereen/badges/graphs/contributors/)
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+![CRAN/METACRAN Version](https://img.shields.io/cran/v/aquacultuR)
+![GitHub Release](https://img.shields.io/github/v/release/TellAnAx/aquacultuR)
+![GitHub Tag](https://img.shields.io/github/v/tag/TellAnAx/aquacultuR)
+![GitHub contributors](https://img.shields.io/github/contributors/TellAnAx/aquacultuR)
+![GitHub last commit](https://img.shields.io/github/last-commit/TellAnAx/aquacultuR)
 [![R-CMD-check](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
   

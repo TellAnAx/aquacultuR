@@ -18,8 +18,8 @@ commit](https://img.shields.io/github/last-commit/TellAnAx/aquacultuR)
 [![R-CMD-check](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-aquacultuR is an R package providing functions for the calculation of
-growth and feed conversion metrics. The provided example datasets
+aquacultuR is an R package that provides functions for the calculation
+of growth and feed conversion metrics. The provided example datasets
 originate from studies in the field of aquaculture.
 
 # Why using aquacultuR?
@@ -43,8 +43,8 @@ You can **install aquacultuR from CRAN** using:
 install.packages("aquacultuR")
 ```
 
-You can also **install aquacultuR from GitHub** if you prefer the latest
-development version by using:
+If you prefer the latest development version, you can also **install
+aquacultuR from GitHub** by using:
 
 ``` r
 require(devtools)
@@ -55,6 +55,7 @@ In both cases, the package can eventually be loaded using:
 
 ``` r
 library(aquacultuR)
+#> Warning: package 'aquacultuR' was built under R version 4.5.2
 ```
 
 # Functionalities
@@ -80,14 +81,15 @@ library(aquacultuR)
 
 **Authors:**
 
-- [Anıl Axel Tellbüscher](https://anil.tellbuescher.online)
-- Davide Machado e Silva
-- Simão Correia
+- [Anıl Axel Tellbüscher](https://anil.tellbuescher.online) - University
+  of South Bohemia in Ceske Budejovice
+- Davide Machado e Silva -
+- Simão Correia -
 
 **Contributors:**
 
-- Madhav Karthikeyan
+- Madhav Karthikeyan - University of Crete
 
 **Logo design:**
 
-- Tomáš Pěnka
+- Tomáš Pěnka - University of South Bohemia in Ceske Budejovice

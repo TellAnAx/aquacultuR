@@ -23,24 +23,24 @@ A number of metrics are employed in the field of aquaculture to describe aspects
 |Trivial                                          |Abbrev.  |Synonyms   |Symbol                     |SI unit|
 |:------------------------------------------------|:-------:|:---------:|:-------------------------:|:--------------------------------:|
 |Absolute growth                                  |AG       |weight gain|$\Delta m$                 |$\text{g}$
-|Absolute growth rate                             |AGR      |           |$\text{AGR}$               |$g\,d^{-1}$
+|Absolute growth rate                             |AGR      |           |$\text{AGR}$               |$\text{g d}^{-1}$
 |Apparent Digestibility Coefficient               |ADC      |           |$\text{ADC}$               |$\text{--}$
 |Apparent Digestibility Coefficient - Dry Matter  |ADC-DM   |           |$\text{ADC}_{\text{DM}}$   |$\text{--}$
 |Apparent Digestibility Coefficient - Ingredient  |ADC-Ingr |           |$\text{ADC}_{\text{ingr}}$ |$\text{--}$
 |Apparent Digestibility Coefficient - Nutrient    |ADC-Nut  |           |$\text{ADC}_{\text{x}}$    |$\text{--}$
 |Feed conversion efficiency                       |FCE      |           |$\text{FCE}$               |$\text{--}$
 |Feed conversion ratio                            |FCR      |           |$\text{FCR}$               |$\text{--}$
-|Feeding rate                                     |FR       |           |$\text{FR}$                |$g\,d^{-1}$
-|Geometric body weight                            |GBW      |           |$\text{GBW}$               |$g$
+|Feeding rate                                     |FR       |           |$\text{FR}$                |$\text{g d}^{-1}$
+|Geometric body weight                            |GBW      |           |$\text{GBW}$               |$\text{g}$
 |Instantaneous Growth                             |IGR      |           |$\text{IGR}$               |$\text{--}$
-|Metabolic body weight                            |MBW      |           |$\text{MBW}$               |$g^{0.8}$
+|Metabolic body weight                            |MBW      |           |$\text{MBW}$               |$\text{g}^{0.8}$
 |Nutrient Efficiency Ratio                        |NER      |           |$\text{NER}$               |$\text{--}$
-|Relative growth                                  |RG       |           |$\Delta m_{rel}$           |$\%$
-|Relative growth rate                             |RGR      |           |$\text{RGR}$               |$\%\;d^{-1}$
-|Relative growth rate - Arithmetic                |RGR-Ari  |           |$\text{RGR}$               |$\%\;d^{-1}$
-|Relative growth rate - Geometric                 |RGR-GBW  |           |$\text{RGR}$               |$\%\;d^{-1}$
-|Specific growth rate                             |SGR      |           |$\text{SGR}$               |$\%\;d^{-1}$
-|Thermal growth coefficient                       |TGC      |           |$\text{TGC}$               |$g^{1/3}\,^{\circ}C^{-1}\,d^{-1}$
+|Relative growth                                  |RG       |           |$\Delta m_{rel}$           |$\text{%}$
+|Relative growth rate                             |RGR      |           |$\text{RGR}$               |$\text{% d}^{-1}$
+|Relative growth rate - Arithmetic                |RGR-Ari  |           |$\text{RGR}$               |$\text{% d}^{-1}$
+|Relative growth rate - Geometric                 |RGR-GBW  |           |$\text{RGR}$               |$\text{% d}^{-1}$
+|Specific growth rate                             |SGR      |           |$\text{SGR}$               |$\text{% d}^{-1}$
+|Thermal growth coefficient                       |TGC      |           |$\text{TGC}$               |$\text{g}^{1/3}\,^{\circ}\text{C}^{-1}\text{d}^{-1}$
 
 
 |Parameter                  |Abbrev.    |Symbol     |SI unit|

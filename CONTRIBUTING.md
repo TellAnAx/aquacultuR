@@ -8,7 +8,7 @@ bug, or suggest new features, this short guide will help you get started. 🎉
 
 ## Development Setup
 
-1. Clone the [GitHub repository](https://github.com/TellAnAx/aquacultuR) to your computer.
+1. Clone the [Git repository](https://github.com/TellAnAx/aquacultuR) to your computer.
 2. **Make sure you are using the latest version of all packages, R and RStudio!** 
 3. Start coding!
 

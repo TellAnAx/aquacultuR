@@ -1,10 +1,21 @@
+# aquacultuR 1.1.2
+
+This version comes with a **major** and some minor changes:
+
+- **addition of a detailed `formulary.Rmd` as part of the vignettes.**
+- updated `README.Rmd` that shows the version published on CRAN and the current 
+version on GitHub.
+- updated `CONTRIBUTING.Rmd` that provides additional information on how to get 
+involved into further developing the `aquacultuR` package.
+
+
 # aquacultuR 1.1.1
 
 This version comes with some changes requested by CRAN:
 
-- a more informative Description field in the DESCRIPTION file.
+- a more informative Description field in the `DESCRIPTION` file.
 - resetting `options()` at the end of the vignettes.
-- an updated CITATION file.
+- an updated `CITATION` file.
 
 
 # aquacultuR 1.1.0

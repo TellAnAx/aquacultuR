@@ -55,7 +55,6 @@ In both cases, the package can eventually be loaded using:
 
 ``` r
 library(aquacultuR)
-#> Warning: package 'aquacultuR' was built under R version 4.5.2
 ```
 
 # Functionalities
@@ -81,15 +80,23 @@ library(aquacultuR)
 
 **Authors:**
 
-- [Anıl Axel Tellbüscher](https://anil.tellbuescher.online) - University
-  of South Bohemia in Ceske Budejovice
-- Davide Machado e Silva -
-- Simão Correia -
+- [Anıl Axel Tellbüscher](https://anil.tellbuescher.online) -
+  [University of South Bohemia in České
+  Budějovice](https://www.jcu.cz/en/), CZ
+- [Davide Machado e
+  Silva](https://www.researchgate.net/profile/Davide-Machado-E-Silva) -
+  [University of Aveiro](https://www.ua.pt/en), PT
+- [Simão Correia](https://www.researchgate.net/profile/Simao-Correia) -
+  [University of Perpignan](https://www.univ-perp.fr/en), FR
 
 **Contributors:**
 
-- Madhav Karthikeyan - University of Crete
+- [Madhav
+  Karthikeyan](https://www.researchgate.net/profile/Madhav-Karthikeyan-2) -
+  [University of Crete](https://www.uoc.gr/en/home/), GR
 
 **Logo design:**
 
-- Tomáš Pěnka - University of South Bohemia in Ceske Budejovice
+- [Tomáš Pěnka](https://www.researchgate.net/profile/Tomas-Penka) -
+  [University of South Bohemia in České
+  Budějovice](https://www.jcu.cz/en/), CZ

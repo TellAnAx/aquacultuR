@@ -1,0 +1,270 @@
+---
+title: "Formulary"
+output: rmarkdown::html_vignette
+bibliography: references.bib
+vignette: >
+  %\VignetteIndexEntry{Formulary}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+A number of metrics are employed in the field of aquaculture to describe aspects such as growth or feed conversion in a comparable manner. This vignette provides a formulary and expands on the background of the metrics implemented in the aquacultuR package.
+
+
+# Overview
+
+|Trivial                                          |Abbrev.  |Synonyms   |Symbol                     |SI unit|
+|:------------------------------------------------|:-------:|:---------:|:-------------------------:|:--------------------------------:|
+|Absolute growth                                  |AG       |weight gain|$\Delta m$                 |$\text{g}$
+|Absolute growth rate                             |AGR      |           |$\text{AGR}$               |$\text{g d}^{-1}$
+|Apparent Digestibility Coefficient               |ADC      |           |$\text{ADC}$               |$\text{--}$
+|Apparent Digestibility Coefficient - Dry Matter  |ADC-DM   |           |$\text{ADC}_{\text{DM}}$   |$\text{--}$
+|Apparent Digestibility Coefficient - Ingredient  |ADC-Ingr |           |$\text{ADC}_{\text{ingr}}$ |$\text{--}$
+|Apparent Digestibility Coefficient - Nutrient    |ADC-Nut  |           |$\text{ADC}_{\text{x}}$    |$\text{--}$
+|Feed conversion efficiency                       |FCE      |           |$\text{FCE}$               |$\text{--}$
+|Feed conversion ratio                            |FCR      |           |$\text{FCR}$               |$\text{--}$
+|Feeding rate                                     |FR       |           |$\text{FR}$                |$\text{g d}^{-1}$
+|Geometric body weight                            |GBW      |           |$\text{GBW}$               |$\text{g}$
+|Instantaneous Growth                             |IGR      |           |$\text{IGR}$               |$\text{--}$
+|Metabolic body weight                            |MBW      |           |$\text{MBW}$               |$\text{g}^{0.8}$
+|Nutrient Efficiency Ratio                        |NER      |           |$\text{NER}$               |$\text{--}$
+|Relative growth                                  |RG       |           |$\Delta m_{rel}$           |$\text{%}$
+|Relative growth rate                             |RGR      |           |$\text{RGR}$               |$\text{% d}^{-1}$
+|Relative growth rate - Arithmetic                |RGR-Ari  |           |$\text{RGR}$               |$\text{% d}^{-1}$
+|Relative growth rate - Geometric                 |RGR-GBW  |           |$\text{RGR}$               |$\text{% d}^{-1}$
+|Specific growth rate                             |SGR      |           |$\text{SGR}$               |$\text{% d}^{-1}$
+|Thermal growth coefficient                       |TGC      |           |$\text{TGC}$               |$\text{g}^{1/3}\text{°C}^{-1}\text{d}^{-1}$
+
+
+|Parameter                  |Abbrev.    |Symbol     |SI unit|
+|:-------------------------:|:---------:|:---------:|:-----:|
+| Dry matter                | DM        |           | g
+| Feed fed                  | Ff        |           | g 
+| Feed intake               | FI        |           | g
+| Length                    | l         | $l$       | cm
+| Mass                      | m         | $m$       | g
+| Temperature               | temp      | $T$       | °C
+| Time                      |           | $t$       | d
+
+
+# Alphabetic Formulary
+
+## Absolute Growth
+
+The Absolute Growth ($\Delta m$) is defined as the finite increment in the body mass of an organism mass ($m$ in grams) over a given time interval, corresponding to the difference between its final and initial masses. It is a size-dependent quantity and does not account for the time over which the growth occurred.
+
+$$
+\Delta m
+  = m_{\text{end}} - m_{\text{init}} 
+$$
+
+
+## Absolute Growth Rate
+
+The Absolute Growth Rate ($\text{AGR}$), also referred to as the "Average Growth Rate", is defined as the average rate of change of an organism's mass over a time interval $\Delta t$, obtained by dividing the absolute growth ($\Delta m$) by the time interval. When the time is measured from the initial observation, $\Delta t$ may be written simply as $t$. 
+
+$$
+\text{AGR} 
+  = \frac{\Delta m}{\Delta t}
+  = \frac{m_{\text{end}} - m_{\text{init}}}{t_{\text{end}} - t_{\text{init}}}
+$$
+
+
+## Apparent Digestibility Coefficient - Dry Matter
+
+A dimensionless measure of the fraction of ingested dry matter that is not recovered in faeces, estimated indirectly using an inert indigestible marker ($\gamma$) [@ChoSlinger1979]. Here, $\gamma$ represents the mass fraction (in $\%$) of the marker.
+
+$$
+\text{ADC}_{\text{DM}} = 
+  1 - (\frac{\gamma_{feed}}{\gamma_{feces}})
+$$
+
+
+## Apparent Digestibility Coefficient - Nutrient
+
+The Apparent Digestibility Coefficient for a nutrient ($\text{ADC}_{x}$) is a dimensionless measure of the fraction of an ingested nutrient ($x$) that is not recovered in faeces, where $\gamma_{std}$ denotes the mass fraction of the inert marker and $\gamma_x$ the mass fraction of nutrient $x$. As direct measurement of nutrient intake and excretion is often impractical, digestibility is estimated indirectly using an inert marker. The coefficient accounts for the relative concentrations of both the marker and the nutrient in the feed and faeces, thereby correcting for differential dilution effects.
+
+$$
+\text{ADC}_{\text{x}} = 
+  1 - (\frac{\gamma_{std, feed}} {\gamma_{std,feces}} \cdot \frac{\gamma_{x,feces}}{\gamma_{x, feed}})
+$$
+
+
+## Apparent Digestibility Coefficient - Ingredient
+
+The Apparent Digestibility Coefficient for an ingredient ($\text{ADC}_{\text{ingr}}$) estimates the digestibility of a specific feed ingredient when it is included in a compound diet, where $f$ denotes the inclusion fraction of each diet component and $\gamma_x$ the mass fraction of nutrient $x$ in the reference diet or ingredient. This approach assumes that the digestibility of the test diet reflects the combined contributions of a reference diet and the ingredient of interest. The ingredient digestibility is therefore inferred by difference, accounting for the relative inclusion levels and nutrient concentrations.
+
+$$
+\text{ADC}_{\text{ingr}} = ADC_{test} + (ADC_{test} - ADC_{ref}) \cdot (\frac{f_{ref} \cdot \gamma_{x,ref}}{f_{ingredient} \cdot \gamma_{x, ingredient}})
+$$
+
+
+## Feed Conversion Efficiency
+
+The Feed Conversion Efficiency ($\text{FCE}$) is the inverse of the Feed Conversion Ratio (FCR), expressing biomass gain per unit of dry feed intake. It represents a mass-based efficiency rather than a cost-based one.
+
+$$
+\text{FCE} 
+  = \frac{1}{\text{FCR}} 
+  = \frac{\Delta m}{\text{FI} \cdot \text{DM}}
+$$
+
+
+## Feed Conversion Ratio
+
+The Feed Conversion Ratio ($\text{FCR}$) is the ratio between feed input, corrected for dry matter content, and the resulting increase in body mass, and quantifies the efficiency with which feed mass is converted into biomass. A widely used metrics in animal production and nutrition, $\text{FCR}$ provides a simple and comparable measure of the amount of feed required to achieve a certain increase in biomass. Several versions of the $\text{FCR}$ are reported in the literature. After correction for the true dry matter ($DM$) content of the feed, which makes $\text{FCR}$ comparable, the two most common $\text{FCR}$ formulas are the $eFCR$ (economic FCR) and the $bFCR$ (biological FCR) [@glencross2024].
+
+The $eFCR$ takes the amount of feed fed ($Ff$) into consideration for the computation of the result. This is more meaningful in a business setup, because the $eFCR$ would also respond to, for instance, changes in the feeding strategy that might lead to a decrease in feed loss.
+
+$$
+\text{eFCR}
+  = \frac{\text{Ff} \cdot \text{DM}}{\Delta m}
+$$
+
+
+The $bFCR$, meanwhile, only considers the true feed intake ($FI$), which is the amount of feed fed, but corrected for feed refusal or feed losses. 
+
+$$
+\text{bFCR}
+  = \frac{\text{FI} \cdot \text{DM}}{\Delta m}
+$$
+
+
+## Feeding Rate
+
+The average rate at which feed mass is supplied to an organism or population over a given time interval, where $m_{\text{feed}}$ is the total mass of feed administered over the time interval $\Delta t$. It is a purely operational quantity that does not account for ingestion, assimilation, or growth.
+
+$$
+\text{FR} = \frac{m_{\text{feed}}}{\Delta t}
+$$
+
+
+## Geometric bodyweight
+
+The Geometric bodyweight ($\text{GBW}$), or geometric mean weight, is the geometric mean of the organism mass over a time interval, calculated from the initial and final masses. The geometric bodyweight provides a size descriptor that is symmetric on a multiplicative scale and is appropriate when growth is assumed to be approximately exponential.
+
+$$
+\text{GBW} = \sqrt{m_{init} \cdot m_{end}}
+$$
+
+
+## Instantaneous Growth
+
+The Instantaneous Growth ($\text{IGR}$) is the per-capita growth parameter of an exponential growth model, corresponding to the time derivative of the natural logarithm of body mass. It describes growth on a logarithmic scale and has units of inverse time [@lugert2016review].
+
+$$
+\text{IGR} 
+  = \frac{\ln {m_{\text{end}} } - \ln {m_{\text{init}}} }{\Delta t}
+  = \frac{\ln \frac{m_{\text{end}}}{m_{\text{init}}}} {\Delta t}
+$$
+
+
+## Metabolic bodyweight
+
+The Metabolic bodyweight ($\text{MBW}$) is a size-standardised body mass obtained by scaling the geometric bodyweight by an allometric exponent widely adopted in fish bioenergetics and aquaculture growth studies [@Jobling1993]. The allometric exponent (0.8) shows how one biological trait changes in relation to another. This transformation reflects the empirical relationship between metabolic processes and body size, where physiological rates scale non-linearly with mass.
+
+$$
+\text{MBW} 
+  = \text{GBW}^{0.8} 
+  = \sqrt{m_{init} \cdot m_{end}}^{0.8}
+  = (m_{\text{init}} \cdot m_{\text{end}})^{0.4}
+$$
+
+
+## Nutrient Efficiency Ratio
+
+The ratio between biomass gain and the intake of a specific nutrient, accounting for feed intake, dry matter content, and nutrient concentration, with $\gamma_{x}$ denoting the mass fraction of a nutrient $x$ in the feed. It quantifies how efficiently a given dietary component is converted into growth.
+
+$$
+\text{NER} 
+  = \frac{\Delta m}{\text{FI} \cdot \gamma_{x} \cdot \text{DM}_{feed}}
+$$
+
+
+## Relative Growth
+
+The Relative Growth ($\text{RG}$) represents the linear increase in a body mass over a time interval, expressed relative to the initial mass of the organism. It is a size-dependent quantity and does not account for the time of growth.
+
+$$
+\Delta m_{rel}
+  = \frac{m_{\text{end}} - m_{\text{init}}}{m_{init}}
+$$
+
+
+
+## Relative Growth Rate
+
+The Relative Growth Rate ($\text{RGR}$) quantifies the rate of mass increase per unit of time, scaled by a reference body mass. 
+
+When the initial mass is used as the reference, the Relative Growth Rate ($\text{RGR}$) represents the rate of growth per unit of time relative to the initial organism mass.
+
+$$
+\text{RGR}
+  = \frac{\Delta m_{rel}}{\Delta t}
+  = \frac{\Delta m}{\Delta t \cdot m_{init}}
+$$
+
+
+When the arithmetic mean mass ($\bar{m} = \frac{m_{\text{init}} + m_{\text{end}}}{2}$) is used as the reference, the Relative Growth Rate ($\text{RGR}$) represents the rate of growth per unit of time relative to the organism's average body mass.
+
+$$
+\text{RGR}
+  = \frac{\Delta m}{\Delta t \cdot \bar{m}}
+$$
+
+
+When the Geometric Bodyweight ($\text{GBW}$) is used as the reference, the Relative Growth Rate ($\text{RGR}$) represents the rate of growth per unit time relative to the organism’s geometric mean body mass.
+
+$$
+\text{RGR}
+  = \frac{\Delta m}{\Delta t \cdot \sqrt{m_{end} \cdot m_{init}}}
+$$
+
+
+## Specific Growth Rate
+
+The Specific Growth Rate ($\text{SGR}$) is the proportional percentage increase in body mass per unit time, derived from the instantaneous growth rate under the assumption of exponential growth [@crane2020]. Unlike the instantaneous growth rate ($\text{IGR}$), which is expressed on a logarithmic scale and has units of inverse time, $\text{SGR}$ represents a true compounded percentage change in body mass over the time interval.
+
+$$
+\text{SGR} 
+  = (e^{\text{IG}} - 1) \cdot 100
+  = \left( \sqrt[\Delta t]\frac{m_{\text{end}}}{m_{\text{init}}} - 1 \right) \cdot 100
+$$
+
+
+Many studies (e.g. @lugert2016review) define Specific Growth Rate as
+
+$$
+\text{SGR} 
+  = \frac{\ln {m_{\text{end}} } - \ln {m_{\text{init}}} }{\Delta t} \cdot 100
+  = \frac{\ln \frac{m_{\text{end}}}{m_{\text{init}}}} {\Delta t} \cdot 100
+$$
+
+The logarithm measures changes on a logarithmic scale rather than true proportional changes. Multiplying by 100 simply rescales the numbers and does not produce a true percentage increase in body mass. This approach is a first-order approximation that is only accurate for very small growth rates or very short time intervals. When growth is larger or measured over longer periods, this method systematically underestimates the actual proportional increase.
+
+
+## Thermal Growth Coefficient
+
+The Thermal Growth Coefficient ($\text{TGC}$), originally introduced in the context of temperature-dependent growth in fish by @iwama1981, is a temperature-normalised growth metric that relates changes in the cubic root of body mass to cumulative thermal exposure. This formula accounts for both allometric scaling of growth and the temperature dependence of physiological processes.
+$$
+\text{TGC} =
+\frac{\sqrt[3]{m_{\text{end}}} - \sqrt[3]{m_{\text{init}}}}
+{\sum_{i=1}^{t} T_i} \cdot 1000
+$$
+
+If temperature is assumed to be constant throughout the experiment, cumulative thermal exposure ($\sum_{i=1}^{t} T_i$) can be approximated as the product of mean temperature ($\bar{T}$) and experimental duration ($t$)
+
+$$
+\text{TGC} = 
+  \frac{\sqrt[3]{m_{\text{end}}} - \sqrt[3]{m_{\text{init}}}}{\bar{T} \cdot t} \cdot 1000
+$$
+
+
+## References

@@ -5,19 +5,23 @@
 
 <!-- badges: start -->
 
+[![GPLv3
+license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17788664.svg)](https://doi.org/10.5281/zenodo.17788664)
+![CRAN/METACRAN Version](https://img.shields.io/cran/v/aquacultuR)
+![GitHub
+Release](https://img.shields.io/github/v/release/TellAnAx/aquacultuR)
+![GitHub Tag](https://img.shields.io/github/v/tag/TellAnAx/aquacultuR)
+![GitHub
+contributors](https://img.shields.io/github/contributors/TellAnAx/aquacultuR)
+![GitHub last
+commit](https://img.shields.io/github/last-commit/TellAnAx/aquacultuR)
 [![R-CMD-check](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/TellAnAx/aquacultuR/graph/badge.svg)](https://app.codecov.io/gh/TellAnAx/aquacultuR)
-
 <!-- badges: end -->
 
-aquacultuR is an R package providing functions for the calculation of
-growth and feed conversion metrics. The provided example datasets
+aquacultuR is an R package that provides functions for the calculation
+of growth and feed conversion metrics. The provided example datasets
 originate from studies in the field of aquaculture.
-
-# Notes
-
-**merge into cran, not into main!**
 
 # Why using aquacultuR?
 
@@ -40,8 +44,8 @@ You can **install aquacultuR from CRAN** using:
 install.packages("aquacultuR")
 ```
 
-You can also **install aquacultuR from GitHub** if you prefer the latest
-development version by using:
+If you prefer the latest development version, you can also **install
+aquacultuR from GitHub** by using:
 
 ``` r
 require(devtools)
@@ -65,8 +69,6 @@ library(aquacultuR)
 | `rgr()` | Relative growth rate (RGR) |  |
 | `sgr()` | Specific growth rate (SGR) |  |
 | `tgc()` | Thermal growth coefficient (TGC) |  |
-| `fr()` | Feeding rate (FR) |  |
-| `rfr()` | Relative feeding rate | Feeding rate |
 | `nr()` | Nutrient retention |  |
 | `fcr()` | Feed conversion ratio (FCR) |  |
 | `fce()` | Feed conversion efficiency (FCE) |  |
@@ -79,14 +81,23 @@ library(aquacultuR)
 
 **Authors:**
 
-- [Anıl Axel Tellbüscher](https://anil.tellbuescher.online)
-- Davide Machado e Silva
-- Simão Correia
+- [Anıl Axel Tellbüscher](https://anil.tellbuescher.online) -
+  [University of South Bohemia in České
+  Budějovice](https://www.jcu.cz/en/), CZ
+- [Davide Machado e
+  Silva](https://www.researchgate.net/profile/Davide-Machado-E-Silva) -
+  [University of Aveiro](https://www.ua.pt/en), PT
+- [Simão Correia](https://www.researchgate.net/profile/Simao-Correia) -
+  [University of Perpignan](https://www.univ-perp.fr/en), FR
 
 **Contributors:**
 
-- Madhav Karthikeyan
+- [Madhav
+  Karthikeyan](https://www.researchgate.net/profile/Madhav-Karthikeyan-2) -
+  [University of Crete](https://www.uoc.gr/en/home/), GR
 
 **Logo design:**
 
-- Tomáš Pěnka
+- [Tomáš Pěnka](https://www.researchgate.net/profile/Tomas-Penka) -
+  [University of South Bohemia in České
+  Budějovice](https://www.jcu.cz/en/), CZ

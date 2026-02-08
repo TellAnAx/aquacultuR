@@ -7,6 +7,7 @@
 
 [![GPLv3
 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17788664.svg)](https://doi.org/10.5281/zenodo.17788664)
 ![CRAN/METACRAN Version](https://img.shields.io/cran/v/aquacultuR)
 ![GitHub
 Release](https://img.shields.io/github/v/release/TellAnAx/aquacultuR)

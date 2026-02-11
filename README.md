@@ -60,22 +60,25 @@ library(aquacultuR)
 
 # Functionalities
 
-| Function | Metric | Synonym |
-|----|----|----|
-| `gbw()` | Geometric bodyweight |  |
-| `mbw()` | Metabolic bodyweight |  |
-| `ag()` | Absolute growth (AG) | Weight gain |
-| `agr()` | Absolute growth rate (AGR) |  |
-| `rgr()` | Relative growth rate (RGR) |  |
-| `sgr()` | Specific growth rate (SGR) |  |
-| `tgc()` | Thermal growth coefficient (TGC) |  |
-| `nr()` | Nutrient retention |  |
-| `fcr()` | Feed conversion ratio (FCR) |  |
-| `fce()` | Feed conversion efficiency (FCE) |  |
-| `ner()` | Nutrient efficiency ratio (NER) | Protein/Energy/X efficiency ratio |
-| `adc_dm()` | Apparent digestibility coefficient (ADC) |  |
-| `adc_nut()` | Apparent digestibility coefficient (ADC) |  |
-| `adc_ingr()` | Apparent digestibility coefficient (ADC) |  |
+
+| Function     | Metric                                          | Description                                                                                                                                | Typical Unit      | Synonym / Notes                                              |
+| ------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------- | ------------------------------------------------------------ |
+| `gbw()`      | Geometric bodyweight                            | Calculates the geometric mean of body weight between two sampling points. Often used to reduce bias caused by exponential growth patterns. | g or kg           | —                                                            |
+| `mbw()`      | Metabolic bodyweight                            | Calculates metabolic body weight using BW^0.75. Represents metabolic energy demand and is widely used in nutritional modelling.            | g^0.75 or kg^0.75 | —                                                            |
+| `ag()`       | Absolute growth (AG)                            | Calculates total weight gained over a defined period.                                                                                      | g or kg           | Weight gain                                                  |
+| `agr()`      | Absolute growth rate (AGR)                      | Measures growth per unit of time, showing how fast an organism increases in body weight.                                                   | g/day             | —                                                            |
+| `rgr()`      | Relative growth rate (RGR)                      | Measures proportional growth relative to initial body weight. Useful when comparing growth across different size classes.                  | % per day         | —                                                            |
+| `sgr()`      | Specific growth rate (SGR)                      | Logarithmic growth rate widely used in aquaculture. Allows standardized comparison across experiments and species.                         | % per day         | Most commonly reported growth metric                         |
+| `tgc()`      | Thermal growth coefficient (TGC)                | Growth metric adjusted for temperature effects. Used for cross-study comparisons when temperature varies.                                  | Dimensionless     | Temperature-adjusted growth                                  |
+| `nr()`       | Nutrient retention                              | Measures proportion of ingested nutrients retained in body tissues. Indicates nutrient utilization efficiency.                             | %                 | —                                                            |
+| `fcr()`      | Feed conversion ratio (FCR)                     | Measures amount of feed required to produce one unit of biomass. Lower values indicate better feed efficiency.                             | Ratio             | One of the most important aquaculture performance indicators |
+| `fce()`      | Feed conversion efficiency (FCE)                | Reciprocal of FCR, representing biomass produced per unit of feed consumed.                                                                | % or ratio        | Inverse of FCR                                               |
+| `ner()`      | Nutrient efficiency ratio (NER)                 | Measures efficiency of specific nutrient utilization such as protein or energy.                                                            | Ratio             | Protein Efficiency Ratio (PER), Energy Efficiency Ratio      |
+| `adc_dm()`   | Apparent digestibility coefficient – dry matter | Estimates digestibility of total dry matter in feed using inert markers.                                                                   | %                 | —                                                            |
+| `adc_nut()`  | Apparent digestibility coefficient – nutrient   | Estimates digestibility of specific nutrients such as protein, lipid, or energy.                                                           | %                 | —                                                            |
+| `adc_ingr()` | Apparent digestibility coefficient – ingredient | Estimates digestibility of individual feed ingredients within compound diets.                                                              | %                 | Useful in feed formulation studies                           |
+
+
 
 # About
 

@@ -1,3 +1,10 @@
+This version comes with minor changes in the `README.Rmd` file:
+
+- badge that shows the downloads per month.
+- switch from `devtools::isntall_github()` (depreceated) to `pak::pkg_install()` 
+  to install the development version of `aquacultuR`.
+
+
 # aquacultuR 1.1.2
 
 This version comes with a **major** and some minor changes:

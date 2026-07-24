@@ -1,5 +1,6 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!--  README.md is generated from README.Rmd. 
+If you intend to edit the README file, please edit README.Rmd -->
 
 # aquacultuR <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
@@ -7,7 +8,7 @@
 
 [![GPLv3
 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17788664.svg)](https://doi.org/10.5281/zenodo.17788664)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18331516.svg)](https://doi.org/10.5281/zenodo.18331516)
 ![CRAN/METACRAN Version](https://img.shields.io/cran/v/aquacultuR)
 ![GitHub
 Release](https://img.shields.io/github/v/release/TellAnAx/aquacultuR)
@@ -17,6 +18,7 @@ contributors](https://img.shields.io/github/contributors/TellAnAx/aquacultuR)
 ![GitHub last
 commit](https://img.shields.io/github/last-commit/TellAnAx/aquacultuR)
 [![R-CMD-check](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TellAnAx/aquacultuR/actions/workflows/R-CMD-check.yaml)
+[![Downloads](https://cranlogs.r-pkg.org/badges/aquacultuR)](https://cran.r-project.org/package=aquacultuR)
 <!-- badges: end -->
 
 aquacultuR is an R package that provides functions for the calculation
@@ -28,12 +30,14 @@ originate from studies in the field of aquaculture.
 Until now, a comprehensive collection of equations that are commonly
 used in animal nutrition does not exist. This can make it difficult for
 people entering the field to understand how values were obtained. Also,
-the use of incorrect equations might not be recognized by reviewers in
-some cases. The **advantages** of wrapping those equations up in an R
-package in comparison to an Excel file are
+the use of incorrect equations might not be recognized by reviewers of
+scientific manuscripts and reports.
+
+The **advantages** of wrapping those equations up in an R package in
+comparison to an Excel file are
 
 - superior reproducibility
-- reduced susceptibility to human errors
+- reduced susceptibility to human error
 - having a citeable resource on hand that can be referred to
 
 # Installation
@@ -48,8 +52,8 @@ If you prefer the latest development version, you can also **install
 aquacultuR from GitHub** by using:
 
 ``` r
-require(devtools)
-devtools::install_github("TellAnAx/aquacultuR")
+require(pak)
+pak::pkg_install("TellAnAx/aquacultuR")
 ```
 
 In both cases, the package can eventually be loaded using:
@@ -73,9 +77,9 @@ library(aquacultuR)
 | `fcr()` | Feed conversion ratio (FCR) |  |
 | `fce()` | Feed conversion efficiency (FCE) |  |
 | `ner()` | Nutrient efficiency ratio (NER) | Protein/Energy/X efficiency ratio |
-| `adc_dm()` | Apparent digestibility coefficient (ADC) |  |
-| `adc_nut()` | Apparent digestibility coefficient (ADC) |  |
-| `adc_ingr()` | Apparent digestibility coefficient (ADC) |  |
+| `adc_dm()` | Apparent digestibility coeff. - Dry matter |  |
+| `adc_nut()` | Apparent digestibility coeff. - Nutrient |  |
+| `adc_ingr()` | Apparent digestibility coeff. - Ingredient |  |
 
 # About
 

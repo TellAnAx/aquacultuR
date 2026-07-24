@@ -1,3 +1,5 @@
+# aquacultuR 1.1.3
+
 This version comes with minor changes in the `README.Rmd` file:
 
 - badge that shows the downloads per month.
